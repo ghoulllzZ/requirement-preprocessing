@@ -30,19 +30,19 @@ from scipy.stats import friedmanchisquare, spearmanr, kendalltau
 RATERS = {
     "gpt": {
         "req": "gpt_per-requirement_rating.csv",
-        "doc": "gpt_document_rating.csv",
+        "doc": "gpt_document-wide_rating.csv",
     },
     "deepseek": {
         "req": "deepseek_per-requirement_rating.csv",
-        "doc": "deepseek_document_rating.csv",
+        "doc": "deepseek_document-wide_rating.csv",
     },
     "doubao": {
         "req": "doubao_per-requirement_rating.csv",
-        "doc": "doubao_document_rating.csv",
+        "doc": "doubao_document-wide_rating.csv",
     },
     "qwen": {
         "req": "qwen_per-requirement_rating.csv",
-        "doc": "qwen_document_rating.csv",
+        "doc": "qwen_document-wide_rating.csv",
     },
 }
 
