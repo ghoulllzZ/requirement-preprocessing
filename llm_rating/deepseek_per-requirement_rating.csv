@@ -1,0 +1,10 @@
+item,Unambiguous,Understandable,Correctness,Verifiable
+R1,3,4,4,4
+R2,4,5,5,5
+R3,4,5,5,5
+R4,5,5,4,5
+R5,4,5,5,5
+R6,4,4,5,5
+R7,4,5,5,5
+R8,4,5,5,5
+C1,5,5,5,2

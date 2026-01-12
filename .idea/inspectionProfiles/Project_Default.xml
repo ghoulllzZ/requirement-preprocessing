@@ -1,0 +1,19 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="去噪声点.data4" />
+          <option value="去噪声点.data1" />
+          <option value="去噪.data0" />
+          <option value="去噪.data767" />
+          <option value="去噪.data768" />
+          <option value="去噪.data32" />
+          <option value="去噪.data31" />
+          <option value="去噪.data642" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
