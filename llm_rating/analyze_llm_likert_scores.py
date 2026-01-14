@@ -45,6 +45,11 @@ RATERS = {
         "doc": "qwen_document-wide_rating.csv",
     },
 }
+# ---- NEW: auto-discover raters from filenames (optional)
+AUTO_DISCOVER_RATERS = True  # <- 设为 True 后，无需手改 RATERS；只靠文件名自动发现
+REQ_SUFFIX = "_per-requirement_rating.csv"
+DOC_SUFFIX = "_document-wide_rating.csv"
+
 
 REQ_DIMS = ["Unambiguous", "Understandable", "Correctness", "Verifiable"]
 DOC_DIMS = ["Internal Consistency", "Non-redundancy", "Completeness", "Conciseness"]
@@ -78,6 +83,51 @@ def clean_columns(df: pd.DataFrame) -> pd.DataFrame:
     )
     return df
 
+def discover_raters(data_dir: str,
+                    req_suffix: str = REQ_SUFFIX,
+                    doc_suffix: str = DOC_SUFFIX) -> dict:
+    """
+    Auto-build RATERS from files in data_dir.
+    Expected pairs:
+      <rater>{req_suffix}  and  <rater>{doc_suffix}
+    Example:
+      qwen-coder_per-requirement_rating.csv
+      qwen-coder_document-wide_rating.csv
+    """
+    files = [f for f in os.listdir(data_dir) if os.path.isfile(os.path.join(data_dir, f))]
+
+    req_map = {}
+    doc_map = {}
+
+    for f in files:
+        if f.endswith(req_suffix):
+            r = f[:-len(req_suffix)]
+            req_map[r] = f
+        elif f.endswith(doc_suffix):
+            r = f[:-len(doc_suffix)]
+            doc_map[r] = f
+
+    only_req = sorted(set(req_map) - set(doc_map))
+    only_doc = sorted(set(doc_map) - set(req_map))
+    if only_req or only_doc:
+        raise FileNotFoundError(
+            "Rater files not paired.\n"
+            f"  Only have REQ: {only_req}\n"
+            f"  Only have DOC: {only_doc}\n"
+            f"Each rater must have BOTH:\n"
+            f"  <rater>{req_suffix}\n"
+            f"  <rater>{doc_suffix}\n"
+        )
+
+    common = sorted(set(req_map) & set(doc_map))
+    if not common:
+        raise FileNotFoundError(
+            f"No rater file pairs found in {data_dir}.\n"
+            f"Expected: <rater>{req_suffix} and <rater>{doc_suffix}"
+        )
+
+    # deterministic order
+    return {r: {"req": req_map[r], "doc": doc_map[r]} for r in common}
 
 def normalize_item_label(s: str):
     """Map various item labels to standard IDs: R1..R8, C1; otherwise keep original."""
@@ -631,6 +681,12 @@ def reliability_tables(req_long: pd.DataFrame, doc_matrix: pd.DataFrame) -> (pd.
 # ----------------------------
 def main():
     data_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # ---- NEW: auto-discover RATERS from filenames (optional)
+    global RATERS
+    if AUTO_DISCOVER_RATERS:
+        RATERS = discover_raters(data_dir)
+        print("Auto-discovered RATERS:", list(RATERS.keys()))
 
     # ---- load all raters
     req_wide = {}
