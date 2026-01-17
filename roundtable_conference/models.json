@@ -8,7 +8,7 @@
     },
     {
       "name": "qwen",
-      "base_url": "https://dashscope.aliyuncs.com/compatible-mode",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
       "api_key_env": "DASHSCOPE_API_KEY",
       "model": "qwen-plus"
     },
@@ -16,7 +16,7 @@
       "name": "doubao",
       "base_url": "https://ark.cn-beijing.volces.com/api/v3",
       "api_key_env": "ARK_API_KEY",
-      "model": "ep-20251219110908-bvfxz"
+      "model": "doubao-seed-1-8-251228"
     }
   ]
 }

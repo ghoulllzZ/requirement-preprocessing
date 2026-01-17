@@ -114,7 +114,7 @@ class OpenAICompatProvider(LLMProvider):
         self.timeout = timeout
 
     def chat(self, messages: List[Dict[str, str]], temperature: float = 0.2) -> str:
-        url = f"{self.base_url}/v1/chat/completions"
+        url = f"{self.base_url}/chat/completions"
         headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
         payload = {"model": self.model, "messages": messages, "temperature": float(temperature)}
         resp = requests.post(url, headers=headers, json=payload, timeout=self.timeout)
@@ -162,11 +162,66 @@ def load_requirements_csv(path: str) -> pd.DataFrame:
     return df[["item", "text"]]
 
 
+_JSON_FENCE_RE = re.compile(r"```(?:json)?\s*([\s\S]*?)\s*```", re.IGNORECASE)
+
+def _strip_code_fence(s: str) -> str:
+    s = (s or "").strip()
+    m = _JSON_FENCE_RE.search(s)
+    if m:
+        return m.group(1).strip()
+    return s
+
+def _extract_balanced_json(s: str) -> str:
+    """
+    Extract first balanced {...} or [...] span from a string.
+    """
+    s = s.strip()
+    # find first '{' or '['
+    starts = [(s.find("{"), "{", "}"), (s.find("["), "[", "]")]
+    starts = [(i, o, c) for (i, o, c) in starts if i != -1]
+    if not starts:
+        raise ValueError("No JSON object/array start found.")
+    i0, open_ch, close_ch = min(starts, key=lambda x: x[0])
+
+    stack = []
+    in_str = False
+    esc = False
+    for i in range(i0, len(s)):
+        ch = s[i]
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        else:
+            if ch == '"':
+                in_str = True
+                continue
+            if ch == open_ch:
+                stack.append(ch)
+            elif ch == close_ch:
+                if stack:
+                    stack.pop()
+                    if not stack:
+                        return s[i0:i+1]
+    raise ValueError("Unclosed JSON span.")
+
 def extract_first_json(text: str) -> Dict[str, Any]:
-    m = re.search(r"\{.*\}", text, flags=re.S)
-    if not m:
-        raise ValueError("No JSON object found.")
-    return json.loads(m.group(0))
+    s = _strip_code_fence(text)
+
+    # normalize common full-width quotes (optional but helps some Chinese outputs)
+    s = s.replace("“", '"').replace("”", '"').replace("’", "'").replace("‘", "'")
+
+    span = _extract_balanced_json(s)
+
+    # remove trailing commas before } or ]
+    span = re.sub(r",\s*([}\]])", r"\1", span)
+
+    return json.loads(span)
+
 
 
 def ensure_dir(p: str):
@@ -234,24 +289,135 @@ Top issues:
 """
 
 
-def call_llm_json(rater: Rater, messages: List[Dict[str, str]], temperature: float) -> Dict[str, Any]:
+
+def _append_jsonl(path: str, rec: Dict[str, Any]):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+def _repair_to_strict_json(rater: Rater, bad_text: str) -> str:
+    fix_messages = [
+        {"role": "system", "content": "你是严格JSON修复器。你只负责把输入文本转换为严格可解析的JSON。禁止输出除JSON之外的任何字符。"},
+        {"role": "user", "content": "把下面文本修复为严格JSON（双引号、无尾逗号、无注释、无代码块）。只输出JSON：\n\n" + (bad_text or "")}
+    ]
+    return rater.provider.chat(fix_messages, temperature=0.0)
+
+def _append_jsonl(path: str, rec: Dict[str, Any]) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+def call_llm_json(
+    rater: Rater,
+    messages: List[Dict[str, str]],
+    temperature: float,
+    out_dir: Optional[str] = None,
+    stage: str = "unknown",
+    round_idx: Optional[int] = None,
+    item: Optional[str] = None,
+) -> Dict[str, Any]:
     last_err = None
+    log_path = os.path.join(out_dir, "raw_logs.jsonl") if out_dir else None
+
     for k in range(MAX_RETRIES + 1):
+        txt = None
+        fixed = None
         try:
             txt = rater.provider.chat(messages, temperature=temperature)
-            return extract_first_json(txt)
+
+            # 1) 总是记录 raw 输出（这样“成功也有日志”）
+            if log_path:
+                _append_jsonl(log_path, {
+                    "stage": stage,
+                    "round": round_idx,
+                    "item": item,
+                    "rater": rater.name,
+                    "attempt": k,
+                    "temperature": float(temperature),
+                    "kind": "raw",
+                    "text": txt[:20000],
+                })
+
+            try:
+                data = extract_first_json(txt)
+                if log_path:
+                    _append_jsonl(log_path, {
+                        "stage": stage, "round": round_idx, "item": item,
+                        "rater": rater.name, "attempt": k,
+                        "kind": "parsed_ok"
+                    })
+                return data
+
+            except Exception as e1:
+                # 2) 解析失败 → 修复一次再解析
+                fixed = _repair_to_strict_json(rater, txt)
+
+                if log_path:
+                    _append_jsonl(log_path, {
+                        "stage": stage,
+                        "round": round_idx,
+                        "item": item,
+                        "rater": rater.name,
+                        "attempt": k,
+                        "kind": "fixed",
+                        "text": fixed[:20000],
+                        "error_raw_parse": str(e1),
+                    })
+
+                data = extract_first_json(fixed)
+                if log_path:
+                    _append_jsonl(log_path, {
+                        "stage": stage, "round": round_idx, "item": item,
+                        "rater": rater.name, "attempt": k,
+                        "kind": "fixed_parsed_ok"
+                    })
+                return data
+
         except Exception as e:
             last_err = e
+
+            # 3) 失败也记一条
+            if log_path:
+                _append_jsonl(log_path, {
+                    "stage": stage,
+                    "round": round_idx,
+                    "item": item,
+                    "rater": rater.name,
+                    "attempt": k,
+                    "kind": "error",
+                    "error": str(e),
+                })
+
+            # 4) 同时把完整文本落盘（便于手工排查）
+            if out_dir:
+                os.makedirs(out_dir, exist_ok=True)
+                ts = int(time.time() * 1000)
+
+                if txt:
+                    p1 = os.path.join(out_dir, f"bad_json_{stage}_{rater.name}_{item or 'NA'}_raw_a{k}_{ts}.txt")
+                    with open(p1, "w", encoding="utf-8") as f:
+                        f.write(txt)
+
+                if fixed:
+                    p2 = os.path.join(out_dir, f"bad_json_{stage}_{rater.name}_{item or 'NA'}_fixed_a{k}_{ts}.txt")
+                    with open(p2, "w", encoding="utf-8") as f:
+                        f.write(fixed)
+
             time.sleep(RETRY_SLEEP)
+
     raise RuntimeError(f"[{rater.name}] failed after retries: {last_err}")
 
 
-def score_requirement(rater: Rater, item: str, text: str) -> Dict[str, Any]:
+
+
+
+def score_requirement(rater: Rater, item: str, text: str, out_dir: Optional[str] = None) -> Dict[str, Any]:
     messages = [
         {"role": "system", "content": SCORING_SYSTEM},
         {"role": "user", "content": SCORING_USER_TEMPLATE.format(item=item, text=text)},
     ]
-    data = call_llm_json(rater, messages, temperature=TEMPERATURE_SCORE)
+    data = call_llm_json(rater, messages, temperature=TEMPERATURE_SCORE, out_dir=None, stage="score", item=item)
+
 
     # minimal validation
     if "scores" not in data or "confidences" not in data:
@@ -534,12 +700,22 @@ def compute_weights_from_analyze_report(
     """
     xl = pd.ExcelFile(report_xlsx)
 
-    required_sheets = ["avgdisg_req","loo_req","rater_summary_req","dev_summary_req"]
+    # --- PATCH START: accept both avgdist_req (new) and avgdisg_req (old) ---
+    def _pick_sheet(cands):
+        for s in cands:
+            if s in xl.sheet_names:
+                return s
+        raise ValueError(f"{report_xlsx} missing sheets {cands}. Found: {xl.sheet_names}")
+
+    avgdist_sh = _pick_sheet(["avgdist_req", "avgdisg_req"])
+    # --- PATCH END ---
+
+    required_sheets = ["loo_req", "rater_summary_req", "dev_summary_req"]
     for sh in required_sheets:
         if sh not in xl.sheet_names:
             raise ValueError(f"{report_xlsx} missing sheet '{sh}'. Found: {xl.sheet_names}")
 
-    avgdisg = xl.parse("avgdisg_req")
+    avgdisg = xl.parse(avgdist_sh)
     loo = xl.parse("loo_req")
     rs = xl.parse("rater_summary_req")
     devs = xl.parse("dev_summary_req")
@@ -661,7 +837,7 @@ def run_roundtable(
         item = rrow["item"]
         text = rrow["text"]
         for r in raters:
-            data = score_requirement(r, item, text)
+            data = score_requirement(r, item, text, out_dir=out_dir)
             raw_logs.append({"stage":"score", "rater":r.name, "item":item, "raw":data})
             rating_long, issues_long = flatten_scoring_output(r.name, item, data)
             all_ratings.append(rating_long)
@@ -749,7 +925,15 @@ def run_roundtable(
                     issues_block=issues_block
                 )}
             ]
-            upd = call_llm_json(r, msg, temperature=TEMPERATURE_DISCUSS)
+            upd = call_llm_json(
+                r, msg,
+                temperature=TEMPERATURE_DISCUSS,
+                out_dir=out_dir,
+                stage="discuss",
+                round_idx=t + 1,
+                item=",".join(discuss_items[:5])  # 只是方便定位，可随便
+            )
+
             raw_logs.append({"stage":"discuss", "round":t+1, "rater":r.name, "raw":upd})
 
             items_out = upd.get("items", []) or []
