@@ -1,0 +1,22 @@
+{
+  "raters": [
+    {
+      "name": "deepseek",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "model": "deepseek-chat"
+    },
+    {
+      "name": "qwen",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode",
+      "api_key_env": "DASHSCOPE_API_KEY",
+      "model": "qwen-plus"
+    },
+    {
+      "name": "doubao",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "api_key_env": "ARK_API_KEY",
+      "model": "ep-20251219110908-bvfxz"
+    }
+  ]
+}
