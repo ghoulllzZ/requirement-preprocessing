@@ -210,36 +210,123 @@ def _extract_balanced_json(s: str) -> str:
                         return s[i0:i+1]
     raise ValueError("Unclosed JSON span.")
 
+def _normalize_fullwidth_punct_outside_ascii_strings(s: str) -> str:
+    """
+    只在 ASCII 双引号字符串之外替换全角标点，避免破坏字符串内容。
+    """
+    mapping = {
+        "：": ":",
+        "，": ",",
+        "“": '"',
+        "”": '"',
+        "‘": "'",
+        "’": "'",
+    }
+    out = []
+    in_str = False
+    esc = False
+
+    for ch in s:
+        if in_str:
+            out.append(ch)
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+        else:
+            if ch == '"':
+                in_str = True
+                out.append(ch)
+            else:
+                out.append(mapping.get(ch, ch))
+
+    return "".join(out)
+
+
+def _escape_unescaped_quotes_in_ascii_strings(s: str) -> str:
+    """
+    修复“字符串值内部出现未转义的 ASCII 双引号”的情况。
+    规则：在字符串内遇到 `"` 时，如果它后面不是 , } ]（可跳过空白），则视为内容引号，转义成 \\"
+    """
+    out = []
+    in_str = False
+    esc = False
+    i = 0
+    n = len(s)
+
+    while i < n:
+        ch = s[i]
+
+        if not in_str:
+            out.append(ch)
+            if ch == '"':
+                in_str = True
+                esc = False
+            i += 1
+            continue
+
+        # in string
+        if esc:
+            out.append(ch)
+            esc = False
+            i += 1
+            continue
+
+        if ch == "\\":
+            out.append(ch)
+            esc = True
+            i += 1
+            continue
+
+        if ch == '"':
+            # look ahead to decide closing vs inner quote
+            j = i + 1
+            while j < n and s[j] in " \t\r\n":
+                j += 1
+            if j < n and s[j] in ",}]":
+                # closing quote
+                out.append(ch)
+                in_str = False
+            else:
+                # inner quote -> escape it
+                out.append('\\"')
+            i += 1
+            continue
+
+        out.append(ch)
+        i += 1
+
+    return "".join(out)
+
+
+
 def extract_first_json(text: str) -> Dict[str, Any]:
     s = _strip_code_fence(text)
 
-    # normalize common full-width quotes (optional but helps some Chinese outputs)
-    s = s.replace("“", '"').replace("”", '"').replace("’", "'").replace("‘", "'")
-
+    # 先提取出最外层 {...} 的平衡片段
     span = _extract_balanced_json(s)
 
-    # remove trailing commas before } or ]
+    # 1) 只在字符串外替换全角标点（避免把 “xxx” 变成 "xxx" 破坏 JSON）
+    span = _normalize_fullwidth_punct_outside_ascii_strings(span)
+
+    # 2) 去掉 } 或 ] 前多余的逗号
     span = re.sub(r",\s*([}\]])", r"\1", span)
 
-    # NEW: normalize full-width JSON structural punctuation (fix U+FF1A etc.)
-    span = span.replace("：", ":").replace("，", ",")
-    span = span.replace("（", "(").replace("）", ")")  # 可选：有些模型会全角括号
-    span = span.replace("【", "[").replace("】", "]")  # 可选：极少数会用全角方括号
-
-    # 1) strict JSON first
+    # 3) 先严格解析
     try:
         obj = json.loads(span)
     except json.JSONDecodeError:
-        # 2) relaxed fallback: allow python-literal-like dict/list (single quotes, True/False/None)
-        s2 = span
-        s2 = re.sub(r"\bnull\b", "None", s2, flags=re.I)
-        s2 = re.sub(r"\btrue\b", "True", s2, flags=re.I)
-        s2 = re.sub(r"\bfalse\b", "False", s2, flags=re.I)
-        obj = ast.literal_eval(s2)
+        # 4) 修复“字符串内部未转义的 ASCII 双引号”，再解析一次
+        span2 = _escape_unescaped_quotes_in_ascii_strings(span)
+        span2 = re.sub(r",\s*([}\]])", r"\1", span2)
+        obj = json.loads(span2)
 
     if not isinstance(obj, dict):
         raise ValueError(f"Parsed top-level JSON is not an object: {type(obj)}")
     return obj
+
 
 
 
@@ -263,6 +350,7 @@ taxonomy固定为四类：Unambiguous(U)、Understandable(A)、Correctness(C)、
 3) suggestion 必须给出“可直接替换的改写文本”（更原子、可测试、无歧义），若你认为无需修改该维度，可给出 minimal suggestion（例如“保持不变”）；
 4) issues：只列出你认为“需要改”的维度（taxonomy=U/A/C/V），每条包含 type、evidence、rewrite。
 5) 只输出JSON，不要输出其他文本。
+6)在任何字符串值中不得出现未转义的 ASCII 双引号 "；如需引用请使用中文引号“”或单引号''，或写成 \\\"。
 
 需求条目：{item}
 需求文本：{text}
@@ -1199,3 +1287,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+if __name__ == "__main__":
+    for p in [
+        "bad_json_score_deepseek_R1_raw_a1_1768654221768.txt",
+        "bad_json_score_deepseek_R1_raw_a2_1768654272248.txt",
+    ]:
+        with open(p, "r", encoding="utf-8") as f:
+            t = f.read()
+        obj = extract_first_json(t)
+        print(p, "OK", obj.keys())
