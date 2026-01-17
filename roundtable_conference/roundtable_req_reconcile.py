@@ -221,7 +221,12 @@ def extract_first_json(text: str) -> Dict[str, Any]:
     # remove trailing commas before } or ]
     span = re.sub(r",\s*([}\]])", r"\1", span)
 
-# 1) strict JSON first
+    # NEW: normalize full-width JSON structural punctuation (fix U+FF1A etc.)
+    span = span.replace("：", ":").replace("，", ",")
+    span = span.replace("（", "(").replace("）", ")")  # 可选：有些模型会全角括号
+    span = span.replace("【", "[").replace("】", "]")  # 可选：极少数会用全角方括号
+
+    # 1) strict JSON first
     try:
         obj = json.loads(span)
     except json.JSONDecodeError:
@@ -235,6 +240,7 @@ def extract_first_json(text: str) -> Dict[str, Any]:
     if not isinstance(obj, dict):
         raise ValueError(f"Parsed top-level JSON is not an object: {type(obj)}")
     return obj
+
 
 
 
