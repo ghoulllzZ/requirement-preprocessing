@@ -24,6 +24,7 @@ OpenAI-compatible endpoint: POST {base_url}/v1/chat/completions
 import os
 import re
 import json
+import ast
 import math
 import time
 import argparse
@@ -220,7 +221,20 @@ def extract_first_json(text: str) -> Dict[str, Any]:
     # remove trailing commas before } or ]
     span = re.sub(r",\s*([}\]])", r"\1", span)
 
-    return json.loads(span)
+# 1) strict JSON first
+    try:
+        obj = json.loads(span)
+    except json.JSONDecodeError:
+        # 2) relaxed fallback: allow python-literal-like dict/list (single quotes, True/False/None)
+        s2 = span
+        s2 = re.sub(r"\bnull\b", "None", s2, flags=re.I)
+        s2 = re.sub(r"\btrue\b", "True", s2, flags=re.I)
+        s2 = re.sub(r"\bfalse\b", "False", s2, flags=re.I)
+        obj = ast.literal_eval(s2)
+
+    if not isinstance(obj, dict):
+        raise ValueError(f"Parsed top-level JSON is not an object: {type(obj)}")
+    return obj
 
 
 
@@ -238,6 +252,7 @@ taxonomy固定为四类：Unambiguous(U)、Understandable(A)、Correctness(C)、
 
 要求：
 1) 每个维度给出 score(1-5) 与 confidence(0-1)；
+    - 注意：必须输出“具体数值”，严禁写成 1-5 / 0-1 这种范围表达（那不是合法JSON）；
 2) rationale 必须包含“证据片段”（引用原文中的关键短语/句子）并解释为何影响该维度；
 3) suggestion 必须给出“可直接替换的改写文本”（更原子、可测试、无歧义），若你认为无需修改该维度，可给出 minimal suggestion（例如“保持不变”）；
 4) issues：只列出你认为“需要改”的维度（taxonomy=U/A/C/V），每条包含 type、evidence、rewrite。
@@ -249,8 +264,8 @@ taxonomy固定为四类：Unambiguous(U)、Understandable(A)、Correctness(C)、
 输出JSON schema：
 {{
   "item": "{item}",
-  "scores": {{"U":1-5,"A":1-5,"C":1-5,"V":1-5}},
-  "confidences": {{"U":0-1,"A":0-1,"C":0-1,"V":0-1}},
+  "scores": {{"U": 3, "A": 3, "C": 3, "V": 3}},
+  "confidences": {{"U": 0.7, "A": 0.7, "C": 0.7, "V": 0.7}},
   "rationales": {{"U":"...","A":"...","C":"...","V":"..."}},
   "suggestions": {{"U":"...","A":"...","C":"...","V":"..."}},
   "issues": [
@@ -278,8 +293,8 @@ Top issues:
   "items": [
     {{
       "item":"R1",
-      "scores": {{"U":1-5,"A":1-5,"C":1-5,"V":1-5}},
-      "confidences": {{"U":0-1,"A":0-1,"C":0-1,"V":0-1}},
+      "scores": {{"U": 3, "A": 3, "C": 3, "V": 3}},
+      "confidences": {{"U": 0.7, "A": 0.7, "C": 0.7, "V": 0.7}},
       "rationales": {{"U":"...","A":"...","C":"...","V":"..."}},
       "suggestions": {{"U":"...","A":"...","C":"...","V":"..."}},
       "issues":[{{"type":"U|A|C|V","evidence":"...","rewrite":"..."}}]
@@ -416,8 +431,8 @@ def score_requirement(rater: Rater, item: str, text: str, out_dir: Optional[str]
         {"role": "system", "content": SCORING_SYSTEM},
         {"role": "user", "content": SCORING_USER_TEMPLATE.format(item=item, text=text)},
     ]
-    data = call_llm_json(rater, messages, temperature=TEMPERATURE_SCORE, out_dir=None, stage="score", item=item)
-
+    # IMPORTANT: pass out_dir so raw/fixed/bad_json logs are persisted
+    data = call_llm_json(rater, messages, temperature=TEMPERATURE_SCORE, out_dir=out_dir, stage="score", item=item)
 
     # minimal validation
     if "scores" not in data or "confidences" not in data:
@@ -583,8 +598,19 @@ def build_topk_issues_block(
         sub_iss = sub_iss.sort_values("influence", ascending=False)
 
         # attach score info for that dim
-        dim_scores = ratings_long[(ratings_long["item"] == item) & (ratings_long["dim"] == typ)][["rater","score","confidence","rationale","suggestion"]]
-        dim_scores = dim_scores.merge(conf_map[["rater","item","type","influence"]], left_on=["rater"], right_on=["rater"], how="left")
+
+        dim_scores = ratings_long[(ratings_long["item"] == item) & (ratings_long["dim"] == typ)][
+            ["rater", "score", "confidence", "rationale", "suggestion"]
+        ].copy()
+        # avoid cartesian product: join on (rater,item,type)
+        dim_scores["item"] = item
+        dim_scores["type"] = typ
+        dim_scores = dim_scores.merge(
+            conf_map[["rater", "item", "type", "influence"]],
+            on = ["rater", "item", "type"],
+            how = "left"
+        )
+
         dim_scores = dim_scores.sort_values("influence", ascending=False)
 
         views = []
