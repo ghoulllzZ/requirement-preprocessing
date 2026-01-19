@@ -327,7 +327,8 @@ def extract_first_json(text: str) -> Dict[str, Any]:
     s = _strip_code_fence(text)
 
     # normalize common full-width quotes
-    s = s.replace("“", '"').replace("”", '"').replace("’", "'").replace("‘", "'")
+    # DO NOT convert Chinese “ ” to ASCII quotes: it breaks valid JSON strings.
+    s = s.replace("’", "'").replace("‘", "'")
 
     def _normalize_punct_outside_strings(x: str) -> str:
         # Convert full-width colon/comma outside strings to ASCII (helps Chinese outputs)
@@ -604,28 +605,62 @@ def score_requirement(rater: Rater, item: str, text: str, out_dir: Optional[str]
     # IMPORTANT: pass out_dir so raw/fixed/bad_json logs are persisted
     data = call_llm_json(rater, messages, temperature=TEMPERATURE_SCORE, out_dir=out_dir, stage="score", item=item)
 
-    # --- [MIN PATCH] unwrap discuss-style payload / alias keys ---
-    # Some models mistakenly return {"round":..,"items":[...]} (discuss schema) even in score stage,
-    # or return a top-level list. Normalize it to the per-item dict.
-    if isinstance(data, dict) and isinstance(data.get("items"), list):
-        target = None
+    # --- [MIN PATCH] unwrap payload / alias keys / dim keys ---
+    # 0) unwrap common wrapper keys
+    if isinstance(data, dict):
+        for k in ("result", "data", "output", "payload"):
+            if isinstance(data.get(k), dict):
+                data = data[k]
+                break
+
+    # 1) discuss-style {"items":[...]} OR top-level list -> pick the matching item
+    items_list = None
+    if isinstance(data, list):
+        items_list = data
+    elif isinstance(data, dict) and isinstance(data.get("items"), list):
+        items_list = data["items"]
+
+    if isinstance(items_list, list):
         want = normalize_item(item)
-    for it in data["items"]:
-        if isinstance(it, dict) and normalize_item(it.get("item", "")) == want:
-            target = it
-            break
-    if target is None and len(data["items"]) == 1 and isinstance(data["items"][0], dict):
-        target = data["items"][0]
-    if target is not None:
-        data = target
-    # Alias compatibility: score/confidence -> scores/confidences
+        target = None
+        for it in items_list:
+            if isinstance(it, dict) and normalize_item(it.get("item", "")) == want:
+                target = it
+                break
+        if target is None and len(items_list) == 1 and isinstance(items_list[0], dict):
+            target = items_list[0]
+        if target is not None:
+            data = target
+
+    # 2) Alias compatibility: score/confidence -> scores/confidences
     if isinstance(data, dict):
         if "scores" not in data and "score" in data:
             data["scores"] = data["score"]
         if "confidences" not in data and "confidence" in data:
             data["confidences"] = data["confidence"]
-    # --- [MIN PATCH END] ---
 
+        # 3) (optional but recommended) remap dimension full names -> U/A/C/V
+        DIM_MAP = {
+            "Understandable": "U",
+            "Unambiguous": "A",
+            "Correctness": "C",
+            "Verifiable": "V",
+            "可理解性": "U",
+            "无歧义": "A",
+            "正确性": "C",
+            "可验证性": "V",
+        }
+
+        def _remap_dims(d):
+            if not isinstance(d, dict):
+                return d
+            return {DIM_MAP.get(k, k): v for k, v in d.items()}
+
+        if "scores" in data:
+            data["scores"] = _remap_dims(data["scores"])
+        if "confidences" in data:
+            data["confidences"] = _remap_dims(data["confidences"])
+    # --- [MIN PATCH END] ---
 
     # minimal validation
     if "scores" not in data or "confidences" not in data:
