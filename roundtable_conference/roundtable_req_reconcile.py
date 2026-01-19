@@ -392,7 +392,9 @@ def extract_first_json(text: str) -> Dict[str, Any]:
 
             if isinstance(obj, dict):
                 return obj
-            # if it's a list, wrap or reject explicitly
+            # If top-level is a list (some models output items array directly), wrap it.
+            if isinstance(obj, list):
+                return {"items": obj}
             raise ValueError(f"Top-level parsed value is not an object: {type(obj)}")
 
         except Exception as e:
@@ -601,6 +603,29 @@ def score_requirement(rater: Rater, item: str, text: str, out_dir: Optional[str]
     ]
     # IMPORTANT: pass out_dir so raw/fixed/bad_json logs are persisted
     data = call_llm_json(rater, messages, temperature=TEMPERATURE_SCORE, out_dir=out_dir, stage="score", item=item)
+
+    # --- [MIN PATCH] unwrap discuss-style payload / alias keys ---
+    # Some models mistakenly return {"round":..,"items":[...]} (discuss schema) even in score stage,
+    # or return a top-level list. Normalize it to the per-item dict.
+    if isinstance(data, dict) and isinstance(data.get("items"), list):
+        target = None
+        want = normalize_item(item)
+    for it in data["items"]:
+        if isinstance(it, dict) and normalize_item(it.get("item", "")) == want:
+            target = it
+            break
+    if target is None and len(data["items"]) == 1 and isinstance(data["items"][0], dict):
+        target = data["items"][0]
+    if target is not None:
+        data = target
+    # Alias compatibility: score/confidence -> scores/confidences
+    if isinstance(data, dict):
+        if "scores" not in data and "score" in data:
+            data["scores"] = data["score"]
+        if "confidences" not in data and "confidence" in data:
+            data["confidences"] = data["confidence"]
+    # --- [MIN PATCH END] ---
+
 
     # minimal validation
     if "scores" not in data or "confidences" not in data:
@@ -1363,12 +1388,12 @@ if __name__ == "__main__":
     main()
 
 
-if __name__ == "__main__":
-    for p in [
-        "bad_json_score_deepseek_R1_raw_a1_1768654221768.txt",
-        "bad_json_score_deepseek_R1_raw_a2_1768654272248.txt",
-    ]:
-        with open(p, "r", encoding="utf-8") as f:
-            t = f.read()
-        obj = extract_first_json(t)
-        print(p, "OK", obj.keys())
+# if __name__ == "__main__":
+#     for p in [
+#         "bad_json_score_deepseek_R1_raw_a1_1768654221768.txt",
+#         "bad_json_score_deepseek_R1_raw_a2_1768654272248.txt",
+#     ]:
+#         with open(p, "r", encoding="utf-8") as f:
+#             t = f.read()
+#         obj = extract_first_json(t)
+#         print(p, "OK", obj.keys())
