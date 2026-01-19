@@ -174,41 +174,62 @@ def _strip_code_fence(s: str) -> str:
 
 def _extract_balanced_json(s: str) -> str:
     """
-    Extract first balanced {...} or [...] span from a string.
+    Extract the first balanced JSON-like span starting from the first '{' or '['.
+    If unclosed (model output truncated), return span to end and auto-close braces/brackets.
+    This function ignores braces/brackets inside string literals.
     """
-    s = s.strip()
-    # find first '{' or '['
-    starts = [(s.find("{"), "{", "}"), (s.find("["), "[", "]")]
-    starts = [(i, o, c) for (i, o, c) in starts if i != -1]
-    if not starts:
-        raise ValueError("No JSON object/array start found.")
-    i0, open_ch, close_ch = min(starts, key=lambda x: x[0])
+    i0 = None
+    for i, ch in enumerate(s):
+        if ch in "{[":
+            i0 = i
+            break
+    if i0 is None:
+        raise ValueError("No JSON start '{' or '[' found.")
 
-    stack = []
+    stack: List[str] = []
     in_str = False
     esc = False
-    for i in range(i0, len(s)):
-        ch = s[i]
+
+    pairs = {"{": "}", "[": "]"}
+    closers = set(pairs.values())
+
+    for j in range(i0, len(s)):
+        ch = s[j]
+
         if in_str:
             if esc:
                 esc = False
-            elif ch == "\\":
+                continue
+            if ch == "\\":
                 esc = True
-            elif ch == '"':
+                continue
+            if ch == '"':
                 in_str = False
             continue
-        else:
-            if ch == '"':
-                in_str = True
+
+        # not in string
+        if ch == '"':
+            in_str = True
+            continue
+
+        if ch in pairs:
+            stack.append(ch)
+            continue
+
+        if ch in closers:
+            if stack and pairs.get(stack[-1]) == ch:
+                stack.pop()
+                if not stack:
+                    return s[i0 : j + 1]
+            else:
+                # mismatched closer, ignore
                 continue
-            if ch == open_ch:
-                stack.append(ch)
-            elif ch == close_ch:
-                if stack:
-                    stack.pop()
-                    if not stack:
-                        return s[i0:i+1]
-    raise ValueError("Unclosed JSON span.")
+
+    # If we reached end and still unclosed, we assume truncation; auto-close
+    span = s[i0:]
+    if stack:
+        span += "".join(pairs[o] for o in reversed(stack))
+    return span
 
 def _normalize_fullwidth_punct_outside_ascii_strings(s: str) -> str:
     """
@@ -305,27 +326,80 @@ def _escape_unescaped_quotes_in_ascii_strings(s: str) -> str:
 def extract_first_json(text: str) -> Dict[str, Any]:
     s = _strip_code_fence(text)
 
-    # 先提取出最外层 {...} 的平衡片段
-    span = _extract_balanced_json(s)
+    # normalize common full-width quotes
+    s = s.replace("“", '"').replace("”", '"').replace("’", "'").replace("‘", "'")
 
-    # 1) 只在字符串外替换全角标点（避免把 “xxx” 变成 "xxx" 破坏 JSON）
-    span = _normalize_fullwidth_punct_outside_ascii_strings(span)
+    def _normalize_punct_outside_strings(x: str) -> str:
+        # Convert full-width colon/comma outside strings to ASCII (helps Chinese outputs)
+        out = []
+        in_str = False
+        esc = False
+        for ch in x:
+            if in_str:
+                out.append(ch)
+                if esc:
+                    esc = False
+                elif ch == "\\":
+                    esc = True
+                elif ch == '"':
+                    in_str = False
+                continue
+            else:
+                if ch == '"':
+                    in_str = True
+                    out.append(ch)
+                    continue
+                if ch == "：":
+                    out.append(":")
+                elif ch == "，":
+                    out.append(",")
+                elif ch == "｛":
+                    out.append("{")
+                elif ch == "｝":
+                    out.append("}")
+                elif ch == "［":
+                    out.append("[")
+                elif ch == "］":
+                    out.append("]")
+                else:
+                    out.append(ch)
+        return "".join(out)
 
-    # 2) 去掉 } 或 ] 前多余的逗号
-    span = re.sub(r",\s*([}\]])", r"\1", span)
+    # Try multiple candidate starts to avoid picking '{' from explanation text
+    starts = [m.start() for m in re.finditer(r"[\{\[]", s)]
+    if not starts:
+        raise ValueError("No JSON start found in model output.")
 
-    # 3) 先严格解析
-    try:
-        obj = json.loads(span)
-    except json.JSONDecodeError:
-        # 4) 修复“字符串内部未转义的 ASCII 双引号”，再解析一次
-        span2 = _escape_unescaped_quotes_in_ascii_strings(span)
-        span2 = re.sub(r",\s*([}\]])", r"\1", span2)
-        obj = json.loads(span2)
+    last_err = None
+    for idx in starts[:50]:  # cap to avoid pathological long texts
+        try:
+            span = _extract_balanced_json(s[idx:])
+            span = _normalize_punct_outside_strings(span)
 
-    if not isinstance(obj, dict):
-        raise ValueError(f"Parsed top-level JSON is not an object: {type(obj)}")
-    return obj
+            # remove trailing commas before } or ]
+            span = re.sub(r",\s*([}\]])", r"\1", span)
+
+            # 1) strict JSON
+            try:
+                obj = json.loads(span)
+            except json.JSONDecodeError:
+                # 2) relaxed python-literal fallback
+                s2 = span
+                s2 = re.sub(r"\bnull\b", "None", s2, flags=re.I)
+                s2 = re.sub(r"\btrue\b", "True", s2, flags=re.I)
+                s2 = re.sub(r"\bfalse\b", "False", s2, flags=re.I)
+                obj = ast.literal_eval(s2)
+
+            if isinstance(obj, dict):
+                return obj
+            # if it's a list, wrap or reject explicitly
+            raise ValueError(f"Top-level parsed value is not an object: {type(obj)}")
+
+        except Exception as e:
+            last_err = e
+            continue
+
+    raise ValueError(f"Failed to parse JSON from model output. Last error: {last_err}")
 
 
 
