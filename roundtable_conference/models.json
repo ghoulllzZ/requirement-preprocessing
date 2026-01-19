@@ -16,7 +16,8 @@
       "name": "doubao",
       "base_url": "https://ark.cn-beijing.volces.com/api/v3",
       "api_key_env": "ARK_API_KEY",
-      "model": "doubao-seed-1-8-251228"
+      "model": "doubao-seed-1-8-251228",
+      "timeout": 300
     }
   ]
 }

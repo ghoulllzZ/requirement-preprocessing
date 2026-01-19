@@ -28,6 +28,7 @@ import ast
 import math
 import time
 import argparse
+import requests
 from dataclasses import dataclass
 from typing import Dict, List, Any, Optional, Tuple
 
@@ -562,6 +563,9 @@ def call_llm_json(
         except Exception as e:
             last_err = e
 
+            if isinstance(e, requests.exceptions.ReadTimeout):
+                # 直接抛一个可识别的异常给上层，或返回一个标记让上层跳过
+                raise RuntimeError(f"[{rater.name}] TIMEOUT (skip): {e}") from e
             # 3) 失败也记一条
             if log_path:
                 _append_jsonl(log_path, {
@@ -1179,14 +1183,21 @@ def run_roundtable(
                     issues_block=issues_block
                 )}
             ]
-            upd = call_llm_json(
-                r, msg,
-                temperature=TEMPERATURE_DISCUSS,
-                out_dir=out_dir,
-                stage="discuss",
-                round_idx=t + 1,
-                item=",".join(discuss_items[:5])  # 只是方便定位，可随便
-            )
+
+            try:
+                upd = call_llm_json(
+                    r, msg,
+                    temperature=TEMPERATURE_DISCUSS,
+                    out_dir=out_dir,
+                    stage="discuss",
+                    round_idx=t + 1,
+                    item=",".join(discuss_items[:5])  # 只是方便定位，可随便
+                )
+            except RuntimeError as e:
+                if "TIMEOUT (skip)" in str(e):
+                    print(str(e))
+                    continue  # 跳过该模型本轮更新
+                raise
 
             raw_logs.append({"stage":"discuss", "round":t+1, "rater":r.name, "raw":upd})
 
