@@ -59,6 +59,15 @@ DEFAULT_THETA_RATIO = 0.6
 DEFAULT_EPS_SCORE = 0.25  # score convergence epsilon
 DEFAULT_TAU_JACCARD = 0.9  # issue-set convergence
 
+# Outlier & argument-quality workflow (fixed by design)
+DEFAULT_OUTLIER_DELTA = 2
+DEFAULT_TAU_GOOD = 0.60
+DEFAULT_TAU_BAD = 0.30
+DEFAULT_LAMBDA_BAD = 1.5
+DEFAULT_BETA_WEIGHT = 1.0
+
+
+
 # Confidence recalibration (RECONCILE-style)
 def recalibrate_conf(p: float) -> float:
     p = float(p)
@@ -116,7 +125,15 @@ class OpenAICompatProvider(LLMProvider):
         self.timeout = timeout
 
     def chat(self, messages: List[Dict[str, str]], temperature: float = 0.2) -> str:
-        url = f"{self.base_url}/chat/completions"
+        # url = f"{self.base_url}/chat/completions"
+
+        base = self.base_url
+        # tolerate base_url with or without "/v1"
+        if base.endswith("/v1"):
+            url = f"{base}/chat/completions"
+        else:
+            url = f"{base}/chat/completions"
+
         headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
         payload = {"model": self.model, "messages": messages, "temperature": float(temperature)}
         resp = requests.post(url, headers=headers, json=payload, timeout=self.timeout)
@@ -772,8 +789,262 @@ def mark_hot_cells(ratings_long: pd.DataFrame) -> pd.DataFrame:
     )
     return cons2
 
+def build_outlier_events(ratings_long: pd.DataFrame, delta: int = DEFAULT_OUTLIER_DELTA) -> pd.DataFrame:
+    """
+    Stage-1 (A): outlier events w.r.t. median baseline, per rater×item×dim.
+    Outlier if abs(score - median(item,dim)) >= delta.
+    """
+    df = ratings_long.copy()
+    # median baseline per (item,dim)
+    med = df.groupby(["item","dim"], as_index=False)["score"].median().rename(columns={"score":"baseline_median"})
+    df = df.merge(med, on=["item","dim"], how="left")
+    df["deviation"] = df["score"] - df["baseline_median"]
+    df["abs_deviation"] = df["deviation"].abs()
+    out = df[df["abs_deviation"] >= float(delta)].copy()
+    out["delta"] = float(delta)
+    # keep only needed columns (+text-like fields if present)
+    keep = [c for c in [
+        "rater","item","dim","dimension","score","confidence",
+        "baseline_median","deviation","abs_deviation","delta",
+        "rationale","suggestion"
+    ] if c in out.columns]
+    return out[keep].reset_index(drop=True)
 
-def issue_support_scores(issues_long: pd.DataFrame, ratings_long: pd.DataFrame, weights: Dict[str, float]) -> pd.DataFrame:
+
+def _contains_any(s: str, pats: List[str]) -> bool:
+    s = (s or "")
+    return any((p in s) for p in pats)
+
+
+def _has_measurement(s: str) -> bool:
+    s = (s or "")
+    return bool(re.search(r"(\d+(\.\d+)?\s*(ms|s|秒|分钟|小时|%|次|条|个))|(不超过|至少|最多|范围|小于|大于|等于|<=|>=|=)", s))
+
+
+def _score_evidence(evidence: str, text: str) -> int:
+    e = (evidence or "").strip()
+    if not e:
+        return 0
+    if text and e in text:
+        return 2
+    return 1
+
+
+def _score_rewrite_exec(rewrite: str) -> int:
+    r = (rewrite or "").strip()
+    if not r:
+        return 0
+    # executable rewrite: has normative modal + (condition or measurable/IO)
+    has_modal = bool(re.search(r"(必须|应当|应|需|需要|shall|must)", r, flags=re.I))
+    has_cond = bool(re.search(r"(当|如果|在.+时|若|when|if)", r, flags=re.I))
+    has_meas = _has_measurement(r)
+    if has_modal and (has_cond or has_meas):
+        return 2
+    return 1
+
+
+def _score_falsifiable(s: str) -> int:
+    x = (s or "")
+    test_words = ["验收","测试","检查","判断","满足","输出","返回","错误","日志","状态","响应","成功","失败","不超过","至少","最多","准确","延迟","吞吐"]
+    if _contains_any(x, test_words):
+        return 2 if _has_measurement(x) else 1
+    return 0
+
+
+def _score_specificity(rationale: str) -> int:
+    x = (rationale or "")
+    if not x.strip():
+        return 0
+    kws = ["边界","异常","权限","角色","输入","输出","格式","单位","状态","条件","触发","频率","超时","重试","范围","阈值","参数","依赖","优先级","一致性","冲突","前置"]
+    hit = sum(1 for k in kws if k in x)
+    if hit >= 2:
+        return 2
+    if hit == 1:
+        return 1
+    # generic but non-empty rationale
+    generic = ["不清晰","歧义","模糊","不明确","缺少","需要补充"]
+    return 1 if _contains_any(x, generic) else 0
+
+
+def _score_taxonomy_fit(dim: str, rationale: str, rewrite: str, evidence: str) -> int:
+    x = " ".join([(rationale or ""), (rewrite or ""), (evidence or "")])
+    if not x.strip():
+        return 0
+    target = {
+        "U": ["歧义","模糊","不明确","指代","范围不明","语义"],
+        "A": ["难以理解","术语","定义","描述不清","表述"],
+        "C": ["错误","不一致","冲突","逻辑","矛盾","不正确"],
+        "V": ["验收","测试","可验证","指标","测量","量化","日志","输出"],
+    }.get(dim, [])
+    if _contains_any(x, target):
+        return 2
+    return 1
+
+
+def compute_outlier_quality(
+    outlier_events: pd.DataFrame,
+    req_df: pd.DataFrame,
+    issues_long: pd.DataFrame,
+    tau_good: float = DEFAULT_TAU_GOOD,
+    tau_bad: float = DEFAULT_TAU_BAD,
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Stage-2 (B) + Stage-3: rule-based argument-quality vectors + auto decision (good/bad/uncertain).
+    Returns (quality_table, decisions_table).
+    """
+    if outlier_events.empty:
+        qt = pd.DataFrame(columns=["rater","item","dim","E_evidence","F_falsifiable","R_rewrite_exec","S_specificity","T_taxonomy_fit","D_novelty","Q","hard_fail"])
+        dt = pd.DataFrame(columns=["rater","item","dim","decision","Q","hard_fail"])
+        return qt, dt
+
+    req_map = dict(zip(req_df["item"], req_df["text"]))
+    # evidence/rewrite from issues_long (if provided)
+    iss = issues_long.copy()
+    if not iss.empty and "type" in iss.columns:
+        iss = iss.rename(columns={"type":"dim"})
+    iss_key = ["rater","item","dim"]
+    iss = iss.drop_duplicates(subset=iss_key, keep="last") if set(iss_key).issubset(iss.columns) else iss
+    out = outlier_events.merge(iss[iss_key + [c for c in ["evidence","rewrite"] if c in iss.columns]] if set(iss_key).issubset(iss.columns) else outlier_events.assign(evidence="", rewrite=""),
+                              on=iss_key, how="left")
+
+    out["text"] = out["item"].map(req_map).fillna("")
+    out["evidence"] = out.get("evidence", "").fillna("")
+    out["rewrite"] = out.get("rewrite", "").fillna("")
+    out["rewrite2"] = out["rewrite"].where(out["rewrite"].astype(str).str.strip().ne(""), out.get("suggestion","").fillna(""))
+    out["rationale2"] = out.get("rationale","").fillna("")
+
+    # novelty: keyword-set uniqueness within (item,dim)
+    novelty_kws = ["边界","异常","权限","角色","输入","输出","格式","单位","状态","条件","触发","频率","超时","重试","范围","阈值","参数","一致性","冲突","前置","歧义","模糊","术语","定义","验收","测试","量化","指标"]
+    def _kwset(x: str) -> set:
+        x = (x or "")
+        return {k for k in novelty_kws if k in x}
+
+    grouped = out.groupby(["item","dim"])
+    # compute union of others per row via group pre-computation
+    union_map = {}
+    for (it, dm), g in grouped:
+        sets = []
+        for _, r in g.iterrows():
+            sets.append(_kwset(" ".join([str(r.get("rationale2","")), str(r.get("rewrite2","")), str(r.get("evidence",""))])))
+        union_all = set().union(*sets) if sets else set()
+        union_map[(it, dm)] = union_all
+
+    E = []
+    F = []
+    R = []
+    S = []
+    T = []
+    D = []
+    for _, r in out.iterrows():
+        text = str(r.get("text",""))
+        evidence = str(r.get("evidence",""))
+        rewrite = str(r.get("rewrite2",""))
+        rationale = str(r.get("rationale2",""))
+        dim = str(r.get("dim",""))
+
+        e = _score_evidence(evidence, text)
+        rr = _score_rewrite_exec(rewrite)
+        ff = _score_falsifiable(rewrite + " " + rationale)
+        ss = _score_specificity(rationale)
+        tt = _score_taxonomy_fit(dim, rationale, rewrite, evidence)
+
+        self_set = _kwset(" ".join([rationale, rewrite, evidence]))
+        union_all = union_map.get((str(r.get("item","")), dim), set())
+        unique = self_set - (union_all - self_set)
+        ucnt = len(unique)
+        if not (rationale or rewrite or evidence):
+            dd = 0
+        elif ucnt >= 2:
+            dd = 2
+        elif ucnt == 1:
+            dd = 1
+        else:
+            dd = 0
+
+        E.append(e); R.append(rr); F.append(ff); S.append(ss); T.append(tt); D.append(dd)
+
+    out["E_evidence"] = E
+    out["F_falsifiable"] = F
+    out["R_rewrite_exec"] = R
+    out["S_specificity"] = S
+    out["T_taxonomy_fit"] = T
+    out["D_novelty"] = D
+
+    # Q = mean of normalized sub-scores
+    out["Q"] = (out[["E_evidence","F_falsifiable","R_rewrite_exec","S_specificity","T_taxonomy_fit","D_novelty"]].sum(axis=1) / (2.0 * 6.0)).astype(float)
+    out["hard_fail"] = (out["E_evidence"] == 0) | (out["R_rewrite_exec"] == 0) | (out["T_taxonomy_fit"] == 0)
+
+    def _dec(row):
+        if bool(row["hard_fail"]) or float(row["Q"]) <= float(tau_bad):
+            return "bad"
+        if (not bool(row["hard_fail"])) and float(row["Q"]) >= float(tau_good):
+            return "good"
+        return "uncertain"
+
+    out["decision"] = out.apply(_dec, axis=1)
+
+    quality_cols = ["rater","item","dim","abs_deviation","E_evidence","F_falsifiable","R_rewrite_exec","S_specificity","T_taxonomy_fit","D_novelty","Q","hard_fail"]
+    dec_cols = ["rater","item","dim","abs_deviation","Q","hard_fail","decision"]
+    quality_table = out[quality_cols].copy()
+    decisions = out[dec_cols].copy()
+    return quality_table.reset_index(drop=True), decisions.reset_index(drop=True)
+
+
+def compute_weights_from_outliers(
+    outlier_quality: pd.DataFrame,
+    outlier_decisions: pd.DataFrame,
+    raters: List[str],
+    lam_bad: float = DEFAULT_LAMBDA_BAD,
+    beta: float = DEFAULT_BETA_WEIGHT,
+) -> Tuple[Dict[str,float], pd.DataFrame]:
+    """
+    Stage-4: weights from good/bad outlier contributions on current document.
+      G_r = sum(abs_dev * Q) over good
+      B_r = sum(abs_dev * (1-Q)) over bad
+      raw = exp(beta*(G - lam_bad*B))
+      w = raw / sum(raw)
+    Returns (weights_dict, model_profile_df).
+    """
+    if outlier_decisions.empty or outlier_quality.empty:
+        w = {r: 1.0/len(raters) for r in raters}
+        prof = pd.DataFrame({"rater": raters, "G": 0.0, "B": 0.0, "weight_raw": 1.0, "weight": list(w.values()),
+                             "n_good": 0, "n_bad": 0, "n_uncertain": 0, "n_outliers": 0})
+        return w, prof
+
+    q = outlier_quality.merge(outlier_decisions[["rater","item","dim","decision"]], on=["rater","item","dim"], how="left")
+    q["abs"] = q["abs_deviation"].astype(float)
+    q["Q"] = q["Q"].astype(float)
+    q["decision"] = q["decision"].fillna("uncertain")
+
+    rows = []
+    for r in raters:
+        gr = q[(q["rater"]==r) & (q["decision"]=="good")]
+        br = q[(q["rater"]==r) & (q["decision"]=="bad")]
+        ur = q[(q["rater"]==r) & (q["decision"]=="uncertain")]
+        G = float((gr["abs"] * gr["Q"]).sum()) if not gr.empty else 0.0
+        B = float((br["abs"] * (1.0 - br["Q"])).sum()) if not br.empty else 0.0
+        raw = math.exp(float(beta) * (G - float(lam_bad)*B))
+        rows.append({
+            "rater": r,
+            "G": G,
+            "B": B,
+            "weight_raw": raw,
+            "n_good": int(len(gr)),
+            "n_bad": int(len(br)),
+            "n_uncertain": int(len(ur)),
+            "n_outliers": int(len(gr)+len(br)+len(ur)),
+        })
+    prof = pd.DataFrame(rows)
+    prof["weight_raw"] = prof["weight_raw"].clip(lower=1e-9)
+    prof["weight"] = prof["weight_raw"] / float(prof["weight_raw"].sum()) if float(prof["weight_raw"].sum())>0 else 1.0/len(raters)
+    weights = dict(zip(prof["rater"], prof["weight"]))
+    return weights, prof
+
+
+
+
+# def issue_support_scores(issues_long: pd.DataFrame, ratings_long: pd.DataFrame, weights: Dict[str, float]) -> pd.DataFrame:
+def issue_support_scores(issues_long: pd.DataFrame, ratings_long: pd.DataFrame, weights: Dict[str, float],q_map: Optional[pd.DataFrame] = None,flags: Optional[pd.DataFrame] = None) -> pd.DataFrame:
     """
     For each issue candidate (item,type): S = sum_{raters who flagged} w * recalibrated_conf(type)
     """
@@ -782,10 +1053,34 @@ def issue_support_scores(issues_long: pd.DataFrame, ratings_long: pd.DataFrame, 
     conf_map.rename(columns={"dim":"type"}, inplace=True)  # type in U/A/C/V
     conf_map["pc"] = conf_map["confidence"].apply(recalibrate_conf)
     conf_map["w"] = conf_map["rater"].map(weights).fillna(0.0)
-    conf_map["influence"] = conf_map["w"] * conf_map["pc"]
+    # conf_map["influence"] = conf_map["w"] * conf_map["pc"]
+
+    # argument-quality factor Q (default=1.0 if unknown)
+    if q_map is not None and not q_map.empty:
+        qm = q_map.copy()
+        # expect cols: rater,item,type,Q (or dim)
+        if "dim" in qm.columns and "type" not in qm.columns:
+            qm = qm.rename(columns={"dim":"type"})
+        qm = qm[["rater","item","type","Q"]].drop_duplicates()
+        conf_map = conf_map.merge(qm, on=["rater","item","type"], how="left")
+        conf_map["Q"] = conf_map["Q"].fillna(1.0).astype(float)
+    else:
+        conf_map["Q"] = 1.0
+    conf_map["influence"] = conf_map["w"] * conf_map["pc"] * conf_map["Q"]
+
 
     # only count raters who flagged that issue
-    flagged = issues_long[["rater","item","type"]].drop_duplicates()
+    # flagged = issues_long[["rater","item","type"]].drop_duplicates()
+
+    # only count raters who flagged that issue
+    if flags is not None and not flags.empty:
+        f = flags.copy()
+        if "dim" in f.columns and "type" not in f.columns:
+            f = f.rename(columns={"dim":"type"})
+        flagged = f[["rater","item","type"]].drop_duplicates()
+    else:
+        flagged = issues_long[["rater","item","type"]].drop_duplicates()
+
     joined = flagged.merge(conf_map[["rater","item","type","influence"]], on=["rater","item","type"], how="left").fillna({"influence":0.0})
 
     s = joined.groupby(["item","type"], as_index=False)["influence"].sum().rename(columns={"influence":"S_issue"})
@@ -799,7 +1094,8 @@ def build_topk_issues_block(
     issues_long: pd.DataFrame,
     ratings_long: pd.DataFrame,
     weights: Dict[str, float],
-    k: int
+    k: int,
+    q_map: Optional[pd.DataFrame] = None
 ) -> str:
     """
     Build human-readable block for LLM prompt, sorted by S_issue desc, with per-issue supporting views ordered by influence.
@@ -811,7 +1107,19 @@ def build_topk_issues_block(
     conf_map.rename(columns={"dim":"type"}, inplace=True)
     conf_map["pc"] = conf_map["confidence"].apply(recalibrate_conf)
     conf_map["w"] = conf_map["rater"].map(weights).fillna(0.0)
-    conf_map["influence"] = conf_map["w"] * conf_map["pc"]
+    # conf_map["influence"] = conf_map["w"] * conf_map["pc"]
+
+    # argument-quality factor Q (default=1.0 if unknown)
+    if q_map is not None and not q_map.empty:
+        qm = q_map.copy()
+        if "dim" in qm.columns and "type" not in qm.columns:
+            qm = qm.rename(columns={"dim":"type"})
+        qm = qm[["rater","item","type","Q"]].drop_duplicates()
+        conf_map = conf_map.merge(qm, on=["rater","item","type"], how="left")
+        conf_map["Q"] = conf_map["Q"].fillna(1.0).astype(float)
+    else:
+        conf_map["Q"] = 1.0
+    conf_map["influence"] = conf_map["w"] * conf_map["pc"] * conf_map["Q"]
 
     blocks = []
     used_items = set()
@@ -1102,7 +1410,47 @@ def run_roundtable(
             all_issues.append(issues_long)
 
     ratings_long = pd.concat(all_ratings, ignore_index=True)
+    # issues_long = pd.concat(all_issues, ignore_index=True)
     issues_long = pd.concat(all_issues, ignore_index=True)
+
+    # === Outlier -> quality -> weights (current document) ===
+    outlier_events = build_outlier_events(ratings_long, delta=DEFAULT_OUTLIER_DELTA)
+    outlier_quality, outlier_decisions = compute_outlier_quality(outlier_events, req_df, issues_long,
+                                                                  tau_good=DEFAULT_TAU_GOOD, tau_bad=DEFAULT_TAU_BAD)
+    # Q map for influence (rater,item,type)
+    q_map = outlier_quality[["rater","item","dim","Q"]].rename(columns={"dim":"type"}) if not outlier_quality.empty else pd.DataFrame(columns=["rater","item","type","Q"])
+    # weights derived from current document outlier analysis (override input weights)
+    weights, model_profile = compute_weights_from_outliers(outlier_quality, outlier_decisions,
+                                                          raters=[r.name for r in raters],
+                                                          lam_bad=DEFAULT_LAMBDA_BAD,
+                                                          beta=DEFAULT_BETA_WEIGHT)
+
+    # fixed issue candidate set: item×type where any 'good' outlier exists; fallback to all issues if none
+    candidate_pairs = (outlier_decisions[outlier_decisions["decision"]=="good"][["item","dim"]]
+                       .rename(columns={"dim":"type"})
+                       .drop_duplicates()) if (outlier_decisions is not None and not outlier_decisions.empty) else pd.DataFrame(columns=["item","type"])
+    if candidate_pairs.empty:
+        candidate_pairs = issues_long[["item","type"]].drop_duplicates() if not issues_long.empty else pd.DataFrame(columns=["item","type"])
+
+    # augment issues_long: ensure good-outlier raters have issue rows (evidence/rewrite) so prompts/final selection work
+    good_flags = outlier_decisions[outlier_decisions["decision"]=="good"][["rater","item","dim"]].rename(columns={"dim":"type"}) if not outlier_decisions.empty else pd.DataFrame(columns=["rater","item","type"])
+    if not good_flags.empty:
+        have = issues_long[["rater","item","type"]].drop_duplicates() if not issues_long.empty else pd.DataFrame(columns=["rater","item","type"])
+        miss = good_flags.merge(have, on=["rater","item","type"], how="left", indicator=True)
+        miss = miss[miss["_merge"]=="left_only"][["rater","item","type"]]
+        if not miss.empty:
+            sug = ratings_long[["rater","item","dim","suggestion"]].rename(columns={"dim":"type"})
+            miss = miss.merge(sug, on=["rater","item","type"], how="left")
+            miss["dimension"] = miss["type"].map(SHORT_DIM)
+            miss["evidence"] = ""
+            miss["rewrite"] = miss["suggestion"].fillna("")
+            miss = miss[["rater","item","type","dimension","evidence","rewrite"]]
+            issues_long = pd.concat([issues_long, miss], ignore_index=True, sort=False)
+
+    # keep only candidate pairs in issues_long going forward
+    if not candidate_pairs.empty and not issues_long.empty:
+        issues_long = issues_long.merge(candidate_pairs, on=["item","type"], how="inner")
+
 
     # store round 0
     ratings_by_round = {0: ratings_long.copy()}
@@ -1122,7 +1470,8 @@ def run_roundtable(
         cur_issues = issues_by_round[t]
 
         # compute issue scores and team scores
-        issue_scores = issue_support_scores(cur_issues, cur_ratings, weights)
+        # issue_scores = issue_support_scores(cur_issues, cur_ratings, weights)
+        issue_scores = issue_support_scores(cur_issues, cur_ratings, weights, q_map=q_map)
         team_scores = weighted_team_score(cur_ratings, weights)
 
         issue_scores_by_round[t] = issue_scores
@@ -1167,8 +1516,8 @@ def run_roundtable(
         if topk.empty:
             break
 
-        issues_block = build_topk_issues_block(topk, req_df, cur_issues, cur_ratings, weights, k=topk_issues)
-
+        # issues_block = build_topk_issues_block(topk, req_df, cur_issues, cur_ratings, weights, k=topk_issues)
+        issues_block = build_topk_issues_block(topk, req_df, cur_issues, cur_ratings, weights, k=topk_issues,q_map=q_map)
         # in discussion: each rater updates only the involved items
         discuss_items = sorted(set(topk["item"].tolist()))
         next_ratings_rows = []
@@ -1258,6 +1607,9 @@ def run_roundtable(
         ratings_by_round[t+1] = pd.concat(next_ratings_rows, ignore_index=True)
         issues_by_round[t+1] = pd.concat(next_issues_rows, ignore_index=True)
 
+        # keep only fixed candidates in issues table
+        if not candidate_pairs.empty and not issues_by_round[t + 1].empty:
+            issues_by_round[t + 1] = issues_by_round[t + 1].merge(candidate_pairs, on=["item", "type"],how="inner")
         prev_team_scores = team_scores
         prev_issue_set = cur_issue_set
 
@@ -1301,13 +1653,20 @@ def run_roundtable(
 
     probs = probs.merge(best, on=["item","type","dimension"], how="left")
 
-    # save raw logs
-    with open(os.path.join(out_dir, "raw_logs.jsonl"), "w", encoding="utf-8") as f:
+    # Also save a run summary (do NOT overwrite call_llm_json()'s raw_logs.jsonl)
+    with open(os.path.join(out_dir, "run_summary.jsonl"), "w", encoding="utf-8") as f:
         for rec in raw_logs:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
     return {
         "final_round": final_round,
+        "weights": weights,
+        "model_profile": model_profile,
+        "outlier_events": outlier_events,
+        "outlier_quality": outlier_quality,
+        "outlier_decisions": outlier_decisions,
+        "candidate_pairs": candidate_pairs,
+        "q_map": q_map,
         "ratings_by_round": ratings_by_round,
         "issues_by_round": issues_by_round,
         "issue_scores_by_round": issue_scores_by_round,
@@ -1350,6 +1709,18 @@ def export_excel(out_xlsx: str, req_df: pd.DataFrame, weights: Dict[str,float], 
         hist = result["history"]
         hist.to_excel(writer, sheet_name="round_history", index=False)
 
+        # outlier / quality analysis (current document)
+        if "model_profile" in result and isinstance(result["model_profile"], pd.DataFrame):
+            result["model_profile"].to_excel(writer, sheet_name="model_profile", index=False)
+        if "outlier_events" in result and isinstance(result["outlier_events"], pd.DataFrame):
+            result["outlier_events"].to_excel(writer, sheet_name="outlier_events", index=False)
+        if "outlier_quality" in result and isinstance(result["outlier_quality"], pd.DataFrame):
+            result["outlier_quality"].to_excel(writer, sheet_name="outlier_quality", index=False)
+        if "outlier_decisions" in result and isinstance(result["outlier_decisions"], pd.DataFrame):
+            result["outlier_decisions"].to_excel(writer, sheet_name="outlier_decisions", index=False)
+        if "candidate_pairs" in result and isinstance(result["candidate_pairs"], pd.DataFrame):
+            result["candidate_pairs"].to_excel(writer, sheet_name="candidates", index=False)
+
         # rounds
         for t, df in result["ratings_by_round"].items():
             df.to_excel(writer, sheet_name=f"ratings_r{t}", index=False)
@@ -1390,18 +1761,18 @@ def main():
     raters = load_raters_from_models_json(args.models)
     rater_names = [r.name for r in raters]
 
-    # fixed weights
     if args.weights_csv:
         weights = load_weights_csv(args.weights_csv)
-    else:
-        if not args.analyze_xlsx:
-            raise ValueError("Provide either --weights_csv or --analyze_xlsx (with optional labels).")
+    elif args.analyze_xlsx:
+        # optional: reuse prior analysis as an *initial* prior; run_roundtable will override using current-document outliers
         weights = compute_weights_from_analyze_report(
             report_xlsx=args.analyze_xlsx,
             raters=rater_names,
             model_labels_csv=args.model_labels if args.model_labels else None,
             hotcell_labels_csv=args.hotcell_labels if args.hotcell_labels else None,
         )
+    else:
+        weights = {r: 1.0/len(rater_names) for r in rater_names}
 
     # normalize weights over present raters
     wsum = sum(weights.get(r, 0.0) for r in rater_names)
@@ -1423,7 +1794,7 @@ def main():
         out_dir=args.out_dir
     )
 
-    export_excel(args.out, req_df, weights, result)
+    export_excel(args.out, req_df, result.get("weights", weights), result)
     print(f"Saved Excel: {args.out}")
     print(f"Saved logs: {args.out_dir}/raw_logs.jsonl")
     print("Final problems (top 10):")
