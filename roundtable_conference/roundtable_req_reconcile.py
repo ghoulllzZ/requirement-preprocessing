@@ -40,14 +40,21 @@ import requests
 # =========================
 # 0) Constants / Taxonomy
 # =========================
-DIMENSIONS = ["Unambiguous", "Understandable", "Correctness", "Verifiable"]
+DIMENSIONS = ["Understandable", "Unambiguous", "Correctness", "Verifiable"]
 DIM_SHORT = {
-    "Unambiguous": "U",
-    "Understandable": "A",
+    "Understandable": "U",
+    "Unambiguous": "A",
     "Correctness": "C",
     "Verifiable": "V",
 }
 SHORT_DIM = {v: k for k, v in DIM_SHORT.items()}
+INPUT_DIM_ALIASES = {
+    **DIM_SHORT,
+    "可理解性": "U",
+    "无歧义": "A",
+    "正确性": "C",
+    "可验证性": "V",
+}
 
 DEFAULT_TOPK_ISSUES = 10
 DEFAULT_MAX_ROUNDS = 2
@@ -436,7 +443,7 @@ def ensure_dir(p: str):
 SCORING_SYSTEM = "你是严谨的需求质量评审专家（软件需求工程方向）。必须引用需求原文片段作为证据，改写必须可执行、原子、可测试。只输出JSON。"
 
 SCORING_USER_TEMPLATE = """你将对下面这条需求进行质量评审（Likert 1-5，5为最好），并输出需要修改的问题清单（issues）。
-taxonomy固定为四类：Unambiguous(U)、Understandable(A)、Correctness(C)、Verifiable(V)。
+taxonomy固定为四类：Understandable(U)、Unambiguous(A)、Correctness(C)、Verifiable(V)。
 
 要求：
 1) 每个维度给出 score(1-5) 与 confidence(0-1)；
@@ -466,7 +473,7 @@ taxonomy固定为四类：Unambiguous(U)、Understandable(A)、Correctness(C)、
 DISCUSS_SYSTEM = "你是圆桌会议中的需求质量评审专家。你将看到其他模型对若干“需要更改的需求问题(issues)”的观点。请基于证据更新你的评分、置信度和改写建议。只输出JSON。"
 
 DISCUSS_USER_TEMPLATE = """圆桌会议第 {round_idx} 轮。下面给出 Top-{topk} 个“需要更改的 issues”（按 influence=weight×recalibrated_conf 排序）。
-注意：这里不强调维度分组，你需要对每个 issue 所属条目进行整体更新（但仍需输出U/A/C/V四维度的scores/confidences与issues）。
+注意：这里不强调维度分组，你需要对每个 issue 所属条目进行整体更新（但仍需输出U/A/C/V四维度的scores/confidences与issues，其中 U=Understandable，A=Unambiguous）。
 
 Top issues:
 {issues_block}
@@ -661,21 +668,10 @@ def score_requirement(rater: Rater, item: str, text: str, out_dir: Optional[str]
             data["confidences"] = data["confidence"]
 
         # 3) (optional but recommended) remap dimension full names -> U/A/C/V
-        DIM_MAP = {
-            "Understandable": "U",
-            "Unambiguous": "A",
-            "Correctness": "C",
-            "Verifiable": "V",
-            "可理解性": "U",
-            "无歧义": "A",
-            "正确性": "C",
-            "可验证性": "V",
-        }
-
         def _remap_dims(d):
             if not isinstance(d, dict):
                 return d
-            return {DIM_MAP.get(k, k): v for k, v in d.items()}
+            return {INPUT_DIM_ALIASES.get(k, k): v for k, v in d.items()}
 
         if "scores" in data:
             data["scores"] = _remap_dims(data["scores"])
@@ -871,8 +867,8 @@ def _score_taxonomy_fit(dim: str, rationale: str, rewrite: str, evidence: str) -
     if not x.strip():
         return 0
     target = {
-        "U": ["歧义","模糊","不明确","指代","范围不明","语义"],
-        "A": ["难以理解","术语","定义","描述不清","表述"],
+        "U": ["难以理解","术语","定义","描述不清","表述","复杂","可读性"],
+        "A": ["歧义","模糊","不明确","指代","范围不明","语义"],
         "C": ["错误","不一致","冲突","逻辑","矛盾","不正确"],
         "V": ["验收","测试","可验证","指标","测量","量化","日志","输出"],
     }.get(dim, [])
