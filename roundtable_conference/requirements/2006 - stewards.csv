@@ -1,0 +1,35 @@
+﻿item,text
+R1,The system developer should review the document to ensure there is adequate information for defining an initial design of the system.
+R2,"The users should review the document to affirm the features described are needed, to clarify features, and to identify additional features needed within the system."
+R3,"However, STEWARDS must have the capability to translate data from location-specific formats into the standardized STEWARDS formats."
+R4,"The rule for selecting hardware and software is that the components/application must be functionally efficient, capable of interfacing with other software, and easy to maintain."
+R5,"OE-1: The System shall operate with the follow ing Web browsers: Microsoft Internet Explorer versions 5.0 and 6.0, Netscape Communicator version 4.7, Netscape versions 6 and 7, and FireFox."
+R6,OE-2: The System shall operate on Certified and Accredited servers running the current corporate approved versions of operating systems as appropriate.
+R7,"OE-3: The Data Management portion of the system shall permit user access from the corporate Intranet and, if a user is authorized for outside access through the corporate firewall, from an Internet connection at the user’s home."
+R8,OE-4: The Data Research and Re porting portion of the system shall provide public access to reviewed and approved data sets.
+R9,"Also, it is required to test the application using different platforms, connection speeds, screen settings, colors/graphics, and browsers."
+R10,CO-1: Portability: The application codes gene rated during prototyping may not run properly when re-hosting the data system to a non-Windows OS or transferring the data system to another location.
+R11,CO-4: The system shall use the current corpor ate standard Microsoft SQL Server database engine.
+R12,"CO-5: The system shall be in compliance with all Accessibility, Web Design, and Security policies applicable."
+R13,UD-4: The user's guide (or user manual) will contain sufficient information and instructions required to access and use the data system.
+R14,"It is anticipated that each watershed location will provide human and fiscal resources required to prepare metadata files, data files, work with the data team on initial import of data, perform subsequent data uploads, and provide site-specific support to users of the system."
+R15,"The database management system should be stable and secured, have high performance (in terms of speed and efficiency/effectiveness), and be easy to maintain."
+R16,"Where there is an exception, the software/hardware requirement should be specified for a particular application."
+R17,HR-1: Data Storage HR-1.1: Online Storage - The system needs to be able to store hundreds of megabytes of data on demand.
+R18,HR-1.2: Near-line Storage – All User and Application data as well as software installation and configuration files must be fully backed up week-nightly.
+R19,HR-2: Networking HR-2.1: Load Balancing - Application Servers and Database servers must be load balanced at the application level to ensure maximum stability and availability.
+R20,"SR-2: HTTP and GIS Server Applications – As the Web will be the primary delivery protocol for the application, HTTP and related GIS server applications will be required to support system functionality."
+R21,"SR-4: Email Services– As a secondary delivery protocol for alerts, data, and other information from the system, email server applications will be required to support system functionality."
+R22,"SR-5: Relational Database Management System - As the primary data storage mechanism for the corporate standard relational database management system, Microsoft SQL Server will be required to support system functionality."
+R23,PR-1: Response time: The data system shall show no visible deterioration in response time as the number of persons increases.
+R24,PR-2: Loading speed: The data system shall load as quickly as comparable productivity tools on whatever environment it is running in.
+R25,Data on the server should be protected from power loss but data in transit from server to requester could be lost.
+R26,Any data that should be viewed by a restricted audience must be protected with appropriate security features.
+R27,"The system must be available to the intended audience 24 hours per day, 7 days a week with, 99% availability and a tolerance of -5% (not less than 50% of working hours in any week)."
+R28,SQ-1: Portability This database will be built for a particular system and may not be portable but results to queries will be portable between many environments.
+R29,SQ-2: Adaptability Implementation of the application software/code and design of database structure should be flexible enough for the necessary change in the later phase.
+R30,Performance requirement -- A system/software system requirement specifying a performance characteristic that a system/software system or system/software component must possess;
+R31,"A software capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed document."
+R32,System Requirement - A condition or capability that must be met or possessed by a system or system component to satisfy a condition or capability needed by a user to solve a problem.
+R33,Completion/Confirmation messages should be displayed when the application processes the data successfully.
+R34,"Messages generated shall be clear, succinct, and free of jargon."

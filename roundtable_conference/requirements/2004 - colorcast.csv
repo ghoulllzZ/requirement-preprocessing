@@ -1,0 +1,14 @@
+﻿item,text
+R1,"The new system must be in place by the second quarter of 2004, allowing customers the time to adjust to the new scheme before they will not be able to order the discontinued products."
+R2,"Sections three and five present an outline of the product interface requirements and other non- functional or performance requirements, which the final product must meet."
+R3,This system must enable a smooth transition to the new paint numbers and scheme.
+R4,The client computer should match or exceed the system requirements specified for the web browser intended for use with the client application.
+R5,"We understand that in any design choice, precedence should be given to the implementation of a completely web-based client."
+R6,"Wherever possible, the application should retain full usability with a keyboard input device only."
+R7,"In all instances, the application should attempt full recovery and report errors automatically to ColorKast without encroaching on the user experience."
+R8,Display dependency: The client computer must have a display device capable of display of 16.7 million colors or greater.
+R9,The Web Browser must comply with standards for HTTP version 1.0 or 1.1.
+R10,Access to this information must be private.
+R11,"Most important, the store of access permissions to administrative features and access permissions must be secure."
+R12,Implementations of Privacy and security must be on par with industry standards.
+R13,"For example, if the time required to update information on the server is five minutes, then a Real-time update will take five minutes."

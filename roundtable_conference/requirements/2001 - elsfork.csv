@@ -1,0 +1,95 @@
+﻿item,text
+R1,"As defined in the ap- proach of CIGRE Working Group 34.03 into data flows within Substations. [3] Protocol The rules for communication system operation that must be fol- lowed if communication is to be effected. [2] Quality of Service (QoS) A set of characteristics of a conn ection described in terms of qual- ity of service (QoS) parameters, normally negotiated between peer entities. [2] Reliability The ability of a functional unit to perform a required function under stated conditions for a stated period of time. [2] Remote control Control of an operation from a distance."
+R2,"A suite of proto- cols which together provide the functionality up to layer 4, of the ISO OSI Reference Model, without exact layer for layer corre- spondence. .. [3] Telecontrol application service element (TASE) A specific application service element for telecontrol purpose. [2] Time resolution, limit of accuracy of chronol- ogy The minimum time by which two events must be separated in order that the corresponding time tags be different. [2] Time tagging Method of transmission of change-o f-state so that transmitted in- formation is accompanied by data giving the registered time at which the change occurred, within the time resolution. [2] Transmission on de- mand A transmission method in which messages are transmitted only as result of a request such as an interrogation command from a control"
+R3,"In some locations, the wind farm must participate actively in the regulation of the net- work stability. [No ref.] Wind power plant Wind power plant is the general name for one or more wind tur- bines that converts kinetic energy in the wind into electrical energy within a geographically confined area. [No ref.] Wind turbine System that converts kinetic energy in the wind into electrical en- ergy. [1]"
+R4,"The need for a specification applied to a wind power pl ant, that shall be supervised and controlled by a SCADA-system, is apparent."
+R5,"The Specifica- tion includes requirements for data transfer and handling, i.e. which data needs to be ex- changed and how it shall be done, but not how the data shall be used by the SCADA-system."
+R6,"When using specifications on tendering or purchas e, it is the responsibility of an employer or user to specify in addition, supplementary or more detailed specifications and whether all or only parts of the Specification shall be applied."
+R7,Apart from the functions needed by the operator the system shall support also functi ons needed by other parties.
+R8,"In this Specification “communication system” shall be understood as a system for: • Transfer of data from a process/plant level to a level, where data are accessible for an ap- plication in a standardised format • Transfer of data to a process/plant level for distribution of commands, operational settings etc."
+R9,The different operational functions need access to data in the power plant and the sending and receiving parts must be able to interpret and handle the data.
+R10,"Therefore, the data structure must be defined together with the data types and other characteristics."
+R11,"In some locations, the wind farm must participate actively in the regula- tion of the network stability."
+R12,"Basically the communication system must assist the operators, users and other interested par- ties in performing their tasks by provision of services."
+R13,The system must be flexible in support- ing future requirements and future developments .
+R14,"The system must be open in the sense that “anyone shall be able to get information on a nything from anywhere”, once they have au- thorisation to the system."
+R15,The communication system shall be based on open and widely accepted methods with a high degree of interface possibilities.
+R16,"The system shall be robust and reliable, but the system shall not be used for the safe and secure operation of the plant."
+R17,Faults in the communication system shall not cause malfunction of an individual wind turbine.
+R18,The system shall be designed in a way that faults of a sub-system interferes as little as possible with functions of the communi- cation system as a whole.
+R19,"In designing the system it shall be taken into account, that the physical environment at the plant typically has a wide span of temperature, moisture, salinity and vibration levels."
+R20,The values shall be available for display on ope rator HMI as well as for storage (databases).
+R21,Updating of values shall be selectable down to an interval of 1 sec.
+R22,All data must be stored in the plant controller for transmission on demand.
+R23,"Control is subject to miscellaneous filters that check that there will be no damage if the control is issued. • Parameter changes (parameter set switching, subset of setting, or single parameter) In addition to single parameters, an application may have several possible pre-defined pa- rameter sets (but only one active set). • Alarm management Alarm is generated when a data of the system takes a value that shall be specially consid- ered by the operator, i.e. there is a need for attracting attention to some abnormal state."
+R24,"Thus the communica tion system for remote operation do not need to support functions such as hook-up of portabl e PC at the plant for Internet access, WEB- cam connection, E-mail service, Program execution, Plant information and Service instruc- tions."
+R25,In order to accomplish this the basi c services of the communication system shall include the following: • Connection establishment and release • Authentication • Identification of functional object and devices • Data access and transfer • Reliable communication over a network
+R26,Alarm data shall be sent from the wind turbine on occurrence.
+R27,Ti me stamped data shall be stamped with ‘last updated date + time’ (UTC time).
+R28,Server authentication shall ensure the client application that it is truly operating on the in- tended site.
+R29,"System management functions, which shall be available for the operators and control systems, are of low time criti- cal nature."
+R30,"Regarding safety of persons, plant and electri c network, the communication system shall not be of critical nature."
+R31,No functions regarding sa fety of persons shall be based on the communi- cation system.
+R32,No functions regarding safety of plant and electrical network shall be based on the communication system – all safety functions must be self-contained in the process or in the devices where systems interface and will trip automatically.
+R33,Finally the operator need to know the status of the communication system to be able to rely on the presented data.
+R34,The time critical functions shall use short messa ges with a high priority.
+R35,Data-wise the mes- sages shall be small and shall be transmitted with a minimum of delay.
+R36,Time critical functions must be based on fast and reliable transmission of a number of se- lected data types.
+R37,"An example of a typical requirement regarding delays for these data is as follows: “The overall transfer time for services in time critical functions shall not be more than 0,5 seconds.”"
+R38,"For most data it must be possible to restore information, including th e sequence of events."
+R39,The commu- nication system shall include functionality to transfer stored data to central storage and proc- essing after restoration of the communication.
+R40,"To prevent interruptions in the data transfer , the communication system shall allow for redun- dant communication channels."
+R41,Automatic procedures for detection of communication faults and for managing redun- dancy of system components shall be establis hed.
+R42,There must be a way for existing plants to interface to a new communication system.
+R43,It should however as far as possibl e be able to present data on the same HMI and provide as many data as possible for the system databases.
+R44,"The description is not specific and thorough, as it does not specify in detail all signals or data that must be available."
+R45,It is the intention of this description to establish rules and principles for what data and what services shall be available from each wind turbine.
+R46,The protocol shall have such flexibility that new data can be define d without disturbing old versions of equipment’s that comply to a specific version of the specification.
+R47,"Each wind power plant shall have defined the to tal set of data, the naming, the type and de- fault value of the data according to this speci fication."
+R48,The information should be standardised according to the following principles: • Each device or object shall be self-descriptive (generic part) and the system has to have a function to extract the information contained in the wind power plants objects.
+R49,"It shall be possible to issue an identify request and get a list of all objects in a wind power plant, their names and possibly a short description for each object."
+R50,"The list should at minimum include, Name, Type/Kind, Unit, Time requirements, and possibly a short Description. • For the HMI such information shall be contained in the device using standard readable text, such as ASCII or Unicode (UTF16) (at least optional in the language of the opera- tor)."
+R51,Communication and objects in the wind power plant shall be object based.
+R52,"The system shall be able to manage naming of objects and variables (meas- urements, etc) in a hierarchical naming system in several levels."
+R53,All analogue process values shall be accessible in standard SI-units or other physical units.
+R54,Analogue values “at the source” shall be availabl e as real-time on-line instant data as well as time averaged values.
+R55,The values shall be available for display on operator HMI as well as for storage (databases).
+R56,Updating of analogue on-line values shall be selectable down to an inter- val of 1 sec.
+R57,All averaged values must be st ored in the plant controller for retransmission on demand.
+R58,For averaged values the accuracy of the start time of the period shall be better than
+R59,The values shall be accessible as processed data in a condensed and analysed format.
+R60,All binary process values shall be accessible.
+R61,Binary values shall be available as real-time on- line instant data.
+R62,The values shall be available for display on operator HMI as well as for stor- age (databases).
+R63,The values shall be stored a nd displayed at level shift with the corresponding date and time tag.
+R64,Updating of binary on-line values shall be selectable down to an interval of
+R65,All other control commands shall give a response with the result of the command.
+R66,Operational alarms must be transmitted immedi ately after a triggering.
+R67,The alarms shall be available for display on operator HMI as well as for storage (databases).
+R68,Operational events must be stored in an even t log in the plant controller for transmission on demand.
+R69,"Counters shall be understood as any value accumulated in time originating in the process such as hour counters, production counters, counters for operational modes, timer’s etc."
+R70,Counters shall be available for display on operator HMI as well as for storage (databases).
+R71,The values shall be stored with a corresponding date and time tag.
+R72,Updating of counters shall be select- able down to an interval of 1 sec.
+R73,All values must be stored in the plant controller for trans- mission on demand.
+R74,It should be possible to reset all the timers and the ‘Reset date’ shall be stored as a separate item.
+R75,Selected analogue values shall be stored in FIFO-buffers.
+R76,The sampling rate of analogue val- ues shall be high enough to characterise events a nd to determine the cause of faults.
+R77,The size of the buffers for analogue values shall correspond to a time span starting at 1 minute before a triggering and ending at 1 minute after a triggering.
+R78,Additionally it shall be possible to start a sca nning of selected analogue values at a sampling rate up to 25 Hz and a selectable duration.
+R79,Th e entire mentioned high rate scanning must be stored in the plant controller.
+R80,Transfer of data in the buffers shall be carried out without syn- chronism with real-time.
+R81,All binary values must be stored in the plant controller for retransmission on demand.
+R82,Additionally it shall be possible to start a scanni ng of selected binary values at a selectable duration.
+R83,All the mentioned scanning must be stored in the plant controller.
+R84,Transfer of data in the buffers shall be carried out without synchronism with real-time.
+R85,Alarms must be stored in an alarm log.
+R86,All alarms must be stored in the plant controller for transmission on demand.
+R87,The buffer depth shall be at least one year.
+R88,Transfer of data in the buffer shall be carried out without synchronism with real-time.
+R89,The buffer depth of the event log shall be at leas t one year.
+R90,The buffer size for every counter shall be at least 20 years of operation with 5000 full load hours per year.
+R91,Network structure and interfaces The communication network on which data transac tions shall take place may be organised as one of the following systems:
+R92,The server should be transparent for all data necessary for operational or control functions.
+R93,"ISDN or analogue), Internet, GSM, or radio link • The network is based on Ethernet standards and procedures • The network shall operate on TCP/IP- standards and procedures • The system shall allow for several protocol s and procedures simultaneously on the same network, e.g. file-transfer shall be possible on the same network simultaneously with data transfer to/from wind turbines • At each physical location in the network a num ber of nodes shall be defined."
+R94,"g. at a sin- gle wind turbine, more than one individual addr ess may be needed to connect to different subsystems. • Establishment, maintenance and release of c onnections/associations are to be handled by the communication system. • The communication system should guarantee with a specified availability that messages are received in the same order as they are sent. • Message priority may be needed in case of limited capacity. • Flow control and error control may be provided."

@@ -1,0 +1,4 @@
+﻿item,text
+R1,This information must be saved in a file on the web server where the game is hosted and will be easily edited through simplified administrative screens.
+R2,The user's score must be kept as local data within the game so that the results may be given at the end of the game.
+R3,The user will be given a problem and then must click the correct solution.

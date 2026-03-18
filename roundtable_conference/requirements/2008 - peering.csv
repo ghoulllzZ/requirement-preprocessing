@@ -1,0 +1,5 @@
+﻿item,text
+R1,"Each provider must ensu re that their individual SLAs ar e met when serving content for its own customers to end users, while meeting any obligations it has made when participating in a group of many providers."
+R2,The triggering condition must consider the expected and unexpected load increases in the initiating CDN.
+R3,"Thus, negotiated relationships must specify the interactions among entities in cluding service administration, coordination and disband (or re-arrangement) of internetworked CDNs."
+R4,"Therefore, request-redirections must occur over distributed sets of Web servers belonging to multip le CDN providers, w ithout the benefit of the full information available, as in the single provider case."

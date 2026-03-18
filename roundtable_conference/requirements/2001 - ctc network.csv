@@ -1,0 +1,78 @@
+﻿item,text
+R1,The C2C infrastructure must interconnect several dissimilar traffic management systems.
+R2,The following tables list the interfaces that shall be developed.
+R3,"Roadway Network Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS01 For each roadway network it maintains, the Center shall provide the following information."
+R4,List of node data C2C-IF-IS02 The Center shall provide the following link information:
+R5,Number of lanes C2C-IF-IS03 The Center shall provide the following node information:
+R6,Incident Data Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS05 The Center shall support the following information about each incident:
+R7,Lane Closure Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS06 The Center shall support the following information about each lane closure:
+R8,DMS Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS07 The Center shall provide the following status information about each DMS:
+R9,"Beacons (on/off) C2C-IF-IS08 To support DMS control in other centers, the Center shall be able to support the following device control command for a DMS:"
+R10,LCS Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS09 The Center shall support the following status information about each LCS:
+R11,"Current pattern C2C-IF-IS10 To support LCS control in other centers, the Center shall be able to support the following device control command for a LCS:"
+R12,CCTV Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS11 The Center shall provide the following information status information about each CCTV:
+R13,"Current iris C2C-IF-IS12 To support CCTV control in other centers, the Center shall be able to support the following CCTV control request:"
+R14,"Worth will not support Momentary Pan/Tilt/Zoom/Iris/Focus command C2C-IF-IS13 To support video snapshots, the Center shall be able to support the following status information:"
+R15,"Video snapshot (in JPEG format) C2C-IF-IS14 To support CCTV switching in other centers, the Center shall be able to support the following CCTV switching command:"
+R16,Ramp Meter Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS15 The Center shall support the following status information about each ramp meter:
+R17,"Cycle Time C2C-IF-IS16 To support Ramp Meter control in other centers, the Center shall be able to support the following device control command for a ramp meter:"
+R18,HAR Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS17 The Center shall support the following status information about each HAR:
+R19,"Current Message Text C2C-IF-IS18 To support HAR control in other centers, the Center shall be able to support the following device control command for a HAR:"
+R20,Traffic Signals Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS19 The Center shall support the following status information about each Traffic Signal:
+R21,"Signal Preemption C2C-IF-IS20 To support Traffic Signal control in other centers, the Center shall be able to support the following device control command for a Traffic Signal:"
+R22,ESS Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS21 The Center shall support the following status information about each ESS:
+R23,HOV Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS22 The Center shall support the following status information about each HOV:
+R24,"Next Transition Time C2C-IF-IS22.1 To support HOV Lane control in other centers, the Center shall be able to support the following device control command for a HOV Lane:"
+R25,Parking Lot Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS23 The Center shall support the following status information about each Parking Lot:
+R26,School Zone Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS24 The Center shall support the following status information about each School Zone:
+R27,"State Source C2C-IF-IS25 To support School Zone control in other centers, the Center shall be able to support the following device control command for a School Zone:"
+R28,Railroad Crossing Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS26 The Center shall support the following status information about each Railroad Crossing:
+R29,Reversible Lanes Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS27 The Center shall support the following status information about each Reversible Lane:
+R30,"Status Source C2C-IF-IS28 To support Reversible Lane control in other centers, the Center shall be able to support the following device control command for a Reversible Lane:"
+R31,Dynamic Lane Assignments Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS29 The Center shall support the following status information about each Dynamic Lane:
+R32,"Transition Time C2C-IF-IS30 To support Dynamic Lane control in other centers, the Center shall be able to support the following device control command for a Dynamic Lane:"
+R33,Transit Interface Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS30 The Center shall support the following status information about each Bus Stop:
+R34,Frequency C2C-IF-IS31 The Center shall support the following status information about each Bus Location:
+R35,Capacity C2C-IF-IS32 The Center shall support the following status information about each Light/Commuter Stop:
+R36,Frequency C2C-IF-IS33 The Center shall support the following status information about each Light/Commuter Location:
+R37,SOFTWARE REQUIREMENTS SPECIFICATION 19 Requirement Number Requirement Description Rationale or Comments C2C-IF-IS34 The Center shall support the following status information about each Park and Ride Lot:
+R38,Special Capabilities C2C-IF-IS35 The Center shall support the following status information about each Vehicle Priority:
+R39,Network Device Status Requirements Requirement Number Requirement Description Rationale or Comments C2C-IF-IS36 The Center shall support the following information about network device status:
+R40,C2C-IF-IS38 The device status requestor and Center shall support the following information for command timeframe request:
+R41,The Data Collector Requirements define what must be stored on the Data Collector.
+R42,Data Collector Requirements Requirement Number Requirement Description Rationale or Comments C2C-DS-01 The Data Collector shall be designed to support the storage of TMDD data elements and message set information.
+R43,Data Transmission Requirements Requirement Number Requirement Description Rationale or Comments C2C-DT-01 The C2C Project shall utilize the TMDD standard (including message sets) to transmit information.
+R44,C2C-DT-02 DATEX/ASN shall be used to transmit the TMDD message sets.
+R45,C2C-DT-03 TCP/IP shall be used to transmit the DATEX/ASN data.
+R46,WWW Map Requirements Requirement Number Requirement Description Rationale or Comments C2C-MP-01 The map shall display interstates and state highways on the graphical map.
+R47,C2C-MP-03 The basemap data shall be derived from the North Central Texas Council of Governments (NCTCOG) Geo- Data warehouse.
+R48,C2C-MP-03 The map user shall be able to alter the current magnification (zoom level) of the map.
+R49,"C2C-MP-04 The map user shall be able to pan the map in each of the following directions: North, South, East or West."
+R50,C2C-MP-05 Each link displayed on the map shall be color coded to provide a graphical depiction of speeds.
+R51,A configuration file shall be provided to specify specific speed values.
+R52,The color coding shall be as follows: • Green - speeds > TBD MPH • Yellow - speeds between TBD and TBD MPH • Red – speeds below TBD MPH C2C-MP-06 The map shall display the current incidents (as icons) known to the C2C Project.
+R53,C2C-MP-07 The user shall be able to click on an incident icon to obtain further information about the incident.
+R54,Current Message C2C-MP-10 The map shall be capable of displaying the following for a LCS:
+R55,Current Signals C2C-MP-11 The map shall be capable of displaying the following for a CCTV:
+R56,The Incident GUI must provide data to the C2C Infrastructure.
+R57,Incident GUI Requirements Requirement Number Requirement Description Rationale or Comments C2C-GI-01 The Incident GUI shall allow the user to enter incident or lane closure information without the use of an Center.
+R58,C2C-GI-02 The Incident GUI shall allow the user to input the following information for each incident: • Location (latitude/longitude) • Description • Status • Effected lanes • Detection time • Response time • Estimated time to clear queue • Queue length C2C-GI-03 The Incident GUI shall allow the user to input the following information for each lane closure: • Location (latitude/longitude) • Description • Effected lanes • Date • Start time • End time C2C-GI-04 The GUI shall provide a list of previously entered incidents.
+R59,C2C-GI-05 The GUI shall allow the data about an incident to be modified.
+R60,C2C-GI-06 The GUI shall allow a user to delete a previously entered incident.
+R61,C2C-GI-07 The GUI shall provide a list of previously entered lane closures.
+R62,C2C-GI-08 The GUI shall allow a user to delete a previously entered lane closure.
+R63,C2C-GI-09 The GUI shall allow a user to delete a previously entered lane closure.
+R64,"Remote Control GUI Requirement Number Requirement Description Rationale or Comments C2C-CG-01 The remote Center Control GUI shall be designed to execute on a public network (e.g., Internet) and transmit equipment requests to the C-2-C software system."
+R65,"C2C-CG-02 When the GUI application is initiated, the user shall be prompted for the following information: • User name • Password C2C-CG-03 The user shall be provided with the capability to select a network identifier for a device command/control request."
+R66,"SOFTWARE REQUIREMENTS SPECIFICATION 25 Requirement Number Requirement Description Rationale or Comments a HOV from a list and provide the following information: • Target HOV • Plan C2C-CG-12 Once an Center is selected, the user shall be able to select a School Zone from a list and provide the following information: • Target School Zone • Plan C2C-CG-13 Once an Center is selected, the user shall be able to select a Reversible Lane from a list and provide the following information: • Target Reversible Lane • Plan C2C-CG-14 Once an Center is selected, the user shall be able to select a Dynamic Lane from a list and provide the following information: • Target Dynamic Lane • Plan C2C-CG-15 For each device command/control status request sent by the Remote GUI, the status returned from the network identifier will be displayed in a scrollable list on the GUI."
+R67,Computer Resource Requirements Requirement Number Requirement Description Rationale or Comments C2C-DC-01 The C2C Server shall execute in a Microsoft Windows NT environment.
+R68,C2C-DC-02 A DATEX/ASN runtime library shall be available on any computer communicating to the C2C project.
+R69,C2C-DC-03 The web server application shall use ESRI's ARC Internet Map Server (ARC IMS) product for creating of map images.
+R70,Design and Implementation Requirements Requirement Number Requirement Description Rationale or Comments C2C-DC-04 The C2C shall execute in a Microsoft Windows NT environment.
+R71,C2C-DC-05 The C2C shall be implemented in the C/C++ programming language.
+R72,C2C-DC-06 The C2C web interface shall be implemented using C/C++ and ESRI ARC IMS.
+R73,C2C-DC-07 The Incident GUI shall be implemented using C/C++ and ESRI Map Objects.
+R74,C2C-DC-08 The Remote Control GUI shall be implemented using C/C++ and ESRI Map Objects.
+R75,The C2C Project shall be capable of operating in one of two modes: normal mode for normal operations or in test mode for development and testing.
+R76,Required States and Modes Requirements Requirement Number Requirement Description Rationale or Comments C2C-OP-01 The C2C shall be able to operate in normal mode.
+R77,C2C-OP-02 The C2C shall be able to operate in test mode.

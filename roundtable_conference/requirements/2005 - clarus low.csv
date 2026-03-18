@@ -1,0 +1,413 @@
+﻿item,text
+R1,A requirements document states what must be accomplished to fulfill the vision described in a concept of operations.
+R2,The Clarus system should be a data collection system capable of handling a vast range of data in a flexible manner that permits new data types to be added.
+R3,The design of Clarus will need to consider these time horizons when planning the technical limitations of the system architecture.
+R4,The Clarus component includes the time required to communicate data from the Autonomous Layer to the Clarus system import process as well as the time require d to process the input data into storage structures.
+R5,"Further, the variation in th e Service Provider component includes the time required to add other data to the Clarus data and to perform the human- and machine-based product generation."
+R6,The averag e data age grows as a result of the aggregated times required to move through the various layers and eventually to the Service Provider Customers.
+R7,The Clarus system design must address how best to minimize these times to optimize the flow of data in a timely manner.
+R8,The requirements of the broader stakeholder community are essential to the Clarus Initiative and these interests must serve as a framework for the core Clarus system.
+R9,"To address the timeliness factor, the system should be designed such that it can both retrieve and disseminate large volumes of data from a variety of sources and at potentially high rates."
+R10,"If the Clarus system fails, requestors will need to use their legacy systems."
+R11,"The system should be standard s based, where national standards are applicable."
+R12,Special consideration should be given to the national intelligent transportation system (ITS) standards.
+R13,"Even though the system will check the data and apply quality flags, consumers of Clarus-provided data will need to unders tand that neither FHWA nor the contributing data providers will accept responsibility for the accuracy of any of the data."
+R14,A set of services is required to properly inte rpret and transform all the incoming and outgoing environmental information.
+R15,"In this section, the requirements are classified by the first letter in the requirement identification as described in Table 2 and shown in Table 3. • Functional Requirements – Lists the char acteristics that the system must support for each interface."
+R16,This section lists the functional characteris tics that the system must support.
+R17,"It also identifies what is to be done by the system, what inputs should be transformed to what outputs, and what specific operations are required."
+R18,Requirements formulated with “… shall…” are direct requirements;
+R19,those using “… shall be able to…” are conditioned on other requirements being fulfilled or on factors outside the control of the requirement’s subject.
+R20,CAS Comment Criticality F-101 The Clarus system shall implement quality checking processes as soon as data become available.
+R21,B1 The CAS shall be able to configure schedules for executing QChS.
+R22,F-151 The Clarus system shall record the methods applied when deriving quality checking information.
+R23,B1 The CAS shall record the quality checking methods used.
+R24,F-155 The Clarus system shall be able to implement quality checking rules for each environmental parameter.
+R25,B1 The CAS shall be able to configure the quality checking rules for each environmental parameter.
+R26,B2 The CAS shall enable administrators to manage quality checking rules.
+R27,CAS Comment Criticality F-161 The Clarus system shall be able to implement quality checking rules for specific environmental situations.
+R28,B1 The CAS shall be able to configure quality checking rules for specific environmental situations.
+R29,F-163 The Clarus system shall be able to implement quality checking rules specific to observation locations.
+R30,B1 The CAS shall be able to configure quality checking rules specific to observation locations.
+R31,F-171 The Clarus system shall be able to base its quality checking process on historical environmental data.
+R32,B1 The CAS shall be able to configure historical environmental data to be used by quality checking processes.
+R33,CAS Comment Criticality F-175 The Clarus system shall be able to use multiple algorithms for its quality checking process.
+R34,B1 The CAS shall be able to configure multiple algorithms to be used in the quality checking process.
+R35,F-213 The Clarus system shall allow access to new surface transportation-related environmental data.
+R36,B1 The CAS shall be configurable to allow new observation types to be implemented as they become available.
+R37,F-806 The Clarus system shall enable administrators to manage security groups.
+R38,B1 The CAS system shall enable administrators to manage security group members.
+R39,B2 The CAS shall have an administrator security group.
+R40,B3 The CAS shall have a quality manager security group.
+R41,CAS Comment Criticality F-811 The Clarus system shall be able to restrict environmental data publication based on source.
+R42,B1 The CAS shall be able to record data sharing restrictions.
+R43,F-901 The Clarus system shall record statistics about its operation.
+R44,B1 The CAS shall record statistics about the system operation.
+R45,F-905 The Clarus system shall log data transactions.
+R46,B1 The CAS shall log data transactions.
+R47,"H-120 The Clarus system shall acquire, process, and disseminate environmental metadata."
+R48,B1 The CAS shall manage contributor metadata.
+R49,B2 The CAS shall manage collector metadata.
+R50,B3 The CAS shall manage quality checking schedules.
+R51,B4 The CAS shall manage environmental data collection schedules.
+R52,B5 The CAS shall manage ESS metadata.
+R53,Task Force I-032 The Clarus system shall manage environmental data and metadata according to the Clarus data sharing agreements.
+R54,"MHI CAS, CAUI Changed from “The Clarus system shall manage system user privileges according to the Clarus data sharing agreements.” H I-032B1 The CAS shall manage data sharing rules based on contributor data sharing agreements."
+R55,"ID Requirement Source Allocation - CAUI Comment Criticality F-100 The Clarus system shall collect, quality check, and disseminate environmental data."
+R56,H F-100C1 The CAUI shall be able to initiate CS on demand.
+R57,F-111 The Clarus system shall provide environmental data quality flags.
+R58,"OCS QChS, CAUI, QEDC H F-111C1 The CAUI shall enable a quality manager to apply manual flags to a set of observations from an individual ESS."
+R59,F-111C2 The CAUI shall enable a quality manager to apply manual flags to a set of observations.
+R60,F-111C3 The CAUI shall enable a quality manager to apply manual flags to a set of observations over a fixed time range.
+R61,F-111C4 The CAUI shall enable a quality manager to apply manual flags to a set of observations over a time range with an open ended future time.
+R62,F-141 The Clarus system shall allow human quality checks of environmental data.
+R63,"OCS CAUI, QChS Changed from “The Clarus system shall allow human intervention to override automatically applied quality assessment.” M"
+R64,ID Requirement Source Allocation - CAUI Comment Criticality F-141C1 The CAUI shall allow a quality manager to apply a manual quality flag to environmental data.
+R65,F-141C3 The CAUI shall allow manual quality flags to be entered.
+R66,F-155 The Clarus system shall be able to implement quality checking rules specific to each environmental parameter.
+R67,"ConOps §3.5.1.4 QChS, CAS, CAUI H F-155C1 The CAUI shall enable quality checking rules to be configured specific to each environmental parameter."
+R68,"MHI CAS, CAUI H F-806C1 The CAUI shall enable administrators to manage security group members."
+R69,C1 The CAUI shall enable administrators to acquire environmental metadata.
+R70,C2 The CAUI shall enable administrators to manage environmental metadata.
+R71,ID Requirement Source Allocation - CAUI Comment Criticality I-031 The Clarus system shall provide a user interface for administration.
+R72,MHI CAUI H I-031C1 The CAUI shall enable administrators to manage contributor metadata.
+R73,I-031C2 The CAUI shall enable administrators to manage collector metadata.
+R74,I-031C3 The CAUI shall enable administrators to manage quality checking schedules.
+R75,I-031C4 The CAUI shall enable administrators to manage environmental data collection schedules.
+R76,I-032 The Clarus system shall manage environmental data and metadata according to the Clarus data sharing agreements.
+R77,"MHI CAS, CAUI Changed from “The Clarus system shall manage system user privileges according to the Clarus data sharing agreements.” H I-032C1 The CAUI shall enable administrators to manage contributor data sharing agreements."
+R78,I-032C2 The CAUI shall enable administrators to assign system privileges.
+R79,"The Collector Services shall receive environmental data, convert the environmental data into a standard format, a nd store the environmental data in the Qualified Environmental Data Cache."
+R80,"ID Requirement Source Allocation - CS Comment Criticality F-100 The Clarus system shall collect, quality check, and disseminate environmental data."
+R81,H F-100D1 CS shall collect environmental data based on its configured schedule.
+R82,F-100D2 CS shall be able to transform extracted environmental data into the internal storage format.
+R83,F-100D3 CS shall be able to store transformed environmental data in the QEDC.
+R84,F-100D4 CS shall be able to convert observation units into the Clarus standard unit specification.
+R85,F-100D5 CS shall be able to be initiated on a schedule.
+R86,F-100D6 CS shall be able to be initiated on demand.
+R87,F-200 The Clarus system shall be able to detect data submission errors.
+R88,MHI CS H F-200D1 CS shall log when a data submission error occurs.
+R89,ID Requirement Source Allocation - CS Comment Criticality F-201 The Clarus system shall be able to access in-situ environmental observations from data collectors.
+R90,H F-201D1 CS shall be able to collect in-situ environmental observations from data collectors.
+R91,F-205 The Clarus system shall be able to access remotely sensed environmental observations from data collectors.
+R92,OCS CS M F-205D1 CS shall be able to retrieve remotely sensed environmental observations from data collectors.
+R93,F-211 The Clarus system shall be able to receive roadway weather measurements derived from VII data.
+R94,OCS CS M F-211D1 CS shall be able to retrieve roadway weather measurements derived from VII data.
+R95,F-213 The Clarus system shall allow access to new surface transportation-related observed environmental data.
+R96,L F-213D1 CS shall be able to be implemented to collect new observation types as they become available.
+R97,ID Requirement Source Allocation - CS Comment Criticality F-214 The Clarus system shall accept environmental data derived from images.
+R98,H F-214D1 CS shall acc ept surface condition data derived from surface images.
+R99,H F-214D2 CS shall accept atmospheric condition data derived from atmospheric images.
+R100,H F-221 The Clarus system shall be able to retrieve environmental data directly from environmental sensor station collectors.
+R101,"Task Force review CS Changed from ""The Clarus system shall be able to retrieve environmental data directly from environmental sensor stations."" L F-221D1 CS shall be able to retrieve environmental data directly from environmental sensor station collectors."
+R102,F-222 The Clarus system shall minimize the time for data acquisition.
+R103,OCS H F-222D1 CS shall be able to dynamically adjust its retrieval schedules when environmental data is expected to be ready but is temporarily delayed.
+R104,F-223 The Clarus system shall process data as they are received.
+R105,"ConOps §3.4.3 CS, QChS H F-223D1 CS shall process environmental data as they are received."
+R106,ID Requirement Source Allocation - CS Comment Criticality F-231 The Clarus system shall collect pavement-related observations.
+R107,H F-231D1 CS shall be able to collect pavement-related observations.
+R108,F-241 The Clarus system shall accept environmental data from railway systems or in-situ ESS along tracks.
+R109,ConOps §2.5.7 CS H F-241D1 CS shall be able to collect environmental data from railway systems from railway collectors.
+R110,F-241D2 CS shall be able to collect environmental data from in-situ ESS along tracks from railway collectors.
+R111,F-245 The Clarus system shall accept environmental data from railroad vehicles.
+R112,ConOps §2.5.7 CS H F-245D1 CS shall accept environmental data derived from railroad vehicle data.
+R113,F-251 The Clarus system shall accept environmental data from (roadway) vehicles.
+R114,Inferred from ConOps §2.5.x CS H F-251D1 CS shall accept environmental data collected from (roadway) vehicles.
+R115,ID Requirement Source Allocation - CS Comment Criticality F-255 The Clarus system shall accept environmental data from maintenance and construction vehicles.
+R116,ConOps §2.5.2 CS H F-255D1 CS shall accept environmental data collected from maintenance and construction vehicles.
+R117,F-261 The Clarus system shall accept environmental data from service patrol vehicles.
+R118,ConOps §2.5.3 CS H F-261D1 CS shall accept environmental data collected from service patrol vehicles.
+R119,F-271 The Clarus system shall accept environmental data from transit vehicles.
+R120,H F-271D1 CS shall accept environmental data collected from transit vehicles.
+R121,F-275 The Clarus system shall accept environmental data from emergency vehicles.
+R122,ConOps §2.5.6 CS H F-275D1 CS shall accept environmental data collected from emergency vehicles.
+R123,F-281 The Clarus system shall be able to receive weather data from weather service providers.
+R124,ID Requirement Source Allocation - CS Comment Criticality F-281D1 CS shall be able to receive weather data from weather service providers.
+R125,"MHI CS, QEDS, EMS, QChS, CAS, SS, DOG H F-905D1 CS shall create a log entry when a data set is invalid."
+R126,H-011 The Clarus system baseline data types shall be defined by the NTCIP ESS 1204 standard.
+R127,D1 CS shall accept data types defined by NTCIP 1204.
+R128,"H-012 The Clarus system data definitions shall be consistent with the ITE TM 1.03 standard, Functional Level Traffic Management Data Dictionary (TMDD)."
+R129,D1 CS shall accept environmental data described by definitions defined by the TMDD.
+R130,D2 CS shall accept environmental data described by definitions defined by CMML version 2.
+R131,"H-020 The Clarus system shall acquire, process, and disseminate environmental data."
+R132,"ID Requirement Source Allocation - CS Comment Criticality H-151 The Clarus system shall accept only observations that include location, timestamp, and source metadata."
+R133,"D1 CS shall accept only observations that include location, timestamp, and source metadata."
+R134,H-155 The Clarus system shall accept only observations of identified measurement types and units.
+R135,D1 CS shall accept only observation of identified measurement types and units.
+R136,"H-301 The Clarus system shall be able to acquire, process, and disseminate environmental data from across North America."
+R137,D1 CS shall be able to acquire environmental data from across North America.
+R138,I-011 The Clarus system shall accept data through a Clarus standard interface.
+R139,H I-011D1 CS shall implement the Clarus standard interface.
+R140,ID Requirement Source Allocation - CS Comment Criticality I-012 The Clarus system shall be able to communicate with environmental sensor stations through its collector using the NTCIP ESS
+R141,L I-012D1 CS shall be able to process NTCIP ESS 1204 data.
+R142,I-013 The Clarus system shall be able to communicate with RWIS databases through their native interfaces.
+R143,ConOps §3.4.2 CS L I-013D1 CS shall be able to accept data from an RWIS database in its native output format.
+R144,I-014 The Clarus system shall be able to communicate with an individual ESS through its native interface.
+R145,L I-016 The Clarus system shall transfer data as efficiently as possible.
+R146,H I-016D1 CS shall transfer data concurrently.
+R147,I-016D2 CS shall be able to request collector environmental data on demand.
+R148,I-016D3 CS shall be able to accept environmental data pushed from collectors.
+R149,ID Requirement Source Allocation - CS Comment Criticality I-017 The Clarus system shall employ industry standards to minimize implementation impact to users and providers.
+R150,H I-017D1 CS shall be able to extract environmental data from an XML message that conforms to the Clarus standard XML message specification.
+R151,I-017D2 CS shall be able to extract environmental data from comma separated value messages.
+R152,I-017D3 CS that process comma separated value ASCII text shall be able to dynamically parse environmental data that includes a descriptive header row conforming to the Clarus collector standard message specification.
+R153,I-017D4 CS that process comma separated value ASCII text shall be able to dynamically parse environmental data described by a stored collector configuration.
+R154,I-017D5 CS shall be able to extract environmental data from CMML version 2 messages.
+R155,I-017D6 CS shall be able to extract environmental data from netCDF version 3.6 messages.
+R156,ID Requirement Source Allocation - DOG Comment Criticality F-213 The Clarus system shall allow access to new surface transportation related observed environmental data.
+R157,G1 The DOG shall be able to monitor new environmental data services as they are added.
+R158,G1 The DOG shall be able to record its activities.
+R159,Q-012 The Clarus system shall be able to automatically recover from an unexpected shutdown.
+R160,G1 The watchdog service shall monitor the overall Clarus system state.
+R161,G2 The watchdog service shall be able to restart unresponsive Clarus system services.
+R162,EMC Comment Criticality F-213 The Clarus system shall allow access to new surface transportation related observed environmental data.
+R163,E1 The EMC shall be configurable to allow new observation types to be implemented as they become available.
+R164,E1 The EMC shall be able to process environmental metadata.
+R165,"E2 The EMC shall be able to uniquely identify each contributor, collector, and station sensor."
+R166,"E3 The EMC shall be able to maintain contact info for each contributor, collector, and station sensor."
+R167,"E4 The EMC shall be able to maintain backup contact info for each contributor, collector, and station sensor."
+R168,"E5 The EMC shall be able to maintain owner names for each contributor, collector, and station sensor."
+R169,E6 The EMC shall be able to maintain an equipment list for each station.
+R170,E7 The EMC shall be able to maintain pavement types for stations with corresponding instrumentation.
+R171,"E8 The EMC shall be able to maintain latitude, longitude, and elevation for stations."
+R172,E9 The EMC shall be able to maintain a reference to additional metadata.
+R173,I-017 The Clarus system shall employ industry standards to minimize implementation impact to users and providers.
+R174,EMC Comment Criticality I-017E1 The EMC shall store collector metadata that consists of information based on TMDD & MS/ETMCC.
+R175,EMS Comment Criticality D-062 The Clarus system shall disseminate environmental metadata in response to polling.
+R176,F1 EMS shall disseminate metadata in response to polling.
+R177,D-091 The Clarus system shall disseminate data using standard Internet protocols.
+R178,F1 EMS shall disseminate metadata using standard Internet protocols.
+R179,F-213 The Clarus system shall allow access to new surface transportation related observed environmental data.
+R180,L F-213F1 The Clarus system shall allow new EMS to be implemented that disseminate new observation types to be implemented as they become available.
+R181,EMS Comment Criticality F-401 The Clarus system shall be able to provide sensor equipment metadata in response to a request.
+R182,H F-401F1 EMS shall be able to provide sensor equipment metadata in response to a request.
+R183,F-501 The Clarus system shall minimize the time for data dissemination.
+R184,"MHI QEDS, EMS H F-501F1 EMS shall respond to queries for metadata within five minutes."
+R185,"MHI CS, QEDS, EMS, QChS, CAS, SS, DOG H F-905F1 EMS shall log metadata transactions."
+R186,F1 The EMS shall accept source queries that consist of a list of Clarus contributors.
+R187,F2 The EMS shall accept source queries that consist of a list of Clarus contributors including station identifier.
+R188,F3 The EMS shall accept location queries based on a bounding latitude/longitude coordinate pair.
+R189,F4 The EMS shall accept location queries based on latitude/longitude location and radius.
+R190,Task Force I-016 The Clarus system shall transfer data as efficiently as possible.
+R191,H I-016F1 EMS shall transfer data concurrently.
+R192,H I-017F1 EMS shall be able to distribute metadata in a comma separated value ASCII format.
+R193,I-023 The Clarus system shall respond to queries for environmental metadata from the available metadata.
+R194,MHI H I-023F1 EMS responses shall include metadata that meets the requested metadata query filtering specifications.
+R195,EMS Comment Criticality I-023F2 EMS shall respond to queries returning no results with a message stating that no results matching that query are available.
+R196,Task Force P-025 The Clarus system shall respond to a request for information within five minutes.
+R197,H P-025F1 The EMS shall respond to a request for metadata within five minutes.
+R198,QEDC Comment Criticality F-111 The Clarus system shall provide environmental data quality flags.
+R199,"OCS QChS, CAUI, QEDC H F-111I1 The QEDC shall keep the results of each quality test for each observation for the life of the observation."
+R200,L F-213I1 The QEDC shall be configurable to allow new observation types to be implemented as they become available.
+R201,F-521 The Clarus system shall maintain a dynamic library of data for at least seven days.
+R202,QEDC Comment Criticality F-521I1 The QEDC shall maintain observations and their associated quality flags for seven days.
+R203,H H-011I1 The QEDC observation types shall be defined by NTCIP ESS 1204.
+R204,I-021 The Clarus system shall allow service providers to select specific desired data sets.
+R205,"ConOps §3.5.1.4 QEDS, QEDC H I-021I1 The QEDC shall support queries for its observations."
+R206,I-022 The Clarus system shall respond to queries for environmental data from the available data.
+R207,"MHI QEDS, QEDC H I-022I1 The QEDC shall support queries against all of its available observation datasets."
+R208,P-013 The Clarus system shall support 470 million current observations.
+R209,QEDC Comment Criticality P-013I1 The QEDC combined from all available Clarus hosts shall support 470 million current observations.
+R210,ID Requirement Source Allocation - QEDS Comment Criticality D-051 The Clarus system shall disseminate data in response to a scheduled request.
+R211,"OCS QEDS, SS H D-051J1 QEDS shall disseminate data in response to a scheduled environmental data request."
+R212,D-061 The Clarus system shall disseminate environmental data in response to polling.
+R213,OCS QEDS H D-061J1 QEDS shall disseminate data in response to an immediate environmental data request.
+R214,D-071 The Clarus system shall disseminate data in response to a change notification request.
+R215,OCS QEDS H D-071J1 QEDS shall disseminate data in response to a change notification request.
+R216,D-081 The Clarus system shall be able to notify subscribers when data sets become available.
+R217,ID Requirement Source Allocation - QEDS Comment Criticality D-081J1 QEDS shall disseminate environmental data to subscribers when datasets fulfilling a subscription query become available.
+R218,D-081J2 QEDS shall be able to disseminate environmental data to contributor subscribers when datasets fulfilling a subscription query applying threshold filters become available.
+R219,"OCS QEDS, EMS H D-091J1 QEDS system shall disseminate environmental data using standard Internet protocols."
+R220,"F-100 The Clarus system shall collect, quality check, and disseminate environmental data."
+R221,H F-100J1 QEDS shall disseminate environmental data.
+R222,F-100J2 QEDS shall be able to disseminate environmental data in English units.
+R223,ID Requirement Source Allocation - QEDS Comment Criticality F-115 The Clarus system shall provide notification of data quality conditions to data contributors.
+R224,H F-115J1 The observation quality flags shall be used to determine data quality condition notifications.
+R225,F-115J2 QEDS shall provide quality checking statistics to data contributors.
+R226,F-140 The Clarus system shall enable quality managers to review which quality checks passed or failed.
+R227,H F-140J1 QEDS shall enable quality managers to review which quality checks passed or failed.
+R228,L F-213J1 QEDS shall be able to disseminate new observation types as they become available.
+R229,"F-219 The Clarus system shall disseminate NWS watches, warnings, and advisories."
+R230,"ID Requirement Source Allocation - QEDS Comment Criticality F-219J1 QEDS shall be able to disseminate NWS watches, warnings, and advisories."
+R231,"MHI QEDS, EMS H F-501J1 QEDS shall respond to environmental data queries within one minute."
+R232,F-505 The Clarus system shall be able to disseminate data based on spatial queries.
+R233,H F-505J1 QEDS shall be able to disseminate data based on spatial queries.
+R234,F-811 The Clarus system shall be able to restrict environmental data publication based on source.
+R235,H F-811J1 QEDS shall be able to determine if an observation can be disseminated.
+R236,"MHI CS, QEDS, EMS, QChS, CAS, SS, DOG H F-905J1 QEDS shall log their activities."
+R237,ID Requirement Source Allocation - QEDS Comment Criticality H-011 The Clarus system baseline data types shall be defined by the NTCIP ESS 1204 standard.
+R238,H H-011J1 QEDS shall disseminate environmental data types defined by NTCIP 1204.
+R239,H-012 The Clarus system data definitions shall be consistent with the ITE TM
+R240,"Task Force review CS, QEDS H H-012J1 QEDS shall disseminate data with descriptions that conform to the TMDD."
+R241,"H H-301 The Clarus system shall be able to acquire, process, and disseminate environmental data from across North America."
+R242,"ConOps §3.4.2, amended in Task Force review CS, QChS, QEDS North America in this context includes the United States, it territories, Canada, and Mexico H H-301J1 QEDS shall be able to disseminate environmental data collected from across North America."
+R243,I-016 The Clarus system shall transfer data as efficiently as possible.
+R244,ID Requirement Source Allocation - QEDS Comment Criticality I-016J1 QEDS shall transfer data concurrently.
+R245,H I-017J1 QEDS shall be able to disseminate environmental data in netCDF version 3.6 format.
+R246,I-017J2 QEDS shall be able to disseminate environmental data in HDF version 5 format.
+R247,I-017J3 QEDS shall be able to disseminate environmental data in CMML version 2 format.
+R248,I-017J4 QEDS shall be able to disseminate environmental data in comma separated value ASCII format.
+R249,I-021 The Clarus system shall allow service providers to select specific desired datasets.
+R250,ID Requirement Source Allocation - QEDS Comment Criticality I-021J1 QEDS shall respond to environmental data queries selecting specific desired datasets.
+R251,"MHI QEDS, QEDC H I-022J1 QEDS shall enable users to request environmental data from among the available output formats."
+R252,I-022J2 QEDS shall respond to queries returning no results with a message stating that no results matching that query are available.
+R253,Task Force I-025 The Clarus system shall enable environmental data queries by timestamp.
+R254,ConOps §3.5.1.4 H I-025J1 QEDS shall accept timestamp queries based on a single timestamp range.
+R255,I-026 The Clarus system shall enable environmental data queries by location reference.
+R256,ConOps §3.5.1.4 H I-026J1 QEDS shall accept location queries based on a bounding latitude/longitude coordinate pair.
+R257,ID Requirement Source Allocation - QEDS Comment Criticality I-026J2 QEDS shall accept location queries based on a latitude/longitude location and radius.
+R258,I-027 The Clarus system shall enable environmental data queries by quality.
+R259,ConOps §3.5.1.4 H I-027J1 QEDS shall accept quality flag queries based on a range of quality flag values.
+R260,I-028 The Clarus system shall enable environmental data queries by source.
+R261,MHI H I-028J1 QEDS shall accept source queries that consist of a list of Clarus contributors.
+R262,I-028J2 QEDS shall accept source queries that are a list of Clarus contributors combined with a station identifier.
+R263,I-033 The Clarus system shall allow users to create a data subscription request.
+R264,ConOps §4.5 H I-033J1 QEDS shall be able to accept a subscription request.
+R265,ID Requirement Source Allocation - QEDS Comment Criticality I-033J2 QEDS shall accept data subscriptions that include an environmental data request and the publishing trigger.
+R266,I-033J3 QEDS shall be able to accept subscription requests with triggers based on a schedule.
+R267,I-033J4 QEDS shall be able to accept subscription requests with triggers based on quality flag state changes.
+R268,I-033J5 QEDS shall disseminate subscription responses to the originating request address by default.
+R269,I-033J6 QEDS shall disseminate subscription responses to a specified return address.
+R270,I-033J7 QEDS shall uniquely identify environmental data subscriptions.
+R271,I-033J8 QEDS shall automatically delete a subscription when the triggering event will not occur again and no more responses are possible.
+R272,P-024 The Clarus system shall be able to publish new data within twenty minutes of data receipt.
+R273,ID Requirement Source Allocation - QEDS Comment Criticality P-024J1 QEDS shall disseminate subscription responses within twenty minutes of new data becoming available.
+R274,P-025 The Clarus system shall respond to a request for information within one minute.
+R275,H P-025J1 QEDS shall respond to an environmental data request within one minute.
+R276,P-031 The Clarus system shall be able to handle three hundred simultaneous requests for environmental data.
+R277,H P-031J1 QEDS shall be able to respond to three hundred simultaneous queries.
+R278,"ID Requirement Source Allocation - QChS Comment Criticality F-100 The Clarus system shall collect, quality check, and disseminate environmental data."
+R279,H F-100H1 The QChS shall quality check environmental data.
+R280,F-101 The Clarus system shall implement quality checking processes as soon as data become available.
+R281,"ConOps §2.4 QChS, SS, CAS H F-101H1 QChS shall be able to be configured individually."
+R282,F-101H2 QChS processing order shall be able to be configured.
+R283,F-101H3 QChS processing shall commence when new data arrives but no less frequently than the scheduled interval.
+R284,"OCS QChS, CAUI, QEDC H F-111H1 Each QChS shall produce a unique quality flag value."
+R285,ID Requirement Source Allocation - QChS Comment Criticality F-111H2 The QChS shall be able to indicate a numeric confidence value.
+R286,F-115 The Clarus system shall provide notification of data quality conditions to data contributors.
+R287,H F-115H1 A QChS shall evaluate data quality conditions.
+R288,F-121 The Clarus system shall detect out of range values.
+R289,H F-121H1 QChS algorithms shall use sensor range metadata for range checking bounds.
+R290,F-121H2 QChS algorithms shall use climate records for range checking bounds.
+R291,F-121H3 QChS algorithms shall be able to use monthly climate extremes for range checking bounds.
+R292,F-125 The Clarus system shall not modify original observations.
+R293,"OCS QChS H F-125H1 QChS shall apply separate, independent quality flags that do not modify the observation."
+R294,F-141 The Clarus system shall allow human quality checks of observations.
+R295,"OCS CAUI, QChS Changed from “The Clarus system shall allow human intervention to override automatically applied quality assessment.” Example – manual quality test."
+R296,ID Requirement Source Allocation - QChS Comment Criticality F-141H1 QChS shall implement a manual override to set quality flags.
+R297,"MHI QChS, CAS H F-151H1 QChS shall indicate when a quality check has been performed."
+R298,H F-155H1 QChS shall be able to implement quality checking rules for a specific environmental parameter.
+R299,F-161 The Clarus system shall be able to implement quality checking rules for specific environmental situations.
+R300,H F-161H1 QChS shall be able to implement quality checking rules for specific environmental situations.
+R301,ID Requirement Source Allocation - QChS Comment Criticality F-162 The Clarus system shall be able to implement quality checking spatial tests using available data.
+R302,H F-162H1 QChS shall be able to implement quality checking spatial tests using available data.
+R303,H F-163H1 QChS shall be able to implement different quality checking rules specific to regional weather.
+R304,F-165 The Clarus system shall be able to base its quality checking process on values from multiple observations.
+R305,H F-165H1 QChS shall be able to flag observations based on more than one observation type.
+R306,F-166 The Clarus system shall be able to base its quality checking process on values distributed in time.
+R307,H F-166H1 QChS shall be able to base its quality checking process on values distributed in time.
+R308,ID Requirement Source Allocation - QChS Comment Criticality F-171 The Clarus system shall be able to base its quality checking process on historical environmental data.
+R309,H F-171H1 QChS shall be able to use historical environmental data in their quality checking algorithms.
+R310,F-175 The Clarus system shall be able to use multiple algorithms for its quality checking process.
+R311,M F-175H1 QChS shall be implemented for each defined standard quality checking algorithm.
+R312,L F-213H1 QChS shall be implemented to quality check new observation types as they become available.
+R313,ID Requirement Source Allocation - QChS Comment Criticality F-223H1 QChS shall apply quality flags to data as they are received.
+R314,"MHI CS, QEDS, EMS, QChS, CAS, SS, DOG H F-905H1 QChS shall log quality checking activity."
+R315,H1 QChS shall process environmental data from across North America.
+R316,P-023 The Clarus system shall be able to complete an automated quality checking check of environmental data within ten seconds of data receipt.
+R317,ID Requirement Source Allocation - QChS Comment Criticality P-023H1 A QChS shall be able to complete an automated quality check within ten seconds of when data is available for checking.
+R318,"QChS, QEDS H P-024H1 All QChS shall be completed within twenty minutes of data being available for checking."
+R319,SS Comment Criticality D-051 The Clarus system shall disseminate data in response to a scheduled request.
+R320,K1 The SS shall be able to initiate a QEDS response.
+R321,K1 The SS shall be able to initiate QChS.
+R322,K1 The SS shall record when it initiates actions.
+R323,H I-016K1 The SS shall be able to store event schedules.
+R324,I-016K2 The SS shall be able to initiate CS.
+R325,ID Requirement Source Allocation Comment Criticality D-011 The Clarus system shall be able to be hosted at one or more physical locations.
+R326,A1 The Clarus system shall track its constituent hosts.
+R327,A2 The Clarus system shall allocate each collector to a specific host.
+R328,A3 The Clarus system shall allocate each contributor to a specific host.
+R329,A4 Clarus hosts shall be able to aggregate environmental data from other Clarus hosts.
+R330,A5 Clarus hosts shall be able to distribute queries to other Clarus hosts.
+R331,D-021 The Clarus system shall use hardware that implements industry accepted standard interfaces.
+R332,MHI H D-031 The Clarus system shall use software that implements industry accepted standard interfaces.
+R333,MHI H D-041 The Clarus system shall be able to operate on redundant hardware.
+R334,ID Requirement Source Allocation Comment Criticality D-101 All HTML coding shall meet FHWA requirements for web sites.
+R335,Contract FHWA requirements for HTML coding can be found at http://www.tfhrc.gov/qkref/qrg08.htm H D-111 The Clarus system shall support modular components.
+R336,"OCS H D-121 The Clarus system shall be able to use latitude, longitude, and elevation coordinates to specify location to the nearest three feet."
+R337,MHI H D-126 The Clarus system shall use Coordinated Universal Time (UTC) for all timestamps.
+R338,OCS H X-801 The Clarus program shall alert users to system modifications.
+R339,H P-011 The Clarus system shall be able to publish environmental data at three times the volume rate that it collects it.
+R340,MHI M P-041 The Clarus system shall be able to support six hundred concurrent users.
+R341,H P-042 The Clarus system shall be able to support six thousand registered users.
+R342,ID Requirement Source Allocation Comment Criticality Q-011 The Clarus system shall be able to mitigate communication denial-of- service attacks.
+R343,MHI H Q-013 The Clarus system shall be able to respond to 95% of all requests for environmental data 95% of the time.
+R344,MHI H X-201 The Clarus program shall establish data sharing agreements with all participating sources of environmental data.
+R345,The Clarus program shall identify categories of recipients for dissemination of data.
+R346,"The Clarus program shall determine the need for bilateral Clarus Data Sharing Agreements with countries, agencies, states, and regions."
+R347,The authorized representative(s) of the contributors shall be identified.
+R348,Both the signatories of the Clarus Data Sharing Agreement and the positions/organizations responsible for Quality Control (QC)/Quality Assurance (QA) shall be named.
+R349,The contributors shall identify and define the types of data and information that will be included in the Clarus Data Sharing Agreement.
+R350,The contributors shall identify the intended use of their shared data and information.
+R351,The contributors shall identify the categories of recipients of their shared data and information.
+R352,The contributors shall define the units of measurements of their shared data and information.
+R353,The Clarus program shall determine how it will provide data and information to contributors.
+R354,The Clarus program shall provide data and information statistics on its operation to contributors.
+R355,The contributors shall inform the Clarus program of changes in authorized personnel/offices.
+R356,"The Clarus program shall inform contributors of the ""acceptance and use"" of their data and information."
+R357,The Clarus Initiative Management Team shall undertake joint communications activities and products that will enhance public understanding and dissemination of contributions of the Clarus program.
+R358,The Clarus Initiative Management Team shall agree upon the activities and products that will enhance public understanding/ communication of the contribution of the Clarus program.
+R359,The contributors shall inform the Clarus program of known error(s) and modifications in its data and information.
+R360,The Clarus program shall determine its redistribution of shared data from contributors based upon Clarus Data Sharing Agreements.
+R361,The Clarus program shall report successes and failures in data and information transmission to its contributors.
+R362,The contributors shall report periods of data and information outages to the Clarus program.
+R363,The Clarus program shall maintain information about requestors and their access to data and information.
+R364,The Clarus Initiative Management Team shall review and amend data and information sharing and use policies.
+R365,The Clarus Initiative Management Team shall specify the general frequency of policy meetings.
+R366,The Clarus Initiative Coordinating Committee shall nominate technical expert(s) to participate on technical working groups.
+R367,The requestors shall adhere to the intellectual property requirements of the Clarus User Agreement.
+R368,The contributors shall adhere to the intellectual property requirements of the Clarus Data Sharing Agreement.
+R369,The contributors shall have the right to use the Clarus system data and information for purposes delineated within the Clarus Data Sharing Agreement.
+R370,The requestors shall have the right to use the Clarus system data and information for purposes delineated within the Clarus User Agreement.
+R371,The Clarus program shall have the right to reject the use of data and information provided by the contributors when deemed appropriate.
+R372,"The Clarus program shall inform contributors of the policies, processes and procedures employed to reject data and information provided by the contributors."
+R373,"The contributors shall provide the Clarus program with a timely notice of their intent to change, alter, replace, or eliminate any shared data and information as specified within this Clarus Data Sharing Agreement."
+R374,"Any reference in the Clarus Data Sharing Agreement to statutes, regulations and rules shall be a reference to the amended, substituted, replaced or re-enacted statute, regulations and rules."
+R375,The Clarus program shall provide to contributors the limitation of liability for contributing environmental data and metadata.
+R376,The Clarus program shall provide to requesters the limitation of liability for using environmental data and metadata.
+R377,Task Force X-205 The Clarus program shall maintain continuous 24x7 operations.
+R378,ID Requirement Source Allocation Comment Criticality X-207 The Clarus program shall provide an environment that has uninterruptible power for the Clarus system.
+R379,MHI H X-209 The Clarus program shall provide an environment that has redundant communication for the Clarus system.
+R380,MHI H X-211 The Clarus program shall provide network management tools.
+R381,H X-215 The Clarus program shall provide setup support.
+R382,H X-221 The Clarus program shall provide for customer service.
+R383,OCS H X-225 The Clarus program shall provide a trained support staff.
+R384,ConOps §3.3.1 H X-232 The Clarus program shall define quality checking rules for environmental observations.
+R385,H X-233 The Clarus program shall define data retention standards.
+R386,MHI H X-235 The Clarus program shall provide documentation of Clarus standards.
+R387,ID Requirement Source Allocation Comment Criticality X-237 The Clarus program standards shall accommodate contributions of new sensor technologies to the Clarus system.
+R388,Inferred from ConOps §1 M X-239 The Clarus program standards shall support multiple methods of data delivery to users.
+R389,Inferred from ConOps §4.3 M X-305 The Clarus program shall maintain a comprehensive Clarus system test environment.
+R390,OCS H X-311 The Clarus program shall test all software changes in the designated test environment before deployment to production.
+R391,OCS H X-315 The Clarus program shall test all hardware changes in the designated test environment before deployment to production.
+R392,OCS H X-601 The Clarus program shall operate the Clarus system according to its published IT Security Plan.
+R393,"ID Requirement Source Allocation Comment Criticality X-605 The Clarus program shall operate according to Government IT security requirements as outlined in OMB Circular A-130, Management of Federal Information Resources, Appendix III, Security of Federal Automated Information Resources."
+R394,"Contract H X-611 The Clarus program shall operate according to Government IT security requirements as outlined in the National Institute of Standards and Technology (NIST) Guidelines, Departmental Information Resource Management Manual, and associated guidelines."
+R395,Contract H X-615 The Clarus program shall operate according to Government IT security requirements as outlined in
+R396,Contract H X-805 Weather service providers shall be able to use Clarus data to provide localized special weather products.
+R397,ID Requirement Source Allocation Comment Criticality X-811 Public agency maintenance and construction personnel shall be able to use the Clarus system to obtain environmental conditions.
+R398,ConOps §2.5.2 L X-815 Rail system personnel shall be able to use the Clarus system to obtain environmental conditions.
+R399,Inferred from ConOps §2.5.7 L X-821 Traffic management personnel shall be able to use the Clarus system to obtain environmental conditions.
+R400,Inferred from ConOps §2.5.3 L X-823 Transit personnel shall be able to use the Clarus system to obtain environmental conditions.
+R401,Inferred from ConOps §2.5.5 L X-825 The freight community shall be able to use the Clarus system to obtain environmental conditions.
+R402,Inferred from ConOps §2.5.8 L X-827 Emergency management and public safety personnel shall be able to use the Clarus system to obtain environmental conditions.
+R403,Inferred from ConOps §2.5.6 L X-905 The Clarus program shall maintain information about data providers.
+R404,ID Requirement Source Allocation Comment Criticality X-910 The Clarus program shall maintain metadata about each data provider's network.
+R405,OCS H X-915 The Clarus program shall maintain information about data provider redistribution restrictions.
+R406,OCS H X-921 The Clarus program shall maintain information about service providers.
+R407,OCS H X-925 The Clarus program shall maintain information about service provider communications.
+R408,OCS M X-931 The Clarus program shall maintain information about service provider access to data.
+R409,OCS H X-935 The Clarus program shall allow potential weather element data providers to request permission to submit weather information.
+R410,MHI H X-101 The Clarus system shall accept data only from sources which data sharing agreements have been established.
+R411,MHI (The Clarus program shall approve sources.) “Approved sources” are anticipated to be those with whom a data sharing agreement has been established.
+R412,Term Definition Polling Asking for information QA Quality Assurance QC Quality Control QCh Quality Check or Quality Checking QChS Quality Checking Services QEDC Qualified Environmental Data Cache QEDS Qualified Environmental Data Services Quality checking The operational activities and t echniques required to ensure that quality requirements have been fulfilled.

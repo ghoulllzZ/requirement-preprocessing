@@ -1,0 +1,27 @@
+﻿item,text
+R1,NFR 1 — The tools shall be able to process a set of multiple WARC /f_iles at the same time.
+R2,"For this purpose, the tools will allow you to choose/group them by: •explicit naming •wildcard name matching •size limitation •number of items NFR 2 — The tools shall be able to scale to process large collections using distributed processing and data transport (see FRS 10 and 11) NFR 3 — The tools shall offer best possible performance to correctly process large collections (I/O bound) NFR 4 — The tools shall be able to run on multiple machines but will not provide functionality for dealing with hardware failures (out of scope) NFR 5 — Implementation of the tools shall avoid unnecessary technology dependencies and shall not include development of partner-speci/f_ic integration technologies NFR 6 — The tools shall be compliant with Java development environments, by using web services, RESTful API’s, etc."
+R3,"NFR 7 — The tools shall provide logging facilities, for example, to follow command progression, i.e. process duration, output levels, etc."
+R4,NFR 8 — The tools shall provide enhanced usability by providing easy to adapt shell script wrappers for the major commands NFR 9 — It shall be possible to operate the tools in modes that restrict their effects to selected collection subsets.
+R5,NFR 10 — The work/f_low system shall have a con/f_igurable management strategy for migration from ARCs to WARCs.
+R6,A web user interface shall be available to set up the migration.
+R7,Con/f_iguration shall persist as a con/f_iguration /f_ile or database.
+R8,FR 1 — The migration work/f_low shall provide a clear Application Programming Interface (API) to handle the migration process and default con/f_iguration.
+R9,"FR 3 — A con/f_iguration must be provided explicitly, errors should be generated in the absence of a con/f_iguration."
+R10,"FR 4 — The user shall be able to provide metadata related to the conversion that will be stored in the converted /f_iles (e.g., institution, context, crawler, collection name, ...) FR 5 — It shall be possible to request that automatically generated migration metadata be stored in the converted /f_iles (e.g., OS/Kernel type, original ARC name, ARC size, ARC digests, conversion timestamp, ARC record offset, ...) NFR 13 — IIPC members should provide us with the default METADATA they want to be included for migration."
+R11,"FR 6 — The migration work/f_low shall be able to call external tools and services (e.g., database queries, shell commands, web service)."
+R12,"FR 9 — The API should be /f_lexible enough to allow external tools such as JHOVE, DROID to be used for /f_ile format identi/f_ication."
+R13,"FR 12 — Software checkpoints (such as start-trans, end-trans) may be added during processing for managing atomic transactions (e.g., operations on a /f_ile, these must start and complete to be accepted in the migration), except where operating system limitations would prohibit it."
+R14,FR 13 — It shall be possible to perform a “dry-run migration”.
+R15,"While doing a migration, we shall be able to detect and avoid duplicate documents."
+R16,FR 14 — Duplicate detection shall /f_ind and report WARC records with the same checksums.
+R17,FR 15.1 — Core validation shall use payload checksum comparisons.
+R18,FR 17 — Validation shall use Heritrix’s arcreader to double check that the original ARC record was correctly converted to WARC.
+R19,FR 18 — It shall be possible to perform a round trip validation: migrate the newly created WARC /f_ile back to ARC and compare both checksums (NFR 5) Repackaging Tool A tool will be created to extract WARC records from a collection and generate a new set of WARC /f_iles.
+R20,FR 19 — It shall be possible to repackage WARC /f_iles by /f_iltering records based on URL (regular expressions) FR 20 — It shall be possible to repackage WARC /f_iles by /f_iltering records based on MIME-Types.
+R21,FR 21 — It shall be possible to repackage WARC /f_iles by /f_iltering records based on size.
+R22,"FR 22 — It shall be possible to repackage WARC /f_iles by /f_iltering records based on timestamp (e.g., dates interval)."
+R23,FR 23 — It shall be possible to repackage WARC /f_iles by /f_iltering on any /f_ield in the WARC speci/f_ication.
+R24,"FR 25 — Each repackaged WARC /f_ile shall include a user-de/f_ined METADATA record which will describe the extraction context (e.g., /f_ilter used, involved WARC /f_iles, ... - see also FR4)."
+R25,"FR 26 — The migration framework shall provide tools to build reports from WARC /f_iles The summary tool also enables /f_ine grained manipulation of the reports and the production of useful variations. warc_summary WARC_FILES [options] WARC_FILES can be a list of WARC /f_iles (including wildcards, etc.) or a directory WARC /f_iles."
+R26,"NFR 16 — Repackaging /f_ilters can be used by the summary module FR 27 — It shall be possible to export summaries in various formats (e.g., XML, CSV) WARC Tools Phase III Functional Requirements Speci/f_ication 7"

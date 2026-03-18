@@ -1,0 +1,166 @@
+﻿item,text
+R1,A system requirements specification states what must be accomplished to fulfill the vision described in a concept of ope rations (ConOps).
+R2,The DUAP system must be able to cache the data after input such that it remains available for downstream processing.
+R3,"The gathered information must be presente d to all users in “real-time”, meaning that the information is only valuable if it can be provided and acted upon quickly enough to reduce the impact of the event as it is occurring."
+R4,"While this ability is of tremendous value in application research, operational policies will need to be established to protect the privacy and data ownership of the data originators."
+R5,While this may not be a significant policy issue during system
+R6,"Latency enters into the data collection process in several ways: • The time required for vehicle systems to collect and store vehicle data • The delay between the data collection and the data transmission from the vehicle to the roadside equipment (RSE) • The time required for the transmission of data from the RSE to the DUAP system • The time required for the DUAP system to process the data and publish it to other systems • The time between the DUAP processing and the transmission to the end systems While the VII data is much more timely and complete than data currently being processed, participants must recognize that VII data is “near real-time” data."
+R7,Each system using DUAP data must be capable of evaluating the data based on the source and date/time stamps to determine the suitability of each data element for the intended purpose.
+R8,Each application using the VII and DUAP data will need to have the capability of assessing the quality of data and making appropriate use of any available data quality flags.
+R9,Requirements formulated with “…shall…” are direct requirements;
+R10,those using “…shall be able to…” are conditioned on other requirements being fulfilled or on factors outside the control of the requirement’s subject.
+R11,Table 3 – Input Services ID Function Source Comments Importance IS-010 The DUAP System shall collect probe vehicle data.
+R12,H IS-010-005 The DUAP data elements shall include probe vehicle data fields corresponding to the SAE J2735 format as enumerated in APPENDIX C - SAE J2735 Probe Data Elements.
+R13,H IS-010-010 The DUAP Input Services shall be able to collect probe vehicle data from the VII Proof of Concept (POC) Probe Data Service (PDS) using the X-031 interface.
+R14,H IS-010-015 The DUAP Input Services shall be able to collect probe vehicle data from the Chrysler Fast Feedback (telematics demonstration) fleet using the Chrysler telematics interface.
+R15,H IS-010-020 The DUAP Input Services shall be able to collect probe vehicle data from Southeast Michigan Snow and Ice Management (SEMSIM) using the SEMSIM interface.
+R16,M IS-010-030 The DUAP Input Services shall be able to collect probe vehicle data from Suburban Mobility Authority for Regional Transportation (SMART) Transit using the SMART Transit interface.
+R17,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance IS-010-040 The DUAP Input Services shall be able to collect probe vehicle data from The Rapid Transit using the “The Rapid Transit” interface.
+R18,D IS-010-050 The DUAP Input Services shall be able to collect probe vehicle data from Ann Arbor Transit using the Ann Arbor Transit interface.
+R19,D IS-010-060 The DUAP Input Services shall be able to collect probe vehicle data from Detroit Department of Transportation (DDOT) Transit using the DDOT interface.
+R20,D IS-010-070 The DUAP Input Services shall be able to collect probe vehicle data from the MDOT fleet using the MDOT probe vehicle data interface.
+R21,M IS-010-080 The DUAP Input Services shall be able to collect probe vehicle data from truck fleets using the truck fleets’ interfaces.
+R22,L IS-010-090 The DUAP Input Services shall be able to collect probe vehicle data from the car rental fleets using the car rental fleets’ interfaces.
+R23,D IS-030 The DUAP System shall be able to collect weather data.
+R24,H IS-030-022 The DUAP Input Services shall be able to collect weather data from the Road Commission for Oakland County (RCOC) Road Weather Information Systems (RWIS) using the RCOC RWIS interface.
+R25,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance IS-030-023 The DUAP Input Services shall be able to collect weather data from the MDOT RWIS using the MDOT RWIS interface.
+R26,ConOps § 2.3.2.6 ConOps § 4.1 The MDOT RWIS system is currently being installed and should be able to provide data in 2008.
+R27,L IS-030-024 The DUAP Input Services shall be able to collect weather data from Michigan Department of Natural Resources (MDNR) weather information systems using the MDNR interface.
+R28,L IS-030-026 The DUAP Input Services shall be able to collect weather data from MDOT Aeronautics Automated Weather Observing System (AWOS) using the AWOS interface.
+R29,L IS-030-030 The DUAP Input Services shall be able to collect Clarus weather data as enumerated in APPENDIX D -Weather Data Elements from Clarus.
+R30,H IS-030-040 The DUAP Input Services shall be able to include weather condition fields corresponding to the SAE J2354 WeatherInformation structure as enumerated in APPENDIX E -SAE J2354 Weather Information Elements.
+R31,M IS-040 The DUAP System shall be able to collect Origin/Destination (O/D) data.
+R32,L IS-070 The DUAP System shall collect roadway traffic data.
+R33,H IS-070-003 The DUAP data elements shall include roadway event information data fields corresponding to the SAE J2354 structure as enumerated in APPENDIX F - SAE J2354 EventInformation Elements.
+R34,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance IS-070-005 The DUAP Input Services shall include roadway traffic data fields corresponding to the SAE J2354 structure as enumerated in APPENDIX G - SAE J2354 LinkTrafficInformation Elements.
+R35,H IS-070-010 The DUAP Input Services shall be able to collect roadway traffic data from the MITS Center using the MITS traffic data interface.
+R36,H IS-070-020 The DUAP Input Services shall be able to collect roadway traffic data from the Western Michigan Traffic Management System (WMTMS) using the WMTMS interface.
+R37,D IS-070-030 The DUAP Input Services shall be able to collect roadway traffic data from the RCOC system using the RCOC system interface.
+R38,H IS-070-040 The DUAP Input Services shall be able to collect roadway traffic data from the Road Commission of Macomb County (RCMC) system using the RCMC system interface.
+R39,L IS-070-050 The DUAP Input Services shall be able to collect roadway traffic data from NAVTEQ Corporation’s Traffic.com using the Traffic.com interface.
+R40,L IS-070-060 The DUAP Input Services shall be able to collect roadway traffic data from the Traffic Monitoring System for Highways (TMS/H) using the TMS/H interface.
+R41,L IS-070-070 The DUAP Input Services shall be able to collect traffic data from the Ann Arbor Traffic Management Center (TMC) system using the Ann Arbor TMC interface.
+R42,D IS-070-080 The DUAP Input Services shall be able to collect traffic data from the Detroit TMC system using the Detroit TMC interface.
+R43,D IS-070-090 The DUAP Input Services shall be able to collect traffic data from the Superior and Traverse City North Regions TMC system using the Superior and Traverse City North Regions TMC interface.
+R44,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance IS-070-100 The DUAP Input Services shall be able to collect traffic data from the Statewide TMC system using the Statewide TMC interface.
+R45,D IS-110 The DUAP System shall be able to collect traveler information.
+R46,ConOps § 2.3.2.6 ConOps § 4.3.1 L IS-130 The DUAP System shall be able to collect road condition data.
+R47,H IS-130-010 The DUAP Input Services shall be able to collect road condition data from Traffic Management Systems (TMS) using the TMS interface.
+R48,H IS-140 The DUAP System shall be able to collect work zone (lane closure) data.
+R49,H IS-905 The DUAP System shall log Input Services data transactions.
+R50,Table 4 – Administrative Services ID Function Source Comments Importance AS-020 The DUAP System shall be able to organize the sequence of execution of computational modules.
+R51,"ConOps § 4.3.7 H AS-030 The DUAP System shall allow the system administrator to add, modify, and delete Input Services."
+R52,"MHI H AS-040 The DUAP System shall allow the system administrator to add, modify, and delete Computational Services."
+R53,"MHI H AS-050 The DUAP System shall allow the system administrator to add, modify, and delete Output Services."
+R54,"MHI H AS-060 The DUAP System shall allow the system administrator to add, modify, and delete Presentation Services."
+R55,MHI H AS-200 The DUAP System shall restrict access to authorized users.
+R56,MDOT H AS-210 The DUAP System shall keep records of user access.
+R57,"MDOT H AS-220 The DUAP System shall allow a system administrator to add, modify and delete user access rights."
+R58,MDOT H AS-905 The DUAP System shall be able to log system operations.
+R59,MHI H AS-906 The DUAP System shall log Administrative Services data transactions.
+R60,Table 5 – Dynamic Data Services ID Function Source Comments Importance DD-010 The DUAP System shall cache (both raw and derived) probe vehicle data.
+R61,H DD-070 The DUAP System shall cache (both raw and derived) traffic data.
+R62,H DD-030 The DUAP System shall cache (both raw and derived) road weather data.
+R63,H DD-130 The DUAP System shall cache (both raw and derived) road condition data.
+R64,"MHI H DD-100 The DUAP System shall cache data only if the data record associates the data with its source, a geo- referenced location, and a timestamp."
+R65,MHI H DD-050 The DUAP System shall cache data for 1 week.
+R66,H DD-040 The DUAP System shall allow data to be accessed as soon as it is cached.
+R67,ConOps § 4.3.2 H DD-905 The DUAP System shall log Dynamic Data Services data transactions.
+R68,Table 6 – Computational Services ID Function Source Comments Importance CS-010 The DUAP System shall derive traffic data from probe vehicle data.
+R69,H CS-010-010 The DUAP Computational Services shall be able to derive speed from probe vehicle data.
+R70,ConOps § 4.3.4 ConOps § 5.3 H CS-010-020 The DUAP Computational Services shall be able to derive congestion level based on volume to capacity from probe vehicle data.
+R71,ConOps § 4.3.4 ConOps § 5.3 H CS-010-030 The DUAP Computational Services shall be able to derive traffic counts from probe vehicle data.
+R72,ConOps § 4.3.4 ConOps § 5.3 L CS-010-040 The DUAP Computational Services shall be able to derive traffic distribution (occupancy) from probe vehicle data.
+R73,ConOps § 4.3.4 ConOps § 5.3 L CS-010-050 The DUAP Computational Services shall be able to derive freeway queue length from probe vehicle data.
+R74,ConOps § 4.3.4 ConOps § 5.3 H CS-010-055 The DUAP Computational Services shall be able to derive arterial queue length from probe vehicle data.
+R75,ConOps § 4.3.4 ConOps § 5.3 L CS-010-060 The DUAP Computational Services shall be able to derive travel time from probe vehicle data.
+R76,ConOps § 4.3.4 ConOps § 5.3 H CS-010-070 The DUAP Computational Services shall be able to derive turning movements from probe vehicle data.
+R77,ConOps § 4.3.4 ConOps § 5.3 M CS-020 The DUAP System shall be able to infer incidents from probe vehicle data.
+R78,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance CS-020-010 The DUAP Computational Services shall be able to infer incident occurrences from probe vehicle data.
+R79,ConOps § 4.3.4 ConOps § 5.1 ConOps § 5.3 H CS-020-020 The DUAP Computational Services shall be able to infer incident locations from probe vehicle data.
+R80,ConOps § 4.3.4 ConOps § 5.1 ConOps § 5.3 H CS-020-030 The DUAP Computational Services shall be able to infer incident type from probe vehicle data.
+R81,ConOps § 4.3.4 ConOps § 5.1 ConOps § 5.3 M CS-020-040 The DUAP Computational Services shall be able to infer incident severity from probe vehicle data.
+R82,ConOps § 4.3.4 ConOps § 5.1 ConOps § 5.3 M CS-040 The DUAP System shall be able to derive road surface weather observations from probe vehicle data.
+R83,ConOps § 4.3.4 ConOps § 5.2 H CS-070 The DUAP System shall be able to derive travel demand from probe vehicle data.
+R84,ConOps § 4.3.4 ConOps § 5.3 L CS-100 The DUAP System shall be able to derive roadway surface conditions from probe vehicle data.
+R85,ConOps § 4.3.4 L CS-100-010 The DUAP Computational Services shall be able to derive pavement surface conditions from probe vehicle data.
+R86,ConOps § 4.3.4 L CS-100-020 The DUAP Computational Services shall be able to derive bridge surface conditions from probe vehicle data.
+R87,ConOps § 4.3.4 L CS-100-030 The DUAP Computational Services shall be able to derive pothole location from probe vehicle data.
+R88,ConOps § 4.3.4 ConOps § 5.4 H CS-100-040 The DUAP Computational Services shall be able to derive pothole severity from probe vehicle data.
+R89,ConOps § 4.3.4 ConOps § 5.4 L CS-120 The DUAP System shall be able to identify high risk locations.
+R90,ConOps § 4.3.4 ConOps § 5.2 M CS-130 The DUAP System shall be able to calculate measures of effectiveness.
+R91,ConOps § 3.1.3 H CS-140 The DUAP System shall be able to perform data quality checking.
+R92,ConOps § 4.3.4 M CS-905 The DUAP System shall log Computational Services data transactions.
+R93,Table 7 – Persistent Data Services ID Function Source Comments Importance PD-020 The DUAP System shall store geo-references for Michigan roadways.
+R94,ConOps § 2.3.2.4 H PD-030 The DUAP System shall store DUAP system configuration data.
+R95,MHI H PD-040 The DUAP System shall archive cached data.
+R96,ConOps § 4.3.3 ConOps § 5.1 ConOps § 5.2 ConOps § 5.3 ConOps § 5.4 H PD-040-010 The DUAP Persistent Data Services shall be able to archive cached (raw and derived) probe vehicle data.
+R97,H PD-040-020 The DUAP Persistent Data Services shall be able to archive cached (raw and derived) traffic data.
+R98,ConOps § 4.3.3 H PD-040-030 The DUAP Persistent Data Services shall be able to archive cached (raw and derived) roadway weather data.
+R99,ConOps § 4.3.3 H PD-040-040 The DUAP Persistent Data Services shall be able to archive cached (raw and derived) road condition data.
+R100,ConOps § 4.3.3 H PD-905 The DUAP System shall log Persistent Data Services data transactions.
+R101,Table 8 – Output Services ID Function Source Comments Importance OS-010 The DUAP System shall publish data.
+R102,ConOps § 4.3.5 ConOps § 5.1 ConOps § 5.2 H OS-010-010 The DUAP Output Services shall be able to publish traveler data in SAE J2354 format as enumerated in Appendix E.
+R103,H OS-010-025 The DUAP Output Services shall be able to publish roadway traffic information in Traffic Management Data Dictionary (TMDD) format.
+R104,ConOps § 5.3 MHI L OS-010-030 The DUAP Output Services shall be able to publish traffic data to TMS using the TMS interface format.
+R105,M OS-010-020 The DUAP Output Services shall be able to publish data to SEMSIM using the SEMSIM interface format.
+R106,L OS-010-050 The DUAP Output Services shall be able to publish traffic data in the VISSIM traffic analysis tool VISSIM interface format.
+R107,D OS-010-060 The DUAP Output Services shall be able to publish traffic data in the Synchro traffic analysis tool Synchro interface format.
+R108,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance OS-010-070 The DUAP Output Services shall be able to publish traffic data in the Paramics traffic analysis tool Paramics interface format.
+R109,D OS-010-075 The DUAP Output Services shall be able to publish traffic data in the SimTraffic traffic analysis tool SimTraffic interface format.
+R110,D OS-010-080 The DUAP Output Services shall be able to publish traffic management data in TMS/H interface format.
+R111,M OS-010-090 The DUAP Output Services shall be able to publish weather data elements as enumerated in APPENDIX D - Weather Data Elements from Clarus output format.
+R112,H OS-010-100 The DUAP Output Services shall be able to publish asset condition data using the asset condition data interface format.
+R113,L OS-020 The DUAP System shall publish alerts.
+R114,OS-020-010 The DUAP Output Services shall be able to publish traffic condition alerts using the traffic condition alert interface format.
+R115,M OS-020-020 The DUAP Output Services shall be able to publish weather condition alerts using the weather condition alert interface format.
+R116,M OS-020-030 The DUAP Output Services shall be able to publish asset condition alerts using the asset condition alert interface format.
+R117,L OS-020-040 The DUAP Output Services shall be able to publish alerts using the threshold exceeded alert interface format when thresholds have been exceeded.
+R118,H OS-030 The DUAP System shall publish information for the MDOT MI Drive presentation.
+R119,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance OS-905 The DUAP System shall log Output Services data transactions.
+R120,Table 9 – Presentation Services ID Function Source Comments Importance PS-010 The DUAP Presentation Services shall present data published by Output Services.
+R121,ConOps § 4.3.5 ConOps § 4.3.6 H PS-020 The DUAP Presentation Services shall include a user interface for browsing traffic information.
+R122,"ConOps § 4.3.6 H PS-020-010 The traffic information browser shall allow a user to query traffic-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R123,"H PS-020-020 The traffic information browser shall allow a user to view traffic-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-262 edition 3), and XML 1.0."
+R124,H PS-020-030 The information browsers shall provide a means for users to select between Metric and English units of measurement for display.
+R125,D PS-020-040 The information browsers shall provide a map display which uses icons to identify the locations with associated data.
+R126,ConOps § 4.3.6 MHI H PS-020-050 The system map display shall provide a means to select which data layers are displayed.
+R127,ConOps § 4.3.6 MHI L PS-020-060 The system map display shall support each type of traffic item to be displayed in its own layer.
+R128,ConOps § 4.3.6 MHI M PS-020-070 The system map display shall support pan and zoom capabilities to allow a user to select the area to be displayed.
+R129,ConOps § 4.3.6 MHI M PS-020-080 The system map display shall support de-cluttering to reduce the number of icons displayed when large areas are displayed.
+R130,L PS-020-090 The information browsers shall provide tabular information identifying locations with associated data.
+R131,ConOps § 4.3.6 MHI H PS-020-100 The tabular information display shall provide a means to select the data to be displayed.
+R132,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance PS-020-110 The tabular information display shall provide a means to select the area to be displayed.
+R133,ConOps § 4.3.6 MHI M PS-030 The DUAP Presentation Services shall include a user interface for browsing incident information.
+R134,"ConOps § 4.3.6 ConOps § 5.1 H PS-030-010 The incident information browser shall allow a user to query incident-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R135,"H PS-030-020 The incident information browser shall allow a user to view incident-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R136,H PS-040 The DUAP Presentation Services shall include a user interface for browsing traveler information.
+R137,"ConOps § 4.3.6 ConOps § 5.1 M PS-040-010 The traveler information browser shall allow a user to query traveler-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R138,"M PS-040-020 The traveler information browser shall allow a user to view traveler-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R139,M PS-050 The DUAP Presentation Services shall include a user interface for browsing asset condition information.
+R140,"ConOps § 4.3.6 ConOps § 5.4 ConOps § 7.1 M PS-050-010 The asset condition information browser shall allow a user to query asset condition-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-262 edition 3), and XML 1.0."
+R141,"M PS-050-020 The asset condition information browser shall allow a user to view asset condition-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-262 edition 3), and XML 1.0."
+R142,M PS-080 The DUAP Presentation Services shall include a user interface for browsing weather information.
+R143,"ConOps § 4.3.6 ConOps § 5.2 H PS-080-010 The weather information browser shall allow a user to query weather-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R144,"Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification ID Function Source Comments Importance PS-080-020 The weather information browser shall allow a user to view weather-related information using a web browser capable of supporting HTML 4.01, JavaScript (ECMA-"
+R145,H PS-200 The DUAP System shall require users to log in for system access.
+R146,MDOT PS-200-010 The DUAP Presentation Services shall require users to uniquely identify themselves.
+R147,PS-200-020 The DUAP Presentation Services shall require users to confirm their identity.
+R148,PS-905 The DUAP System shall log Presentation Services data transactions.
+R149,Table 10 – Design Constraints ID Requirement Source Comments Importance DC-010 The DUAP System shall conform to IT standards established by the Michigan Department of Information Technology (MDIT).
+R150,H DC-010-010 The DUAP System shall use a Java software foundation.
+R151,ConOps § 4.6.4 M DC-010-015 The DUAP system shall use Java Database Connectivity (JDBC) components to interact with databases.
+R152,M DC-010-020 The DUAP System shall be able to use Oracle 10G as the relational database.
+R153,ConOps § 4.6.4 M DC-010-030 The DUAP System shall handle database data requests through standard Structured Query Language (SQL).
+R154,The DUAP System shall use Michigan Geographic Framework geo-references.
+R155,Table 11 – Quality Characteristics ID Requirement Source Comments Importance QC-020 The DUAP System shall be capable of adding new data sources.
+R156,L QC-030 The DUAP System shall be capable of adding new computational algorithms.
+R157,L QC-040 The DUAP System shall be capable of adding new output formats of published data.
+R158,L QC-050 The DUAP System shall be capable of adding new presentations of published data.
+R159,Table 12 – External Requirements ID Requirement Source Comments Importance XR-100 Access to the DUAP system shall be limited to users authorized by MDOT.
+R160,"Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification APPENDIX A - DEFINITIONS, ACRONYMS, AND ABBREVIATIONS The following table provides the defini tions of all terms, acronyms, and abbreviations required to properly interpret this Concept of Operations."
+R161,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification APPENDIX C - SAE J2735 PROBE DATA ELEMENTS The DUAP system shall be capable of storing the following data elements: ID Element Description IS-010-500 Probe Segment Number Identifier of related probe data snapshots IS-010-510 Time Local time IS-010-520 Date Local date IS-010-530 Time Confidence 95% confidence level for the currently reported value of time IS-010-540 Latitude Latitude of the center of the vehicle IS-010-550 Longitude Longitude of the center of the vehicle IS-010-560 Elevation Elevation of the center of the vehicle IS-010-570 Positioning Confidence 95% confidence level for the currently reported value of positioning entries IS-010-580 Heading Current heading of the vehicle IS-010-590 Speed Current vehicle speed IS-010-600 Speed & Heading Confidence
+R162,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification APPENDIX D - WEATHER DATA ELEMENTS FROM CLARUS The DUAP system shall be capable of storing the following weather data elements from Clarus: ID Element Description Units IS-030-200 essLatitude Latitude of the Environmental Sensor Station (ESS) [observation] per WGS-
+R163,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification APPENDIX E - SAE J2354 WEATHER INFORMATION ELEMENTS The DUAP system shall be capable of st oring the following data elements for each weather condition item received from SAE J2354 providers: ID Element Description IS-030-901 id Unique identifier IS-030-902 reference Reference identifier IS-030-903 issuingAgency Name of reporting agency IS-030-904 updateTime Date/timestamp indicating when the item was updated by the issuing agency IS-030-905 location Geographic location description IS-030-906 altLocType Alternate location data IS-030-907 elevationsAbove Indicate whether the information reported applies to elevations above the given elevation IS-030-908 elevationsBelow Indicate whether the information reported applies to elevations below the given elevation IS-030-909 isForecast Indicate whether the date/timestamps are forecasted or absolute IS-030-910 coverageTime Date/timestamp indicating the coverage time IS-030-911 forecastExpires Date/timestamp indicating the forecasted expiration time IS-030-912 tempSummary Temperature summary IS-030-913 tempQualifiers Temperature qualifier IS-030-914 highTemp High temperature in tenths of degree Celsius IS-030-915 lowTemp Low temperature in tenths of degree Celsius IS-030-916 currTemp Current temperature in tenths of degree Celsius IS-030-917 conditions Weather conditions IS-030-918 sunriseTime Sunrise time IS-030-919 sunsetTime Sunset time IS-030-920 skyConditions Sky conditions IS-030-921 cloudPercent Amount of cloud cover IS-030-922 visibilityLevel Visibility level IS-030-923 visibilityQualifier Visibility qualifier IS-030-924 visibility Surface visibility in tenths of a meter IS-030-925 windsType Type of winds IS-030-926 windDirection Wind direction IS-030-927 windAngle Wind angle in degrees IS-030-928 windSpeed Wind speed in tenths of meters per second IS-030-929 windGustSpeed Wind gust speed in tenths of meters per second IS-030-930 precipitationProbability Precipitation probability IS-030-931 precipitation Precipitation type IS-030-932 humidity Relative humidity in percent IS-030-933 snowDepth Current depth of unpacked snow in centimeters IS-030-934 snowPack Current depth of packed snow in centimeters IS-030-935 snowFall Snowfall accumulation rate in 10-7 meters per second IS-030-936 snowOffRoad Depth of snow in centimeters on representative areas other than the highway pavement IS-030-937 iceThickness Thickness of ice in millimeters
+R164,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification APPENDIX F - SAE J2354 EVENTINFORMATION ELEMENTS The DUAP system shall be capable of st oring and publishing the following data elements for each traffic event or incident item: ID Element Description IS-070-301 id Unique identifier IS-070-302 reference Reference identifier IS-070-303 issuingAgency Name of reporting agency IS-070-304 updateTime Date/timestamp indicating when the item was updated by the issuing agency IS-070-305 location Geographic location description IS-070-306 isForecast Indicate whether the date/timestamps are forecasted or absolute IS-070-307 coverageTime Date/timestamp indicating the coverage time IS-070-308 forecastExpires Date/timestamp indicating the forecasted expiration time IS-070-309 typeEvent Type of traffic event IS-070-310 severity Severity IS-070-311 status Status IS-070-312 cause Cause IS-070-313 description Description IS-070-314 advice Advice IS-070-315 affectedLane Lanes affected and direction(s) of travel impacted IS-070-316 vehiclesInvolvedCount Number of vehicles involved IS-070-317 types Types of vehicles involved IS-070-318 injuries Number of injuries IS-070-319 startTime Date/timestamp indicating the start time IS-070-320 clearTime Date/timestamp indicating the ending time IS-070-321 repeatTimes Repeating times for traffic events which recur over a period of days IS-070-322 furtherData URL for further information
+R165,Michigan Department of Transportation VII Data Use Analysis and Processing System Requirements Specification APPENDIX G - SAE J2354 LINKTRAFFICINFORMATION ELEMENTS The DUAP system shall be capable of st oring and publishing the following data elements for each traffic condition item: ID Element Description IS-070-501 id Unique identifier IS-070-502 reference Reference identifier IS-070-503 issuingAgency Name of reporting agency IS-070-504 updateTime Date/timestamp indicating when the item was updated by the issuing agency IS-070-505 location Geographic location description IS-070-506 isForecast Indicate whether the date/timestamps are forecasted or absolute IS-070-507 coverageTime Date/timestamp indicating the coverage time IS-070-508 forecastExpires Date/timestamp indicating the forecasted expiration time IS-070-509 capacity Link capacity expressed as the maximum capacity in vehicles per hour for each referenced link IS-070-510 delay Calculated delay in seconds (additional time it will take above that recorded during free flow conditions) for vehicles driving along each referenced link IS-070-511 density Link density expressed as the vehicle concentration per kilometer of the link for each referenced link IS-070-512 lanesMinimumNumber Minimum number of lanes for each referenced link IS-070-513 lanesNumberOpen Minimum number of open lanes for each referenced link IS-070-514 length Link length for each referenced link from beginning node to ending node in meters IS-070-515 levelOfService Link level of service for each referenced link IS-070-516 medianType Link median type for each referenced link IS-070-517 name Link name for each referenced link IS-070-518 occupancy Percent occupancy measured for each referenced link IS-070-519 pavementType Pavement type for each referenced link.

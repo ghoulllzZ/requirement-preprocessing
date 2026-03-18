@@ -1,0 +1,196 @@
+﻿item,text
+R1,"Modification History After the baseline version of this document is approved, any changes made to the document must be approved in accordance with the provisions of the established Change Management Plan."
+R2,"Objectives The RLCS Application must support the objectives listed in Section 1.2 System Goals, in the System Requirements Specification."
+R3,"Reliability requirements – The RLCS Application must be available 24 hours per day, 7 days per week, 365 days per year."
+R4,"In order to achieve this, the nature of the risk must be understood and continually kept in mind by control system developers and testers."
+R5,"It is unknown at this time which particular controller will be used to control the field devices, but the software must interface with whichever controller is chosen to interface with the field devices."
+R6,The RLCS software shall send to and receive data from the field device I/O cards through I/O driver software.
+R7,External System Interfaces All external systems shall retrieve RLCS status from a server outside the RLCS network. (outside a firewall).
+R8,Functional requirements This section describes the fundamental actions that must occur to accept inputs and produce outputs.
+R9,"It includes explanations of validity checks on inputs, [vendor must complete the validity check information] sequences of operations, and responses to abnormal situations."
+R10,"Graphical User Interface (GUI) The system shall have a Graphical User Interface (GUI) that allows the operator to view system status, issue commands to change device status, configure the system, export log data, and generate reports."
+R11,The RLCS software shall have a logon screen for the GUI.
+R12,The logon screen shall request user name and corresponding password.
+R13,The logon screen shall activate command control for the user if the user requests it and has authorization.
+R14,Command control shall be from only specified workstations.
+R15,"If command control is enabled by another user, and the logging in user is of higher security, the logging in user shall be requested to accept or deny command control."
+R16,"Time Stamp, User, and Workstation ID Window The GUI shall indicate the current date and time, user’s name, and workstation location name."
+R17,The GUI shall also show other users currently logged in the other units within the RLCS network.
+R18,The GUI shall provide an option that allows the system user to issue commands that monitor and control opening and closing events.
+R19,"Based on the user’s security level, the control option shall provide the user with the appropriate level of control."
+R20,The control option shall provide the user with the capability to set the operational status of failed devices.
+R21,"The RLCS software shall display information about active overrides: Which are active, and which devices have no currently active 'rules protection' against erroneous opening/closing."
+R22,"The GUI shall provide a display of the I-15 Reversible Lane Control System facility geographic area, including a layout of the mainline I-15, SR-163 freeway area in the same geographic area as the I-15 Reversible Lane."
+R23,"For alarm status, the GUI shall also issue an audible alarm, and the icon shall be different from the okay status for that device."
+R24,The visual alarm shall include a change of color for the affected device.
+R25,There shall be an option to turn off the audible alarm permanently or temporarily for a given period.
+R26,The alarm icon shall change to the normal status icon automatically when the alarm condition is removed.
+R27,Alarm conditions shall be configurable on the screen.
+R28,"When a device status has been overridden, on the screen it shall appear with different color from the normal and alarm status colors."
+R29,Status information shall continue to display when no user is logged on to the workstation and shall continually be updated every 2 seconds.
+R30,The GUI shall provide an option for “Configuration” that is only accessible by the RLCS Software user with System Administrative privileges.
+R31,It shall display and allow modification of all database tables with the exception of log tables.
+R32,"When the system administrator modifies the database tables, the GUI shall analyze the data before storing in the database and notify the system administrator of any conflicting or redundant entries."
+R33,The configuration option shall allow a security level and password to be assigned to each defined staff member.
+R34,"User security levels shall be assigned at the command level, device, mode, workstation, and system function."
+R35,The configuration option shall also allow user accounts l to be changed remotely in the field units.
+R36,"When an operator is making changes on the system, the GUI configuration screen shall display to the user which device, controller, or workstation in the RLCS network will be affected by the changes."
+R37,The option to configure device rules shall require an additional login password for that option.
+R38,The GUI shall allow devices to be added and removed from the display without requiring programming effort.
+R39,The GUI shall allow the facility map to be modified without requiring programming effort.
+R40,"Display/Export System Information Logs The system shall display information logs and provide the capability to export the logs in common ASCII text for importing to commercial database, spreadsheet, or reporting programs."
+R41,The Problem Work Order shall be a separate display that allows the user to enter information about a system problem.
+R42,The Problem Work Order data shall be editable and exportable to ASCII delimited files by the user.
+R43,The “Daily Diary” shall be a separate display that allows the user to enter free form text comments.
+R44,"Single Device Status Screen The GUI shall provide the ability to display the status of one device at the detail level, showing all sensor data for that device."
+R45,"Device Category Status Screen The GUI shall provide the ability to display the current status of a category of devices at the detail level, showing all sensor data for all devices of the same category."
+R46,Report Screen The user shall be able to retrieve historic reports from the COTS reporting system based on date range and report name.
+R47,Emergency Notification Information Screen The system shall display the appropriate emergency contact information in the event of an alarm condition.
+R48,"Command Confirmation/Abort/Override Screen The GUI shall display a separate window requesting confirmation of the command upon receiving a command either from the user at the keyboard, or from a scheduled sequence of commands."
+R49,Alarm Acknowledgment/Silencing Screen The GUI shall allow the operator to acknowledge an alarm and have the option to silence the audible portion of the alarm for a configurable number of seconds or permanently for that device only.
+R50,The GUI shall include diagnostic screen providing the user with the capability to diagnose failed devices at the sensor level.
+R51,Change System Mode the GUI shall provide a screen for authorized users to change system mode.
+R52,"Help Screen The GUI shall provide a screen for describing system features, functions, database tables, and fields."
+R53,"The RLCS shall monitor all field device sensors, and shall process operator requests for changing field device status."
+R54,"Any operator or system command, which changes the state of field control devices, must be checked for integrity at multiple levels in the RLCS."
+R55,"The RLCS software shall monitor, display, and update the database with the status of all system field elements."
+R56,Any change in device state shall be reported on the screen not later than 2 seconds from the time it occurs.
+R57,In addition to monitoring field devices the system shall also monitor field controllers and connected on the RLCS network for control system integrity.
+R58,The system shall report any users logged in RLCS network computers any time and all commands issued in the field units.
+R59,"During ‘degraded’ mode, the system shall monitor device sensors at the frequency rate stored in the database to take effect only during ‘degraded’ mode."
+R60,"In general, the system shall monitor the status of all field devices at the frequency specified in the System Control Parameters for that mode."
+R61,The system shall control all system field elements to device sensor level for those device sensors that may be controlled.
+R62,Each device control command shall check the current status of all closure devices in the system and shall abort if any closure control device status is unknown.
+R63,"Each command (at the device sensor command, device command(macro), or system operational command (super macro) level) shall only be executed when a valid or good status exists for all device sensors."
+R64,An authorized user shall be able to log in and issue device status requests and control commands from specified computers in the network. (This is determined
+R65,The current status for all devices shall be maintained at each controller unit.
+R66,Check Device Status for Alarm Condition Each status received from device sensors shall be checked against alarm conditions for that device sensor and the status will be updated to indicate an alarm.
+R67,Critical alarms shall be generated when one or more of these conditions are met.
+R68,Warning alarms shall be generated when one or more of these conditions are met.
+R69,"If a critical alarm occurs during opening or closing operation, the system shall present the operator with possible actions that can be taken in order to complete the operation."
+R70,"If overriding a device status is needed in order to proceed, the system shall determine if the operator has high enough security and provide advise on how to proceed."
+R71,"In order for a command to be processed from any workstation or controller, the MCU field device shall be in the “Auto” mode."
+R72,The system operator shall be able to override any device and continue with a system operational command sequence.
+R73,The process of overriding a device status shall not affect the status of any other device.
+R74,Business Rules / Interlocks / Safety Screening Each control command that is processed must be validated against the secured safety rules (stored in non-volatile memory) for the command.
+R75,"If a status from any device is not received upon request, the system shall automatically request the status again."
+R76,Failure to receive a valid status after a configurable number of retries shall be considered a device failure.
+R77,"When each workstation and control unit (workstation or intelligent controller at the FCU or DCU) comes online, the system shall identify it and all its associated device sensors."
+R78,The RLCS software shall initialize each control unit and device sensor as it is identified.
+R79,"RLCS Software Startup PROCESS: The RLCS software in the field shall first identify the its unit when it starts, by reading the cabinet id."
+R80,If everything is OK the start up process shall not exceed 30 seconds.
+R81,The RLCS software shall then monitor all the devices and send the current status to the FCU or TSU every 2 seconds (or at the rate specified in the System Control Parameters for the current mode).
+R82,The RLCS software shall be designed to allow for future changes to the roadway without requiring programming effort.
+R83,Updating non-volatile memory-based tables shall be sufficient to accommodate future changes to the roadway.
+R84,The system shall generate log files as follows for reports:
+R85,"stamp, operator ID, unit where the command was issued at and shall include failed or aborted commands."
+R86,Device command log shall not be editable by users.
+R87,"System Operation Command Log: Contains system operational commands issued with time stamp, operator ID, unit where the command was issued at and shall include failed or aborted commands."
+R88,System Operation command shall not be editable by users
+R89,The RLCS shall execute stored operational control command sequences based on the current system mode of operation and the schedule for each sequence.
+R90,The RLCS shall present scheduled command operations to the operator at the GUI for confirmation prior to executing the command.
+R91,"At any point in an opening or closing sequence, the sequence shall be halted if:"
+R92,"At any point in an opening sequence, the sequence shall be halted if the status of a closure device for the opposite direction of travel changes to ‘unknown’ or ‘open’."
+R93,"To resume an opening or closing sequence after a halt has occurred, the operator shall be able to issue a command to resume if the offending device status can be corrected within a configurable time period as defined in the database and in non- volatile memory."
+R94,"The RLCS shall store, process, and retrieve all data necessary to operate the application software as well as generate current and historical reports of system operations, and export system status data to an external server data store."
+R95,"The RLCS shall also store, process, and retrieve all data necessary to secure the system from unauthorized use."
+R96,A commercial off-the-shelf database management system shall be used for this function.
+R97,The RLCS application software shall update and read database tables to support system operations.
+R98,The RLCS application software shall Update and read password and device rule data in encrypted format.
+R99,"Users with ‘Status Only’ command level security may not issue any control commands at any level (device, macro, or super macro). ‘Control’ allows a user to issue control commands, and is a higher level of security. ‘Override’ allows a user to temporarily change the status of a device in the database for a configurable period of time in order to allow a command sequence to continue."
+R100,Commands shall be classified in these categories
+R101,The system shall will employ a one-way hash function as an aid to maintaining the integrity of the data and software in the field.
+R102,The hash value returned by the function shall will be at least 128 bits in length.
+R103,"At each time, one or more of the above item types, listed under ‘Control Unit Non-Volatile Memory’, is created or modified, a UTC date/time stamp shall will be updated."
+R104,The update of the time stamp shall will be the last step in the process which builds the time stamped code/data section.
+R105,"The system shall will also, for each control unit in the system, produce a table of the returned ‘one-way hash function’ (Message Digest) values, of each of the ‘Control Unit Non-Volatile Memory’ items."
+R106,The returned ‘Message Digest’ values shall will be stored as hexadecimal characters.
+R107,The appropriate ‘Message Digest’ table shall will be maintained in non-volatile memory in each system control unit.
+R108,The periodic evaluation shall will occur at least once a day.
+R109,The ‘Message Digest’ value verification results shall will be recorded in the system log.
+R110,A verification failure shall will cause an alarm condition for the affected control unit.
+R111,"If the failure occurs in checking the non-volatile memory items, the system shall will prevent the affected unit from being used in control sequences."
+R112,The system shall will provide for ‘Message Digest’ verification requests for a given unit by operator command.
+R113,"To change device command rules on the production system, the System Administrator must upload a new database version after testing the rule changes in the Simulator environment."
+R114,A commercial off-the-shelf reporting tool shall be used for this function.
+R115,The system shall generate problem reports based on alarms and system status reports
+R116,Priority: Must have
+R117,The external server data store containing RLCS status for use by external systems shall be updated once per minute.
+R118,"The field device status information logging to the database shall be 2 seconds, but can be configurable within the database to more than 2 seconds by the user."
+R119,"The field device status information display update frequency shall be 2 seconds, but can be configurable within the database to more than 2 seconds by the user."
+R120,The RLCS shall receive device status information from devices sensors within 2 seconds of the status information being issued by the device sensor.
+R121,Field devices shall receive respond to commands from the RLCS within 12 seconds of the command confirmation being issued by the operator using a keyboard (or other input device).
+R122,"The RLCS shall support multiple users logged on, up to the limit of the number of users defined in the database."
+R123,"Not including device and network response times, requests from the GUI for status updates shall not exceed 2 seconds to update the GUI display."
+R124,"Not including device and network response time, requests from the GUI for device status changes (control commands) shall not exceed 2 seconds."
+R125,The facility map on the screen shall refresh every 2 seconds but can be configurable within the database to more than 2 seconds by the user.
+R126,"The RLCS notification to the operator workstation of any critical alarms shall occur within 2 seconds of alarm detection, and shall occur whether or not an operator is logged on to the system."
+R127,"The field units (controllers) shall continually monitor device status, controller status and the control system integrity and send the status to the central"
+R128,The RLCS shall detect alarm conditions within 2 seconds of occurrence.
+R129,"At a minimum of every 60 seconds, the system shall check the current date and time against a list of scheduled events for the current mode to determine if any event should be executed."
+R130,The RLCS shall support at a minimum the 4 daily ‘normal’ mode open and close scheduled operations plus at least the same number of ‘emergency’ and ‘maintenance’ mode scheduled events.
+R131,The database retrieval and update response time shall not impact any other performance requirements such as the GUI response time or monitoring and control responses.
+R132,"If the GUI is required to reflect change in status within 2 seconds, then the database update time must be less than 2 seconds."
+R133,"The operator shall be able to store and retrieve previously created report results from the RLCS for a minimum period of 60 days, but configurable for up to one year."
+R134,The raw data used to create reports shall be kept in the RLCS for a minimum period of
+R135,Report processing shall not impact any other performance requirements such as the GUI response time or monitoring and control responses
+R136,Report response time shall be determined by the database resources allocated to the reporting function.
+R137,"Any operator or system command, which changes the state of field control devices, must be checked for integrity at multiple levels in"
+R138,Valid checksum algorithms must be employed to check the integrity of messages between units.
+R139,The RLCS must support the following data transfer performance goals:
+R140,"The transmission rate required to transfer this data in 2 seconds is: 328 kbits/2 sec. = 164 kbits/s At a 30 second polling interval, the transmission rate drops to 10.9 kbits/s."
+R141,"The data processing and security, and reporting functions of the RLCS application software shall be implemented with commercial off-the-shelf software."
+R142,"The RLCS shall incorporate a database to store, process, and retrieve all data necessary to secure the system from unauthorized use."
+R143,The processing code at the FCU and DCU controllers shall be resident in non-volatile memory .
+R144,The application software processing code and application software data such as login information at the FCU and DCU controllers shall be resident in non-volatile memory.
+R145,The MD5 algorithm shall be used to secure application data and software in the controllers and the application server.
+R146,The RLCS must demonstrate the ability to function continuously without needing to be reset or rebooted due to an RLCS error for at least 30 consecutive days.
+R147,The RLCS must be built with redundant capabilities to ensure uninterrupted operation.
+R148,"If the TMC workstations or network server fails, resulting in loss of field status at the TMC, alternate control shall be at FCU South or FCU North."
+R149,The operator shall be able to dial in from a back up computer to either FCU North or FCU south and open and close the reversible lanes.
+R150,The operator shall be able to connect a lap top computer at the DCUs and operate the devices or perform manual operation from the MCU.
+R151,The operator shall also be able to connect a lap top on the CMS cabinet and control the signs or perform manual operation of the signs from the cabinet.
+R152,The current configuration information for each processing unit in the field shall be duplicated in a database at the TMC level.
+R153,"Priority: Must have The RLCS must be available 24/7, 365 days per year."
+R154,"The normal operating mode is Monday through Friday, between 5:00am and 8:00pm, but the system must be functional in order to stay in its closed state after hours."
+R155,"If there is a failure, recovery time must be no greater than 10 minutes, and total yearly uptime must be at least 99.99% (.01% downtime, or approximately 50 minutes per year)."
+R156,The RLCS shall support remote system administration and maintenance of the system.
+R157,The RLCS shall utilize an open architecture that is modular and scaleable.
+R158,"Wherever possible open systems standards for hardware, software, software development tools, and communications shall be used. ."
+R159,"This section also lays down operational rules, which the software must implement and adhere to."
+R160,"Each command, which operates a single closure device, shall have a specific ‘response time window’ defined for successful command completion."
+R161,"In addition, each compound command, which includes more than one ‘single device’ command, shall have a specific ‘response time window’ defined for successful command completion of the compound command."
+R162,"The control system must not attempt to open any entrance closure device, if the status of any opposite direction entrance closure device is ‘unknown’ or open’."
+R163,"Steps within a command, or command group, shall be executed sequentially, whether the individual commands in a group, will be executed by one (1) control unit, or by more than one control unit."
+R164,Roadway Closure Device Status The current status of all entrance closure devices in the system must be maintained at each control unit.
+R165,The state of the closure devices shall be updated in all control units.
+R166,The update frequency shall be higher during the opening and closing periods.
+R167,Closure device sensors shall be monitored continuously by their local control unit.
+R168,The status should be forwarded immediately to all other control units in the system.
+R169,Opening Sequences Opening sequences must open Entrance devices in the following order:
+R170,"At any point in an opening sequence, the sequence shall be halted if: • A device fails to report completion of the current sequence step within the response time window allotted for the step, or • The status of a closure device for the opposite direction of travel changes to ‘unknown’ or ‘open’, or • The status of a closure device, which was previously opened at the current entrance, changes to ‘unknown’ or ‘closed’."
+R171,Closing Sequences Closing sequences must close Entrance devices in the following order:
+R172,The system shall provide for a specific delay between the message change on each sign and the message change on the next downstream sign.
+R173,The delay for each sign pair shall equal the time to travel between the two signs at a system specified speed.
+R174,Entrance Longitudinal Pop-ups Entrance Longitudinal Pop-ups must be closed in the direction of adjacent freeway traffic ( beginning at the shoulder edge and proceeding toward the entrance ramp nose).
+R175,"At any point in a closing sequence, the sequence shall be halted if either:"
+R176,‘Halted’ Opening and Closing Sequences A ‘halted’ opening or closing sequence shall cause the system to enter a ‘hold’ state for a system specified time.
+R177,"If the offending device status can be corrected within the specified time period, the operator shall be able to enter a ‘resume’ command in order for the system to attempt to complete the original opening/closing sequence."
+R178,"Safety Screening of Commands Safety screening shall be done to determine if execution of a proposed command, if successful, would produce a valid reversible lanes configuration."
+R179,"In the following section, the term ‘device command’ shall be understood to include any simple command, command group, or macro, which may, if executed, change the state of one or more entrance devices."
+R180,"In the case of device command groups (macros, compound commands, etc.) any screening requirement shall be applied to the command group, and to each device command within the group, prior to execution."
+R181,Each instance of safety screening shall utilize system configuration data that is no more than 3 seconds old.
+R182,Safety screening of device commands shall be multi-layered.
+R183,"Safety screening shall be applied to all device commands at the originating control unit, and at all subordinate control units to which the device command or any of its subordinate device commands may be forwarded."
+R184,"Safety screening shall always be applied to any device command, or command step, by any control unit which directly operates the target entrance closure device(s), just prior to actual command execution."
+R185,"An opening or closing sequence shall be halted, with an appropriate error response to the system operator, if, at any sequence step, command safety screening fails."
+R186,"Control System Integrity Control Unit Non-Volatile Memory In each FCU and DCU in the system, the following items shall be replicated from the central database server and maintained in non-volatile, non-removable memory: Login Tables Closure Device Timing Parameters Air Calibration Factors Reversible Lanes Configuration Table(s) Reversible Lanes Operating Logic, Control Sequences, and Rule Sets"
+R187,Control System Integrity Verification The system shall will employ a one-way hash function as an aid to encrypting and maintaining the integrity of the data and software in the field.
+R188,This algorithm shall reside in all the controllers and the application server.
+R189,"At each time, one or more of the above item types, listed under ‘Control Unit Non-Volatile Memory’, is created or modified, a UTC date/time stamp shall will be appended to the code (or table)."
+R190,The appending of the time stamp shall will be the last step in the process which builds the time stamped code/data section.
+R191,"For system login purposes, the hash function shall will also be used to encrypt user passwords."
+R192,Whether or not the system will require password aging shall will be controllable by the System Administrator.
+R193,The minimum length values shall will be controllable by the system administrator.
+R194,Access and Safety Characteristics of the I-15 Reversible Roadway The software must implement.
+R195,Normal Operations (Operator is logged on) The system must allow the following scheduled operations at a minimum during ‘normal’ operational mode:

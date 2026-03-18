@@ -1,0 +1,8 @@
+﻿item,text
+R1,"For a user, this has the following implications: A user may not want or need to know how many and which clusters a MM is managing."
+R2,"User chooses between standard or custom IC/BC data sources: • standard: ETA, AVNFTP (GFS), GFS004 or • custom: provide data source (e.g., host:Full_Path_to_Dir) or • For off-line jobs, the user must specify the data source, i.e., location (MetVault or a directory) and time period."
+R3,"User chooses between standard and/or custom obs data sources and processing: • Standard: WMO, SAMS, MADIS, GTS, RAWS, okmeso, SatWinds, ACARS, etc. and/or • provide custom obs source1 and custom obs processor1 • provide custom obs source2 and custom obs processor2 • etc. or • For off-line jobs, the user must specify the data source, i.e., location (MetVault or a directory) and time period."
+R4,"If 'yes', user must specify what output file is to be sent to the MetVault."
+R5,"If 'yes', user must specify what output, e.g., member and/or ensemble output is to be send to the MetVault."
+R6,User must supply destination location for the output products.
+R7,"In order to submit a custom job to the MM, the user must first identify the cluster(s), where his/her job should run on."

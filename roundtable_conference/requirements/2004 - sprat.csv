@@ -1,0 +1,96 @@
+﻿item,text
+R1,This document specifies the services that the tool will provide and the constraints under which the system must operate.
+R2,"NFR: Non-Functional Requirements: This section specifies the properties like accuracy, performance etc. that the tool must satisfy."
+R3,Priority Level Priority Description 1 High High priority requirements are critical and must be satisfied.
+R4,Functional Requirements FR-UA 1 Requirement Definition: The system shall support an administrator level.
+R5,Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 1 FR-UA 2 Requirement Definition: The system shall support a project manager level.
+R6,Requirement Definition: The system shall support an analyst level.
+R7,Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 1 FR-UA 4 Requirement Definition: The system shall support a guest level.
+R8,Requirement Definition: The system shall allow all users to have different access levels to the projects.
+R9,Origin: Customer Interview (Qingfeng He) 02/06/04 Priority: 1 NFR-UAM 2 Requirement Definition: The system shall allow secure storage of passwords in the database.
+R10,Origin: Customer Interview (Qingfeng He) 03/02/04 Priority: 1 NFR-UAM 3 Requirement Definition: The system shall allow users to securely log onto the system.
+R11,Functional Requirements FR-GSM 1 Requirement Definition: The system shall allow analysts to add a new goal.
+R12,"Relevant Legislation (e.g, HIPAA, COPPA, GLBA) Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 3 FR-GSM 2 Requirement Definition: The system shall provide templates for goals, scenarios, P3P statments, EPAL rules and access control policies."
+R13,Antón) 02/13/04 Priority: 3 FR-GSM 3 Requirement Definition: The system shall allow analysts to classify goals.
+R14,Goals based on subject classification Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 3 FR-GSM 4 Requirement Definition: The system shall allow multiple subject classifications for each goal.
+R15,Origin: Customer interview (Qingfeng He) 03/02/04 Priority: 3 FR-GSM 5 Requirement Definition: The system shall provide the ability to dynamically add a new classification type of goals to the tool.
+R16,Origin: Customer interview (Qingfeng He) 03/02/04 Priority: 3 FR-GSM 6 Requirement Definition: The system shall allow the analysts to request a new classification type of goals and also allow the project manager to create that classification type.
+R17,Requirement Specification: The system shall allow the analysts to request a new classification type of goals and also allow the project manager to create that classification type.
+R18,Antón) 07/12/04 Priority: 3 FR-GSM 7 Requirement Definition: The system shall provide the ability to update an existing goal.
+R19,Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 3 FR-GSM 8 Requirement Definition: The system shall provide the ability to delete a goal.
+R20,Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 3 FR-GSM 9 Requirement Definition: The system shall provide the ability to automatically propagate associated policy information upon deletion or replacement of a goal.
+R21,Antón) 02/13/04 Priority: 3 FR-GSM 10 Requirement Definition: The system shall maintain traceability links between a goal and the policy from which the goal was derived.
+R22,"Origin: Customer interview (Qingfeng He) 02/06/04 Priority: 3 FR-GSM 11 Requirement Definition: The system shall provide the ability to display the number of occurrences of a goal in a policy, in multiple policies and within a domain."
+R23,Priority: 3 FR-GSM 12 Requirement Definition: The system shall provide the ability to display the number of different goals that occur in a policy.
+R24,Origin: Customer interview (Qingfeng He) 03/02/04 Priority: 3 FR-GSM 13 Requirement Definition: The system shall display the context of a goal.
+R25,Origin: Customer interview (Neha Jain) 03/03/04 Priority: 3 FR-GSM 14 Requirement Definition: The system shall allow analysts to create and update goal keyword definitions and allow guests to view keyword definitions.
+R26,Requirement Definition: The system shall provide the ability to lock and unlock the keyword definition by either the project manager or the first person who created the definition in the repository.
+R27,Requirement Specification: The system shall provide the ability to lock and unlock the keyword definition by either the project manager or the first person who created the definition in the repository.
+R28,Antón) 07/13/04 Priority: 3 FR-GSM 16 Requirement Definition: The system shall allow analysts and guests to search goals according to analyst chosen attributes.
+R29,Origin: Customer interview (Neha Jain) 03/03/04 Priority: 3 FR-GSM 17 Requirement Definition: The system shall allow analysts to view elements of a goal returned by a query.
+R30,Origin: Customer interview (Neha Jain) 03/03/04 Priority: 3 FR-GSM 18 Requirement Definition: The system shall provide a template to express goals in BNF grammar.
+R31,Origin: Customer interview (Qingfeng He) 02/13/04 Priority: 3 FR-GSM 19 Requirement Definition: The system shall support conflict identification and resolution.
+R32,Definitely needs elaboration Priority: 3 FR- GSM 20 Requirement Definition: The system shall allow analysts to view scenarios associated with individual scenarios.
+R33,Antón) 06/25/04 Priority: 3 FR- GSM 21 Requirement Definition: The system shall provide a P3P dedicated section in the tool.
+R34,Requirement Definition: The system shall provide an EPAL dedicated section in the tool.
+R35,Functional Requirements FR-ADM 1 Requirement Definition: The system shall allow project managers to add analysis documents and assign a domain to each document.
+R36,Priority: 3 FR-ADM 2 Requirement Definition: The system shall allow project managers to edit the domain for the documents.
+R37,FR-ADM 3 Requirement Definition: The system shall allow project managers to delete the domain for the documents.
+R38,Antón) 07/13/04 Priority: 3 FR-ADM 4 Requirement Definition: The system shall allow project managers to create document types.
+R39,Antón) 07/12/04 Priority: 3 FR-ADM 5 Requirement Definition: The system shall provide the ability to display document names and links to the actual document text within a specific domain in an alphabetical order.
+R40,Origin: Customer interview (Neha Jain) 02/06/04 Priority: 3 FR-ADM 6 Requirement Definition: The system shall allow project managers to create a new domain and assign existing documents to this domain.
+R41,Antón) 06/25/04 Priority: 3 FR-ADM 7 Requirement Definition: The system shall support automatic multi-user analysis results comparison upon the project manager’s request.
+R42,Constraint: Other analyst’s classification must be withheld by the system until the given analyst has completed his/her classification.
+R43,Earp what statistical analysis must be carried out behind the scenes and add that as a new requirement.
+R44,Functional Requirements FR-FRE 1 Requirement Definition: The system shall provide a way calculate the Flesch Readability for textual documents.
+R45,Functional Requirements FR- SSM 1 Requirement Definition: The system shall provide the ability to add a scenario to the system.
+R46,Requirement Specification: The system shall allow analysts to add a scenario to the system.
+R47,Following are the necessary elements for each scenario: • Scenario Name • Sources • Actor(s) • Event(s) • Action(s) • Obstacle(s) • Constraint(s) • Pre-Condition(s) • Post-Condition(s) • Status • Issue(s)- These are questions that come up: catch on • Goals • Requirements Origin: Customer interview (William Stufflebeam) 03/02/04 Priority: 1 FR- SSM 2 Requirement Definition: The system shall allow analysts to edit/modify a scenario within a project Requirement Specification: The system shall allow analysts to edit/modify a scenario within a project.
+R48,FR- SSM 3 Requirement Definition: The system shall provide the ability to delete a scenario from a project without deleting it from the system Requirement Specification: The system shall allow analysts to delete a scenario from the system.
+R49,Origin: Customer interview (William Stufflebeam) 03/02/04 Priority: 1 FR- SSM 4 Requirement Definition: The system shall allow analysts to reuse other scenarios.
+R50,Requirement Specification: The system shall allow analysts to reuse other scenarios when specifying a scenario.
+R51,Origin: Customer interview (William Stufflebeam) 03/02/04 Priority: 1 FR- SSM 5 Requirement Definition: The system shall allow analysts to view goals associated with individual scenarios.
+R52,Origin: Customer interview (William Stufflebeam) 03/02/04 Priority: 3 FR- SSM 6 Requirement Definition: The system shall allow analysts to view the elements of any scenario in the project.
+R53,Requirement Specification: The system shall allow analysts to view the elements of any scenario in the project assigned to this analyst.
+R54,"Priority: 1 FR-SSM 7 Requirement Definition: The system shall generate a list of all scenarios that share the same attribute or sets of attributes Requirement Specification: The system will allow analysts to generate list of all scenarios that have the same source, goal, actor, etc."
+R55,Functional Requirements FR-RS 1 Requirement Definition: The system shall provide the ability to specify requirements.
+R56,Origin: Customer interview (Neha Jain) 04/07/04 Priority: 3 FR-RS 2 Requirement Definition: The system shall provide the ability to add a requirement.
+R57,Priority: 3 FR-RS 3 Requirement Definition: The system shall provide the ability to delete a requirement.
+R58,Origin: Customer interview (Neha Jain) 07/09/04 Priority: 3 FR-RS 4 Requirement Definition: The system shall provide the ability to edit a requirement.
+R59,Origin: Customer interview (Neha Jain) 07/09/04 Priority: 3 FR-RS 5 Requirement Definition: The system shall provide a template for specifying requirements.
+R60,Functional Requirements FR-LC 1 Requirement Definition: The system shall provide a demo version of the tool
+R61,"Data Analysis FR-RACAF 1 Requirement Definition: The system shall allow analysts to add new objects (names, types and other attributes)."
+R62,Requirement Specification: The system shall allow analysts to add new objects.
+R63,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 2 Requirement Definition: The system shall support association of privacy preferences with objects.
+R64,Requirement Specification: The system shall allow analysts to associate privacy preferences with objects.
+R65,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 3 Requirement Definition: The system shall support hierarchical structure of dataand its type.
+R66,Requirement Specification: The system shall allow analysts to specify hierarchies to organize data and its types.
+R67,Priority: 1 FR-RACAF 4 Requirement Definition: The system shall allow graphical view of data structures.
+R68,Requirement Specification: The system shall allow analysts to view data hierarchies graphically.
+R69,Task Analysis FR-RACAF 5 Requirement Definition: The system shall support deriving access control elements.
+R70,Requirement Specification: The system shall allow analysts to specify access control elements.
+R71,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 6 Requirement Definition: The system shall allow analysts to view scenario elements and edit access control rules at the same time.
+R72,Requirement Specification: The system shall allow analysts to view scenario elements on the left hand of the screen and edit access control rules on the right hand of the screen.
+R73,Requirement Definition: The system shall support a hierarchical representation of organizational structures.
+R74,Requirement Specification: The system shall allow analysts to specify business and organizational structures.
+R75,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 8 Requirement Definition: The system shall support the representation of organizational boundaries.
+R76,Requirement Specification: The system shall allow analysts to specify organization boundaries via the use of roles.
+R77,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 9 Requirement Definition: The system shall support the representation of actor relationships.
+R78,Requirement Specification: The system shall allow analysts to specify relationships among actors.
+R79,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 10 Requirement Definition: The system shall support the definition of roles.
+R80,Requirement Specification: The system shall allow analysts to specify roles.
+R81,Origin: Customer interview (Qingfeng He) 05/14/04 Priority: 1 FR-RACAF 11 Requirement Definition: The system shall support role delegation.
+R82,Requirement Specification: The system shall allow project managers to delegate their responsibilities to analysts for a specific time frame.
+R83,"Information Analysis FR-RACAF 12 Requirement Definition: The system shall support analysis of a specific type of data flow within or across the boundary of an organization, given a set of access control policies."
+R84,Requirement Specification: The system shall allow analysts to graphically view the allowable flows for specific types within an organization and across multiple organizations given a set of access control policies.
+R85,Access Control Policy Specifications FR-RACAF 13 Requirement Definition: The system shall support access control specification using Ponder language.
+R86,Requirement Specification: The system shall allow analysts to invoke the ponder policy editor.
+R87,"Reasoning: Because Ponder provides tool support for policy specification, SPRAT shall provide interface support to interact with Ponder editor."
+R88,Formal Verification FR-RACAF 14 Requirement Definition: The system shall provide partial support for translating Ponder policy into Alloy specifications for security verification.
+R89,Requirement Specification: The system shall provide partial support for
+R90,P3P: P3P Module FR-P3P 1 Requirement Definition: The system shall provide a way to extract goals data-usage information from a P3P privacy policy according to the P3P standard.
+R91,Origin: Customer interview (Bharathy) /03/25/04 Priority: 3 FR-P3P 2 Requirement Definition: The system shall provide a way to extract goalsdata-usage information according toas per the user’s privacy preferences in accordance with the P3P standard.
+R92,Requirement Definition: The system shall provide a way to capture the mined goalsinformation from the P3P policy into a database corresponding to a P3P privacy policy.
+R93,Origin: Customer interview (Bharathy) /03/25/04 Priority: 3 FR-P3P 4 Requirement Definition: The system shall provide a way to capture the mined goalsinformation from the user’s privacy preferences into a database corresponding to the user’s privacy preferences.
+R94,Origin: Customer interview (Bharathy) /03/25/04 Priority: 3 FR-P3P 5 Requirement Definition: The system shall provide a way to evaluate the information extracted from the P3P privacy policy against the information extracted from the user’s privacy preferences.
+R95,"SR 1 Requirement Definition: The system shall generate an access log for every add, delete and edit action in the system."

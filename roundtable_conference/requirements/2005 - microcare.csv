@@ -1,0 +1,20 @@
+﻿item,text
+R1,"• The VMU will create the vouchers and sell it to clients through distributors. • The distributor will submit the sales details back to the VMU. • Each voucher should have two portions with three tear off voucher slips each for Client and Partner. • The client and/or the partner will c hoose the service provider and will get treatment. • First visit is called as Consultation and if the patient is not cured then they can go for first follow up and second follow up, • If the patient is not cur ed then the doctor will refer t he patient to some other Hospitals the hospital may be another VSP or any other. • Each visit details (including Diagnosis, Lab Test and Drugs) of the patient is called a claim, • The VSP will submit the claim to VMIU field office to enter those into the database, Copyright © 2005 by Microcare Ltd"
+R2,• Each voucher slip should contain t he bar code of the Voucher with two identifications one for the client and the other for the partner.
+R3,"While entering the No of vouchers required, the system should automatically pick the Batch No’s with v oucher No’s from the available voucher stock and list the details of each voucher with below information’s as a grid format."
+R4,"The system should generate message wit h two option “Continue – Yes/No” while the user trying to create a new VSP with an existing name, If the user press Yes the system will allo w the user to enter the same, if not the system wont allow the new entry to save."
+R5,"If any of the staff type is not availabl e in the system, then the system should have the provision to navigate quickly to staff type master to enter the new staff type and then back to Staff Master screen."
+R6,These information is vital and shall be used for compared with the processed claims.
+R7,The system should print a receipt document based on the information entered during claim submission.
+R8,During the claim entry the system should capture the following information.
+R9,"Software Requirement Specification for VMUS (Voucher Management Unit System) Page 25 of 33 provision to capture Referred To and Reason for Referral, the reason for Referral should be populated from Referral master."
+R10,"The system captures the thump impression available in each claim form, and needs to compare it with the same v oucher numbers previous visits if available."
+R11,"If the claim from same VSP having more than two times of Thump Impression mismatching, then the syst em should automatically produce a warning message and the same time the system should In-Activate the VSP."
+R12,The user should enter the information exactly into the system from the manual claim form
+R13,System should calculate Claim Amount only based on treatment matrix
+R14,Sales Return Date – System date is def ault and it should be less than or equal to system date
+R15,The Client Feed back form should capture the following details
+R16,"o Monthly after claim collection on clai ms, where payment shall be withheld until clarification"
+R17,The system should have the provision to create any number of individual user under any user group.
+R18,The system should save the user info rmation only if the Password and Verify password values are equal
+R19,The system should not allow the user to create a User Group and Individual User with existing names.

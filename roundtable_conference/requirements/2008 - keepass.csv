@@ -1,0 +1,26 @@
+﻿item,text
+R1,"• Composite Master Key To open a database you must use all key sources such as password, key file and/or Windows account details that were used when the Master Key was created."
+R2,"KeePass should run on Operating Systems: WINE, 32-bit MS Windows (95/98), 32-bit MS Windows (NT/2000/XP), All 32-bit MS Windows (95/98/NT/2000/XP),Win2K, WinXP, Microsoft Windows Server"
+R3,It is the first thing a user must do to begin using KeePass.
+R4,REQ-1: KeePass must be downloaded and installed REQ-2: Master Password has no limits in length.
+R5,REQ-3: Folder selected must be of type the database can read and that is “name”.kdb
+R6,REQ-4: Databases must have different names or else the previews one will be replace if selected
+R7,REQ-5: There must be entries in the database in order for them to be printed
+R8,REQ-6: All data related to the word must be shown.
+R9,"For example if user types “abc” and abc is part of a password and of a username, b oth entries must be shown"
+R10,When creating a group/subgroup the user must select a name and then he can add entries into it.
+R11,"In order for that to happen, he must have chosen first a group/subgroup."
+R12,REQ-10: In order to find something in a group a word must be placed in the find field
+R13,A message appears “the repeated password must be identical with the password
+R14,REQ-11: An entry must belong to a group to be created REQ-12: When the password field is completed t he repeat password field must be completed
+R15,REQ-13: Password field and repeat password field must be identical
+R16,"In order for that to happen, the user must select an entry first."
+R17,REQ-14: An entry must be selected to be viewed or modified REQ-15: When the password field is changed the repeat password field must be Changed and be identical with password f ield
+R18,REQ-16: An entry must be selected before it is duplicated
+R19,REQ-17: An entry must be selected to be deleted
+R20,The sequence must be prefixed with “Auto-Type” and length of one line.
+R21,"REQ-19: The prefix “Auto-Type:” is required in front of each sequence REQ-20: Sequence’s length must not be more than a line (59 characters) REQ-21: If two auto-types are referred in one note field, only the first is used"
+R22,"REQ-22: Only one database file is allowed in command line options REQ-23: In case a space is found in the path, it must be enclosed into quotes"
+R23,But the same composition of them must be used always.
+R24,"REQ-24: If a master password is required to unlock the database, the database doesn’t open unless the password is entered REQ-25: If a key file is required to unlock the database, the database doesn’t open unless The key file is present REQ-26: If there is a composite key, both master password and key file are required REQ-27: In case of lost master password or key file, the database never unlocks again."
+R25,"If in the meanwhile it is not pasted anywhere, it must be copied again."

@@ -1,0 +1,141 @@
+﻿item,text
+R1,The system shall use the Globus toolkit. _________________________________ 9
+R2,The system shall support 3 types of objects______________________________ 15
+R3,The web portal shall be usable in the following web browsers________________ 33
+R4,The system shall require the users enable cookies to use the system._____33
+R5,The system shall provide a graphical user interface to all functions of the system.
+R6,Grid technologies shall be utilized to provide secure and reliable communications to remote computing resources.
+R7,The web portal components shall integrate into the Dataportal Web Server at NCAR
+R8,The compute node software shall be developed and deployed for the Hemisphere Linux cluster at CU
+R9,The system shall provide a web based (portal) user interface for all aspects of the system.
+R10,The system shall use the Globus toolkit.
+R11,All GridBGC users shall be required to have valid NCAR Gatekeeper accounts to use the system.
+R12,Users must be approved by the GridBGC administrator(s) for access.
+R13,Users must use the existing Gatekeeper tools to manage their passwords.
+R14,The system shall retrieve all user information from the Gatekeeper account system.
+R15,The system shall support the following user roles:
+R16,Users must enter all required fields
+R17,The user must enter their NCAR Gatekeeper username.
+R18,User must be logged in to the portal
+R19,The system shall provide a means to request that the user account be deleted from the system.
+R20,The system shall notify the portal admin(s) about the delete requests
+R21,The system shall require the user to enter their username and password to login to the system.
+R22,"The user shall be prompted at the beginning of the session for their credentials, once logged in they will not be prompted for additional or different credentials."
+R23,All login actions shall be protected by using secure data channels
+R24,The system shall lock the account after 3 login attempts.
+R25,The system shall allow portal administrators the ability to control template submissions rights.
+R26,The portal admin shall have the ability to list the user accounts in the system
+R27,The portal admin shall have the ability to terminate any user’s running jobs.
+R28,The system shall assign all user accounts to the scientist role by default.
+R29,The system shall allow the portal admin to change a user’s role in the system.
+R30,The system shall prevent the user from changing object/project values once that project has been used in a model run.
+R31,The system shall support the following states
+R32,The system shall support 3 types of objects
+R33,"Project must be of the same type, list or grid"
+R34,The system shall display dataset metadata to allow users to screen data prior to merging operations.
+R35,The user shall specify the type of project during initial setup;
+R36,The system shall only allow the user to reference datasets of the same type as specified in the project
+R37,The system shall allow the user to only select referenced objects that are of the appropriate type
+R38,List and Grid types matching shall be enforced.
+R39,"Not all Object types shall support template s, see specific object details for more details."
+R40,Any user of the system shall be able to use a template.
+R41,The system shall allow the following users to delete templates from the system:
+R42,The system shall provide portal admin(s) with a list of all system templates by project type.
+R43,The system shall provide users with a list of their templates in the system.
+R44,Any time a template is used the user shall get their own full private copy of the data
+R45,The user must supply a new project name when using a template before saving the project.
+R46,If the template references a non-shared data resource the user must choose a new dataset before saving the project.
+R47,The system shall support the following projection types
+R48,The project must be in an unlocked state
+R49,The user shall be prompted to delete all projects that reference this project following the candidate project deletion rules.
+R50,The user shall be prompted to delete all projects that reference this object following the candidate object deletion rules.
+R51,User must upload data files to the system
+R52,: The system shall not perform any checking or conversion
+R53,The system shall display a list of all the objects the user currently has in the system
+R54,The system shall display the object details
+R55,: The system shall display all the stations for object
+R56,: The system shall display all the data values for each station
+R57,The system shall allow the user to delete an unlocked project.
+R58,The system shall allow the user to delete a locked project under the following conditions:
+R59,The system shall delete all associated input and model output data for this project during deletion.
+R60,: The system shall extract the specified points from the dataset and store them in a new dataset in the system.
+R61,The system shall provide user interface to manage the observation points
+R62,The system shall allow a user to add new data points
+R63,The system shall allow a user to edit existing data points
+R64,The system shall allow a user to delete existing data points
+R65,The system shall allow the user to delete an unlocked object.
+R66,The system shall allow the user to delete a locked object under the following conditions:
+R67,The system shall provide a user interface to manage all parameterization values.
+R68,Must be the same as other input objects
+R69,The system shall display a list of all the projects the user currently has in the system
+R70,The system shall display the project details
+R71,The system shall allow the user to delete an unlocked data project.
+R72,The system shall allow user to start a new model run.
+R73,The system shall display a list of computational resources to select from.
+R74,The system shall provide the user with an approximate execution time estimate based on the computational resource selected.
+R75,The system shall allow the user to monitor and control model runs
+R76,The system shall display a list of runs currently active for the user
+R77,The system shall display the overall run status
+R78,Daymet model runs shall be monitored on a tile by tile basis.
+R79,: The system shall display the list of tiles for a run.
+R80,: The system shall maintain the following information for each tile:
+R81,The system shall save and display Stdout messages.
+R82,The system shall save and display Stderr messages.
+R83,The system shall allow the user to terminate a model run.
+R84,The system shall delete all output data associated with the run
+R85,The system shall allow a user to restart a model run.
+R86,The system shall only permit a run to be restarted under the following conditions:
+R87,The system shall delete all previous model output prior to starting the run.
+R88,The systems shall automatically create this object for completed simulation runs
+R89,The system shall allow the user to download the output data from the portal.
+R90,The system shall display a list of all the output tiles to the user.
+R91,The system shall allow the user to download the data files on a tile by tile basis.
+R92,The system shall allow the user to download the data in the native system formats and conventions only.
+R93,The system shall allow the user to download the data in an EPC file format.
+R94,The system shall provide a graphical user interface to manage the output parameters.
+R95,The system shall provide 1 level of parameter categorization
+R96,The system shall provide a list of all parameters for each category
+R97,The system shall allow the user to select individual parameters as needed.
+R98,The system shall provide a display of the categories a user currently has selected.
+R99,The system shall provide a method to add new categories to the project.
+R100,The system shall provide a method to remove categories from the project.
+R101,The system shall display the list of objects the user currently has.
+R102,The system shall allow the user to view the details of a specific object.
+R103,The system shall allow the user to modify an unlocked object.
+R104,The system shall allow users to delete unlocked objects.
+R105,The system shall allow users to delete locked objects under the following conditions:
+R106,The user shall be able to choose to delete all objects referencing this object.
+R107,"Cannot be updated, must delete/create new."
+R108,The system shall allow the user to delete unlocked objects.
+R109,The system shall allow the user to delete locked objects.
+R110,All dependant objects/projects shall be invalidated
+R111,The system shall change the project to an unlocked state.
+R112,The system shall support the following types of events:
+R113,The user shall specify the intensity value for the event TBD – Is there a specific range we can check for here?
+R114,The user shall be able to create a new disturbance object
+R115,The system shall list the user’s objects in the system
+R116,The system shall list the object details
+R117,The system shall allow users to edit unlocked objects
+R118,The system shall allow users to edit locked objects
+R119,The system shall invalidate dependent objects
+R120,The system shall allow the user to define a simulation topology
+R121,The user shall be able to create the following topology options
+R122,The system shall allow the user to create new blank projects
+R123,The system shall list all the user’s projects in the system
+R124,The system shall display all the project details
+R125,The system shall allow the user to change the project details for unlocked projects.
+R126,The system shall allow the user to ability to invalidate a locked project.
+R127,The system shall allow the user to delete unlocked projects.
+R128,The system shall allow the user to delete locked projects.
+R129,BiomeBGC model runs shall be monitored on a tile by tile basis.
+R130,The system shall delete the output data project if created
+R131,The system shall provide the portal admin a function to validate file references in the system correspond to actual files on the storage system.
+R132,The system shall generate a listing of any missing files.
+R133,The system shall list all the compute nodes
+R134,The system shall display the compute node resource details
+R135,The system shall allow the admin to manage compute resources
+R136,The system shall allow the admin to change compute node settings
+R137,The system shall allow the portal admin to control the following system settings
+R138,The web portal shall be usable in the following web browsers
+R139,The system shall require the users enable cookies to use the system.
+R140,The system shall allow users the ability to store data on the NCAR Mass Storage System.

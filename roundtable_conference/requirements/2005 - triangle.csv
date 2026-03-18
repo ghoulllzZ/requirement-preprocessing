@@ -1,0 +1,22 @@
+﻿item,text
+R1,There must be a default random artificial intelligence..................................11
+R2,New games may be added to the software easily without the need to modify the code of the original application.
+R3,The software should run well on any computer which has Java 2 (version 1.4 or later) Runtime Environment (JRE)[3] installed.
+R4,User starts a new game V 1.0 Description: This use case describes the steps tha t are required to start a new game.
+R5,UC - 003 The user selects an opening starting posit ion with the menu V 1.0 Description: The user is required to select an ope ning position from the menu before starting any game.
+R6,"When starting a game, the user must be able to select in between Human or Artificial Intelligence for playing a game."
+R7,Game.TwoPlayerSupport The system shall support two player turn-based gaming.
+R8,There must be a default random artificial intel ligence
+R9,Having a random artificial intelligence is must for the system.
+R10,UC - 005 The user selects an artificial intelligenc e V 1.0 Description: The system must always provide the ar tificial intelligence that can play using random moves.
+R11,A third person must be able to develop and add new AI to the system.
+R12,UC - 010 The Game User saves a game V 1.0 Description: The system must have the capability t o save the current state of the game being played.
+R13,UC - 011 The Game User loads a game V 1.0 Description: The system must be able to load a gam e from a file.
+R14,PR-1: The system should be executed without problem s in a machine that fulfills the requirements of the Java runtime environment [2].
+R15,PR-2: The basic artificial intelligence must operat e fast enough.
+R16,No personal information is stored by the system so no specific security requirements need to be defined.
+R17,SQA-1: The system shall run well on both Linux and Windows and should be playable with the mouse or the keyboard or both.
+R18,Game.Solitaire The system has support for solitaire games Game.TwoPlayerSupport The system shall support two player turn- based gaming.
+R19,PR-2 The artificial intelligence must operate fast enough.
+R20,SQA-1 The system shall run well on both Linux and W indows and should be playable with the mouse or the keyboard or both.
+R21,Basic user /game player Entertain ment Relaxing atmosphere Fun value and interesting game problems to solve Must run on low-end workstations and be easy to use Game developer Platform to test new triangular games Concerns about the ease of developing games for the platform Research and easy developing of new games Documentati on needed to understand the methods of developing new games.

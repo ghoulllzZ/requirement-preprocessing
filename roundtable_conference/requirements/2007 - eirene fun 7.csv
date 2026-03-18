@@ -1,0 +1,406 @@
+﻿item,text
+R1,It will be determined on a national basis whether different classes of service need to be defined for such routes.
+R2,A railway mobile telephony network may be required to have interfaces to:
+R3,It shall be possible for applications external to EIRENE to access EIRENE bearer services.
+R4,All voice call services shall be able to operate between any combination of fixed and mobile equipment users. (M) Point-to-point voice calls
+R5,The system shall support point-to-point voice calls between any two call parties. (M)
+R6,Such point-to-point calls shall allow both parties to talk simultaneously. (M) Public emergency voice calls
+R7,The system shall allow a user to make public emergency point-to-point voice calls. (M)
+R8,Such emergency calls include ‘112’ calls and may not be used for railway emergencies. (I) Broadcast voice calls
+R9,The system shall support broadcast voice calls. (M)
+R10,The composition of call groups shall be able to be modified within the network.
+R11,A single user shall be able to be a member of one or more call groups. (M)
+R12,The local area over which broadcast calls shall be implemented shall be able to be modified within the network. (M)
+R13,"It shall only be possible for the user who initiated the call to talk, other users can only listen. (M) Group voice calls"
+R14,The system shall support group voice calls. (M)
+R15,The local area over which group calls are implemented shall be able to be modified within the network. (M)
+R16,It shall be possible for controllers to speak at any time during the call. (M)
+R17,A mechanism shall be provided by the system to arbitrate between those users wishing to speak within the group call. (M) Multi-party voice calls
+R18,The system shall support multi-party voice communications between up to six different parties. (M)
+R19,Any of the parties involved in a multi-party voice call shall be able to talk simultaneously. (M)
+R20,"If the text message facility is implemented, it shall not interfere with the ability of users to make or receive high priority voice or data calls. (M) General data applications"
+R21,The network shall support point-to-point data communications. (M)
+R22,The network shall support data rates of at least 2.4 kbit/s. (M)
+R23,"Where fax functionality is provided, it shall be possible to interrupt the fax to make or receive a high priority voice or data call. (M) Train control applications"
+R24,"Where ERTMS/ETCS level 2 or 3 is implemented, the network shall be capable of supporting data communications for that train control system. (M)"
+R25,It shall be possible for the equipment to display the identity of the called or calling party in the form of a standard telephone number. (M)
+R26,It shall be possible to display the identity of the called or calling party as a textual description of their function. (M) Restriction of display of identity
+R27,The network shall provide a mechanism whereby calls may be assigned one of a number of different priority levels. (M)
+R28,This mechanism shall allow calls with a higher assigned priority to override (pre-empt) existing calls of a lower priority. (M)
+R29,Pre-empted calls will be discontinued and the new call of a higher priority shall be connected instead. (M) Closed user group
+R30,The group of users who may access the facilities of the EIRENE network shall be limited. (M)
+R31,Any user who is not within the list of allowed EIRENE users shall not be able to gain access to any of the functions and services provided by the network. (M) Call forwarding
+R32,It shall be possible for an incoming call or data message for one user to be forwarded to another user using functionality provided by the network. (M)
+R33,"In the case of voice calls, it shall be possible for the user who is attempting to forward a call to converse with the intended recipient prior to forwarding. (M)"
+R34,The network shall allow the user to temporarily exit from an existing call by putting the call on hold. (M)
+R35,It shall be possible for the user to re-join the call which is on hold at any time. (M) Call waiting
+R36,"The network shall provide the ability to inform a user, who is involved in an existing call, of attempts by other users to contact them. (M) Charging information"
+R37,"It shall be possible, using network management or maintenance facilities, to prevent individual users from: (M)"
+R38,The EIRENE network shall also provide support for the following railway specific services:
+R39,The network shall support all EIRENE-compliant mobiles. (M)
+R40,The land-based part of the system shall provide communications for mobiles when stationary and when travelling at speeds up to the maximum allowable line speed or
+R41,"The interconnection between the networks must, as a minimum, be compliant with applicable open specifications. (I)"
+R42,"During the process of moving from one GSM-R network to another, the system must minimise the inconvenience to the user. (I)"
+R43,The required call set-up times shall be achieved in 95% of cases. (M)
+R44,Call set-up times for 99% of cases shall not be more than 1.5 times the required call set- up time. (M)
+R45,Set-up times shall include the time required for any translation of functional numbers internal to the EIRENE network. (M)
+R46,"It shall be possible to determine the area over which the call takes place by one, or a combination, of the following: (M)"
+R47,"Any group or broadcast calls initiated in a given location shall be broadcast over an associated area based on the location of the call originator, and also to any fixed network numbers associated with the originating location. (M)"
+R48,Mobiles configured for reception of railway emergency calls entering into a call area where a railway emergency call is ongoing shall automatically join this call. (M)
+R49,"In any case, these national solutions must not conflict with those of the CENELEC Standard, in particular for the actions required from the drivers of trains passing the borders. (I)"
+R50,"It shall be possible to operate all mobiles in the frequency bands around 900 MHz, allocated for use by the railways, and in the public GSM networks. (M)"
+R51,Mobile equipment shall function correctly when travelling at speeds from 0 km/h to
+R52,"However, stricter national standards shall not prevent the use of other EIRENE mobiles in that country. (M)"
+R53,"All design, testing and installation of EIRENE mobile radio equipment shall comply with the quality procedures defined in ISO 90014. (M) Climatic conditions"
+R54,"Any pressure pulses caused by vehicles passing, entering or leaving tunnels shall not affect the normal operation of EIRENE mobile equipment. (M) Physical conditions"
+R55,"The design of EIRENE mobiles shall comply with the relevant European Norms for protection against physical hazards, eg: (M)"
+R56,All EIRENE mobile equipment shall be capable of being operated on board rolling stock. (M) Electrical
+R57,The batteries to be used in the mobile equipment shall have sufficient capacity to support typical railway use. (M) Electromagnetic Compatibility
+R58,i Once a call has been established the connected parties shall be able to communicate. (M)
+R59,ii Picking up the handset shall transfer the communication to the handset and reduce the loudspeaker volume to its minimum level. (M)
+R60,iv A Push-To-Talk function shall be provided for use during group calls. (M)
+R61,It shall be possible for the driver to initiate a call to any of the following types of controller with a minimum of driver action being required (eg a single keystroke): (M)
+R62,"Once an appropriate destination has been obtained, the radio shall attempt to establish a call to this destination."
+R63,The functional identity shall be displayed to the controller. (M)
+R64,An audible and visual indication shall be provided to the driver that the call is proceeding. (M)
+R65,The call shall be connected to the loudspeaker at the pre-set value. (M)
+R66,"The functional identity of the connected party, if available, shall be displayed to the driver. (M)"
+R67,"If the functional identity of the connected party contains an alphanumeric description, this shall also be displayed. (M)"
+R68,"If the system is not able to connect the call, an audible and visual indication shall be provided to the driver that the call was not received by the controller."
+R69,This shall also indicate if the called party was busy or if the network could not connect the call. (M) Call other drivers in the area (on other trains)
+R70,It shall be possible for a driver to initiate and participate in group voice calls between drivers in a pre-defined geographical area. (M)
+R71,A driver shall be able to initiate the establishment of a call to other drivers with a minimum of action (eg a single keystroke). (M)
+R72,The group identity shall be displayed on the Cab radios of the participating drivers. (M)
+R73,"Once connected, the driver shall be able to communicate with other driver(s) by using the Push-To-Talk button on the handset."
+R74,An indication shall be provided to the driver as a reminder of the need to use the Push-To-Talk button on the handset if he wants to talk. (M)
+R75,The call shall be connected to the loudspeaker until the driver picks up the handset. (M)
+R76,"The call shall continue until terminated by the calling driver, an authorised controller or the network. (M)"
+R77,"If the train moves out of the group call area whilst the call is in progress, an audible and visual indication of the loss of call shall be provided to the driver. (M)"
+R78,"If the system is not able to connect the call, an audible and visual indication shall be provided to the driver. (M) Send Railway emergency call"
+R79,It shall be possible for a driver to initiate Railway emergency calls (see section 13). (M)
+R80,"If a train-borne recorder is connected to the Cab radio, details of the activation, termination and any failures of the emergency function shall be sent to the train-borne recorder as each event occurs. (M)"
+R81,"Once the Railway emergency call is connected and the audible indication is finished, an indication shall be provided to the driver as a reminder of the need to use the Push- To-Talk button on the handset if he wants to speak. (M)"
+R82,"If the train moves out of the call area whilst the call is in progress, it will leave the call and an audible and visual indication of the loss of call shall be provided to the driver. (M)"
+R83,"Once the call is terminated, the continuous visual alarm indication in the cab shall cease. (M)"
+R84,"If the system is not able to connect the call, an audible and visual indication shall be provided to the driver. (M) Communicate with other drivers on same train"
+R85,"Where these vehicles are not connected by on-train wire connections, it shall be possible for the lead driver to establish a permanent radio connection between each of the active cabs. (M)"
+R86,"Whilst on-going, a ‘multi-drivers’ indication shall be displayed permanently at all Cab radios. (M)"
+R87,"The lead driver shall be notified if a member of the group has placed the call on hold, although this shall not affect communications between the remaining members of the group. (M)"
+R88,"At any time during the call, the lead driver shall be able to remove a member of the group. (M)"
+R89,The lead driver shall be able to terminate the entire call. (M)
+R90,"If a driver is disconnected from the multi-driver call, a clear indication shall be given. (M)"
+R91,The setting up and closing down of a multi-driver call shall be simplified using automation or guidance through the steps required. (M)
+R92,"In each cab, the call shall be connected to the loudspeaker whilst the handset is on- hook. (M)"
+R93,"If any part of the call fails, an audible and visual indication shall be provided in the appropriate cab. (M)"
+R94,"For calls between a controller and the lead cab, it shall be possible to add the controller to the multi-driver call."
+R95,Functional identity of the controller shall be displayed in the leading cab. (M) Call train staff
+R96,It shall be possible for the driver to contact members of on-board train staff using a point-to-point voice call. (M)
+R97,"Upon activation of this function, the Cab radio shall provide the driver with a list of ‘generic’ staff, eg: (M)"
+R98,The driver shall then be prompted to select the train staff with which he wishes to communicate. (M)
+R99,"It is required that, in these cases, the Cab radio shall be integrated with internal communication systems such that the appropriate means of connection (wire or radio) will be determined automatically. (M) Call other authorised users"
+R100,"The Cab radio shall be capable of being used as a standard telephone, such that the driver is able to call any valid number subject to pre-defined call restrictions."
+R101,An audible and visual indication of an incoming call shall be provided. (M)
+R102,"The functional identity (which may contain an alphanumeric description) of the calling party, when available, shall be displayed. (M)"
+R103,Point-to-point calls that are not automatically answered (see table 10-1) shall only be answered once the driver accepts the call. (M)
+R104,An audible and visual indication of the incoming call shall be provided when a Cab radio receives a group or broadcast call. (M)
+R105,The group identity of the voice group call (VBS or VGCS) shall be displayed. (M)
+R106,"Group or broadcast calls shall automatically be connected to the loudspeaker if the handset is not in use, or to the handset if the handset is off hook. (M)"
+R107,The driver shall be informed if a broadcast call is ongoing by a visual indication displayed on the MMI. (M)
+R108,"If the call is a group call, the driver shall be required to request permission before being able to speak as part of the call by lifting the handset and pushing the Push-To- Talk (PTT) button. (M)"
+R109,"During a group call, a visual indication shall be displayed on the driver’s MMI to remind the driver of the need to use the PTT button. (M)"
+R110,"In a group call, an audible and visual indication of whether the request to talk was successful shall be provided."
+R111,The driver shall then be able to speak as part of the call whilst the PTT button is pressed. (M)
+R112,"If the train moves out of the group or broadcast call area whilst the call is in progress, an audible and visual indication of the loss of call shall be provided to the driver. (M) Receive incoming Railway emergency call"
+R113,"Reception of this call proceeds as for a standard group or broadcast call, except that a distinctive audible and visual indication shall be provided in the cab. (M)"
+R114,"If a train-borne recorder is connected to the Cab radio, details of an incoming Railway emergency call shall be transmitted to the train-borne recorder for recording, see section 5.8. (M) Confirm receipt of Railway emergency call"
+R115,An automatic confirmation shall be generated by the Cab radio at the end of the Railway emergency call as detailed in section 13. (M)
+R116,The Cab radio shall provide a means for the driver to terminate calls which he is authorised to terminate (ie all calls except Railway emergency calls not initiated by the driver and shunting group calls). (M)
+R117,"For group or broadcast calls, a means to leave the call without terminating the call shall be provided. (M) Receive text messages"
+R118,The Cab radio system shall be able to receive incoming text messages (see section 12 for details). (M) Enter/leave shunting mode
+R119,The Cab radio shall support a ‘shunting mode’ of operation that provides a link assurance tone to reassure users of the integrity of the communication link (see section 14). (M)
+R120,A means to enter and leave shunting mode shall be provided. (M)
+R121,The functionality to enter and leave shunting mode shall not be available when there are on-going calls involving the Cab radio. (M)
+R122,The link assurance tone shall be provided via the loudspeaker. (M)
+R123,"It should be possible for the Cab radio to be used without the network service (if it should fail or if there is no authorised network coverage), such that local open channel communications are still possible."
+R124,"If direct mode is implemented, a means to enter and leave direct mode shall be provided. (M)"
+R125,"If the radio is in direct mode and the normal network service returns, the user shall be provided with an audible and visual indication. (M) Monitor calls to other on-train users/devices using the Cab radio"
+R126,"Where these calls involve the Cab radio, the driver shall be provided with an indication that the Cab radio is busy. (M)"
+R127,"For voice calls using the Cab radio not involving the driver as a called or calling party, the driver shall have the possibility to listen to the audio output of the communication. (M)"
+R128,"For voice communications, if the driver picks up the handset, the radio shall allow him to join the communication. (M)"
+R129,The driver shall be able to terminate communications (voice or data) by selecting another call. (M)
+R130,"Where the Cab radio is required by a national railway to support a handheld portable, the Cab radio shall: (M)"
+R131,This shall be the network to which the mobile was last registered (where available);
+R132,"if connection is successful, the name of the network shall be displayed on the MMI and an audible indication of successful connection shall be given;"
+R133,"if connection is not successful, an audible and visual indication shall be provided. (M)"
+R134,Powering down the Cab radio shall cause the disconnection of the Cab radio from the mobile network. (M)
+R135,"When switched off, the radio shall retain any numbers which are stored at the time the radio is switched off. (M) Switch radio MMI on/off"
+R136,The MMI on/off control shall be designed to prevent accidental activation/ deactivation. (M)
+R137,Switching the MMI on shall cause the following: (M)
+R138,"When the MMI is switched on, the configuration shall be determined by the time elapsed since the MMI was last switched off: (M)"
+R139,less than t minutes – the MMI shall power up with the same configuration as when it was last powered down;
+R140,greater than t minutes – the MMI shall power up with default settings.
+R141,Switch off shall be “ soft” so that the Cab radio completes the following housekeeping functions before actually switching off: (M)
+R142,"When switched off, the following functions (if available) shall still be provided: (M)"
+R143,It shall be possible to present radio related prompts and information in a number of different languages. (M)
+R144,"By default, prompts and information shall be displayed in the language selected by the train owner (as stored within the system). (M)"
+R145,The radio shall support at least ten different languages. (M) Adjust loudspeaker volume
+R146,"By default, the loudspeaker volume shall be set to a pre-determined level suitable for the operating environment (as stored within the system). (M)"
+R147,It shall be possible for the driver to increase and decrease the loudspeaker volume within the adjustment range selected. (M)
+R148,"When the handset is picked up, the loudspeaker shall continue to operate, but at a reduced volume level. (M)"
+R149,"Using a simple MMI action, it shall be possible for the driver to view a prioritised list of all authorised mobile radio networks (see section 10.5). (M)"
+R150,"i When presented with this list, it shall be possible for the driver (using simple MMI actions) to select the required mobile radio network manually, whereupon the Cab radio shall attempt to attach to this selected network. (M)"
+R151,The manual network selection function shall not be available when there are on-going voice calls involving the Cab radio. (M)
+R152,A visual confirmation of the new network identity shall be given to the driver when a manually initiated network change has been completed successfully. (M)
+R153,"iv If directed network selection is implemented, input from the external device(s) shall initiate the network change regardless of the identity of the current network and how it was selected. (M)"
+R154,"vii If automatic network selection is implemented, it shall be possible for the driver to activate and deactivate automatic network selection. (M)"
+R155,viii Automatic network selection shall not be used for international border crossing. (M)
+R156,It shall be possible for the driver to register and deregister a train number in the following ways:
+R157,"Where the driver is required to enter the train number information, the information entered shall be shown on the display and require confirmation by the driver before further actions are possible. (M)"
+R158,"If an automated request is initiated (option 2), the driver shall be able to accept or reject the train number returned by the network. (M)"
+R159,"i Where ERTMS/ETCS and radio systems are available and the driver is required to enter the train number as part of the initialisation procedure, this task shall be carried out only once on the ERTMS/ETCS system and the entered number transmitted to the radio system. (M)"
+R160,The driver shall be warned (by audible and visual indications) if a train with the same train number is already registered on the same network. (M)
+R161,A means to override the currently registered train number shall be provided to the “ newly registering” driver. (M)
+R162,The driver of the previously registered train shall be informed (by audible and visual indications) that his train number has been overridden by another driver. (M)
+R163,"Where a change of train number is required during the course of a train’s journey, it shall be possible for the driver to initiate the change or override the automatic change."
+R164,This shall be carried out by entering the train number (option 1 in 5.2.3.26). (M)
+R165,"Non leading drivers shall be able to indicate to the system their location in the train during the registration procedure (2nd driver, 3rd driver etc). (M) Register and deregister on-train users (on-train functions)"
+R166,The driver’s functional number shall be automatically registered/deregistered when the train number is registered/deregistered. (M)
+R167,"There shall be a fixed relationship between the telephone numbers of radios installed in the locomotive/coach and the stock number, which shall remain even if the radio is changed. (M)"
+R168,It shall be possible to register and deregister a stock number in one or both of the following ways: (M)
+R169,The Cab radio shall have a reconfigurable list of stored numbers that may be used to perform abbreviated dialling to named user identities. (M)
+R170,It shall be possible for the driver to find and display stored numbers and their information. (M)
+R171,General MMI functions are required to support the following call functions:
+R172,It shall be possible to initiate tests of the radio to provide the driver with a reasonable level of certainty that the radio and MMI are working. (M)
+R173,Such tests shall not prevent calls. (M)
+R174,The result of the tests shall be displayed in a similar format to the self-test when MMI is powered on. (M)
+R175,"The Cab radio system may be required to be able to handle incoming and outgoing calls not only to and from the driver, but also to and from other on-train users and devices (conductor, public address system, data systems, etc) via appropriate interfaces and ports. (I)"
+R176,"For data applications, calls shall be possible even if the driver MMI is switched off. (M)"
+R177,The Cab radio may be required to set up calls from a number of different sources.
+R178,"Therefore, the radio shall provide a priority function for calls from different sources in order to handle contention for the radio. (M)"
+R179,"In order to meet other call priorities, established calls shall be able to be either put on hold or cleared down (pre-empted). (M)"
+R180,The Cab radio shall be capable of handling contention between calls of differing priorities. (M)
+R181,An outgoing call request of higher priority than an established call shall take precedence over the established call. (M)
+R182,Priority call handling facilities shall be provided such that the performance requirements defined in sections 3.4 and 10.2 can be met. (M) Run-time diagnostics
+R183,"If run-time diagnostics are implemented, failure of an interface shall be reported to the driver via the display. (M)"
+R184,"If run-time diagnostics are implemented, diagnostic tests shall not interfere with normal operation of the Cab radio. (M)"
+R185,"Train-mounted equipment including the Cab radio terminal equipment, MMI and antenna shall comply with all specifications in section 4.3 and all of those defined in this section. (M)"
+R186,The driver man-machine interface shall comprise the following components: (M)
+R187,Radio equipment installed in a driver’s Cab shall not obstruct the driver’s vision or otherwise hinder the safe driving of the train. (M)
+R188,i The design of the equipment shall make it possible to install it within a cab complying with the requirements of UIC fiche 651 concerning the layout of cab equipment5. (M)
+R189,All call related functions shall be possible with the handset on or off the hook. (M)
+R190,"The driver shall be able to adjust the brightness of buttons, indicator lights and displays according to the ambient lighting in the cab. (M)"
+R191,The driver shall be able to adjust the contrast of the display. (M)
+R192,The emergency call button shall be red and shall be protected against accidental use. (M)
+R193,"Any displays shall be clearly readable from a normal driver’s position, assuming a normal reading distance. (M)"
+R194,Displayed characters shall have a minimum height of 5mm. (M)
+R195,The following colours shall only be used where mandated in 5.4.11: (M)
+R196,The standard set of audible and visual indications specified in the CENELEC Standard for the Driver-Machine Interface for ERTMS shall be implemented in the Cab radio system. (M)
+R197,Cab radios shall provide a means of preventing tampering. (M)
+R198,"If contact with the mobile radio network is lost, then the Cab radio shall give an audible and visual indication. (M)"
+R199,"i If such an interface is implemented, it shall be capable of being connected to a device complying with UIC fiche 6413 concerning automatic vigilance devices used in international traffic. (M)"
+R200,The activation of the driver safety device shall automatically trigger the Cab radio to send a data message. (M)
+R201,The DSD alarm call/message shall provide the following information:
+R202,DSD alarm information shall be transmitted to the primary controller. (M)
+R203,The Cab radio shall be able to provide the following information to a train-borne recorder or other equipment via a standardised interface:
+R204,On-train mobiles shall provide a standardised interface to ERTMS/ETCS. (M)
+R205,"Where available, the functional identity of the calling party shall be displayed. (M) Receive incoming group or broadcast voice call"
+R206,A short audible and visual indication of the incoming call shall be provided. (M)
+R207,"If the call is a broadcast call, the user shall be informed that he cannot speak as part of the broadcast call. (M)"
+R208,"In a group call, a visual indication shall be provided to remind the user of the need to use the PTT function. (M)"
+R209,The user may not speak in a group call until permission is granted by the network after using the PTT function. (I)
+R210,"In a group call, an audible and visual indication of whether the request was successful shall be provided."
+R211,"If the user moves out of the group or broadcast call area whilst the call is in progress, an audible and visual indication of the loss of call shall be provided to the user. (M) Receive incoming Railway emergency call"
+R212,Reception of this call (if implemented) shall proceed as for a standard group or broadcast call except that a distinctive audible and visual indication shall be provided. (M) Terminate calls
+R213,The radio shall provide a means for the user to terminate calls which he is authorised to terminate (ie all calls except broadcast or group calls not initiated by the user). (M)
+R214,The radio shall have an on/off switch.
+R215,Switching the radio ‘on’ shall initiate the following: (M)
+R216,if the self-test fails a visible and audible indication shall be provided;
+R217,"if connection is successful, the name of the network shall be displayed and an audible confirmation of successful connection shall be given;"
+R218,"if connection is not successful, an audible and visual indication shall be provided."
+R219,Switching the radio off shall cause the following: (M)
+R220,"When switched off, the radio shall retain any settings and numbers which are stored at the time the radio is switched off. (M) Select language"
+R221,Prompts and messages shall be capable of being displayed in at least 10 languages (each railway will choose which languages will be implemented). (M)
+R222,The user shall be able to select his preferred language for the display;
+R223,this setting shall be retained by the radio. (M)
+R224,"When the radio is first powered on, the language that appears on the display shall be the default one set by the national railway. (M)"
+R225,"Where more than one mobile radio network is available for use by a mobile, the selection of the network to use shall be automatic (see section 10.5). (M)"
+R226,"When the mobile changes network automatically, a visual and audible indication shall be given. (M)"
+R227,i It shall be possible for a user to override the automatic network selection manually.
+R228,This function shall not be available during calls. (M) Register and deregister functional number
+R229,It shall be possible to register and deregister a functional number in the following way:
+R230,"Where a change of functional number is required, it shall be possible for the user to initiate the change. (M) Store/retrieve numbers and their details"
+R231,It shall be possible for the user to find and display stored numbers and their information. (M)
+R232,It shall be possible for the user to store and/or overwrite numbers and their details in the radio. (M) Computer interface
+R233,A Push-To-Talk function shall be provided.
+R234,These buttons need not be dedicated buttons. (This facility is required to allow calls to specified users to be initiated quickly.) (O)
+R235,"If the ability to initiate Railway emergency calls is implemented in the radio, accidental initiation of a Railway emergency call shall be prevented. (M)"
+R236,A visual and audible indication shall be given when the remaining capacity of the battery is such as to enable only 10 minutes of full duplex call time. (M)
+R237,A network service availability indication shall be provided to the user. (M)
+R238,A visual indication shall be provided to the user if the network service is no longer available. (M)
+R239,An audible indication should be provided to the user if the network service is no longer available. (O)
+R240,"The Operational radio shall be capable of use as a standard telephone, such that the user is able to call any valid number subject to call restrictions enforced by the network. (M)"
+R241,It shall be possible for the user of an Operational radio to establish a call with each of the following types of controller (who are not permanently included in a shunting group) with a minimum number of actions being required:
+R242,"In these cases, the identities of the controllers corresponding to these valid numbers shall be displayed with an audible and visual prompt for one to be selected."
+R243,The number of the controller selected shall then be used to establish the call.
+R244,If no selection is made by the user within 10 seconds the radio shall abandon the call attempt. (O)
+R245,"Once an appropriate number has been obtained, the radio shall attempt to establish a call to this number with railway operation priority. (M)"
+R246,An audible and visual indication shall be provided to the user that the call is proceeding. (M)
+R247,"When the call is connected to the controller, an audible and visual indication shall be provided to the user. (M)"
+R248,"The functional identity of the connected party, if available, shall be displayed to the user. (M)"
+R249,"Where available, an alphanumeric description of the identity of the connected party shall be displayed. (M)"
+R250,"If the system is not able to connect the call, an audible and visual indication shall be provided to the user. (M) Send Railway emergency call"
+R251,The Railway emergency call shall be able to be initiated using a single red button (see section 13). (M)
+R252,"If the emergency call function is disabled, a visual indication and short audible indication shall be given when:"
+R253,Reception of this call shall proceed as for a standard group or broadcast call except that a distinctive audible and visual indication shall be provided. (M) Terminate calls
+R254,The radio shall provide a means for the user to terminate calls which he is authorised to terminate (ie all calls except broadcast or group calls not initiated by the user). (M) Shunting mode communications
+R255,"If shunting mode is implemented, a means to enter and leave shunting mode shall be provided. (M)"
+R256,"If shunting mode is implemented, the functionality to enter or leave shunting mode shall not be available whilst there are on-going calls involving the Operational radio. (M)"
+R257,"If shunting mode is implemented, the link assurance tone shall be provided via the loudspeaker. (M) Direct mode"
+R258,"When the radio is first powered on, the language that appears on the display shall be the default one set by the national railway. (M) Select mobile radio network"
+R259,The Operational radio shall comply with the basic standards defined for all EIRENE mobile equipment in section 4.3 and this section.
+R260,The Operational radio shall be of a rugged design suitable for use in the railway environment by operational railway personnel. (M)
+R261,Controls shall be designed such that they are suitable for use by people wearing gloves. (M)
+R262,"Controls shall be designed for use in a wide range of conditions, eg splash proof and suitable for viewing in direct sunlight and in darkness. (M)"
+R263,It shall be possible to change the battery without losing data stored in the radio. (M)
+R264,Operational radios shall be equipped with rechargeable batteries capable of providing a minimum of eight hours operation from a single charge based on the following cycle (see section 4.3.9): (M)
+R265,The Operational radio MMI shall comprise the following components: (O)
+R266,The MMI shall be suitable for use by day and night. (O)
+R267,"The display shall be capable of displaying at least 6 lines, each of 20 characters. (M)"
+R268,The emergency button shall be designed to avoid accidental use. (M)
+R269,"If shunting mode is implemented, the link assurance button shall be designed to avoid accidental use. (M)"
+R270,A dedicated Push-To-Talk button shall be provided. (M)
+R271,A visual and audible alarm shall be given when the remaining capacity of the battery is such as to enable only 10 minutes of full duplex call time. (M)
+R272,"The controller equipment must be designed to function correctly in a railway operating environment, such as control centres and signal boxes. (I)"
+R273,The EIRENE system shall enable users to originate and receive calls by functional number. (M)
+R274,Each mobile shall be identified by a unique telephone number. (M)
+R275,The use of train numbers to address trains shall not result in any ambiguities. (I)
+R276,Every on-train function shall be identified by a unique standard number. (M)
+R277,The use of engine/coach numbers to address trains shall not result in any ambiguities. (I)
+R278,Every on-engine/coach function shall be identified by a unique standard number. (M)
+R279,Every shunting team number shall be based on an association of: (M)
+R280,Every maintenance team number shall be based on an association of: (M)
+R281,Every controller number shall be based on an association of: (M)
+R282,The numbering for other teams shall be treated in the same way as maintenance teams in 9.2.4.2. (M)
+R283,Group call service areas shall be freely configurable within the operational responsibility of each railway network. (M)
+R284,"Telephone numbers can be defined on a national basis, but codes for certain functions shall be used on an international basis in order to allow interoperability. (M)"
+R285,"For certain functions, standardised telephone numbers shall be implemented."
+R286,"In network boundary areas, the pre-defined local area shall be allocated on a bilateral basis. (M)"
+R287,Authorised users within the EIRENE network shall be able to receive calls from calling parties outside the EIRENE network. (M)
+R288,A number of levels of priority shall be required in order to offer different grades of service to different users and calls.
+R289,Five levels of priority shall be defined: (M)
+R290,"In order to provide interoperability, priorities shall be allocated consistently across all EIRENE networks, as shown in the following table. (M)"
+R291,The lowest priority ongoing call shall be pre-empted before that of a higher priority. (M)
+R292,Any implementation of such call restrictions shall not affect international interoperability. (M)
+R293,It shall be possible to ‘activate’ or ‘deactivate’ the mobile’s subscription to these groups. (M)
+R294,Activating a group on the mobile shall allow a user to receive a call from that group. (M)
+R295,Deactivating a group on the mobile shall prevent a user receiving calls from that group. (M)
+R296,All mobiles with Railway emergency group call subscription(s) shall be prevented from deactivating the emergency group(s) whilst operational. (M)
+R297,Authorised networks shall be listed (or automatically selected if automatic selection has been enabled) in the following order: (M)
+R298,"Where EIRENE facilities are not available within the currently selected network, the user shall be given a visible indication. (M)"
+R299,“ Yes” indicates that the network shall allow a call from the stated initiating party to the stated receiving party. “ Yes*” indicates that the call shall be allowed at least for users on the same train. “ Open” indicates that permissions for calls of this type are to be assigned by the implementing railway according to their specific communication requirements.
+R300,An addressing scheme shall be provided which permits users to be identified by numbers corresponding to their functional roles rather than by numbers tied to the terminal equipment that they are using. (M)
+R301,It shall be possible to assign up to a minimum of 3 functional numbers to an EIRENE user at any one time. (M)
+R302,Only one EIRENE user shall be assigned to a given functional number at any one time. (M)
+R303,"A user shall be able to set up a functional number on one network, and cancel the number from another network. (M)"
+R304,The functional number shall remain valid as a user roams from one network to another. (M)
+R305,The functional addressing scheme shall be independent of specific configurations of mobile and terminal equipment.
+R306,"For example, the functional number of a conductor on board a particular train shall be the same irrespective of whether the conductor accesses the network through the Cab radio or has a separate dedicated EIRENE mobile. (M)"
+R307,It shall be possible to call EIRENE users by functional numbers from a wide range of terminals (EIRENE and non-EIRENE).
+R308,The functional addressing scheme should permit calls to be routed from a controller to an international train within the control area without reference to any EIRENE system other than that providing service to the international train. (O)
+R309,Functional numbers must be unique within the domain of operation.
+R310,"Since the number must be independent of networks, each number must be unique across all networks (including implementation of EIRENE facilities on public networks). (M)"
+R311,The functional number shall consist of numeric characters only. (M)
+R312,The functional identity of the called user shall be presented to the user initiating a call and the functional identity of the initiator shall be presented to the user receiving a call. (M)
+R313,"For broadcast and group voice communications, the functional identity provided shall be that of the broadcast or group identity. (M)"
+R314,"If the user initiating the call has more than one functional identity, the user shall be able to select, prior to call establishment, which functional identity is presented to the receiving user. (M)"
+R315,The functional identity shall be presented to the user in a form which can be readily understood (eg ‘driver of train abcd’ rather than ‘abcd01’ or ‘xyz shunting team 3’ rather than ‘xyz03’). (M)
+R316,The functional addressing scheme shall be supported by a straightforward procedure for registration of functional numbers.
+R317,This procedure shall be carried out by the user on commencement of the functional role. (M)
+R318,The functional number registration facility shall be supported by all EIRENE user equipment. (M)
+R319,"i It should be possible for the system to prevent certain types of users from registering functional numbers that they are not authorised to use, for example: (O)"
+R320,It shall be possible to register up to ten functional numbers to items of equipment physically connected to the Cab radio within 30 seconds. (M)
+R321,The registration procedure shall provide a means to prevent mis-allocation of functional numbers during registration. (M)
+R322,Duplicate functional numbers (eg two trains with the same train number) shall be prevented. (M)
+R323,The system shall provide a means to recover consistent data sets following a system failure during which functional addressing facilities are lost.
+R324,"During this recovery period, the system shall not permit the use of unverified functional numbers. (M)"
+R325,The functional addressing scheme shall be supported by a straightforward procedure for deregistration of functional numbers.
+R326,This procedure shall be carried out by the user at the end of the functional role. (M)
+R327,The functional number deregistration facility shall be supported by all EIRENE user equipment. (M)
+R328,It shall be possible to deregister up to ten functional numbers to items of equipment physically connected to the Cab radio within 30 seconds. (M)
+R329,"In addition, a given set of users shall also be allowed to: (M)"
+R330,An EIRENE mobile shall remove the displayed functional number and provide an indication to the user that deregistration has taken place. (M)
+R331,"To allow roaming between EIRENE networks, the system shall support a procedure for the re-registration of functional numbers after selection of a new network. (M)"
+R332,This procedure shall be carried out without manual intervention. (M)
+R333,"After automatic re-registration is performed, the new registration details shall be displayed to the user. (M)"
+R334,Location dependent addressing shall be provided to route calls for a given function to a destination number that is dependent upon the user’s location. (M)
+R335,The functions to which calls shall be routed based upon the location of the mobile shall include: (M)
+R336,"When operating with location dependent addressing, no manual action shall be required to update the system when a mobile moves between locations. (M)"
+R337,The location dependent addressing scheme shall be available to all mobiles. (M)
+R338,"As a minimum, the location information used by the EIRENE system shall be derived from that available from the network itself (eg current cell or base station serving the mobile). (M)"
+R339,"However, it is anticipated that individual national railways may have a requirement for pre-defined messages, in which case the application should be specified as part of individual national procurements. (I)"
+R340,It should be possible to transfer text messages between ground and mobile(s) through the EIRENE system. (O)
+R341,The maximum length of a message segment shall be 96 characters.
+R342,The text message facility shall not interfere with the ability of users to use the radio. (M)
+R343,A standard data interface between the mobile and the application module shall be provided. (M)
+R344,"The type of call initiated shall be determined automatically, based upon the mode of operation of the radio. (M)"
+R345,"If the mobile is in shunting mode, the emergency call button shall initiate a shunting emergency call, otherwise the call shall be a Train emergency call. (M) Train emergency call"
+R346,"The Train emergency call shall be sent to all drivers and controller(s) within an area, which is pre-defined to meet operational requirements."
+R347,"The predefined areas for emergency calls shall include, where necessary, parts of one or more network(s). (M)"
+R348,The Shunting emergency call shall be sent to all users involved in shunting operations in the shunting area. (M)
+R349,The Shunting emergency call shall automatically take priority over the link assurance signal. (M)
+R350,A Railway emergency call shall be able to be initiated by using a simple MMI action (eg a single MMI action for the Cab and Operational radios). (M)
+R351,A connection of Railway emergency priority (see section 10.2) shall be established to a pre-determined set of receiving mobiles and controller(s). (M)
+R352,"If the system is not able to connect the call, the system shall automatically keep trying to connect the call for 30 seconds. (M)"
+R353,i During this period the user shall be provided with an audible and visual indication that the system is trying to connect the call. (M)
+R354,"ii After the 30 second period, if the connection was unsuccessful, the system shall provide another audible and visual indication that it was unable to connect the call. (M)"
+R355,An audible indication of 5 seconds (to be confirmed by trials) shall be provided to originating and receiving users that the emergency function has been activated. (M)
+R356,A continuous visual indication that the emergency function has been activated shall be provided at the originating and all receiving terminals. (M)
+R357,"In the event that a train enters the affected area after the warning stage is complete, the same audible and visual indications shall be provided. (M)"
+R358,"A speech connection shall be established immediately following the warning tone, to allow the originator of the emergency call, to give information concerning the nature of the emergency. (M)"
+R359,The information shall be received by the same set of users who received the warning tone. (M)
+R360,"If the radio moves out of the area whilst the emergency call is in progress, an audible and visual indication of the loss of the call shall be provided to the user. (M)"
+R361,Authorised EIRENE mobiles shall be able to receive a Railway emergency call at any time while the mobile is powered up. (M)
+R362,The confirmation shall be generated automatically without input from the user. (M)
+R363,The confirmation message shall commence at the end of the call or if the radio moves out of the call area. (M)
+R364,"If the radio loses contact with the network, the mechanism shall commence as soon as possible on regaining communications, for up to a maximum of 5 minutes without achieving contact. (M)"
+R365,"For Railway emergency calls initiated by a mobile, the automatic confirmation message of the initiating mobile shall contain: (M)"
+R366,"For Railway emergency calls received by a mobile, the automatic confirmation message of the receiving mobile shall contain: (M)"
+R367,The confirmation message shall be received at the central location with a 99% probability of success within 5 minutes of call termination. (M)
+R368,The performance of the confirmation procedure shall not be dependent upon the current use of the mobile and shall not overload the network. (M)
+R369,The shunting call shall be a group call and shall have ‘Railway operation’ priority (see section 10.2). (M)
+R370,"i During the transmission of the link assurance signal, only the originator of the link assurance signal shall be able to speak to all other members using the PTT function. (M)"
+R371,The shunting communication shall be protected from unintentional and unauthorised access. (M)
+R372,It shall be possible for all mobile members of the shunting group (except the driver) to transmit a link assurance signal. (M)
+R373,"Within the shunting group, it shall be possible for only one member of the group to transmit the link assurance signal at any time. (M)"
+R374,Operational radios used for shunting shall enable the link assurance signal to be activated and de-activated by the shunting group member. (M)
+R375,Operational radios used for shunting shall be able to be switched between the following two operating modes by a maintenance function: (M)
+R376,Mode 1: the member is required to continuously press the link assurance signal button in order to transmit the link assurance signal;
+R377,Mode 2: the member is required to switch on the link assurance signal and then periodically press a button in order to transmit the link assurance signal (failure to do so shall result in the deactivation of the link assurance signal after a predefined period has elapsed).
+R378,The link assurance signal shall be used to provide an audible indication to all group members.
+R379,It shall be possible for any member of the shunting group (including a driver) to transmit a shunting emergency call to all shunting groups in the area. (M)
+R380,It shall be possible for all shunting drivers and shunting group members to receive a shunting emergency call from any equipment capable of taking part in shunting communications.
+R381,The shunting emergency call shall cause the audible link assurance signal to be interrupted. (M)
+R382,It should be possible for the system to record: (O)
+R383,"If a user, other than the shunting leader, attempts to make another call whilst being an active member of a shunting group, the attempt shall be ignored. (M)"
+R384,"If the radio is used by the team leader for a shunting group call (ie initiated the shunting group call), switching the radio off shall result in the termination of the shunting group call. (M)"
+R385,A shunting group shall be able to consist of the following mobile members: (M)
+R386,a controller shall be able to be associated permanently or temporarily with the shunting group;
+R387,It shall only be possible for the shunting leader to communicate with a person external to the ongoing shunting communication.
+R388,The shunting leader shall then be able to allow the external user to join the shunting communication. (M)
+R389,The link assurance signal shall consist of an intermittent audio tone (between 800 and
+R390,"The tone shall be of one second duration, followed by an interval of two seconds. (M)"
+R391,i Operational radios used for shunting shall be able to be switched between the following two operating modes by a maintenance function: (M)
+R392,"Mode A: the link assurance signal shall be interrupted, but not cancelled, when the initiator of the link assurance signal presses the PTT to speak."
+R393,Mode B: the link assurance signal shall not be interrupted when the initiator of the link assurance signal presses the PTT to speak.
+R394,The link assurance signal shall be deactivated upon receipt of a shunting emergency call. (M)
+R395,"All members of the shunting group, other than the initiator of the link assurance signal, shall be unable to speak during the transmission of the link assurance signal."
+R396,"However, they shall be able to initiate a shunting emergency call at any time. (M)"
+R397,it shall be possible to modify a shunting group’s composition during a working period.
+R398,"The process for acceptance (or rejection) of new members, and for admission and removal of temporary members, shall be simple. (M)"
+R399,"in a given area, a radio set shall be capable of operation in any of the shunting groups in use in that area, subject to any user access restrictions. (M)"
+R400,The ability to talk shall be achieved through use of the Push-To-Talk function;
+R401,"if more than one channel is provided, there must be a function allowing the user to manually select the channel;"
+R402,"where equipment provides both normal and direct mode capability, the user shall be able to switch between the two modes in a straightforward manner (but not by accident);"
+R403,"controls shall be simple to use, eg:"
+R404,battery life for handportables operating in direct mode shall be a minimum of 8 hours based on the following cycle:
+R405,"when direct mode is used as a fall-back, an audible and visual indication shall be provided of normal mobile telephony services returning."

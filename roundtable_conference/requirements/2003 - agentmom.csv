@@ -1,0 +1,28 @@
+﻿item,text
+R1,Software Interface – java version 1.4.0 is required to use the software.
+R2,"Multicast Protocol – in order to send multicast message, network environment such as router, network card and operating systems must support multicast protocol."
+R3,agentMom shall support the ability to send unicast message.
+R4,agentMom shall support the ability to receive unicast message.
+R5,Unicast message shall only be received by the specified address.
+R6,Unicast message shall arrive at the specified address and in order.
+R7,agentMom shall support the ability to send multicast message.
+R8,agentMom shall support the ability to receive multicast message.
+R9,agentMom shall support the ability to send request to join multicast group.
+R10,agentMom shall support the ability to send request to leave multicast group.
+R11,agentMom shall not allow receiving multicast message from a group before joining that multicast group.
+R12,agentMom shall not allow receiving multicast message from a group after leaving that multicast group.
+R13,agentMom shall support the ability to set time-to-live for multicast message.
+R14,agentMom shall support the ability to set multicast address and port for sending and receiving multicast message.
+R15,agentMom shall support the ability to receive multicast message from multiple groups.
+R16,agentMom shall support the ability to sent broadcast message.
+R17,agentMom shall support the ability to receive broadcast message.
+R18,Broadcast message shall be sent to all possible hosts under the same local network.
+R19,agentMom shall support the ability to encrypt unicast message.
+R20,agentMom shall support the ability to decrypt unicast message.
+R21,agentMom shall allow an agent to decide whether or not to encrypt a message.
+R22,agentMom shall automatically decrypt encrypted message.
+R23,agentMom shall support the ability to encrypt multicast message.
+R24,agentMom shall support the ability to decrypt multicast message.
+R25,agentMom with shall support the use of the architecture that agent directly controls the conversations.
+R26,agentMom shall support the use of the architecture that agent’s components control the conversations.
+R27,The new built agentMom shall be compatible with the agentMom 1.2 Note: The “ * ” indicates Driving Requirements that need to be demonstrated by the end of phase II.

@@ -1,0 +1,8 @@
+﻿item,text
+R1,It should be used by software engineers who will develop this piece of software and it should be used for formalization of the software that is going to be delivered to clients/users.
+R2,Every future change in the requirements of this software should be made through a typical procedure of change and final acceptance of this document.
+R3,"Software engineers should ask for further explanation or clarification, if and wherever they decide this is necessary and should not proceed to modifications without the approval of the final client/user."
+R4,"In case the selected archive is encrypted, user must know and insert password and (if there is one) keyfile in order to have access to the archives contents (for browsing or extracting them)."
+R5,"In Create archive window(Create archive Interface), users are given the ability to select compression format (from a list of the supported by PeaZip formats for archiving and compression) for the created archive, choose storage space (in the computer system) where the archive is going to be saved and set archive’s name (as well as define what should happen in case of existence of a homonym file or archive in the selected storage space)."
+R6,This application should function even in cases of wrong data insertion or wrong settings.
+R7,"Any user should be able to use PeaZip without any specific knowledge or experience over using computer systems, by reading user manuals(help documents, requirements specification document, mini tutorials) and seeing messages and warnings that the application provides with."

@@ -1,0 +1,107 @@
+﻿item,text
+R1,The major functions the Correlator Backend System must perform are as follows: /g183/g32Receive data from the Correlator in real-time. /g183/g32Assemble time-series from the Correlator lag output. /g183/g32Perform Fourier Transforms of the assembled time series. /g183/g32Perform a limited number of additional processes upon user request. /g183/g32Deliver suitably formatted results to the End-to-End System.
+R2,This document will define only those requirements that must be fulfilled by the Correlator Backend System.
+R3,"Currently, only a conceptual diagram exists for the system and should be viewed as such (see Figure 1)."
+R4,Operations performed shall be reversible.
+R5,"That is, the original raw uncorrected data must be recoverable from the processing output."
+R6,Lag Frames – The BE shall receive LTA or Speed Dump Lag Frames from the Correlator.
+R7,Transfers – The transfer shall take place in such a manner that all data needed to perform any Fourier Transform shows-up on a single processor.
+R8,"State Counts – The BE shall receive, via M&C, State Count data produced by the Correlator."
+R9,"Observational Mode – The BE shall receive, via M&C, data and parameters specific to the current EVLA Observational Mode needed for processing the Correlator Lag values."
+R10,"Meta-data – The BE shall receive, via M&C, all meta-data necessary to format BE results for delivery to the E2E."
+R11,Operational Status and Control – The BE shall provide operational status data to and receive control data from the M&C System.
+R12,Error and Warning – The BE shall provide error and warning reports to M&C as operating conditions warrant.
+R13,Debug/Test Messages – The BE shall provide several optionally selectable levels of printed messages detailing operational parameters at critical locations in the system.
+R14,Formatted Output – The BE shall deliver formatted final results to the e2e System.
+R15,The BE shall produce all data needed by the e2e System for archiving and further processing.
+R16,Monitor and Control System – The BE shall acknowledge receipt of all data received from M&C.
+R17,Correlator System – The BE shall notify M&C of any detected interruptions of data delivery from the Correlator.
+R18,e2e – The BE shall verify successful delivery of output to the e2e.
+R19,Internal Data – The BE shall guarantee safe delivery of all internal messages.
+R20,Lag Frames – The BE shall be able to handle lag frames of less than 128 values.
+R21,Lag Sets - The BE shall be able to handle lag sets up to a maximum size of
+R22,Data Receive – The BE shall receive incoming data packets from the Correlator to Backend network interface.
+R23,Verify Receive – The BE shall verify the successful receipt of incoming data from the Correlator.
+R24,Input Data Management - The BE shall store input data records in a memory buffer and track buffer locations of all input data until data processing is complete.
+R25,"Processing Management – The BE shall respond to incoming correlator mode changes, user optional processing sequence and/or parameter changes, and other external inputs that affect the data processing pipeline ."
+R26,Time Series Assembly – The BE shall assemble the received input data into continuous time series (lag sets).
+R27,Data Integrity Verification – The BE shall ensure that time series data is correctly ordered and contains valid data values along its entire extent.
+R28,Data Invalid – The BE shall replace all invalid data with zero values.
+R29,Data Invalid Count – The BE shall keep track of data invalids.
+R30,Normalization – The BE shall be able to apply normalizations based on reported data invalid counts.
+R31,Coarse Quantization Correction - The BE shall be able to apply corrections based on state count and/or quantizer power measurement data.
+R32,Time Stamp Adjustment – The BE shall be able to make time stamp adjustments as required by the observational mode and correlator output parameters.
+R33,Windowing – The BE shall be able to perform windowing operations prior and subsequent to Fourier Transform.
+R34,Time Domain Processing – The BE shall be able to apply user selected time domain processes.
+R35,Fourier Transform Processing – The BE shall be able to perform Fourier Transform the lag set time series.
+R36,This process must be able to accept as input the output of any of the time domain processes.
+R37,Frequency Domain Processing – The BE shall be able to apply user selected frequency domain processes.
+R38,"Integration – The BE shall be able to sum the frequency domain, spectral results."
+R39,The BE shall keep track of the number of samples/dumps integrated in each spectral channel.
+R40,Output Formatting – The BE shall combine the finished spectra with meta- and auxiliary data to form suitably formatted output data sets.
+R41,Output Data Management – The BE shall store formatted output data records in a memory buffer with backup disk buffering.
+R42,Data Send – The BE shall send output data to the e2e System.
+R43,Send Verify – The BE shall verify that all sent data was successfully received.
+R44,Monitor I/O Performance – The BE shall monitor data transfer rates from
+R45,Monitor Compute Performance – The BE shall monitor the overall data processing rate.
+R46,"Monitor Compute Errors – The BE shall trap, flag and repair inf’s, NaN’s, underflows, overflows and other computation errors."
+R47,Monitor Processes – The BE shall periodically or upon request check PID’s and assure that all started tasks are alive and running.
+R48,Monitor Processors – The BE shall periodically or upon request check Backend physical processors and assure that all needed processors are alive and responding.
+R49,Monitor Networks – The BE shall periodically or upon request check all Backend internal networks and assure that all communication connections are intact and functioning.
+R50,Start Process – The BE shall be able to initiate a processing task on any Backend processor.
+R51,Stop Process – The BE shall be able to signal a kill for any Backend process.
+R52,Alter Priority – The BE shall be able to alter the priority of any of the BE tasks.
+R53,Reboot Processor – The BE shall be able to initiate a reboot of any Backend a physical processor.
+R54,Reboot network – The BE shall be able to initiate a reboot of any internal network.
+R55,Offload – The BE shall be able to redistribute internal workload among its processors.
+R56,General – BE processes shall not violate archive data requirements.
+R57,All processes shall be reversible;
+R58,"Data Integrity – the Backend System shall maintain input data fidelity and dynamic range across all processing, manipulation and I/O functions."
+R59,Error Handling – the system shall be capable of flagging and marking corrupted data segments and proceeding without interruption or effect on other data.
+R60,Input – The BE System shall be capable of accepting an aggregate data input stream from the Correlator of a minimum of 1.6 Gbytes/sec.
+R61,"This must be done simultaneously with the output stream, but not necessarily over the same interconnects."
+R62,Output – The BE System shall be capable of delivering an output data stream to the e2e System of a minimum of 25 MBytes/sec.
+R63,CPU – The total processor capability of the BE System shall be (combination of numbers of processors and individual processor speed) sufficient to accomplish all processing tasks while avoiding loss or delay on the input and output data streams.
+R64,Memory – The BE System shall have sufficient (amount TBD) memory with sufficient (rate TBD) access speeds to accomplish all processing tasks while avoiding loss or delay on the input and output data streams.
+R65,Excess Storage – The BE System shall have sufficient storage (memory and/or disk) with sufficient access speeds to meet short duration
+R66,"Applications – all math/science application software shall take optimal advantage of all language, compiler, and system computational features and resources to reduce run times to the minimum practical level."
+R67,"Management – all management software functions shall take optimal advantage of all language, compiler and system features and resources to reduce overheads to the minimum practical level."
+R68,"I/O – all input and output, and storage and retrieval operations shall take optimal advantage of all system resources to reduce overhead and latency to the minimal practical level."
+R69,Processing – all data processing functions shall be chainable (outputs pipeable to inputs) and repeatable in the processing pipeline in cases where this makes computational sense.
+R70,"General - Operating system, message passing and other middle-ware, and programming language(s) used shall follow industry standards and be commonly available and widely used."
+R71,Auto-correction – the Backend System shall be self-monitoring.
+R72,Software – the software part of the system shall be able to perform without total system restart due to internal failure between array maintenance windows.
+R73,"Hardware – the hardware part of the system shall be able to perform indefinitely without complete loss of service, except in the event of total failure of primary and backup power."
+R74,Correlator mode changes – the system shall be capable of responding in a loss-less manner to I/O and processing changes arising from Correlator mode changes.
+R75,Loss of e2e – the system shall continue to operate in a loss-less manner in the event of a temporary (time duration TBD) loss of availability of the e2e System.
+R76,"Loss of Correlator – the system shall be able to complete processing of all onboard data, deliver the results to the End-to-End System and maintain availability for immediate resumption of operations once Correlator access is restored."
+R77,Loss of M&C – the system shall continue to operate during the absence of
+R78,Standby Mode – the system shall be able to sit at idle and resume operations with minimal (amount TBD) delay.
+R79,"Hardware Accessibility – all system processing and interconnect hardware shall be readily accessible for maintenance, repair, replacement and/or reconfiguration."
+R80,Software Accessibility – all systems and application source code shall be available to or on the systems that execute it.
+R81,Debugging – all software application modules shall be debuggable.
+R82,"Processes – all software processes shall be killable, restartable, debuggable and testable without affecting normal operations."
+R83,Software tools – software tools and pre-built applications that do not have source code available shall come with a complete diagnostic package and customer support.
+R84,Operating Systems – operating system software shall either have source code available or come with sufficient diagnostics and customer support.
+R85,"Hardware – I/O, communications, and processing hardware shall be easily expandable, reconfigureable, augmentable and replaceable to meet increasing data transfer and processing demands imposed by EVLA science, Correlator changes, and availability of new hardware."
+R86,"Transparency – 3.7.1, above, shall be accomplished in manner that is transparent to processing, communications and I/O software functions with the possible exception of recompilation of executables."
+R87,"Seamlessness – 3.7.1, above, shall be accomplished in a manner that is seamless, in that it does not affect hardware modules or software functionality that it meets at interfaces."
+R88,Performance – the Backend system shall ultimately be scaleable to an extent that it will be capable of handling up to two Gbytes per second per Correlator output channel in real-time.
+R89,All users of the Backend System must be uniquely identified.
+R90,"In order to monitor all past access to the system, all attempts to access the system should be logged."
+R91,Systems operations should be given unrestricted access to all aspects of the system and should have the authority to grant and revoke privileges on a per-user basis.
+R92,"All users of the system shall login using some form of unique identification. (e.g., username and password)"
+R93,"All login attempts shall be done in a secure manner. (e.g., encrypted passwords)"
+R94,A system administrator shall have unrestricted access to all aspects of the system.
+R95,"Each user shall have a set of system access properties that defines the user’s privileges within the system. (e.g., the subsystems a user may control or system tools the user may access)."
+R96,The administrator shall have the ability to create and add a new user to the system.
+R97,The administrator shall have the ability to remove a user from the system.
+R98,The administrator shall have the ability to edit a user’s system access properties.
+R99,The administrator shall have the ability to block all access to the system for all users or selectively by user. (All blocked users with active sessions shall automatically be logged off.)
+R100,"Operations Activities – the system shall continue operations, although not necessaril y at full capacity, on all unaffected resources during partial"
+R101,"Test Mode – the system shall be able to handle non-real-time operations in a transparent fashion (i.e., as if real-time)."
+R102,Replaceability –modular design principles shall be employed to the maximum extent possible.
+R103,Maximal practical use of available “hot- swappable” devices and components shall be made.
+R104,specifications and configuration information shall be readily available.
+R105,Software Coding Practices– software system and application code shall be well documented and written in a generally familiar language or languages (preferably not more than two).
+R106,Software shall be written in a style that is easily readable and using practices that allow for minimal confusion.

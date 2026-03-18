@@ -1,0 +1,11 @@
+﻿item,text
+R1,It must run with all the operating systems that Qt supports.
+R2,The user must undo and redo its last thousand actions.
+R3,The product must count and display the time that the user uses to play.
+R4,The product must count and display the number of the user's action.
+R5,The product must record the score (time and number of counts) of a play associated with the name of a user.
+R6,The product must display a window with all the player's scores.
+R7,system must provide an 800x600 screen resolution.
+R8,Sound is not required to play the game.
+R9,"Main window The main window shall provide the following parts : – A board, see chapter 3.2.1.1. – a menu bar, see chapter 3.2.5."
+R10,Software System Attributes The software must be portable to the Windows OS.

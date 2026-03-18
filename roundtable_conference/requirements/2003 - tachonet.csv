@@ -1,0 +1,56 @@
+﻿item,text
+R1,"Definition A requirement is defined as ""a condition or capability to which a system must conform""."
+R2,"Functional requirements specify actions that a system must be able to perform, without taking physical constraints into consideration."
+R3,This section should indicate any design constraints on the system being built.
+R4,Design constraints represent design decisions that have been mandated and must be adhered to.
+R5,Interface Requirement (INT) This section defines the interfaces that must be supported by the application.
+R6,"It should contain adequate specificity, protocols, ports and logical addresses, etc., so that the software can be developed and verified against the interface requirements."
+R7,"These may be purchased components, components reused from another application or components being developed for subsystems outside of the scope of this project, but with which this software application must interact)."
+R8,Physical Requirement (HAR) A physical requirement specifies a physical characteristic that a system must possess;
+R9,"Introduction Functional requirements specify actions that a system must be able to perform, without taking physical constraints into consideration."
+R10,Functional Requirement Id Description FUN-01 The system must allow a member of the network to send requests to a particular or all the other members about possible delivery of a driver’s smart card to a similar person.
+R11,FUN-02 The system must allow a member of the network to send a bulk request on all or a large part of its driver’s smart card holders to a particular or all members of the network.
+R12,FUN-03 The system must allow a member to do statistics on messages issued and received from/to his system.
+R13,FUN-04 The system must provide automatic reply to the sender of the request through the use of a standard interface to the Members systems.
+R14,FUN-05 The system must track the workflow between senders and related replies.
+R15,"FUN-06 The system must be able, in accordance with the rules on delays for each transaction, to automatically transmit alert messages to senders/replier/administrator when, f.i. a constraint on delay for reply is not fulfilled."
+R16,"FUN-07 The system must allow the administrator to extract statistics of use, standard delay of reply by member/period, percentage of unsuccessful transaction,... ."
+R17,FUN-08 The system must provide the management of user rights and permissions.
+R18,"FUN-09 The system must be able to define and manage various type of messages already in the driver’s smart card holder like pre- delivery check, stolen/lost cards, renewals, exchanges and duplicates."
+R19,FUN-10 The system must be able to include new members in the network through simple administrative tasks.
+R20,Functional Requirement Id Description FUN-11 The system must be highly automatic to relieve the users of as many repetitive and tedious tasks as possible.
+R21,FUN-12 The system must provide at application level a full security (including non repudiation) and encryption policy compatible with the level of security required in such situation.
+R22,"FUN-13 The system must guarantee that none of the Member of the network , including the administrator , is technically able to re- construct a consolidated European database through the use of the messages exchanged."
+R23,"The system must be such that none of the Member States of the network, including the administrator, re-construct a consolidated European database."
+R24,"FUN-14 The system must allow a Member State (through its Card Issuing Authority) to ask for the status of card (lost, stolen,… ) to the corresponding Card Issuing Authority of the Member State having issued the card."
+R25,"FUN-15 The system must allow a Member State (through its Card Issuing Authority) to send card status modification requests (lost, stolen,… ) to the corresponding Card Issuing Authority of the Member State having issued the card."
+R26,"FUN-16 The system must allow enforcement authorities (through its Card Issuing Authority) to ask for driver’s card status (based on either card number + issuing Member State code or driver’s surname, first names, date of birth and issuing Member State code) to the corresponding Card Issuing Authority of the Member State having issued the card."
+R27,FUN-17 The system must allow enforcement authorities (through its Card Issuing Authority) to ask for workshop card status (based on workshop card number + issuing Member State code) to the corresponding Card Issuing Authority of the Member State having issued the card.
+R28,Usability Requirement Id Description USA-01 The system must guide users through an interface based on end user concepts.
+R29,USA-02 The system must be easy to learn and does not obstruct the thematic understanding of the users.
+R30,USA-03 The system must make it easy to correct mistakes.
+R31,"REL-02 The system must function reliably, with few or no interruptions in its first operational year and fewer still thereafter."
+R32,REL-03 The system must give stable and reproducible results.
+R33,PER-03 The system must be able to establish and keep the dialog with the Members systems despite the various technical environments and technologies used on their sites.
+R34,The system must respond rapidly to user requests irrespective of any background tasks.
+R35,Supportability Requirement Id Description SUP-01 The system should be able to support other types of message structure to cover f.i. a future driving licence network and correlated activities.
+R36,SUP-02 The system must be maintainable and extensible.
+R37,SUP-03 The system must be designed so that it can migrate to upgraded hardware or new versions of the operating systems involved.
+R38,SUP-04 The system must be able to migrate to other type of network than the one proposed by TESTA-II.
+R39,"SUP-05 The system must provide solutions/rules regarding data encoding problems such as supporting different character sets, name truncation rules, name matching in case of misspelling,..."
+R40,Design Requirement Id Description DES-01 The system must be designed and documented with the expectation that its operational lifetime will be many years.
+R41,Interface Requirement Id Description INT-01 The system must use the network facilities supplied by the TESTA-II network.
+R42,INT-02 The algorithms in the software will be based on existing techniques and no research will be required to develop new algorithms under this contract.
+R43,INT-03 Most of the functionality of the new software shall depend on pre-existing or commercially available software.
+R44,Pre-conditions · The CIA requesting the check must be defined in TACHOnet · The CIA requesting the check must send its request using the TACHOnet required request format (see below)
+R45,"As an issued card must be unique, it should only exist in a single CIA data store (the CIA having issued the card)."
+R46,Pre-conditions · The CIA sending the request must be defined in TACHOnet · The CIA sending the request must send it using the TACHOnet required request format (see below)
+R47,Pre-conditions · The CIA sending the declaration must be defined in TACHOnet · The CIA sending the declaration must send its request using the TACHOnet required request format (see below) · The CIA sending the declaration must have first sent a request for checking the card number for which status modification is required.
+R48,"The CIA must then warn, via TACHOnet, the Member State having issued the driving license that a brand new card has been issued with the corresponding driving license number."
+R49,"The Member State CIAs should call upon this service when issuing a new card to get the computed search keys of the driver’s surname and first names, so to store them in their local data store."
+R50,Special requirements · This service should ideally be implemented as a synchronous Web Service. · A web interface on top of this service should also be supplied to allow the CIA users to access manually these TACHOnet services. · A downloadable version of this web service should also be made available (.NET and Java) to enable some Member States to install and use it locally.
+R51,Pre-conditions The caller must provide the mandatory input parameters.
+R52,"Therefore, every CIA Administrator must be assigned a user account and password."
+R53,Alternate flows · TACHOnet should also provide a system for archiving (e.g. removing from the tracking database to flat files) “ old” messages (how long should TACHOnet keep track of a message?).
+R54,"Special requirements · Great care must be taken when setting up the tracking database in terms of sizing (the number of the messages to be logged might quickly become huge), performance (the logging mechanism should not impede overall TACHOnet system performance), availability (high availability must be guaranteed through clustering,...) and security (restricted administrative access, strong backup policies,...)."
+R55,"Stakeholders and Interests In order to constantly keep the availability and performance of the TACHOnet system at an optimum level, the system must constantly monitored and should raise some events when particular problems (HW, SW,… ) occur."

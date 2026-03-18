@@ -1,0 +1,14 @@
+﻿item,text
+R1,"This section provides the definitions of all terms, acro nyms, and abbreviations required to p roperly interpret the SRS."
+R2,"html • Special Notes The key words ""MUST"", ""MUST NOT"", ""REQUIRED"", ""SHALL"", ""SHALL NOT"", ""SHOULD"", ""SHOULD NOT"", ""RECOMMENDED"", ""MAY"", and ""OPTIONAL"" in this document are to be interpreted as described in RFC 2119."
+R3,Project ZNIX SHOULD disting uish itsel f form other information manag ement systems by its superior integration with the operating system.
+R4,The system design MUST be subjected to the following constraints: • Hardware: Intel Pentium III or compatible 1-GHz PC with 256 megabytes of RAM
+R5,The user MUST be able to view the information in the c entral store in a hierarchical manner that makes sense to him.
+R6,The mean time between failures (MTBF) SHALL exceed 3 months.
+R7,The website for distributing the project SHALL include provisions for the users to make comments on the product as well as to compile a wish-list of features.
+R8,The Framework MUST guard against malicious scripts on remote websites from accessing its information.
+R9,The Framework MUST guard against unintended corruption of information by the user himself.
+R10,The online help system should be compiled utilizing as much of non-tech nical terms as possible.
+R11,Care SHOULD be taken not t o produce an exhaustive user documentation as t hat woul d defeat the main purpos e of the system as expressed in the introduction to section 2.
+R12,The GUI MUST als o be capable of all owing the us er to s pecify relationships betwee n disparate Entities as he see fit.
+R13,"All components ass ociated with Project ZNIX should conf orm to the following standards: • Windows 2000 Logo Requirements [WWW05] The syst em SHALL conform t o ISO 10 646 (Unico de UTF- 8) a nd O PTIONALLY ISO 10646-1 (Unicode UTF-16) standards for character set encoding. [WWW06] Additionally, design of the system MAY yield a new set of standards that ZNIX- aware client processes MAY need to conform to."

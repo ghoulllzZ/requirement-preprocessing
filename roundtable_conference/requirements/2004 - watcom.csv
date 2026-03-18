@@ -1,0 +1,6 @@
+﻿item,text
+R1,"Because PIC uses relative addressing between segments, the difference between virtual addresses in memory must match the difference between virtual addresses in the file."
+R2,"The functions in a shared library may be loaded at different addresses in different programs, so the code in the shared object must not depend on the address (or position) at which it is loaded."
+R3,$OWROOT/bld/cg/intel/386/c/386rgtbl.c extern hw_reg_set FixedRegs() { /************************************ return the set of register which may not be modified within this routine
+R4,it may not occur more than once in a file.
+R5,"If it is present, it must precede any loadable segment entry."

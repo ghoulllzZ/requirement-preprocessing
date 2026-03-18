@@ -1,0 +1,14 @@
+﻿item,text
+R1,"Flowcharts generally indicate the current approach to System Administration at King County Library System, and should be considered to give contextual information rather than to prescribe or constrain new software development."
+R2,"Specifically, the system must support a library system with 50 locations, 20 million circulations, purchasing and processing over 500,000 items per year."
+R3,OE-2: System Administration shall operate on a Linu x or Solaris server.
+R4,OE-3: System Administration shall be accessible thr ough a web-browser or a Windows- compatible client.
+R5,"OE-5: System Administration shall be accessible wit h screen-reading software, screen- magnification software, and other software programs designed to increase accessibility."
+R6,CO-1: System Administration Module shall use a full y relational database back-end.
+R7,"Software Requirements Specification, System Administ ration of an Integrated Library System Page 3 CO-2: System Administration Module shall produce st andards-compliant HTML."
+R8,CO-3: System Administration Module shall provide a development and training environment with the ability to migrate configurations to a production environment.
+R9,"UD-1: The software developer shall provide complete data specifications for authority records, bibliographic records, order records, item records, hold/request records, and other records maintained or accessed by the System Administration Module."
+R10,"UD-2: The software developer shall provide a thorou gh high-level description of major processes, including bibliographic record import and export, validation of bibliographic records against internal and external authority sources, and standard reports."
+R11,"UD-3: The system shall provide an online, hierarchi cal, and cross-linked help system in HTML that describes and illustrates all system functions."
+R12,client install should not be tied to a specific location.
+R13,"Software Requirements Specification, System Administration of an Integrated Library System Page 14 Priority: 3Req ID: 6504 Name: client software updates Description: Client software installation and updates must be centrally managed, using standard or proprietary network management to ols, allowing streaming updates from server."

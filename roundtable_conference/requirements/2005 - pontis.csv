@@ -1,0 +1,203 @@
+﻿item,text
+R1,"These in clude the functional re quirements, which describe the operations tha t user s must per form using Pontis 5.0, the non- functional requirements, which des cribe the manner in wh ich the soft ware will be designed, developed, and dep loyed, and the plan fo r implementation of Pontis 5.0."
+R2,"Throughout this document, the terms “s hall” and “will” are used to identify specific f unctions and capabilities that Pontis 5.0 must provide (e.g., Pontis inspection interface shall provide the ability to perform data validation on National Bridge Invento ry items)."
+R3,"The terms “ may” a nd “ might” are used to indicate functions and c apabilities that ma y or may not be included in the final product (e.g., Pontis may provide a dire ct link to GIS soft ware for map-based querying)."
+R4,"This docum ent, once a pproved in final form, indicates agreement bet ween the AASHTO P ontis Task Force, on behalf of the Pontis licensing agenc ies, and Cambridge Systematics, on the spec ific functions and capabilities that Pontis 5.0 must provide, providing a clear a nd specif ic scope of services for th e software design and development effort."
+R5,"Any su bsequent changes to the functional requirements must be carefully review ed and considered, because t hey may impact the project schedule and/or or ex pand the scope of work beyond th at which is covered by the design and development contract between AASHTO and the software developer."
+R6,Pontis 5.0 Functional Requirements Specification v1.0 Pontis 5.0 must address this objective e xplicitly and m ust be sign ificantly improved over current version(s).
+R7,"Preservation of agency investments means that the significant body of effort to develop staff expertise, data, reports, da ta forms, procedures, ma nuals, training courses, and the multitude of other BM S-related agency products must be explicitly a cknowledged and preserved in P ontis 5.0 to the greate st extent possible."
+R8,"Where there is a conflict, the requirements of th e key i nternal users must take priority over those of secondary users."
+R9,"Changes are very likely to be neces sary but proposed database changes will need to be reviewed and approved by the BRIDGEWare Databas e Technical Advi sory Group (T AG) as part of the Pontis 5.0 design approval process following the agreed database c hange protocol.5 Pontis will support it s existing r elational databases (RDBMS) of Sy base Adaptive Server Anywhere, Oracle, and Microsoft SQ L Server a s the database for its information repository ."
+R10,"Substa ntive justification must be provided for every ch ange, and n o changes are permitted to the BRIDGEWare database desi gn wi thout the consensus of the da tabase Technica l Adv isory Group (TAG)."
+R11,"Pontis 5.0 will be a GIS-aware applicatio n that must operate properly within an agency’s GIS techno logy whether ESRI, Int ergraph, Open GIS, or o thers."
+R12,Pontis must observe in dustry stan dard protocols in this regard and avoid vendor specific implementation approaches.
+R13,Pontis 5.0 must not a ssume a un iform opera ting environment and must accommodate both disconnected and connected users.
+R14,"Pontis 5.0 must maint ain consist ency with the ex isting deployed 4.x application, which in effect serves to a great extent as a hi-fidelity (hi-fi) prototype for Pontis 5.0."
+R15,The Pontis 5.0 de sign must incorporate any F ederal NBI changes tha t may arise during the design and development period.
+R16,"must use te chnology th at the mem ber agencies of AASHTO can deploy and support, hence, the ge neral constraint identified earlier – that Pontis 5.0 will be a Microsoft .NE T a pplication, utilizing industry standard RDBMS technologies."
+R17,Pontis 5.0 must interact effectively and properly with the other BRIDGEWare products.
+R18,"Pontis 5.0 Functional Requirements Specification v1.0 Pontis 5.0 must provide two-way XML data ex change with Tran sXML schema once it is established. • • • • • • The design of Pontis 5.0 will be info rmed by review of the r esults of NCHRP Project 12-67, Multiple-Objective Optimization for Bridge Manag ement Systems."
+R19,Additional funding may be required to modify the Pontis modeling approach to incorporate new approaches developed as p art of this project.
+R20,Pontis 5.0 must provide well-defined and do cumented access to selected product functionality and data for third-party developers.
+R21,"The user shall be a ble to select structure s by structure ID, district , county, administrative area (geographic group), ownership, custodianship, functional class, NHS status, on/off syste m, ins pector, bridge g roup, ins pection due dates, and all or some environment and elements."
+R22,The query shall be restricted depending on the user privilege. … Requirements surroun ded by boxes are new or significantly updated requirements for Pontis 5.0.
+R23,The user shall be able t o view the data stored in the Physical Inventory tables through the Pontis graphical user interface (GUI).
+R24,The user shall be able to switch between predefined structure lists.
+R25,"The user shall be able to select struct ures by structure ID, district, county, administrative area (geogr aphic group), ownership, cu stodianship, functional class, NHS status, o n/off system , inspector, bridge group, inspection due dates, and all or some environment and ele ments."
+R26,"The user shall be able to find structur es based on the structure ID, structure name, feature intersected, facility carried, route number, LRS Inventory Route, KM/mile posts, structure types, design types a nd materials, and by searching the notes fields."
+R27,The query shall be restricted depending on the user privilege.
+R28,The user shall be able to enter a WHER E clause of the SQL que ry in t he Find and t he Filt er window and run a q uery agains t the bridges in t he d atabase.
+R29,This capab ility shall be an appl ication pri vilege.
+R30,Bridge-level security of the user shall be applied automatically.
+R31,The system shall display the d ata in the appropriate unit of measurement as configured for the application.
+R32,This setting shall be conf igurable (as stipulated in Requi rement
+R33,"The user shall be able to select br idges on a supported map display and generate a bridge list for use within Pontis, for ex ample, to perform a simulation analysis or to generate an inspection roster."
+R34,The user shall be able to switch between predefined project lists.
+R35,"The user shall be able t o filter and select projects by struct ure ID, project ID, program, action type, project status, re view status, treatme nt, program year, and project end date."
+R36,"The user shall be able to find projec ts by project ID, proj ect name, project status, structure ID, and program."
+R37,"The user shall be ab le t o filter and select wor k candidates by structure ID, project ID, program, action type, proj ect stat us, review status, treat ment, program year, and project end date."
+R38,The user shall be able to enter a WHER E clause of the SQL que ry in t he Find and the Filter window and run a query against the projects in th e database.
+R39,"The user shall be ab le to select a pr oject by directly typing in the project ID in the GUI, wi th the display scrolling to that structure."
+R40,Brid ge or project level security of the user shall be applied automatically.
+R41,"The user shall be able to select proj ects (work) on a supported map display and genera te a project/bridge list for use within Pontis, for ex ample, to display results of a simulation analysis or to generate a STIP display."
+R42,"The user shall be able to select and execute predefined reports to view bridge data, project data, preservation model data, program simulation results, and configuration dat a."
+R43,The user shall be able to create report s in a .NET compliant report ge nerator other than InfoMaker and review these reports from within the Pontis GUI.
+R44,The system shall pro vide the abili ty to integrate current selections with a .NET comp liant report generator other than InfoMaker.
+R45,The system shall provide the ability to incorporate PDF files into standard Pontis reports.
+R46,"The system shall provide the ability to save reports in PDF, HTML, and XML formats."
+R47,The syst em shall provide the ability to create any report that is bridge or project based by selecting the relevant “driver” records from a map display.
+R48,The system shall provide the ability to create or refresh a map display fr om a set of bridge or project records selected within the Pontis desktop.
+R49,The user shall be able t o create a ne w structure with a user-defined bridge key.
+R50,The user shall be able to create a new structure by copyi ng all data of an existing structure.
+R51,The user shall be able to create ne w structure(s) by importing from a supported file type.
+R52,The user shall be able to edit and remove existing structures.
+R53,The system shall provi de the ability to mark a bridge wi th any of several status values (e.g. inactive/c losed) and automatically fi lter displays to recognize the status value (e.g. to automatically suppre ss inactive/closed structures).
+R54,The system shall support storage an d management of information for bridges in a de sign or preconstruction state (fu nctional requirement is related to 4.5 above)
+R55,The user shall be able to renumber th e bridge key identifier and have the change made globally.
+R56,This functionality shall be restricted depending on th e user privilege.
+R57,The user shall be able to create a new inspection.
+R58,"The system shall have a short-form interface (display only NBI and element data, similar to SI&A sheet) for inspection data entry with specifics of design and functionality to be determined as part of the technical design."
+R59,The user shall have the option to copy the not es from previous inspection when creating a new inspection.
+R60,The user shall be able to create new inspection(s) by importing an PDI file.
+R61,The user shall be able to add new elements to the structure.
+R62,The user shall be able to edit all the NBI data
+R63,The user shall be able to edit element inspection data.
+R64,The user shall be able to edit inspection and structure notes.
+R65,"The system shall be capable of storing notes in plain text and XML, and shall maximize the notes field size."
+R66,The user shall be capable of setting the size of the notes field.
+R67,The user shall be able to create and edit work recommendations.
+R68,The system shall be capable of estimating quantity for b ridge type work recommendations.
+R69,"The user shall be able to enter and up date inspection pla nning information (i.e., freque ncy of regular and specia l inspections and es timated resource requirements)."
+R70,The user shall be able to link and manage multimedia files.
+R71,The system shall provide an inspection scheduling tool.13
+R72,The system shall provide the capability to “lock down” an inspection record once signed and sealed to prevent deletion or modification.
+R73,Privileged users shall be able to dele te an existing inspection unless it is “locked down”.
+R74,"The user shall be able t o sort the el ement data by unit number, environment, and quantity."
+R75,"The user shall be able to view all data from any two inspections, for a single bridge, in a tiled 14 pre sentation for easy comp arison."
+R76,The presentatio n (view/report) shall clearly highlight the difference between two inspections.
+R77,The system shall provide a configurable tracking mechanism to ensure that a set of screens and dat a fields have b een revie wed and ap proved during the course of an inspection UC-7 Calculate Dependent/Derived Inspection Results
+R78,The system shall be ca pable of calcul ating NBI condition ratings using the FHWA NBI Translator.
+R79,The system shall be capable of calcul ating a nd storing bridge Sufficiency Rating.
+R80,The system shall be capable of calculating appraisal ratings.
+R81,The system shall be capable of calculat ing Structurally Deficient/Functionally Obsolete (SD/FO) status.
+R82,The ability of the user to update the calculat ed ratings and status in the database shall be a controlled priv ilege.
+R83,The agency shall th erefore be able to enforce strict use of calculated translator results for calculating NBI condition ratings.
+R84,The system shall be capable of prompting users when the dependent fields for ratings are changed and offer the user option to recalculate the ratings.
+R85,The system administrator shall be able to configure the recalculation beh avior of the derived data.
+R86,"The options shall incl ude 1) do nothing, 2) alert user that recalculation is require d and give option to re calculate before update /save, and 3) recalculate silently with no co nfirmation prompt when user saves the inspection."
+R87,The system shall eliminate any a nd all dependencies on workstation (user) control/parameter files for p rogram op eration.
+R88,The system shall be capable of creating cost and deterioration elicitation records for Pontis users.
+R89,The system shall be capable of updating the transition probabilities for preservation actions based on expert elicitations.
+R90,The syst em shall be cap able of updating preser vation action costs ba sed on expert elicitations.
+R91,The system shall be c apable of updating transition pr obabilities for do- nothing actions based on historical inspection data.
+R92,The system shall be capable of us ing the transition proba bilities and preservation action costs to develo p an o ptimal pres ervation po licy as detailed in the Pontis Technical Manual.
+R93,The system shall be capable of recoveri ng the model if the elicitation process fails.
+R94,"The system shall be capable of restorin g the previous action costs, transition probabilities, and preservation policy."
+R95,The syst em shall be ca pable of support ing multip le cost and deterioration models.
+R96,The syste m shall be capable of inco rporating Health Index targets in a preservation (short-term) model.
+R97,The syste m shall strea mline the model generation process (i.e. rem ove any unnecessary prompts as currently implemented in version 4.x).
+R98,"The system shall be capable of determining the long-term cost of achieving an average health index target for one or more st ructure(s), broken down by elements, element categories, for the entire structure."
+R99,The system shall provide a preservati on model dashboard integrating the capabilities described above.
+R100,"The user shall be able to specify the characteristics of the simulation, including the simulation timeframe, various thre sholds for the sim ulation, the project types included in the simulation, the needs addressed, and the annual budget for the simulation."
+R101,The user shall be able to update the unit costs a nd t he policy standards governing the improvement model.
+R102,"The user shall be able to modify th e techni cal parameters governi ng the simulation, includ ing the parameters of the i mprovement model and the simulation rules."
+R103,The user shall be ab le t o select the stru ctural elements to be included in the simulation.
+R104,The system shall be capable of running a program simulation for a selected set of structures and storing the simulation results in the Pontis database.
+R105,"The user shall be able to choos e from Pontis-generated work recommendations, inspector work candidates, and user-defined work items to include in the bridge simulation for a structure."
+R106,The system shall be capable of runn ing bridge analysis for a single structure and storing the simulation results in the Pontis database.
+R107,"The system shall pro vide a Bridge Analysis D ashboard that will al low the user to choose work items for a structure and the timing of the work, view the impact of the work on the condition of the structure, assign t he work candidates to a project, and perform life- cycle cost analysis for the structure."
+R108,The user shall be able t o create new programs by manually entering program information.
+R109,The user shall be able to edit or delete existing programs.
+R110,The user shall be able to create new pr ojects by manually entering the project information.
+R111,The user shall be able to edit or delete existing projects.
+R112,"The user shall be able assign P ontis-generated work recommenda tions, inspector work candidates, and us er-specified work items to a project, or remove work items from a project."
+R113,The user shall be ab le t o split a p roject into multip le proje cts and combine multiple projects into a master project.
+R114,The user shall be able to edit t he characteristics of multiple p rojects simultaneously (batch update).
+R115,The system shall be capable of tracking and link ing funding levels and project budgets.
+R116,The system shall warn users if the project budget exceeds funding.
+R117,"The system shall be capable of grouping work candidates by different a ction types – bridge-level, element-level, and flexible-level actions."
+R118,The syste m shall be capable of perf orming single-field and cross-field validation on NBI data items in batch mode.
+R119,The syste m shall be capable of perfor ming configurable input range checks using the DATADICT table upon entering data.
+R120,The system shall be capable of perfor ming data validation tasks including cross field validation upon saving data.
+R121,The system shall allow users to configure data validation rules.
+R122,This shall be a privileged operation.
+R123,The system shall provide data review wizard for comparing incoming bridge data with existing data.
+R124,"The system shall guarantee atomic databa se transactions to e nsure maximum data integrity, using standard .NET transaction management capabilities."
+R125,The system shall maximize multi-us er concurrency and con flict resolution in the application using s tandard .NET session and transac tion manag ement capabilities.
+R126,The user shall be able to exchange data in NBI format.
+R127,The user shall be able to ex change data in PDI format as specified in the Pontis Technical Manual.
+R128,The emerging TransXML schema specification17 shall be util ized once established an d accepted.
+R129,The user shall be able to exchange bridge inspection data in PDI format.
+R130,The user shall be able to designate a recipient for checked-out bridges.
+R131,"The syst em shall store all export/imp ort co ntrol information within the database f or central administration , eliminating an y depende ncy on workstation control files to manage export/import behavior.18"
+R132,The system shall strictly separate transient or vo latile batch operation control records – e. g. bridge records to be incl uded i n a report – from mor e static control record – e.g. currently checked-out bridges.19 UC-17 Perform Data Archiving
+R133,The user shall be able to archive data for existing and removed structures.
+R134,"A selection/filter capability shall be prov ided to restrict operations on active, inactive, or all structures during any data archiving activity."
+R135,The system shall provide reporting mechanism for viewing archived data.
+R136,The user shall be able to restore the archived data.
+R137,The system shall use ti mestamps in the database to log w hen rows w ere last changed.
+R138,The system shall continue to provid e exist ing application integration capabilities with BRIDGEWare products.
+R139,"The system shall support concurrent storage in the da tabase of planned , active, and inactive structures, an d po tentially other status/lifecy cle phase indicators, to facilitate BRIDGEWare integration."
+R140,The administrator shall be able to create and edit new application roles.
+R141,The administrator shall be able to assign users to application roles.
+R142,The system shall provide user interface for managing application roles.
+R143,The administrator shall be able to assign application permissions to each user roles.
+R144,The administrator shall be able to add new users to the system.
+R145,The user shall be able to modify his or her basic account profile.
+R146,The administrator shall be able to create bridge-level access filters.
+R147,The administrator shall be able to assign bridge-level filters for each user.
+R148,The administrator shall be able to remove users from the system or disable access as appropriate.
+R149,The system shall be ca pable of validating user name and password during log-in process.
+R150,The system shall be capable of author izing ac cess to Pontis function alities depending on the user’s privileges during log-in process.
+R151,The system shall be capable of tracking login and logout activity.
+R152,The system shall be capable of running concurrent sessions for a user.
+R153,The syste m shall be capable of supporting Windows Authentication mechanism for database access.20
+R154,The system shall be capable of initiating a ses sion without a login prompt.
+R155,The syste m shall be capable of integr ating authentication and permissions with BRIDGEWare22.
+R156,The system shall be capable of operatin g with a single-sign-on authentic ation mechanism based on Active Directory Services or the LDAP standard.23 UC-22 Configure Application Functionalities
+R157,"The system shall be capable of storing the INI file configuration information in the database or workst ation registry as appropriate, eliminating depen dency on INI files for program operation."
+R158,The administrator shall be able to edit the DATADICT table or its successor(s ) through a GUI window.
+R159,The administrator shall be able to add and configure pre-populated new structure templates.
+R160,The administrator shall be able to configure field-level security.
+R161,The administrator shall be able to configure some fields as mandatory for user input.
+R162,The administrator shall be able to c onfigure different levels of permission to control editing of checked-out bridges.
+R163,The system shall adhere to a .NET logging standard.
+R164,The system shall adhere to a .NET exception handling standard.
+R165,The administrator shall be able to conf igure the values in the dropdown lists in the system.
+R166,It should b e recogni zed t hat t he Vi rtis/Opis application a uthentication/security control approach may need to be r evised to accomplish this capability globally in the AASHTO BRIDGEWare software suite.
+R167,"The administrator shall be able to create agency-specific elements, including element de finitions, condition states, action s, models and other related information."
+R168,"The admini strator shall be able to co nfigure definitions of element types, environments, materials, and categories."
+R169,The administrator shall be able to add custom structure lists.
+R170,The administrator shall be able to add custom project lists.
+R171,The administrator shall be able to conf igure customizable options that affect system operations.
+R172,"The system shall validate all config uration options to verif y proper program operation, including expl icit iden tification of any potentially confli cting program options."
+R173,The administrator shall be able to c onfigure the labels of user interface items and screen displays.
+R174,The system shall be capable of suppo rting international ization using the standard Windows/.NET internationalization support.
+R175,"The system shall be ca pable of showing all screens, men us, user interface controls, prompts, error messages and information notices in native language, with some of these elements customizable."
+R176,The system shall provide an interface to communicate with an external service or third-party software.
+R177,The system shall provid e applicatio n ad ministrators with a secured tool for overriding bridge/project check-out status.
+R178,The system shall provid e applicatio n ad ministrators with a secured tool for clearing batch processing tables u sed by th e system for deadlock/lockout resolution.
+R179,"The system shall provide a fixed set of predefined, secure d, administration reports to document users, user roles, app lication pr ivileges, use r login sessions, checked-out bridges, and other key information necessary to manage application operation."
+R180,AASHTO may designate such model applications and must provid e the development team with access to fully-documented style sheets/UI la youts or demonstration software to support this requirement.
+R181,User s who only wish to access and display br idge inform ation should be comf ortable ope rating and using the software af ter two ho urs of training.
+R182,The syst em developer shall consider supporting existing custom forms and reports developed in PowerBuilde r 9.
+R183,It shall decide on a development tool for users so that they can continue to customize Pontis and extend its capability.
+R184,"Ide ally, the application sh ould not require any particular vendor techn ology for report or for m generation, such as InfoMaker/PowerBuilder, so a sunset plan must be developed to outline a strategy to meet this objective."
+R185,"However, the application shall continue to provide a plug-in cap ability to integrat e third-party .NET data displays and reports in the user workspace.28"
+R186,"The plug-in must be capable of handling this technology for the foreseeable future, but not solely dependent on it."
+R187,"There are selected lice nsees, typically smaller agencies, who may h ave much lower powered computer resources, and their performance must be acceptable as well, although not necessarily comparable to larger installations."
+R188,"Capacity The Pontis 5.0 repository must be able to store the following qua ntities of bridges, work recommendations, scenarios, projects, and users at a minimum:"
+R189,"In light of this, the application shall be available for use 18 hours per day, 353 da ys per year, reserving 6 hours per day and one day per month for routine agency network and infrastructure maintenance."
+R190,"During normal times of operation, Pontis shall achieve 98 percent up time."
+R191,"The Pontis database, and any other datab ases to be accessed from Pontis may be co-located on the same server machine, but at a minimum must be accessibl e from the Pontis application server via standard database communication and connection protocols."
+R192,The server machine must have all necessary software to run an ASP.NET appli cation.
+R193,"This specifical ly includes, but may not be limited to, IIS30, the .NET Framework and ASP.NET."
+R194,"G iven the predominance of IE in the browser market, it does not appear to be necessary to consider support for other browsers, although this may ne ed to be reconsidered if external customers are running the application(s) and need to employ different browser technology such as Netscape or Mozilla FireFox."
+R195,"H owever, many agencies rely on IIS, so this technolo gy consideration must be resolved as part of the design ."
+R196,The user shall be able to remove Pontis by using the Windows Add/Remove Programs capability.
+R197,Pontis 5.0 shall be able to coex ist with earlier versions of Pontis on the same computer.
+R198,REQUIREMENTS Pontis 5.0 shall comply with AASHTO application development standards based on the published recommendations of the AASHTO Technical Applications and Architecture (TA&A) subcommittee.
+R199,The system shall be capable of exporting the NBI data in the specified NBI format as outlined in the NBI guideline.
+R200,The system shall be capable supporting the future NBI coding guide changes.
+R201,"The functional size of Pontis 5.0 has been estimated using the Common Software Measurement Int ernational Conso rtium Full Function Points (COSMIC-FFP) method.32 The COSMIC-FFP size scale is ba sed exclusively on Functional User Requirements, defined as “the user prac tices and procedures that the software must perform to fulfill the users’ needs.” Functional user requi rements exclude quality requirements and any technical requirements."
+R202,"Revenue cycles are a driving factor, and all the developm ent work must fit into current projections;"

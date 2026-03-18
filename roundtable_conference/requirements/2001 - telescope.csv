@@ -1,0 +1,11 @@
+﻿item,text
+R1,"To transfer an image from the Image Section to the Store Section, the Image Section and Store Section three-phase clocks must be clocked simultaneously 602 times."
+R2,The Control Heaters will be driven by solid state relays to allow for the numerous on-off cycles that will be required to regulate the temperature.
+R3,"To be considered of interest, this count of pixels must exceed a programmable threshold."
+R4,Commands must be sent to put XRT into different observation modes and produce telemetry.
+R5,Interfaces and Performance Estimates of the maximum amount of memory required to buffer an observation were computed according to the following analyses.
+R6,The design of the FSW must avoid any time- consuming setup or configuration as part of its nominal operation.
+R7,The FSW design must structure its HK packets such that the 230-byte constraint is not violated.
+R8,Any packet that must be processed by ITOS should not be segmented.
+R9,The FSW cannot compress any packet that must be recognized and processed by ITOS.
+R10,"These goals should contribute to the simplicity (S), reliability (Rl), maintainability (M), reusability (Ru), and testability (T) of the system."

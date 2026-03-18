@@ -1,0 +1,123 @@
+﻿item,text
+R1,"Department of En ergy, and the project team the results that must be achieved by the automated diagnostic tool."
+R2,functional requirement — a requirement that specifies a function that a software system or software component must be able to perform [IEEE Std 610.12 -1990].
+R3,"In this requirements specification, functional requirements specify how the inputs to the software product should be transformed into outputs [IEEE Std"
+R4,"interface requirement — a requirement that specifies an external item with which a software system or software component must interact, or that sets forth constraints on formats, tim ing, or other factors caused by such an interaction [IEEE Std 610.12 -1990]"
+R5,"a condition or capability that must be met or possessed by a software system or software component to satisfy a contract, standard, specification , or other formally imposed document;"
+R6,The automated diagnostic tool must support a wide variety of users with respect to computer expertise.
+R7,"The tool must provide a capability to manually input and edit “fixed” data, i.e. , data that does not vary in real-time."
+R8,This data must be stored for subsequent use by the diagnostic tool for review and verification by other users and management.
+R9,The user must have the capability to configure the tool for continuous diagnostic analysis over an indefinite period of time.
+R10,"No printed reports will be required of the tool, but the tool must print screen images of diagnostic results and historical data at user request and must provide long term storage of diagnostic results and permit the user to supply metadata relevant to the results, e.g., location, HVAC serial number, model number, user name, date, etc."
+R11,"However, the design of the software should support the incorporation of diagnostic algorithms for additional HVAC subsystems."
+R12,Functionality specify functions that a system or component must be able to perform — the fundamental software actions that transform inputs into outputs Automated Diagnostic Browse Historical Diagnostics Browse Current Diagnostics Configure Diagnostics User General User Administrator Start/Stop Diagnostic Authenticate User <<include>> <<include>>
+R13,A diagnostic information window must be displayed for this use case to begin.
+R14,The main window of the tool must be the only window a ctive for the tool prior to execution of this use case.
+R15,"This section describes the functional requirements of t he software, that is, requirements describing the core functions the software must perform."
+R16,Users of the tool shall be classified into two types.
+R17,"The first type, general use r, shall only be permitted to utilize a limited set of the capabilities of the tool."
+R18,"The second type, administrator, shall be permitted all the privileges of the general user plus those identified in Table 2."
+R19,"The automated diagnostic tool shall input sensed data in real time from data acquisition devices and the HVAC unit under diagnosis as well as from data files containing previously acquired data, though not simultaneously."
+R20,"In addition, the tool shall input fixed data provided by the user."
+R21,Sensed and fixed data used by the tool in performing automated diagnostics shall be stored to permanent storage for post -analysis by the diagnostic process and viewing of the results.
+R22,The tool shall input sensed data in real time from data acquisition devices and the HVAC unit under diagnosis.
+R23,"The tool shall permit sensed data to be input from an electronic file, though not simultaneously with sensed data from external acquisition hardware."
+R24,"When inputting sensed data from an electronic file, only one file shall be used containing all necessary sensed data."
+R25,The file shall be an ASCII text file containing only columns delimited by a single ta b character or single comma.
+R26,The file shall begin with a required header.
+R27,"The first uncommented column in the file after the required headers shall list the absolute time, in ascending order, associated with all entries in subsequent columns of the row."
+R28,Each additional column in the file shall pertain to one and only one sensed parameter.
+R29,All columns in the file shall have the same number of rows.
+R30,The number of successive samples for a given sensor type shall be modifiable by the administrator.
+R31,Sensed data used in or supporting diagnostic analyses shall be saved to permanent storage.
+R32,"The occurrence of missing data shall be indicated in permanent storage by a unique and obvious place holder or indicator, e.g., a null value or sequence of character s that cannot be confused with non - missing data."
+R33,Sensed data input to the tool shall be stored to permanent storage with a precision of three significant figures.
+R34,Sensed data input to the tool shall be validated with respect to its expected range of values.
+R35,Sensed data shall be assigned the ranges listed in Table 5 by default.
+R36,The administrator shall have the capability to modify the expected range of sensed data against which the data will be validated.
+R37,The engineering units of sensed data input to the tool shall comply with the units listed in
+R38,The tool shall provide the capability to convert sensed data not provided in the units listed in
+R39,The tool shall associate with each continuous parameter one or more tolerances each corresponding to a different sensitivity level for the tool.
+R40,"Any and all errors associated with obtaining, validating, converting, or storing the sensed data shall be logged as described in subsequent specifications and selected err ors shall be reported to the user."
+R41,The automated diagnostic tool shall detect and identify certain performance and operational faults in chiller and cooling tower subsystems of HVAC units following specified algorithms.
+R42,"In additi on, the tool shall be designed to permit expansion of diagnostic analysis to additional subsystems."
+R43,"The faults identified and their causes and sources, shall be saved to permanent storage for subsequent analysis."
+R44,The tool shall monitor performance and operational parameters listed in Table 7 for chillers and cooling towers and identify the specific faults in the specific fault categories listed in the table.
+R45,Chiller/Cooling Tower Cooling Tower Fan(s) and Condenser Pump Interlock Cooling Tower Fan(s) and Condenser Pump are not Interlocked Properly The interlock between the condenser pump and the cooling tower may not be properly implemented.
+R46,"Table 7, the tool shall associate text describing the possible problem, causes, and a recommended fix."
+R47,The interlock between the condenser pump and the cooling tower may not be properly implemented.
+R48,The cooling tower fan and condenser pump may not be interlocked properly.
+R49,The tool shall be designed to permit the addition of diagnostic algorithms for other subsystems of HVAC units.
+R50,A diagnostic algorithm shall not process if any input data to the algorithm is missing.
+R51,The user shall be notified if a diagnostic algorithm cannot process due to missing data.
+R52,Any and all errors associated with failures of the diagnostic algorithms shall be logged as described in subsequent specifications and selected errors shall be reported to the user.
+R53,"The tool shall monitor the unit under diagnosis, either in real time or batch mode, for an indefinite period of time or until input data are no longer available, and log diagnostic results as they are determined."
+R54,"Diagnostic results that are saved to permanent storage shall be accompanied in storage by the absolute time of occurrence, the identity of the unit to which the diagnostic applies, and the identity of the diagnostic."
+R55,The administrator user shall have the capability to adjust the sensitivity of the diagnostic analysis in order to increase or decrease the probability of fault detection.
+R56,The automated diagnostic tool shall display and record diagnostic results.
+R57,"Diagnostic results shall also be saved to permanent storage for subsequent retrieval, display, and analysis."
+R58,"The administrator shall have the ability to specify which diagnostic results will not be reported in any manner, i.e., not detected."
+R59,"The area on the main, systems, and condition windows sensitive to the users selection device, typically the mouse, shall include the line surrounding the item of interest over the entire width of the window."
+R60,The windows listing diagnostic results shall increase in height as needed to display entries up to a maximum of ten entries.
+R61,"Once the window has reached maximum size and there are additional items to display, the window shall deploy a scroll bar to permit the user to scroll through the additional entries."
+R62,"In this event, a summary set of diagnostic indicato rs shall appear above (below) the top (bottom) entry in the display."
+R63,This set(s) of indicators shall summarize diagnostic indicators not currently appearing on the list above (below) it.
+R64,An indicator in the summary set shall be active if any similar indi cator not appearing above (or below) it is active.
+R65,"The building, subsystems, and condition windows shall displa y the current time if the diagnostic tool is operating in real time."
+R66,"If only a single building is defined, the subsystems window shall become the main window of the application and shall have all the functionality of the main window as described in these specifications."
+R67,"Each window of the diagnostic tool shall display an animated graphical featur e indicating the status, whether active or not, of the diagnostic processing."
+R68,"The subsystem window shall be modal to the building window, the condition window modal to the subsystem window, and the diagnostic history and diagnostic information window s shall be modal to the condition window."
+R69,Significant errors in software operation shall be logged to permanent stor age with sufficient detail to guide the administrator and to assist support staff in locating and rectifying the error.
+R70,"In addition, selected errors shall be reported to the user."
+R71,"Software errors logged to permanent storage shall include the absol ute time of occurrence, the name of the software module in which the error occurred, the name of the software function in which the error occurred, and a description of the error."
+R72,"The user interface shall consist of six windows: Main window, configuration window, subsystems window, condition window, diagnostic information window, and diag nostic history window."
+R73,These windows shall be organized in a hierarchy enforcing a navigational order on the user.
+R74,"The main (e.g., initial or default) window shall list buildings monitored and summarizing the current diagnostic status of all contained monitored units."
+R75,This window shall be titled “Diagnostician”.
+R76,"The main menu entitled “File” shall contain the following menu items in the following order: “Configure Diagnostics”, “Logout”, “Exit”."
+R77,"The main menu entitled “Status” shall contain the f ollowing menu items in the following order: “Start Diagnostics”, “Stop Diagnostics”."
+R78,The menu items named “Configure Diagnostics” and “Exit” in the main menu entitled “File” shall be enabled at all times.
+R79,The menu item named “Logout” i n the main menu entitled “File” shall be enabled only if the current user is presently authenticated as the administrator user.
+R80,"Otherwise, this menu item shall be disabled."
+R81,The menu item named “Start Diagnostics” in the main menu entitled “Statu s” shall be enabled only if diagnostic processing is not currently running.
+R82,"Otherwise, the menu item shall be disabled."
+R83,The menu item named “Stop Diagnostics” in the main menu entitled “Status” shall be enabled only if diagnostic processing is c urrently running.
+R84,"Selecting the “Configure Diagnostics” menu item of the main menu entitled “File” shall display the configuration window, making it the current window, modal to the main window."
+R85,The configuration window shall permit the administrator user to modify the following parameters:
+R86,The configuration window shall display the following non -modifiable information:
+R87,The configuration window shall have a button labeled “Save” that when clicked will present the user with a window by which to enter a disk f ile or database name in which to save the modifiable data in the window.
+R88,Entering a file name shall cause the permanent storage of the modified parameters and their immediate use by the diagnostic operations after confirmatory responses by the user.
+R89,The configuration window shall have a button labeled “Close” that will dismiss the configuration window and return the user to the main window.
+R90,The configuration window shall have a button labeled “Recall” that will permit the user to recall a disk file of previously saved parameters from which to populate the configuration window.
+R91,"When functioning as a screen saver, the window shall change location on the screen periodically and will continue to be updated by diagnostic results."
+R92,The subsystems window shall list subsystems monitored for a specific building and summarizing the current diagnostic status of all monitored subsystems.
+R93,The condition window shall list the current status of all diagnostics for a specific subsystem.
+R94,The diagnostic information window shall provide a detailed description of the diagnostic.
+R95,"The diagnostic information window shall have a button label ed “Print” that when clicked will display a window listing items to print including the diagnostic information window, the history window, and both the diagnostic and history windows."
+R96,The diagnostic information window shall include the following information regarding the diagnostic:
+R97,The diagnostic information window shall have a button labeled “Close” that shall dismiss the window.
+R98,The diagnostic information window shall have a button labeled “History” that when clicked will display the diagnostic history window and display the previous we ek’s diagnostic results.
+R99,The diagnostic history window shall display historical diagnostic results for a specific diagnostic.
+R100,The diagnostic history wind ow shall provide user selections for start times and end times for the history interval.
+R101,These selections shall be in the form of a calendar control.
+R102,"The color map of the history window shall indicate confirmed faults with the color red, potential faults with the color yellow, normal conditions with the color green, and periods when diagnostic processing was not active with the color gray."
+R103,The vertical axis of the color map of the history window shall indicate hour of the day and the horizontal axis shall indicate the absolute date and the day of week.
+R104,"The diagnostic history window shall have a button labeled “Print” that when clicked will display a window listing items to print including the diagnostic information window, the history window, and both the diagnostic and history windows."
+R105,The diagnostic history window shall have a button labeled “Close” that will dismiss the window.
+R106,"The subsystems window, condition window, and diagnostic information window shall display a title that indi cates its specific location or absolute path in the navigation hierarchy of windows."
+R107,"This title shall be a concatenation of the title of the previous window displayed, not including the diagnostic history window, and the name of the entry selected to obta in the current window."
+R108,The two parts of the title shall be separated by a dash surrounded by a single space.
+R109,"The main window, subsystems window, condition window, and diagnostic information window shall display the appropriate time below the titl e as specified in 3.3.1.3."
+R110,"The main window, subsystems window, and condition window shall have three diagnostic indicators for each item listed."
+R111,One indicator shall be active when no diagnostic conditions exists.
+R112,This indicator shall be designated the “OK” indicator and shall appear green when active.
+R113,One indicator shall be active when a potential diagnostic condition exists.
+R114,This indicator shall be designated the “Caution” and shall appear yellow when a ctive.
+R115,One indicator shall be active when a confirmed diagnostic condition exists.
+R116,This indicator shall be designated the “Not OK” indicator and shall appear red when active.
+R117,Only one indicator shall be active at a given time for a speci fic diagnostic and no indicators shall flash when active.
+R118,The diagnostic indicators on the main window and subsystems window shall summarize all diagnostic conditions associated with each entry in the window.
+R119,The tool shall log to permanent storage the occurrence of changes to the fixed data.
+R120,"The log shall indicate the time and date of the change, original value of the item( s) changed, and the new value of the item(s) changed."
+R121,"If the CT Fans Status = ""On"" and the Condenser Pumps Status = ""On,"" then CT Fans/Condenser Pumps Interlock OK/Not = ""OK"" If the CT Fans Status = ""Off"" and the Condenser Pumps Status = ""Off,"" then CT Fans/Condenser Pumps Interlock OK/Not = ""OK."" If the CT Fans Status = ""On"" and the Condenser Pumps Status = ""Off,"" then CT Fans/Condenser Pumps Interlock OK/Not = ""Not OK."" The CT Fans must be off when the condenser pumps are off, otherwise energy is being wasted."
+R122,HWST_Deviation The hot water supply temperature deviation from set point for the current observation. [Note: This output is included only for consistency with the chilled water reset diagnostic and may not be needed.] Temperature difference in degrees F.

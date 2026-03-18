@@ -1,0 +1,79 @@
+﻿item,text
+R1,"Registration Citizens can register their complaints with police and then based on the evidence, facts and following investigation, police shall take the comp laint forward."
+R2,The solution should provide detailed context-sensitive help material for all the possible actions and scenarios on all user interfaces in the application.
+R3,The solution should provide an interface for the user to log any defects or enhancement requests on the application and track thereafter.
+R4,The support solution should be accessible to the users both from within the application and also outside the application through a browser interface.
+R5,"The System must keep an unalterable audit trail capable of automatically capturing and storing information about: • All the actions (create/read/update/delete) that are taken upon the critical entities (case, suspect, property,…) in the system • The user initiating and or carrying out the action;"
+R6,"Once the audit trail functionality has been activat ed, the System must track events without manual intervention, and store in th e audit trail information about them."
+R7,"The System must maintain the audit trail for as long as required, which will be at least for the life of the case to which it refers."
+R8,"The System must ensure that audit trail data is ava ilable for inspection on request, so that a specific event can be identified and all related data made accessible, and that this can be achieved by author ised external personnel who have little or no familiarity with the system."
+R9,The System must be able to export audit trails for specified cases (without affecting the audit trail stored by the System).
+R10,The System must be able to capture and store violat ions (i.e.
+R11,The System must at a minimum be able to provide rep orts for actions on cases organised: • By case;
+R12,The System should be able to provide reports for ac tions on cases organised by workstation and (where technically appropriate) by network address.
+R13,The System must allow the user to limit access to c ases to specified users or user groups.
+R14,The system should provide for role-based control fo r the functionality within
+R15,The System must allow a user to be a member of more than one group.
+R16,The System must allow only admin-users to set up us er profiles and allocate users to groups.
+R17,The System should allow a user to stipulate which o ther users or groups can access cases.
+R18,"The System must allow changes to security attribute s for groups or users (such as access rights, security level, privileges, passw ord allocation and management) to be made only by super-user."
+R19,"If a user requests access to, or searches for, a ca se which he does not have the right to access, the System must provide one of the following responses (selectable at configuration time): • display title and metadata;"
+R20,"If a user performs a quick or advanced search, the System must never include in the search result list any record which the user does not have the right to access."
+R21,"If the System allows users to make unauthorised att empts to access cases, it must log these in the audit trail."
+R22,"All error messages produced by the System must be m eaningful, so that they can be appropriately acted upon by the users who are likel y to see them."
+R23,"The System must employ a single set of user interfa ce rules, or a small number of sets to provide a familiar and common look and feel for the application."
+R24,"The System must be able to display several entities (cases, suspects) simultaneously."
+R25,"The interfaces must be made customizable or user-co nfigurable to the extent possible. (e.g., the displayed columns in the table , move, resize, modify the appearance)."
+R26,Such configurations must be saved in the user profile.
+R27,The System user interface must be suitable for user s with special needs;
+R28,The System must provide End User and Administrator functions which are easy to use and intuitive throughout.
+R29,The System must allow persistent defaults for data entry where desirable.
+R30,Frequently-executed System transactions must be des igned so that they can be completed with a small number of interactions (e.g. mouse clicks).
+R31,"Where the System employs a graphical user interface , it must allow users to customise it."
+R32,The user interfaces of the system should comply with Standard ISO 9241.
+R33,ICT accessibility: ISO 9241-20 shall be the standar d for guidance on ICT accessibility.
+R34,Software accessibility ISO 9241-17 1 shall be the standard for guidance on software accessibility.
+R35,Content accessibility WCAG 1.0 shall be the standard used for guidance on content accessibility.
+R36,Splash screens should be avoided unless they provid e useful content or feedback about the application state to the user.
+R37,ISO 9241-303 shall be consulted for screen text legibility requirements.
+R38,"Observing principles of human perception When desig ning application pages, the general principles of human perception should be ta ken into account."
+R39,The International Standards mentioned below shall be co nsulted for guidance.
+R40,Linking back to the home page or landmark pages: Ea ch page should contain a link leading to the home page of the application or to a landmark page that is easy to recognize for the user.
+R41,Providing a site map: A separate navigation overvie w such as a site map should be provided for application showing the structure of the site in an overview form.
+R42,Placing navigation components consistently: Navigat ion components should be placed consistently on the pages or in the framesets in the pages of the application.
+R43,The user interfaces of the system should follow the guidelines specified under www.usability.gov
+R44,The System must be available to users: • from <xx:00> to <xx:00>;
+R45,The planned downtime for the System must not exceed <xx> hours per <rolling three month period>.
+R46,Unplanned downtime for the System must not exceed < xx hours/minutes> per <rolling three month period>.
+R47,The number of incidents of unplanned downtime for t he System must not exceed <x> per <rolling three month period>.
+R48,"In the event of any software or hardware failure, i t must be possible to restore the System (with inline synchronization) within no more than <xx> hours."
+R49,The System must provide adequate response times for commonly performed functions under both standard and peak conditions
+R50,The System must be able to perform a simple search within 5-8 seconds and a advanced search (multiple search criteria) within 1 0-15 seconds regardless of the storage capacity or number of cases in the system.
+R51,"The System must be able to retrieve and display wit hin 5-8 seconds the case which has been accessed within the previous 2 months, reg ardless of storage capacity or number of cases in the system."
+R52,"The System must be able to retrieve and display wit hin 20 seconds the case which has not been accessed within the previous 2 months, regardless of storage capacity or number of cases in the system."
+R53,"The System be scaleable and must not have any featu res which would preclude use in small or large police stations, with varying numbers of cases handled."
+R54,The system should support multilingual interface
+R55,The system should be designed in manner that operat ional data is not lost in case of any failure of equipment or communication network.
+R56,The system should work even in an offline mode with the critical functionality
+R57,The system should be designed to have satisfactory performance even in Police Stations connected on low-bandwidth
+R58,The system should be implemented using Service Oriented Architecture (SOA) and have a modular design
+R59,The system should be developed on Open Standards
+R60,The system should be built on a common User Access and Authentication Service to ensure Single-Sign on for the end-user
+R61,The system should be developed for a centralized deployment and maintenance
+R62,The system should be developed to be deployed in a 3-tier datacenter architecture
+R63,The system should be designed to have a n-tier arch itecture with the presentation logic separated from the business logic that is again separated from the data-access logic
+R64,The system should be extensible to provide access t o the interfaces through PDA’s and mobile data terminals
+R65,The system should adopt standardized formats and common metadata elements
+R66,The system should be designed for access through br owser-based systems and must impose minimal requirements on the client device
+R67,The system must support multiple types of communication services for remote access
+R68,The system should have capability to support public access to a subset of data and functionality
+R69,The system should support multi-tier authentication where required
+R70,The system should support SSL encrypted connections
+R71,The system should support secure virtual private network connections
+R72,"The system should use HTTPS as the communication pr otocol, i.e., HTTP over an encrypted secure socket layer (SSL)"
+R73,The system should run on multiple browsers
+R74,The system should support selective encryption of the stored data
+R75,The system should ensure secure transmission of dat a over the network and utilize SSL and 2-way digital signatures
+R76,The system should ensure high standards of security and access control through:
+R77,The system should ensure high scalability and performance through:
+R78,The search results should be fetched from the datab ase in batches of 10 or 20 maximum as configured within the application

@@ -518,6 +518,9 @@ def _append_jsonl(path: str, rec: Dict[str, Any]) -> None:
     with open(path, "a", encoding="utf-8") as f:
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
+def is_skippable_rater_error(exc: Exception) -> bool:
+    return "(skip)" in str(exc)
+
 def call_llm_json(
     rater: Rater,
     messages: List[Dict[str, str]],
@@ -587,9 +590,6 @@ def call_llm_json(
         except Exception as e:
             last_err = e
 
-            if isinstance(e, requests.exceptions.ReadTimeout):
-                # 直接抛一个可识别的异常给上层，或返回一个标记让上层跳过
-                raise RuntimeError(f"[{rater.name}] TIMEOUT (skip): {e}") from e
             # 3) 失败也记一条
             if log_path:
                 _append_jsonl(log_path, {
@@ -618,6 +618,15 @@ def call_llm_json(
                         f.write(fixed)
 
             time.sleep(RETRY_SLEEP)
+
+    if isinstance(last_err, requests.exceptions.ReadTimeout):
+        raise RuntimeError(f"[{rater.name}] TIMEOUT (skip): {last_err}") from last_err
+    if isinstance(last_err, requests.exceptions.HTTPError):
+        status = getattr(getattr(last_err, "response", None), "status_code", None)
+        status_text = f"HTTP {status}" if status is not None else "HTTP ERROR"
+        raise RuntimeError(f"[{rater.name}] {status_text} (skip): {last_err}") from last_err
+    if isinstance(last_err, requests.exceptions.RequestException):
+        raise RuntimeError(f"[{rater.name}] REQUEST ERROR (skip): {last_err}") from last_err
 
     raise RuntimeError(f"[{rater.name}] failed after retries: {last_err}")
 
@@ -1392,6 +1401,8 @@ def run_roundtable(
     # ---------------- initial scoring
     all_ratings = []
     all_issues = []
+    disabled_scoring_raters = set()
+    blocked_discussion_raters = set()
 
     raw_logs = []
 
@@ -1399,15 +1410,36 @@ def run_roundtable(
         item = rrow["item"]
         text = rrow["text"]
         for r in raters:
-            data = score_requirement(r, item, text, out_dir=out_dir)
+            if r.name in disabled_scoring_raters:
+                continue
+            try:
+                data = score_requirement(r, item, text, out_dir=out_dir)
+            except RuntimeError as e:
+                if is_skippable_rater_error(e):
+                    print(f"{e} -> disable rater for this case")
+                    disabled_scoring_raters.add(r.name)
+                    continue
+                raise
             raw_logs.append({"stage":"score", "rater":r.name, "item":item, "raw":data})
             rating_long, issues_long = flatten_scoring_output(r.name, item, data)
             all_ratings.append(rating_long)
             all_issues.append(issues_long)
 
+    if not all_ratings:
+        raise RuntimeError("No successful rater outputs were collected for this case.")
+
     ratings_long = pd.concat(all_ratings, ignore_index=True)
     # issues_long = pd.concat(all_issues, ignore_index=True)
     issues_long = pd.concat(all_issues, ignore_index=True)
+    if disabled_scoring_raters:
+        ratings_long = ratings_long[~ratings_long["rater"].isin(disabled_scoring_raters)].copy()
+        issues_long = issues_long[~issues_long["rater"].isin(disabled_scoring_raters)].copy()
+    if ratings_long.empty:
+        raise RuntimeError("All collected scoring rows were removed after skipping failed raters.")
+
+    active_raters = [r for r in raters if r.name not in disabled_scoring_raters]
+    if not active_raters:
+        raise RuntimeError("All raters were skipped during initial scoring for this case.")
 
     # === Outlier -> quality -> weights (current document) ===
     outlier_events = build_outlier_events(ratings_long, delta=DEFAULT_OUTLIER_DELTA)
@@ -1417,7 +1449,7 @@ def run_roundtable(
     q_map = outlier_quality[["rater","item","dim","Q"]].rename(columns={"dim":"type"}) if not outlier_quality.empty else pd.DataFrame(columns=["rater","item","type","Q"])
     # weights derived from current document outlier analysis (override input weights)
     weights, model_profile = compute_weights_from_outliers(outlier_quality, outlier_decisions,
-                                                          raters=[r.name for r in raters],
+                                                          raters=[r.name for r in active_raters],
                                                           lam_bad=DEFAULT_LAMBDA_BAD,
                                                           beta=DEFAULT_BETA_WEIGHT)
 
@@ -1519,7 +1551,14 @@ def run_roundtable(
         next_ratings_rows = []
         next_issues_rows = []
 
-        for r in raters:
+        for r in active_raters:
+            if r.name in blocked_discussion_raters:
+                keep_r = cur_ratings[cur_ratings["rater"]==r.name]
+                keep_i = cur_issues[cur_issues["rater"]==r.name]
+                next_ratings_rows.append(keep_r.copy())
+                next_issues_rows.append(keep_i.copy())
+                continue
+
             msg = [
                 {"role":"system", "content": DISCUSS_SYSTEM},
                 {"role":"user", "content": DISCUSS_USER_TEMPLATE.format(
@@ -1539,9 +1578,14 @@ def run_roundtable(
                     item=",".join(discuss_items[:5])  # 只是方便定位，可随便
                 )
             except RuntimeError as e:
-                if "TIMEOUT (skip)" in str(e):
-                    print(str(e))
-                    continue  # 跳过该模型本轮更新
+                if is_skippable_rater_error(e):
+                    print(f"{e} -> keep previous state and skip future discussion rounds for this rater")
+                    blocked_discussion_raters.add(r.name)
+                    keep_r = cur_ratings[cur_ratings["rater"]==r.name]
+                    keep_i = cur_issues[cur_issues["rater"]==r.name]
+                    next_ratings_rows.append(keep_r.copy())
+                    next_issues_rows.append(keep_i.copy())
+                    continue
                 raise
 
             raw_logs.append({"stage":"discuss", "round":t+1, "rater":r.name, "raw":upd})

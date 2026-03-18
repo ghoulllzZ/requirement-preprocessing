@@ -1,0 +1,55 @@
+﻿item,text
+R1,"Should a non -recoverable MCCC system failure occur, the backup MCCC system will be activated automatically via the CPCC or by external human intervention?"
+R2,"Network Protocol – The interface between the CMIB, MCCC, and CPCC shall be Ethernet (IEEE 802.3 compliant) of 100 Mbits/sec or better data rate."
+R3,"Network Topolo gy – The interface shall be transformer coupled copper twisted pair unless other materials are required for noise (RFI), ground isolation, or physical layout constraints (long distances)."
+R4,Network Distribution - Network switches shall be employed to distribute traffic within a correlator rack and where their use will significantly reduce overall network wiring complexity .
+R5,"Network Isolation – The MCCC -CMIB, MCCC -CPCC, and MCCC -EVLA M&C networks shall be on separate physical interfaces."
+R6,Redundant Communication - There shall be a redundant communication path (serial RS -232c or equivalent) between the MCCC and CPCC to provide for remote reboot in the event of a networking or computing failure.
+R7,Network Protocol – The interface between the MCCC and external networks (EVLA M&C) shall be Ethernet (IEEE 802.3 compliant) of 100 Mbits/sec or better data rate.
+R8,Network Topology – Pathways penetrating the correlator shielded room shall be fiber optic or other low RFI material to meet RFI specifications.
+R9,Security - Network routers/switches shall be employed at the MCCC - EVLA M&C interface level (or higher) to protect the MCCC from unauthorized access and irrelevant ne twork traffic.
+R10,Hardware communications – The CMIB daughter board shall communicate with the correlator carrier boards via either the PCI or ISA busses.
+R11,Hardware identification – The CMIB shall be capable of reading a 16 -bit identifier from the host correlator board .
+R12,Hardware addressing – The CMIB shall be able to read back the contents of all writeable hardware control registers where meaningful .
+R13,Hardware Booting – The CMIB shall have control of hardware “warm boots” such that an external command from the MCCC to reboot the CMIB shall have an option to force a hardware warm boot.
+R14,"Hardware Visual Health Monitoring – The carrier board for the CMIB shall have an externally visible indicator (LED or other) that will provide a user with a physical indication of CMIB operational stat us (red = fault, green = ok)."
+R15,"Power Supplies – Where applicable, all computers and peripherals shall be powered though UPS type devices with sufficient capacity for the computer s to safely coordinate a system wide shutdown of the correlator hardware in the event of a prolonged power outage."
+R16,Accessibility – All computers within the CMCS system shall have the ability for authorized users to directly access individual systems for maintenance and monitoring through remote logins.
+R17,Self-Monitoring – Each computer system in t he CMCS shall have a hardware based watchdog timer configured to reboot the system in the case of a system hang.
+R18,Reboots should result in minimal system interruptions with the offending CPU reconfiguring and returning to service autonomously.
+R19,Form Factor– The CMIB shall conform to both electrical and physical PC104+ standards.
+R20,"Module Features – The CMIB shall contain 64 Mbytes or greater of SDRAM, IDE hard disk interface, minimum of one serial and one parallel interface, PCI/ISA buses, 100BaseT network interface, capacity to boot and run a generic COTS operating system in a near real -time environment from local non -volatile storage."
+R21,"Operating System – The operating system/module combination shall be capa ble of supporting the real -time requirements of the correlator hardware, hardware monitor/control/diagnostics with support for standalone “test bench” operation with simulated control data generation, and the ability to access and upgrade correlator hardwa re PLD/FPGA personalities through its network connection."
+R22,"Form Factor – The MCCC shall be a high availability type general - purpose computer capable of supporting multiple Ethernet interfaces, COTS operating systems, and support server/host services for the CMIB operating system."
+R23,System Isolation – The MCCC shall have all required disk and file system facilities installed locally such that the system can boot and run in a stand -alone configuration.
+R24,"Form Factor – The CPCC shall be a high availability type general - purpose computer capable of supporting a COTS operating system and have the ability to accept a large number of external hardware status signals (power, temp, etc) either directly or through external interface hardware."
+R25,System Isolation – The CPCC shall have all required disk and file system facilities installed locally su ch that the system can boot and run in a stand -alone configuration.
+R26,Processing Software Performance – The CMCS processors shall be
+R27,"Processor Hardware Performance – The CMCS processors shall be capable of responding to correlator h ardware inputs (interrupts) in a deterministic fashion with sufficient performance to avoid data loss, corruption or overflows."
+R28,Errors – All lower system error and debug messages shall be present at the MCCC layer .
+R29,"Error Message Access – All system error and debug messages shall be categorized in a logical fashion such that message traff ic can be filtered as to content, detail, and message rate ."
+R30,Time Stamps – All messages passed between CMCS system layers shall have both UTC and wall clock time stamp information appropriate for the message type.
+R31,"Test Software. - Software shall be provided that allows an authorized user full access to all messaging, monitor, and control traffic throughout the CMCS."
+R32,A Graphical User Interface shall be provided as an interface to the CMCS test software that allows for a convenient and configurable to ol to access the CMCS remotely through the VCI.
+R33,Auto -correction – the CMCS shall be self -monitoring.
+R34,Software – the software part of the system shall be able to perform without total system restart due to internal failure betwee n system maintenance windows.
+R35,"Hardware – the hardware part of the system shall be able to perform indefinitely without complete loss of service, except in the event of total failure of primary and backup power ."
+R36,Loss of Control Data – the system shall be able to continue processing of all correlator configuration/control events until the queues of parameters are exhausted and external communications are restored
+R37,Standby Mode – the system shall be able to sit at idle and resume operations with minimal (amount TBD) delay .
+R38,",5,1 Hardware Accessibility – all system processing and interconnect hardware shall be readily accessible for maintenance, repair, replacement and/or reconfiguration ."
+R39,Software Accessibility – all systems and application source code shall be available to or on the systems that execute it .
+R40,"Processes – all software processes shall be killable, restartable, debuggable and testable with minimal im pact on normal system operations ."
+R41,Software tools – software tools and pre -built applications that do not have source code available shall come with a complete diagnostic package and customer support .
+R42,Operating Systems – operating system software shall either have source code available or come with sufficient diagnostics and customer support .
+R43,"Hardware – I/O, communications, and processing hardware shall be easily expandable, reconfigurable, augmentable and replaceable to meet increasing data traffic and processing demands imposed by EVLA science, Correlator changes, and availability of new hardware."
+R44,"Transparency – 3.7.1, above, shall be accomplished in ma nner that is transparent to processing, communications and I/O software functions with the possible exception of recompilation of executables ."
+R45,"Seamlessness – 3.7.1, above, shall be accomplished in a manner that is seamless, in that it does not affec t hardware modules or software functionality that it meets at interfaces ."
+R46,All users of the CMCS must be uniquely identified.
+R47,Systems operations should be given unrestricted access to all aspects of the system and should have the authority to grant and revoke privileges on a per -user basis.
+R48,The administrator shall have the ability to remove a user from the system .
+R49,The administrator shall have the ability to edit a user’s system access properties .
+R50,The admini strator shall have the ability to block all access to the system for all users or selectively by user . (All blocked users with active sessions shall automatically be logged off.)
+R51,"Operations Activit ies – the system shall continue operations, although not"
+R52,Maximal practical use of available “hot - swappable” devices and components shall be made .
+R53,specifications and configuration informa tion shall be readily available .
+R54,Software Coding Practices – software system and application code shall be well documented and written in a generally familiar language or languages (preferably not more than two).

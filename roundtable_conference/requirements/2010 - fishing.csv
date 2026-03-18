@@ -1,0 +1,92 @@
+﻿item,text
+R1,All electr onic reports from UK fishing vessels are required to be transmit ted to the Electronic Recording and Reporting Syste m (ERS) of the UK fisheries administrations as appropriate in order to comply with the applicable fishing regu lations.
+R2,The ELSS must capture all data necessary for recording the fishi ng activities undertaken by a UK fishing vessel.
+R3,The ELSS must output the data as an XML file for transmission to the UK fisheries administrations’ ERS system.
+R4,The ELSS data must be validated against the UK XML/XSD before transmi ssion from the fishing vessel.
+R5,The ELSS data must be transmitted at the required times set out below in Section 2.5.1.
+R6,There are four main Data Operations required to be processed by the ELSS.
+R7,The data definitions for each report type that are required to be transmitted from the ELSS of a UK fi shing vessel are to be found in the annex to this specification.
+R8,The ELSS may also provide the means for recording additional da ta but this must not interfere with the data capture and submission functions as set out below.
+R9,"The ELSS must provide data capture screens for the entry of the logbook, transhipment and landing declaration data that is required to be transmitted to the UK fisheries administrations’ ERS system."
+R10,The ELSS must use English (UK) localizations for all UK Electronic Logbook features.
+R11,All dates and times must be UTC.
+R12,The ELSS must provide the ability to print out the ELSS logbook data (including landing declarations) using an onb oard printer.
+R13,The ELSS must provide a means so that electronic print files are protected so that they cannot be modified in any way once generated and distributed.
+R14,The ELSS must provide Electronic Logbook data for transmission t o the UK fisheries administrations’ ERS system in accordance with the frequency requirements defined below (Section 5.1).
+R15,"The ELSS should at least be able to transmit data via email, either by being included in a packaged solution with an email system or by linking with an existing on-board emai l service."
+R16,Data is required to be emailed as an xm l document attached to an email with a standard Subject header and sent to the email address of the UK fisheries administrations’ ERS system.
+R17,The subject header must consist of a character string containing ‘ERS – ‘ prefixed to the contents of the GBRRN attribute of the Electronic Logbook data being tran smitted.
+R18,All xml documents attached to emails to the UK fisheries administrations’ ERS system must be encrypted using PGP.
+R19,"I f an alternative is proposed, this should be advised to the Validation Authority and if feasible and practicable the UK Fi sheries Administrations will endeavour to extend their ERS system to accommodate alternative methods."
+R20,The ELSS must permit the Master of the vessel to generate format ted data for transmission to the UK fisheries administrations’ ERS system.
+R21,"There are 2 categories of transmission, those that must be generated automatically by the ELSS and those that can be generated and transmitted under the control of the Master of the vessel."
+R22,The ELSS must provide facilities to capture and deliver for tran smission corrections to previously successfully transmitted data.
+R23,Data corrections must not be transmitted piecemeal;
+R24,the entire report containing one or more corrected items must be transmitted.
+R25,All corrections must be easily identifiable within the ELSS user interf ace.
+R26,The ELSS must only permit correction messages to be generated an d sent for reports sent during a current trip up to the submission of the End of Fishing report for that vo yage
+R27,The ELSS must provide facilities to transmit deletions to previously transmitted data.
+R28,The ELSS must only permit deletion messages to be generated and sent for reports sent during a current trip up to the End of Fishing report for that voyage.
+R29,All deletions must be easily identifiable within the ELSS user interf ace.
+R30,The ELSS must be able to receive acknowledgement (RET) messages transmitted from the UK fisheries administrations’ ERS system.
+R31,"The ELSS must match each acknowledgement message with the appropriate transmitted data operation, deletion or correction report."
+R32,The ELSS must be able to confirm that a transmission has been su ccessfully acknowledged or display any error message should the ELSS receive a negative acknowledgement message.
+R33,This test facility must be used to send test transmissions to establish that the communications between the vessel and the UK fisheries administrations’ ERS system are fully operational.
+R34,"Copyright © 2009,2010 UK Fisheries Administrations All Rights Reserved PROTECT – COMMERCIAL [when completed] • ELSS must retain all logbook reports and any corrections on the system at least until the end of each trip, i.e . on submission of the electronic landing declaration or of a transhipment report. • Any ELSS software updates must not impact upon the ELSS’s ability to meet the require ments set out in this document and other test documentation ."
+R35,"If it does then the product must be submitted for re-approval , and can not be deployed by fishing vessels until this is granted and the new version id is published on the UKFA web site lists • ELSS security and access controls such that o one username/password must be provided for the owner of each vessel o the owner is then able to set up subsidiary users s uch as the master of the vessel with their own username and password. o the username is required to be recorded in each rep ort completed and in each transmission made;"
+R36,the person who has entered the data is required to “sig n” the Electronic Logbook data stating that they ar e aware of the responsibilities/liabilities they are committing to in completing and / or transmitting a report. o Each copy of the ELSS installed must be provided wi th a unique (internal?) number that is automatically entered into each transmission to ide ntify the instance of the ELSS from which the repor t has been transmitted. • ELSS must only be supplied for use at sea and loaded onto an onboard system and is not to be provided for onsho re use by agents or representatives. .
+R37,Must conform to the ISO alpha-3 country code.
+R38,Values must conform to UTC standards.) C
+R39,Item Description Status Support Y|N|N/A Notes Deletion-001 Product MUST only permit deletion messa ge to be sent only during a current trip up to the End of Fishing report for that voyage C Deletion-002 Product MUST only permit deletion messa ges to be sent only during a current trip up to the End of Fishing report for that voyage.
+R40,C Deletion-003 Product MUST provide a means to allow deletions to be identifiable via the ELSS user interface C
+R41,Correction-002 Product MUST only permit correction messages to be sent only during a current trip up to the End of Fishing report for that voyage.
+R42,C Correction -003 Product MUST provide a means to allow corrections to be identifiable via the ELSS user interface C
+R43,Item Description Status Support Y|N|N/A Notes Acknowledgement-001 Product MUST correlate each Ackno wledgment message with the outgoing report and operation (DAT|DEL|COR).
+R44,Acknowledgement-002 Product MUST provide a means of i ndicating that the report as being successfully acknowledged and for displaying any error message or data provided in the acknowledgement.
+R45,Acknowledgement-003 Product MUST alert the Master if no acknowledgement is received within a time limit as pre-set by the Master.
+R46,In each item of these tables there is a status value which shall re flect the static conformance requirements of the UK Fishing Vessel’s Electronic Logbook Functional Requirements Specification.
+R47,A supplier must indicate the elements supported by their product in the columns marked in grey.
+R48,Any change of vessel master during a voyage must be notified in the next LOG message.
+R49,Any change during a voyage must be notified in the next LOG message.
+R50,A supplier must indicate the elements supported by their product in the columns marked in grey .
+R51,Every vessel is required to submit at least one FAR message per day before midnight and additionally in response to requests from the flag state where the fishing is being conducted.
+R52,Values must conform to UTC standards.) O
+R53,Values must conform to UTC standards.) CIF
+R54,Values must conform to UTC standards.) ers:COE 88 Target specie(s) attribute TS Species targeted w ithin zone.
+R55,Must conform to a single FAO (Fisheries and Agricultural Organisation) species code.
+R56,Values must conform to UTC standards.) ers:GBRCON 99d Time of arrival attribute GBRTI The estimated ti me of arrival at the control point.
+R57,Values must conform to UTC standards.) CIF Norway
+R58,Must be sent at least once per day with an FAR message.
+R59,Values must conform to UTC standards.) C ers:DIS 121 Time attribute TI The time of the discard bein g reported.
+R60,Values must conform to UTC standards.) CIF in the Baltic sea
+R61,Values must conform to UTC standards.) ers:PNO 133 Catch on Board sub-declarations (list of species SPE sub -declarations) element SPE (See details of sub-elements and attrib utes of SPE) C ers:PNO 134 Position sub-declaration element POS
+R62,Values must conform to UTC standards.) C ers:EOF 139 Time attribute TI The time the fishing log is recorded as complete.
+R63,Values must conform to UTC C
+R64,"Fixed format, the response must be one of: ""MAS"" (Vessel Master) ""REP"" (Representative of the Vessel Master) or ""AGE"" (Agent of the Vessel Master)."
+R65,Values must conform to UTC standards.) C ers:GES 179a Start zone attribute GBRZO Indicator of where zone fishing will be commencing.
+R66,Values must conform to UTC standards.) ers:GER 186 POS sub-declaration element POS (See det ails of sub-elements and attributes of POS) C ers:GER 186a Gill net fleet retrieved attribute GBRGNFN Unique reference number identifying the gill net fleet retrieved.
+R67,Item Ref No Feature - Element or attribute name XML Syntax Code Description and content Status Support Y|N|N/A Notes ers:SPE 213 Start of SPE sub-declaration element S PE Details of fish caught by species C ers:SPE 214 Species name attribute SN Must conform to a single FAO (Fisheries and Agricultural Organisation) species code.
+R68,A supplier must in dicate the elements supported by their ELSS product in the columns marked in grey.
+R69,A supplier must indicate how the following functional requirements are supported by their product in the columns marked in grey.
+R70,"Item Description Status Support Y|N|N/A Notes Capture-001 Product MUST provide data capture scree ns for the entry of the logbook, transhipment and landing declaration data that is required to be transmitted to the UK fisherie s administrations’ ERS system."
+R71,C Capture-002 Product MUST provide a means for fisherm an to manually enter required Electronic Logbook and Landing Declaration information.
+R72,"C Capture-003 Product MAY provide automated features fo r populating the Electronic Logbook information (e.g. interfacing with a GPS feature for inserting the location, date, time etc). { Please list systems in the Notes field } O Capture-004 Product SHOULD provide Man-Machine Interf ace factors suitable for operation of the ELSS on a moving/swaying platform O"
+R73,Capture-005 Product MUST use English (UK) localization for all UK Electronic Logbook features.
+R74,C Capture-006 Product MUST use UTC for all dates and t imes C Printing-001 Product MUST provide a means to provide a hard copy print out of the Electronic Logbook and Landing Declaration using an onboard printer.
+R75,O Printing-003 Product MUST provide a means so that el ectronic print files are protected so that they are not able to be modified in any way once generated and distributed CIF Printing-003
+R76,Tranmission-001 Product MUST enable the transmissio n of the required reports by an on-board email system eg by generating the data for transmission as xml documents attached to email for the email system deployed to be sent to an email address of the UK fisheries administrations’ ERS system .
+R77,Tranmission-002 Product MUST use the Electronic Log book filename syntax based on the GBRRN attribute i.e. [RSSNumber][YYYYMMDD][999999] C
+R78,Transmission-003 Product MUST encrypt the Electronic Logbook XML file using the UK Fisheries public PGP key when sent as an email attachment C Alternatives may be offered and deployed subject to satisfactory testing and acceptance by the UKFAs Transmission-004 Supplier MAY provide details of othe r transmission methods supported by the ELSS product which should be considered by UK Fisheries for future release of the ERS O
+R79,Transmission-005 Product MUST provide a means whereb y the system can track whether the submitted Electronic Logbook report has been successfully transmitted to the ERS systems and to track whether an acknowledgment has been received for each transmission.
+R80,Transmission -006 Product MUST provide for a test mod e of operation to enable the fishermen and the UK fisheries administrations to carry out test transmissions.
+R81,"Item Description Status Support Y|N|N/A Notes Frequency-001 Product MUST provide a means to ensur e that Electronic Logbook is transmitted to the UK ERS at least on a d aily basis not later than 24:00 hours even when there is no catch data with the proviso that if the vessel is in port, has no fish on board and has submitted a landing declaration, transmission may be suspended subject to prior notification to the Fisheries Monitoring Cent re of the flag Member State."
+R82,Transmission shall be resume d when the vessel leaves port .
+R83,Frequency -002 Product MUST provide a means to transmit the Electronic Logbook at the time of completion in res ponse to a UK fishing administration request C Frequency-003 Product MUST provide a means to transm it the Electronic Logbook immediately after the last fishi ng operation has been completed.
+R84,C Frequency-004 Product MUST provide a means of sendin g the Electronic Logbook before entering into port.
+R85,C Frequency-005 Product MUST provide a means of sendin g the Electronic Logbook immediately on departing a port.
+R86,C Frequency-006 Product MUST provide a means of sendin g the Electronic Logbook at the time of inspection at sea.
+R87,C Frequency-007 Product MUST provide a means of sendin g the Electronic Logbook at the time of events defined in Community legislation or by the UK fisheries administrations C
+R88,"Item Description Status Support Y|N|N/A Notes ELSS-Features-001 Product MUST retain all logbook r eports and any corrections on the system at least until the end of each trip, i.e. on submission for transmission of the electronic landing declaration or of a transhipment report C ELSS-Features-002 Software updates for a product MUST NOT impact upon requirements described in Council Regulation (EC) No."
+R89,/2008 C ELSS-Features-003 Product MUST: /square4 provide a unique ID for the master of each vessel;
+R90,ELSS-Features Product MUST only to be supplied for use at sea and loaded onto an onboard system and is not to be provided for onshore use by agents or representatives C
+R91,Static Conformance Requirement A definition of the compulsory and optional behaviour a product must implement in order to be considered conformant to the ERS eLogbook specification.

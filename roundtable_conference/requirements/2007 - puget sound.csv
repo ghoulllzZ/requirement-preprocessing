@@ -1,0 +1,49 @@
+﻿item,text
+R1,The system must allow for multiple file upload to be configured on a per-page basis.
+R2,The system must allow actors to organize their voice clips into a portfolio.
+R3,The system must allow actors to download their voice clips in a flexible format.
+R4,The system must store audio clips in a format conducive to speech.
+R5,The system must allow actors to delete recorded clips.
+R6,The system must allow web feeds to be turned on or off on a per-page basis.
+R7,An actor must be able to search through pages in a course.
+R8,The system must display a search box on every page after an actor has logged in.
+R9,A course administrator must be able to grade an assignment.
+R10,The system should display grade information to the appropriate actor.
+R11,The system should maintain a grade history.
+R12,The system must provide a wiki where actors can collaboratively create networks of documents.
+R13,The system must provide a blog engine.
+R14,The system must provide both e-mail and SMS notifications for pages.
+R15,"As far as possible, the system should provide a simple, responsive interface."
+R16,The system must be backed up on a configurable schedule.
+R17,"The system should be available 24 hours a day, 7 days a week."
+R18,The system should support at least 1000 concurrent users.
+R19,This is a functional description of those features required to address current instructional and educational requirements.
+R20,"The goal of this document, and our work, however, is to determine what any courseware system would need to qualify as a viable solution for the University."
+R21,The goal was to define those requirements that describe the core functionality required to support and facilitate diverse methods of teaching at the University of Puget Sound.
+R22,The system must be able to capture and manage files where appropriate.
+R23,The system must be able to capture and organize voice clips that can be used where appropriate.
+R24,Actors in the role of professor or system administrator should be allowed to partition this space for actors in the roles of students.
+R25,a separate viewer should be provided in a cross-platform language for listening to clips in Moodle.
+R26,"Since voice clips should be stored in a portfolio for each actor during his or her existence in the course management system, he or she should be able to examine his or her portfolio to select and delete clips if he or she chooses to."
+R27,"The system must be able to display web feeds, such as RSS 2.0 feeds, for all pages of the course management system where elements such as forum posts, assignment postings, announcements, wiki alterations and other blocks of information that an actor may view are added."
+R28,Actors in the course administrator role may not feel the need to provide web feeds for every page in their course.
+R29,The system must be able to use search functionality as a way to navigate Moodle pages instead of using hierarchical links.
+R30,"Second, a single page should be dedicated specifically to the task of searching the course management system."
+R31,"In addition to the basic search field, this page should allow an actor to filter out certain results (such as forum posts or grades, etc.) and search specific sections (or components) of the course management system."
+R32,The system must allow actors in the capacity of course administrator to post grades associated with assignments for a particular actor in the capacity of student.
+R33,"The system should display grade information such as the grade for each assignment, averages, and overall grade to the actor to whom the grades belong."
+R34,The system should maintain a history of grades for a particular assignment if the course administrator changes them.
+R35,"The system should be configurable from a single source at a central administrative position, and should provide a central, easy-to-use interface that will allow administrators to configure the user interface and features in a way that reduces page clutter."
+R36,"Furthermore, this interface must allow administrators to easily change themes and other setting that affect page layout across the entire courseware system."
+R37,"Back-up requirements will need to be determined, based on individual components of the system."
+R38,The system should be backed up with a frequency that ensures system and course data is protected.
+R39,"Since assignments will be submitted via the system, it should be backed up on a nightly basis, with options for weekly, off-site backup when necessary."
+R40,The system must have the ability and capacity to restore back-up data within six hours so that the system is never offline for an inordinate period of time.
+R41,It is only intended to convey the expectation that our customers should have access to the system during off-hours as well as business hours.
+R42,"Therefore, it must be able to handle at least 1,000 concurrent users."
+R43,The system must be maintainable without substantial modification.
+R44,Users must have easy access to help while interacting with the system.
+R45,Adequate user documentation should be provided to minimize the number of calls to the Help Desk about problems with the system.
+R46,"System administrators must have access to comprehensive, searchable documentation."
+R47,A comprehensive database of maintenance tasks and help files should be compiled to make the courseware system easier to maintain from an IT staff point-of-view.
+R48,"This documentation must cover all procedures necessary for regular maintenance with links to additional information, all common errors, and links or documentation for advanced troubleshooting."

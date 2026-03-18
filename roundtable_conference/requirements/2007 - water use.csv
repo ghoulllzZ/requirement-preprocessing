@@ -1,0 +1,22 @@
+﻿item,text
+R1,"However, if the required changes cannot be completed to the current systems in a timely manner, the WUT System will need to implement these requirements within the new application."
+R2,All functional requirements must be able to be linked to at least one use case.
+R3,• Pre-Conditions – A list of any conditions that must be met before the use case can be executed. • Flow of Events – The sequence of events that can take place during the execution of the use case.
+R4,Req ID Requirement Statement Use Case EW1 Must be able to track trends in land use and water use changes.
+R5,"The ability to aggregate the data must be there and any type of polygon should be able to be used. • View Map RW22 RW23 RW24 RW48 Track aquifer level changes, lake level changes, rainfall level changes, and stream flow changes by area over time (i.e. monthly). • View Report RW25 Create layer that shows the Developments of Regional Impacts (DRI) and their status."
+R6,"Once the MFL has been considered met, if it is followed by two years where the MFL is not met within a rolling ten-year period, then the AFL shall be considered below the MFL."
+R7,The business processes identified by each use case in the use case model must be described in detail in a narrative document.
+R8,This narrative describes the behaviors the resulting software system must be designed to support.
+R9,"This use case will be used when an actor needs to access the Water Use Tracking (WUT) System, a browser-based, distributed 3-tier client/server application initially deployed on SWFWMD’s Intranet."
+R10,This use case will be used when an actor needs to update business rule parameters within the WUT System.
+R11,"For example, the system administrator may need to inform WUT users that the system will be down for maintenance over the weekend."
+R12,Any historically unused quantities remaining at the source permit site may not be relocated in the future and may not have a change in use type.
+R13,"Add to this the capability to pan, zoom, and print at any time, the evaluator will have all the information and functionality required to make better, more informed decisions."
+R14,The applicant for a new permit or for a modification or renewal of an existing permit is required to file detailed information to demonstrate and justify to the reasonable satisfaction of the District the reasonable beneficial quantities intended to be used during the term of the proposed permit before it will be issued.
+R15,"The applicant must also demonstrate that other Net Benefit options, including relocation, mitigation, participation in a District Source Augmentation Project, are not feasible."
+R16,TW35 Need to be able to save (or download) th e results of queries into an outside system.
+R17,SW14 The tools the system will use to access the data need to be better than what is available now.
+R18,"Req # Requirement Statement EW3 Application must fit into statutory time frames for evaluating permitting applications, so there must be a quick turn-around time."
+R19,"Req # Requirement Statement SW13 Data to support requirements must exist in the database, and be readily available."
+R20,"TW25 If toolbars are writte n, must be in .dll format."
+R21,TW5 System should be written in map.net – either VB or C#.

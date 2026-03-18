@@ -1,0 +1,63 @@
+﻿item,text
+R1,This new interface must cater to the needs of both emulation end users and emulation suppliers.
+R2,The scope of this document shall be restricted to what is specifically referred to herein as the Standard Co-Emulation API: Modeling Interface (SCE-MI).
+R3,The means to interconnect software models to each other must be provided by a software modeling and simulation environment such as SystemC which is beyond the scope of this document.
+R4,"Ideally, the end users are not required to be familiar with the details of SCE-MI API."
+R5,"They must be distributed with appropriate object code, netlists, RTL code, configuration files, and all necessary documentation."
+R6,"For such a release to be complaint, it must conform to all the requirements set forth in this specification."
+R7,"However, before messages can be transported over an SCE-MI message channel, their content must be serialized into a large bit vector by the DUT proxy model."
+R8,"Furthermore, all other transactors that did not themselves stop the clock, must still sense that the clocks were globally stopped and continue to function correctly even though they themselves had no need to stop the clock."
+R9,"Controlled and Uncontrolled Time Views In the SCE-MI use model, the semantics of clock control can be described as follows:  Any transactor can instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.  All transactors are told by the SCE-MI infrastructure when the controlled clock is stopped.  Any transactor must function correctly if controlled time is stopped due to operations of another transactor, even if the transactor in question does not itself need to stop the clock.  A transactor might need to stop the controlled clock when performing operations that involve decomposition or composition of transactions arriving from, or going to a message channel.  The DUT is always clocked by one or more controlled clocks that are controlled by one or more transactors.  All transactors are clocked by a free running uncontrolled clock that is provided by the SCE-MI hardware side infrastructure. cclock Controlled Time View uclock cclock uclock Transactor operation occurs while controlled time is suspended by using extra uncontrolled clock cycles."
+R10,"One SceMiMessageInPort macro must be instantiated for each required message input channel, and one SceMiMessageOutPort macro for each output channel."
+R11,These two macros are mutually associated by the ClockNum parameter and every SceMiClockPort macro must have a minimum of one SceMiClockControl macro associated with it.
+R12,"of 94 Functional Requirements Specification: Standard Co-Emulation Modeling Interface (SCE-MI)  DutyHi = 50  DutyLo = 50  Phase = 0  ResetCycles = 8 Of these parameters, the ClockNum parameter is used to uniquely identify this particular clock and also to associate it with its 1 or more counterpart SceMiClockControl macros which must be parametrized to the same ClockNum value, in this case 1."
+R13,"However, passing messages by reference is more efficient but care must be taken in their use."
+R14,"If this is the case, the ReceiveReady input must be permanently asserted (i.e., “tied high”) and, on the software side, no input ready callback is registered."
+R15,The transactor must be designed to take any arriving data immediately as it is not guaranteed to be held for subsequent uclock cycles.
+R16,"If the software client code registers an input ready callback when it first binds to a message input port proxy (see section 4.3.3.4 on page 66), the hardware side of the infrastructure must notify the software side each time it is ready for more input."
+R17,"An important point to note is that it is totally up to the application to follow the protocol that if, the transactor is not ready to receive input, the software model should not do a send."
+R18,A well behaved software model should know not to do a send if it has not received an input ready callback (assuming the input ready propagation mechanism is being deployed).
+R19,The point is that a send should not be done by the software model until some time (either immediately or deferred) after the input ready callback has been received.
+R20,A second point to be made is that it should be fine for an application to service as many output callbacks as is desired while pending an input callback.
+R21,"If ReceiveReady is not asserted, the TransmitReady must remain asserted until and during the first clock in which ReceiveReady finally becomes asserted."
+R22,"In more complex systems that require multiple clocks, a SceMiClockPort instance must be created for each required clock."
+R23,It shall be considered an error (by the infrastructure linker) if more than one SceMiClockPort instances share the same ClockNum.
+R24,ResetCycles=8 This parameter specifies how many cycles of this controlled clock shall occur before the controlled reset transitions from its initial value of 1 back to 0.
+R25,The Creset output of the SceMiClockPort macro shall obey the following semantics:  Creset will start low (deasserted) and transition to high one or more uclocks later.
+R26,"Some applications require 2 edged resets at the beginning of a simulation.  For multiple cclocks, the reset duration must have a minimum length such that it is guaranteed to span the ResetCycles parameter of any clock."
+R27,"In other words, the controlled reset duration for all clocks must be, as a mininum, max( ResetCycles for cclock1, ResetCycles for cclock2, ...)  Some implementations may chose to use a reset duration that is larger than the quantify shown above if it is required to achieve proper alignment of multiple cclocks on the edges of the controlled reset as described in section 4.1.4.5 on page 55.  During the assertion of Creset, Cclock edges shall be forced regardless of the state of the ReadyForCclock inputs to the SceMiClockControl macros."
+R28,"For example, if a software controlled reset is required, an application would need to create a reset transactor that responds to a special software originated reset command that arrives on its message input port."
+R29,This uclock edge shall be referred to as the point of alignment.
+R30,For every SceMiClockPort macro instance there must be at least one counterpart SceMiClockControl macro instance presumably encapsulated in a transactor.
+R31,"SceMiClockControl Macro For each SceMiClockPort defined in the system, at least one corresponding SceMiClockControl macro must be instantiated in one or more transactors."
+R32,The transactor de-asserts this signal when it needs to perform operations during which the DUT must be frozen.
+R33,"In reacting to a ReadyForCclock of a slower clock, the infrastructure must not prematurely disable posedges of other faster clocks that occur prior to the last possible uclock preceding the edge to be disabled."
+R34,"In reacting to a ReadyForCclockNegEdge of a slower clock, the infrastructure must not prematurely disable negedges of other faster clocks that occur prior to the last possible uclock preceding the edge to be disabled."
+R35,Number of Transactors The number of transactors shall be derived by counting the number of modules in the user’s design that contain SceMiClockControl macros.
+R36,It shall be assumed that any module that is to be officially considered a transactor must have at least one SceMiClockControl instance immediately inside it.
+R37,Transactor Name The transactor name shall be derived from the hierarchical path name to an instance of a module that qualifies as a transactor as per the above definition.
+R38,"Naturally, if there are multiple instances of a given type of transactor, they shall be uniquely distinguished by their instance path names."
+R39,The syntax used to express the path name must be that of the HDL language that the bridge netlist is expressed in.
+R40,Port Name The name of each port shall be derived from the relative instance path name to that port relative to its containing transactor module.
+R41,Message Input or Output Port Width The width of a port in bits shall be derived from the PortWidth parameter defined in the message port macro.
+R42,Message Output Port Priority The priority of a message output port shall be derived from the PortPrority parameter defined in the SceMiMessageOutPort macro.
+R43,"With some exceptions, the output port priority generally follows the semantics of the UNIX nice command as follows:  0 < allowed priority values < 20  Default priority value is 10  The lower the number the higher the priority  Output port priority 0 is reserved for internal use by the infrastructure  For message output ports with the same priority number, their relative priority is undetermined and strictly an artifact of infrastructure linker implementation Number of Controlled Clocks This number shall be derived by counting all instances of the SceMiClockPort macro."
+R44,"However, on the software side, a parameter access API must be provided by the infrastructure implementor that conforms to the specification in 4.3.4 on page 70."
+R45,"This access block must support access to a specifically named set of parameters required by the SCE-MI as well as an optional, implementation specified set of named parameters."
+R46,"To gain access to the hardware side of the SCE-MI, the software side must first initialize the SCE-MI software side infrastructure and then bind to port proxies representing each message port defined on the hardware side."
+R47,"So this means that any object, such as SceMiMessageData, that is created by the application using that object’s constructor, must be deleted by the application when it is no longer in use."
+R48,Those objects must not be deleted by the application.
+R49,This is the destructor of the SCE-MI infrastructure object that must be called when connection to the interface is to be terminated.
+R50,These names must be the path names (described in 4.2.1 on page 59) expressed in the syntax of the HDL language that the hardware side bridge netlist is expressed in. binding The binding argument is a pointer to an object defined as follows: struct SceMiMessageInPortBinding { void *Context;
+R51,These names must be the path names (described in
+R52,The underlying transport mechanism that supports the port proxies must respond in a relatively timely manner to messages enqueued on the input or output port proxies.
+R53,All parameters in a SceMiParameters object must be overridden before that object is passed to the SceMi::Init() call to construct the interface (see 4.3.3.2 on page 65).
+R54,"While the format of the parameter file is implementation specific, the set of parameters required by the SCE-API and the methods used to access them must conform to the specifications described in this section."
+R55,"The API shall provide a simple accessor to return the number of objects of a given kind, and read and write accessors (described below) to allow reading or overriding attribute values of specific objects."
+R56,"In addition, the following semantics characterize the parameter set:  Transactor names are absolute hierarchical path names, and must conform to the syntax of the HDL language that the bridge netlist is expressed in.  Port names are relative hierarchical path names (relative to the enclosing transactor), and must conform to the syntax of the HDL language that the bridge netlist is expressed in.  Clock names are identifiers, not path names, and must conform to identifier naming syntax of the HDL language that the bridge netlist is expressed in."
+R57,"All parameters, whether specified by the user or not must have default values."
+R58,Destruction of all message input ports shall automatically occur when the SceMi::ShutDown() function is called.
+R59,Destruction of all message output ports shall automatically occur when the SceMi::ShutDown() function is called.
+R60,The prototypes of those functions shall follow with a minimum of explanatory text.
+R61,"An application must include either the C API header or the C++ API header, but not both."
+R62,"This method should be called frequently by the software, throughout the co-modeling session in order to avoid backup of messages and minimize the possibility of system deadlock."

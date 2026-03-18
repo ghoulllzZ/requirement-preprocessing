@@ -1,0 +1,10 @@
+﻿item,text
+R1,It does not ensure unique output filenames and it must be used together with other variables.
+R2,REQ-3: The number of digits that can be used for the unique [FILENUMBER] prefix must be 10 or less.
+R3,"If the pdf documents contain forms, the user must add that to the merge options."
+R4,REQ-1: pages number in the page selection must be comprehended.
+R5,REQ-2: The number of digits that can be used for the unique [FILENUMBER] prefix must be 10 or less.
+R6,REQ-1: Log level must not be OFF (in the Settings panel) in order to work this function
+R7,The application must ensure that it leaves untouched the input pdf files.
+R8,"Moreover, the application should function even in cases of wrong data insertion or wrong settings."
+R9,Any user should be able to use PDFsam without any specific knowledge or experience by reading the user manuals (or the help messages that are embedded in the application).

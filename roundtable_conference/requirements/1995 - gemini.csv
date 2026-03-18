@@ -1,0 +1,242 @@
+﻿item,text
+R1,"All software will be maintained under a version control system, and must include facilities for easy (nearly automatic) inclusion into the Gemini software environment."
+R2,They may or may not be collocated with any administrative organization associated with the Gemini telescopes.
+R3,"Support Maintenance, test Monitoring, operation, test- ing Must allow full access to all subsystems."
+R4,"It should also be noted that what the system has to guarantee in terms of operations must ful®ll all possible requirements, but it does not mean that all features will be made available to all users at all locations at all times."
+R5,"To allow observing astronomers to achieve this objective, the system must offer to a user an interface which, while ful®lling the various operational requirements in the different modes and offering status information both automatically and on request at any required level, is still simple to learn and secure in its use. · Privileges Developer Maintenance, test Monitoring, testing Must allow full access to each subsystem in test."
+R6,USER-LEVEL REQUIREMENTS Observing astronomers shall have no privileges as far as the direct control of the telescope is concerned.
+R7,They shall not be able to send control commands directly but they must be able to enquire about the status of the telescope or any subsystem at any time.
+R8,"Astronomers are typically given control access to instruments, however. · Operation mode Traditional interactive operation shall normally be replaced by operation via an automatic sequencer."
+R9,"A certain degree of interaction shall be provided, meaning in this case that the user will interact with the scheduler program, rather than with the control programs directly."
+R10,It must also be possible to break and resequence this queue. e.g. as a result of the quality assessment of previous data.
+R11,"In particular, Operations staff will be able to enable direct interactive operation, but this shall not be considered as the normal operation mode for the reasons explained in Section 2.7 on page 2-12."
+R12,"It is evident that, for some functions (such as adjustment of spectrograph slit width for seeing conditions) it must be necessary to include interactive capability."
+R13,The existence of the scheduling queue shall be transparent to the on-site observer during the initial phases of telescope operation.
+R14,They shall also monitor general performance and system safety. · Privileges Operations staff shall have privileges to access all commands and maintenance pro- cedures in case of problems.
+R15,"However, they shall not have access to subsystems while these are in normal opera- tion."
+R16,"If they need to access other parts of the system appropriate recon®guration pro- cedures have to be run. · Operation mode Operations staff shall have access to operation tables in update mode, while observ- ing astronomers will have access to them only in read mode (for example the list of ®lters mounted on an instrument)."
+R17,"They shall be able to change the operational status of units according to the results of tests performed on such units (e.g. to see if a faulty unit can be declared as opera- tional again and rede®ned as part of the environment in use). · De®nition Software development and maintenance are staff: ·based either at the Gemini 8m Telescopes site or base facility, or ·based at the Gemini 8m Telescopes remote operations facility, or ·non Gemini staff from a contract company or from an associated Institute."
+R18,Nevertheless strict con®guration control guidelines must be followed to prevent interference with ongoing normal operation. · Operation mode Software development and maintenance staff usually work at the test level (see Section 3.2.1.3 on page 3-4) for the part of the software under test.
+R19,"Parallel access to all the mounted instruments shall be provided, though only one instru- ment has access to the telescope beam (active instrument)."
+R20,"Various situations are possible for the other (inactive) instruments: ·they shall be able to take calibration or ¯at ®eld exposures in parallel ·they shall be able to prepare for an exposure to start as soon as the telescope beam is switched back to them (in this case, they are in a hot standby situation) ·they shall be able to work;"
+R21,"Regardless of the status of an inactive instrument, it shall not be possible for any of its permitted actions to adversely impact the active instrument."
+R22,In this case a subset of the available functionality must be made available through a standardized interface.
+R23,Visitor instruments must be capable of operating in this mode to be adequately supported.
+R24,It should be the goal of this interface that it be a subset of the existing instrumentation interface (rather than a separate system).
+R25,"At a minimum this interface should support: ·acquisition of status information of instrument by other systems ·capability to enter preprogrammed observing sequences ·capability to offset the telescope position and focus It should be a goal, but not a requirement, that the interface provide support for ·coordinate transforms between visitor instrument and the Gemini system ·archiving (or archivibility) of visitor instrument data ·maintenance of operations tables (such as ®lter lists) which can become part of an observation©s permanent record"
+R26,"However it must be recognized that: ·the Gemini standards may not prove cost effective for some visitor instruments ·the Gemini standards will evolve over time as requirements and technology change ·the evolution of Gemini standards might require existing visitor instruments to rewrite or rework large areas of their control system ·visitor instruments built later in time than the initial complement of Gemini instruments may want to take advantage of different and/or less expensive technology if it better suits the goals of their project For these reasons it is probably not possible to establish a combined standard to which all instruments, both Gemini and visitor, adhere to completely."
+R27,"Independently of the location of users at the telescope site, they shall be able to access (according to their privileges) any part of the whole setup with a simple logon and con®guration operation."
+R28,In other words. any subsection of the whole Gemini 8m Telescopes system should be accessible and controllable from any single point (but of course with protection ensuring security and safety).
+R29,"Monitoring shall exist both in the form of automatic displays of status information at different locations, and in the form of explicit access to the required status informa- tion from any point."
+R30,Monitoring shall not affect the performance of ongoing observations.
+R31,"The observing program must be fully automated, requiring very little human interaction during the observation."
+R32,The means that the Gemini software must include a suf®ciently rich programming environment to make this feasible.
+R33,This simulator should function within the virtual telescope environment of the Gemini system.
+R34,All control software must provide support for simulated use within the virtual telescope.
+R35,"This software must consider target positions, weather conditions, and instrument con®gura- tions."
+R36,"There must be software to support the ¯exible scheduling, both manually and via a scheduler, allowing for the interleaving of observing programs in a manner that is transparent to the individual observing programs."
+R37,To maximize the use of the available observing time it must be possible to queue all of the observing that is possible with the currently available instruments.
+R38,"The system design, if it does not include a scheduler, should speci®cally allow for its future implementation."
+R39,All software should be developed to permit remote operations.
+R40,There should be no conceptual difference between software working on-site and remotely.
+R41,It must be possible to restrict speci®c operations to speci®c remote sites.
+R42,"Despite the obvious limitations introduced by the link bandwidths available at the differ- ent locations, the system shall be totally transparent to local or remote use."
+R43,However the system design should minimize the impact of link bandwidth on transparency.
+R44,Security of operation shall be considered and might imply different operation levels and privileges at different sites.
+R45,"This should reduce the amount of speci®c software needed for remote operations, as the common layers of soft- ware shall cope from the beginning with a distributed environment."
+R46,"The philosophy behind this is that, for safety con- siderations, telescope control commands cannot be issued without a staff member (not necessarily the same person) having direct access to: ·a hard wired ªstopº button ·real time video and audio ·control of the telescope Remote observing means that users shall be able to observe from a remote site such as Cerro Tololo, Hilo or even home Institutes."
+R47,Remote users shall normally interact with the system via ·operators at the Gemini 8m Telescopes control facility ·operators at the Gemini 8m Telescopes site facility ·operators at the Gemini 8m Telescopes base facility ·operators at the Gemini 8m Telescopes remote operations facility ·via the scheduler program and shall not control any part of the Gemini 8m Telescopes directly.
+R48,"Remote access, in this case, must be possible from the Gemini 8m Telescopes base facility."
+R49,"The observing program must be automated, requiring little human interaction during the observation."
+R50,The means that the Gemini software must include a suf®ciently rich pro- gramming environment to make this feasible.
+R51,This access may or may not be done concurrently on a shared environment.
+R52,"So whichever scheme is adopted to perform automatic sequences, interaction shall be allowed at the desired level (for example, only on error conditions, any time the user is allowed to break a sequence, etc.)."
+R53,"This can be achieved only with the help of appropriate scheduling software, which must advise the operations team on the best choice to make which is compatible with the relative priorities of the various observing programs."
+R54,It should be recognized that such `expert scheduling' software does not currently exist - it should be a requirement of such software that it have an operational mode which merely supports the decision making process by presenting appropriate information.
+R55,"All subsystems must respond to a common set of commands to test operational status, inquiries as to version, perform self-tests, etc."
+R56,"All IOC subsystems must respond to additional common commands for such activities as start, stop, initialize, reset parameters, etc."
+R57,"The support structure for communicating commands must be reliable, with a uniform ACK/NAK protocol adopted across all systems."
+R58,Timeouts must be supported at approxi- mately 500 msec.
+R59,"Handshaking of commands between IOCs must occur within 100-200 msec, signaling acceptance of each command."
+R60,"For commands allowing delayed replies, timeouts for that reply must also be sup- ported."
+R61,Data from detectors must be stored in the most effective method permit- ted by available technology.
+R62,"For mosaicked, large optical detectors, a full readout of the detector must be done in about 2 or 3 minutes."
+R63,"Since the Gemini system supports monitoring of operation, there must be the capability of providing multiple, simultaneous access to data."
+R64,The LAN must sup- port a transfer rate of 20-40 Mbits/second.
+R65,"The system data capacity is capable of retaining 7 days of data produced by the largest instrument, the last 3 days of which must be available interactively from hard disk or similar medium."
+R66,The system must allow for fast transmission of rough images every 0.5 sec.
+R67,"This high-quality transmission must require less than20 sec, and can only be assisted with loss-less compression."
+R68,"To preserve the integrity of the system, there must be a system of privileges established at each operating level of the system."
+R69,These privileges should be determined in a simple manner during logging into the system.
+R70,The allocation system must ensure that the system cannot remain deadlocked with respect to this resource allocation.
+R71,"Finally, procedures must be implemented for convenience and system integrity, to sim- plify and codify common tasks."
+R72,"The Gemini software should have no hard restrictions on the number of simultaneous users, but should allow for policy decisions that do restrict the amount of simulta- neous access."
+R73,"Every command must be accepted/rejected within 2 sec and before the correspond- ing action occurs. (This is different than the ACK/NAK response of the communica- tions protocol - here, the target system must have examined the command and veri®ed its validity."
+R74,"Status display update must be within 4 sec at the local stations (certain functions, such as telescope position, may have tighter constraints)."
+R75,Requests of subsystems for status information must be answered within5 sec and be possible in maintenance level operation.
+R76,All software bugs should be logged and then ®xed as soon as possible after detection.
+R77,TEST AND CHECKOUT REQUIREMENTS The telescope and instrument software shall contain built-in test (BIT) facilities to verify Gemini 8m Telescopes system and Gemini 8m Telescopes software performances.
+R78,"Every Gemini 8m Telescopes software module shall have corresponding test speci®ca- tions to check normal operation of releases, to be used both for acceptance tests and as an on-line test procedure."
+R79,The Gemini 8m Telescopes control software shall also provide for execution of self-test sequences of the Gemini 8m Telescopes system and subsystems.
+R80,These shall automati- cally exercise all subsystems present in a given operational con®guration.
+R81,Regression tests should be a part of every Gemini 8m Telescopes software package.
+R82,Subsystems must notify the user when faults occur.
+R83,This noti®cation must be speci®c as to origin and problem.
+R84,The noti®cation must also be capable of being electronically logged.
+R85,"Should a subsystem fail (e.g. one detector, one instrument) prede®ned procedures must exist to rede®ne the environment in such a way that operation can restart with the remain- ing equipment."
+R86,"In case of computer hardware failure concerning the user station equipment, it shall be possible to transfer control from one user station to another via a simple software recon®g- uration procedure."
+R87,In this case there shall be a pro- cedure to replace faulty cards and/or assemblies.
+R88,"If it is possible to observe with that par- ticular IOC in a failed state (in general, this is limited to IOCs that are associated with individual scienti®c instruments) then it must be possible to recon®gure the system to do so."
+R89,"All communication shall be based on the use of standard communication protocols, where retry procedures are applied (a form of software redundancy) as part of the protocol."
+R90,There should be no restrictions imposed by the software on users.
+R91,"Only policy deci- sions (permissions, access privileges, etc.) should prevent any user from accessing any part of the Gemini system from any local or remote station."
+R92,Gemini software developers should maintain accurate change logs showing software modi®cations as they are applied to the system software.
+R93,Gemini software developers should adhere to a standard method for the reporting and recording of errors from both internal and external sources.
+R94,"Gemini software should be developed in evolutionary fashion, using the CVS version control system."
+R95,External documentation must include Unix-style man pages.
+R96,All Gemini subsystem packages must provide modules for the testing and diagnosis of the subsystem.
+R97,All instrumentation control software must provide full access to all instrument function- ality.
+R98,"All Gemini software must be version labeled, both in source and binary form."
+R99,Therefore all hardware subsystems must provide a software simulation module (as stated earlier) that responds in reasonable fashion to commands directed at that hardware.
+R100,"Gemini subsystem should be as self-contained and autonomous as possible, thereby decreasing the functional width of the interface to the rest of the Gemini system."
+R101,"Control information must be transferred, typically in the form of commands and replies from users, to telescope and instruments."
+R102,Control information on all controlled variables must be provided by all subsystems on request.
+R103,"No request for information shall produce a delay of control activities or locking, even if the corresponding equipment is not available or faulty."
+R104,Delay times for the exchange of control information must stay within precise time limits to be de®ned in ªGeneral Descriptionº in Chapter 2.
+R105,It must also be possible to restrict user access to such information.
+R106,Detector data must be acquired and stored in the most effective way technology will allow;
+R107,"This shall lead to the de®nition of a Gemini 8m Telescopes stan- dard, used on all instruments."
+R108,"In general, operational overheads must be kept as low as possible, to maximize actual observing times."
+R109,"However, there must be at least two copies - one to secure data as acquired and one to do assessment of data quality on-line (this last copy preferably on removable media)."
+R110,"Other astronomical information such as that coming from sky ®eld monitors, autoguider cameras and sky monitoring devices such as cloud and seeing monitors shall also be capa- ble of being available."
+R111,"It shall be possible to update all non-protected parameter values, i.e. those not used by operations at observing level."
+R112,Protections must also be enforced (see also Security in Section 3.5.6 on page 3- 20) among users and the operational software should indicate clearly to users the current operation level and check the compatibility between subsystems in different modes.
+R113,"In addition, the system must support off-site observing modes."
+R114,"One supervisor will monitor the system, and other users might need to monitor the run- ning of observing programs, locally or remotely."
+R115,"As a conclusion, the Gemini 8m Telescopes control software shall allow simultaneous operation of up to six active control nodes and up to two more monitoring nodes (one local and one remote) without appreciable degradation of performance."
+R116,"In practice the operation and facilities foreseen so far for the Gemini 8m Telescopes will limit this number to a maximum in the order of three active nodes, but the Gemini 8m Telescopes computers and software shall be capable of coping with the load of 10 active nodes, should the case arise."
+R117,Every command must be acknowledged in a positive or negative way before the occurrence of the corresponding action within given response times.
+R118,There must be automatic procedures to implement startup and shutdown of the telescope and instruments.
+R119,These must allow startup and shutdown of instruments independently of the telescope and without affecting the telescope operation.
+R120,"Recon®guration procedures must exist, to change the observing environment."
+R121,"The de®nition of the observing environments must be dynamic, i.e. feasible during opera- tions without the need to restart everything."
+R122,EXTERNAL INTERFACE REQUIREMENTS The operational software should know which subsystems are installed and opera- tional at any given time.
+R123,"The user interface tools shall be based on standards, de®ned in Section4.2.5 on page"
+R124,"Standard interfaces to the control electronics shall be available, in the form of: ·standard bus systems ·a standard set of interface cards to be used on all the subsystems and instruments ·a standard software skeleton running on the control electronics The existence of hardware standards is clearly essential for maintenance and repairs."
+R125,"Microprocessor software in particular tends to contain hardware speci®c soft- ware, though one should try to keep it as hardware independent as possible, isolating dif- ferent software layers."
+R126,The standard software must be adequate for the real-time requirements and must offer drivers to the standard electronics to be used on all the Gemini 8m Telescopes software subsystems and instruments.
+R127,Links between electronics interfaces and main processors must meet the requirements imposed by the data speci®cations (see Section3.1 on page 3- 1).
+R128,EXTERNAL INTERFACE REQUIREMENTS The Gemini 8m Telescopes software must interface to the external software and clearly the interfaces are fully part of the Gemini 8m Telescopes software.
+R129,"The following statements are proposed: ª It shall be possible to monitor the quality (image quality, spectral resolution, signal to noise, etc.) of the astronomical data as it comes in."
+R130,"Quick-look should be usable within exposure sequences to provide results and feed- back parameters to the control software in a programmed way, without the need for manual intervention."
+R131,"The Astronomical communities have made considerable investments in image processing software, and therefore, compatibility with and adaptations to these pack- ages must be sought."
+R132,"In all these cases the speci®c on-line (quick-look) software development shall be seen as a subset of the development for the off-line data reduction system, to avoid as far as possi- ble duplication of development effort."
+R133,The output format of the Gemini 8m Telescopes data must be compatible with the GEM- INI archive requirements.
+R134,The Gemini 8m Telescopes software must be able to interface with all commercial soft- ware packages available on the Gemini 8m Telescopes and integrated into the Gemini 8m Telescopes operation.
+R135,"A relevant example of such a package is a general database management system (DBMS), where operational information such as schedules, logs, problem reports and maintenance information related to various pieces of equipment should be kept."
+R136,The LAN shall support the majority of the Gemini 8m Telescopes system internal communication needs.
+R137,This LAN must be capable of dealing both with the data band- widths required (at peak and on average) and with the required response times and synchronization needs.
+R138,"This LAN shall be supplemented with a Local Time Bus, for distribution of absolute and relative time signals, and both a digital re¯ective memory bus and an analog event-based bus, for distribution of signals with requirements not satis®ed by a LAN."
+R139,No distinction is made here between WAN and point to point links as there shall be no difference in the software between the two cases.
+R140,"GENERAL CONSTRAINTS To eliminate conceptual access problems, while coping with different bandwidths, LAN and WAN interfaces shall be homogeneous and shall be based on standards which allow migration on different media, should they become required during the Gemini 8m Tele- scopes project life."
+R141,"For maintenance reasons and hardware independence, a clear hierarchical model must be implemented, supporting separation of logical and physical layers, e.g."
+R142,"All essential tasks, not including remote observing, must take place on resources controlled by the project (such as leased lines)."
+R143,The use of these features must be limited and constrained by the following guidelines:
+R144,"GENERAL CONSTRAINTS To allow coordination both locally at the Gemini 8m Telescopes site between the var- ious users and with remote users, the software shall support access to the system from any user station."
+R145,"Computers used at the Gemini 8m Telescopes site, particularly in the test phase when they are outside the control room and near the subsystem under test, shall be checked against altitude and humidity speci®cations for the Gemini 8m Telescopes site (see also [EDS] in Section 1.3)."
+R146,"Computer hardware must be able to run the Gemini 8m Telescopes software envi- ronment (operating systems, Gemini 8m Telescopes software) and provide compati- bility in data format (identical internal data representation)."
+R147,Common development and implementation tools must be both available and sup- ported
+R148,Identical network access must be supported
+R149,"Local processing power must be such that telescope and instrument control does not represent a signi®cant overhead in the whole process of executing an observing pro- gram (the overhead, if any, should be limited by the time it takes for physical devices to act)"
+R150,"In any case, remote operation must include remote monitoring from the Gemini 8m Tele- scopes base facilities, together with access tools for diagnostic and test use."
+R151,Individual instruments must be able to run fully independently.
+R152,Telescope software at the two telescopes must be maintained to be identical in the upper layers (even if hardware should differ).
+R153,Modi®cations should be con®ned to the operational procedures and should not affect the bulk of the existing software.
+R154,Switching to different con®gurations must be possible at any time with appropriate pro- cedures.
+R155,There must be easy procedures to recon®gure the system when subsystems are modi®ed or removed.
+R156,"The number of main packages of software must be kept to a minimum to facilitate main- tenance, but compatibly with the need to have the right degree of modularity."
+R157,Existing software packages should be reused wherever possible.
+R158,Existing software expertise should be consulted whenever possible.
+R159,"All software which does not directly control speci®c hardware must be written as machine independent, portable code."
+R160,"Even for microprocessor software, the software should be hardware independent, to allow a later choice of the target microprocessors."
+R161,"To allow for expansion and maintenance, Gemini 8m Telescopes standards must be de®ned for the on-line software and the development environment."
+R162,On-line version control must be implemented.
+R163,"That is, the version control system must be available to recover/restore versions at all times."
+R164,"At boot time, the Gemini 8m Telescopes software shall check the consistency of ver- sions of all the various software components."
+R165,"Table-driven software should be used whenever possible, to avoid unnecessary com- pilations."
+R166,"Changing system constants, such as arcseconds/bit for an encoder, shall not require recompiling but will be updated as part of system startup, and, for some constants, will be modi®able during operation."
+R167,Strict checking should be applied on this to preserve maintainability and recon®gura- tion of the system.
+R168,"ATTRIBUTES · Expandability · Modularity · Concurrency I think you should include Rick's information about complexity criteria here, so show that we are aiming to achieve as simple as system as we can which meets the requirements. Ð Steven."
+R169,"To guarantee maximum availability of the control system, retry procedures must be embodied in the software in case of error or failure (e.g. time-out, hardware failure) to achieve recovery on-line whenever possible."
+R170,"Should recovery also fail, the error or failure has to be reported in a clear form (to identify the cause of the problem) and the system shall put itself into a safe state, whenever a safety aspect might be involved."
+R171,"To avoid unnecessary downtime, it must be possible for the system to recon®gure itself in order to continue observing, in a different mode if required, given the failure of a single non-critical subsystem."
+R172,"ATTRIBUTES To increase software robustness, range checking and validity checking shall be supported before execution of any input command."
+R173,"This must be possible ahead of time, preparing observing sequences for automatic observations and simulating observations to estimate results."
+R174,"It must be possible to apply continuous moni- toring to all subsystems on request, both when in operation and when idle, to check their operational status."
+R175,A measure of fault rates should be done during commissioning to establish baseline rates for system reliability monitoring.
+R176,The system should be constantly monitoring active subsystems to be sure they are operat- ing correctly before sending command to each subsystem.
+R177,"Each subsystem should provide a module for fully exercising all sub- system components, both hardware and software."
+R178,The requirements must be achievable and stated in such a way that veri®cation is permitted.
+R179,Preventative Maintenance hours per year All equipment shall support a programmed adjustment and maintenance interval of
+R180,All Gemini Software must be designed with human engineering requirements under consideration.
+R181,The Gemini system must be self-monitoring to invoke safety monitoring to prevent risk to people or damage to equipment.
+R182,The software should be able to quickly bring the Gemini system to a safe state upon noti®cation of such danger.
+R183,Subsystems must be able to detect such danger and report it appropriately.
+R184,"In the event that the risk persists, subsystems must be able to move themselves into safe states to protect people and equipment (i.e. if there is a failure in the higher-level systems)."
+R185,"Safety protection must be applied whenever there is the risk that the actions of the control software could endanger people or cause damage to any Gemini 8m Telescopes sub- system, for example, by driving beyond limits or by overexposing detectors."
+R186,"This protec- tion, where implemented, must be independent of the software."
+R187,ATTRIBUTES The Gemini 8m Telescopes software shall be able to bring the Gemini 8m Telescopes system quickly to a safe state upon detection of danger.
+R188,Safety aspects shall be ana- lyzed during the functional speci®cation phase of the software.
+R189,Security must be provided in order to both prevent accidental mix-up of commands from different users on different parts of the system and to prevent intrusion from the wide area network into the Gemini 8m Telescopes.
+R190,"A system that is operating in Engineering/Maintenance mode must ignore directives from other systems, though status information should still be provided for use by other systems."
+R191,"There should be security preventing the intrusion into the system by unauthorized users, or users at unauthorized access levels."
+R192,This interlock must not depend on any software for reliable operation.
+R193,The interlock philosophy is as follows: ·All hazards capable of causing death and/or loss of irreplacable equipment shall be passively interlocked. ·All hazards capable of causing injury and/or severe damage to equipment shall be actively interlocked (severe damage implies that repairs are not repairable at the depot level. ·All other hazards may be interlocked via software.
+R194,"The software itself, its installation process, and its docu- mentation must be developed with this expandability in mind, using general industry standards."
+R195,Module selection should be done in logical fashion to minimize the size of the interfaces between modules.
+R196,"The software must be strictly modular, i.e. the functionality of a subsystem should correspond to that which belongs to that subsystem and only to that, so that software for different subsystems can be installed and maintained independently of all the rest."
+R197,"At the same time, the possibility must exist to acquire information about other parts of the system (for example, telescope coordinates) (as mentioned in the control ¯ow require- ments in Section 3.1.1)."
+R198,"The security and safety of the system should be guaranteed even in the event of failure of any component, including the higher-level software."
+R199,The Telescope Control System should be capable of detecting and invoking paral- lel operation as it is responsible for control of all of the telescope and enclosure subsystems.
+R200,"The following criteria for later selection shall be kept in mind: ·Emphasis on development and productivity requirements, including cross support tools ·Portability of software (target hardware independence) ·Hardware and vendor independence ·Use of industrial and defacto standards."
+R201,"Test procedure methods have to be de®ned in the Software Test Plan (STP), while test plans shall be written for all individual software packages and modules comprising the Gemini 8m Telescopes software."
+R202,"Apart from the component and integration test procedures, a formal release system should exist at package and module level, which should be checkable on-line by the operational procedures for consistency."
+R203,Every system must thus be able to supply its current version upon request.
+R204,"The on-line databases can be considered part of this interface, but are only accessible Reliability and availability A measure of fault rates should be done during commissioning to establish baseline rates for system reliability monitoring."
+R205,The system should be constantly monitoring active subsystems to be sure they are operating correctly before sending commands to each subsystem.
+R206,The database must support both remote access and distributed data.
+R207,This means the video data signals must be encoded digitally and trans- ferred via the WAN to remote sites.
+R208,"There must be some form of security to control access to system features, possibly restricting some operations to speci®c remote sites (e.g."
+R209,"To improve this performance, all possible concurrencies in system operation should be used."
+R210,There are start-up and shut-down procedures that must exist at many different levels:
+R211,"Cold start-up, starting the system from scratch (including time to download all software) should take about 5 minutes."
+R212,"Warm start-up, starting from scratch but also excluding software download time should take about 1 minute."
+R213,There must be a way to shut down all subsystems (hardware and software).
+R214,"System logging information should include all important events, properly time- stamped and indexed."
+R215,It must be possible to log engineering data at up to 200 Hz rates for short periods of time.
+R216,This data must be available to external software packages for analysis.
+R217,"Long-term logging of engineering data must be possible at slower (1 Hz or less) rates, into a common format (baselined as SYBASE)."
+R218,"All errors should be reported using a common, system-wide proce- dure."
+R219,"Under serious errors, the system does not need to move off-line, but the cur- rent operation cannot be completed."
+R220,All subsystems must group errors into these categories.
+R221,"In addition, errors that result in an ""alarm"" should be described, along with the proper action required to acknowl- edge and eliminate the alarm condition."
+R222,"In addition to start-up procedures, there must be well-de®ned recovery proce- dures for any subsystem that has become inoperative."
+R223,Command retries must be included in the system for most common timeouts or no- response conditions.
+R224,The system should monitor the rate of warning messages since an increase might indicate that some tun- ing or maintenance is appropriate.
+R225,The GNU software tool suite should be used where possible.
+R226,"There is likely to be software below the IOC level, but it should not require downloading, except possibly for upgrades, typically being placed into ROM or FLASH memory."
+R227,"The communication software must support the standardARPA services (telnet, FTP, SMTP, etc) as well as NFS, RPC, IPC, and the Unix socket interface library."
+R228,These interface routines are part of the Gemini software and must conform to the standards given in this document.
+R229,The computer hardware used for development must conform to the following:
+R230,"Workstations must match speci®ed software standards and present a well-designed devel- opment environment, including cross-support for VxWorks development, if needed."
+R231,Internal data formats must be compatible across workstations used for development.
+R232,All communication hardware must meet the data ¯ow requirements and software proto- cols de®ned in this document.
+R233,Interlock connections must be provided for all critical subsystems.
+R234,"The ®rst ®eld of every database record holds the record name, which must be unique across all IOCs attached to the same TCP/IP subnet."
+R235,"Most software components, because they access the database via database access routines, do not need to be aware of these structures."
+R236,An IOC device driver interrupt routine must be available to accept the external interrupts.
+R237,Every record support module must provide a record processing routine.
+R238,No other software should use the database monitors.
+R239,Because the experimental areas must be coordinated with the main facility control system and since 25% of the beamtime must be made available to independent investigators it was strongly recommended that EPICS be used as the toolkit for all CATS development work.
+R240,This section presents the ªgenericº commands that all Gemini systems must respond to.
+R241,COMMAND IMPLEMENT ATION Some subsystems may need to obtain information from other systems within the Gemini control system.

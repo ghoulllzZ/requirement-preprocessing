@@ -1,0 +1,103 @@
+﻿item,text
+R1,"Only those conditions expressed with the imperative ""shall"" are to be interpreted as binding requirements for this SRS."
+R2,The SRS shall give a prototype of a simulated thermostat for verification and validation of THEMAS reliability.
+R3,"In the event of conflict between the documents referenced and the contents of this SRS, the contents of this document shall overrule all others, with the exception of the Statement of Work."
+R4,The system should not need intervention from outside users other than the supervisor to maintain operation of THEMAS.
+R5,The system should provide warnings to the supervisor about faulty temperatures.
+R6,The displaying of the current status of the system to the supervisor should not contain excessive information which could confuse the supervisor.
+R7,The system should provide information in the form of reports to the supervisor so that the system can be run efficiently.
+R8,The thermostats shall only provide temperature values and temperature settings.
+R9,"When a signal is sent to a heating or cooling unit, no signal shall be available to allow the THEMAS system to determine if the signal sent to the unit was realized by the unit."
+R10,The THEMAS system shall be designed to run on the Microsoft ® Windows NT™ operating system.
+R11,All the internal process communications shall be designed to operate on this operating system.
+R12,Any communication with the thermostats and heating and cooling units shall be done through the interface to these units.
+R13,These interfaces shall run on this operating system as well.
+R14,The heating/cooling unit shall have the capability of being turned off and on by the supervisor of the THEMAS system.
+R15,The THEMAS system shall control the heating and cooling units that are defined as part of the THEMAS system.
+R16,The system shall read this file and the definitions shall be derived from the initialization data in the file.
+R17,The THEMAS system shall use the information contained in the initialization data file to determine which heating and cooling units are part of the THEMAS system.
+R18,Each thermostat shall have a unique identifier by which that thermostat is identified in the THEMAS system.
+R19,Each quadrant of each floor shall have a thermostat which is to be used to provide temperature data to the THEMAS system.
+R20,initialization file shall contain a unique identifier for each thermostat that the system is to monitor.
+R21,These identifiers shall be read from the initialization file and loaded into the THEMAS system during the initialization process.
+R22,There shall be a maximum number of heating or cooling units that can be on at any given time.
+R23,The maximum number of heating or cooling units that can run concurrently shall reside in an initialization file.
+R24,The maximum number of concurrently running units shall be read from the initialization file and stored in the THEMAS system.
+R25,The trigger value is used in combination with the current temperature to determine when a heating or cooling unit shall be turned on or off.
+R26,The trigger values shall reside in an initialization file.
+R27,This procedure shall read the initialization file and establish the trigger value from the data in that file.
+R28,The THEMAS system shall ensure the temperature reported by a given thermostat shall not exceed a maximum deviation value of 3 degrees Fahrenheit.
+R29,The overtemperature values shall reside in an initialization file.
+R30,This procedure shall read the initialization file and establish the overtemperature value from the data in that file.
+R31,The THEMAS system shall only respond to temperatures that are within a reasonable value.
+R32,The valid temperature range value shall reside in an initialization file.
+R33,This procedure shall read the initialization file and establish the valid temperature range from the data in it.
+R34,"When the THEMAS system is initialized, it shall first turn off all the heating and cooling units."
+R35,"Then, it shall check all the thermostats and determine if any thermostat’s settings require a heating or cooling unit to be turned on back on."
+R36,This process shall first determine a known state of all the heating and cooling units by issuing a request to turn off all the units.
+R37,It shall then read the current temperature values and current temperature settings of each thermostat.
+R38,"If the settings reflect a need for a heating or cooling unit to be turned o n, the process shall issue a request to turn on the appropriate unit."
+R39,This determination shall be made in accordance with the rules outlined in section 3.1.4.1 and 3.1.4.2.
+R40,The THEMAS system shall only respond to temperatures from the thermostats that are within the specified valid range.
+R41,Two types of temperature data shall be recognized from the thermostats: 1) the temperature setting and 2) the current temperature.
+R42,This module shall process both types of data.
+R43,A current temperature value that is received from an individual thermostat shall be compared to the valid temperature range values.
+R44,"If the current temperature value is strictly less than the lower value of the valid temperature range or if the received temperature value is strictly greater than the upper value of the valid temperature range, then the THEMAS system shall identify the current temperature value as an invalid temperature and shall output an invalid temperature status."
+R45,"Otherwise, the THEMAS system shall output a valid temperature status."
+R46,A temperature setting value that is received from an individual thermostat shall be compared to the valid temperature range values.
+R47,"If the temperature setting value is strictly less than the lower value of the valid temperature range or if the temperature setting value is strictly greater than the upper value of the valid temperature range, then the THEMAS system shall identify the temperature setting as an invalid temperature and shall output an invalid temperature status."
+R48,"Otherwise, the THEMAS system shall realize the value for that thermostat’s temperature setting."
+R49,The THEMAS system shall determine when a reported temperature or a changed temperature setting exceeds the limits set by the
+R50,Temperatures that exceed the overtemperature limits shall be reported as such.
+R51,Temperatures that do not exceed these limits shall be output for subsequent processing.
+R52,The THEMAS system shall compare the reported temperature value to the temperature setting and detect when the temperature value exceeds the specified limits.
+R53,If T < LO or UO < T then the THEMAS system shall recognize this condition as the temperature limit has been exceeded.
+R54,In this case this process shall output the condition of the temperature limit having been exceeded.
+R55,"If LO < = T < = UO, then this process shall output the temperature status."
+R56,"When the current temperature value exceeds the current temperature setting by a pre-defined amount, the THEMAS system shall activate the appropriate heating or cooling unit."
+R57,There are two conditions for each individual thermostat that shall be tested for: 1) the thermostat’s settings are satisfied and 2) the thermostat’s temperature indicates it requires a heating or cooling unit to be turned on.
+R58,"If this condition is true, then the module shall output a request to turn off both the heating unit and the cooling unit."
+R59,"If this condition is true, then this module shall output a request to turn on the heating unit if LO < = T < LT or the cooling unit if UT < T < = UO."
+R60,The THEMAS system shall control each of the heating and cooling units that are defined for the system.
+R61,The THEMAS system shall limit the number of heating or cooling units that may be running simultaneously.
+R62,The THEMAS system shall maintain the ON/OFF status of each heating and cooling unit.
+R63,"When a request to turn on a heating or cooling unit is received, the system shall determine if the request can be honored."
+R64,"When a request to turn off a heating or cooling unit is received, this process shall check the queue of waiting heating and cooling requests."
+R65,"If the queue is not empty, this process shall remove one request from the LIFO queue and check the current state of the thermostat for which the queued request was made."
+R66,"If that thermostat still needs a heating or cooling unit turned on, this process shall submit a request to turn that unit on."
+R67,"When a request for a heating unit or cooling to be turned is denied, an event shall be generated and the THEMAS system shall record that event."
+R68,This procedure shall realize the thermostat and heating or cooling information and use this information to generate a specific system event.
+R69,"This system event shall consist of a description of the event type (a request denied event), a designation of the thermostat that made the request, and a designation of the heating or cooling unit that was not turned on."
+R70,The THEMAS system shall control the heating and cooling units that are designated as part of the THEMAS system.
+R71,"When a request to turn on or off a heating or cooling unit is made, this process shall generate the appropriate request to carry out that request."
+R72,This request shall include the designation of the heating or cooling unit and a flag to indicate whether that unit is to be turned on or off.
+R73,"Once a request to turn on or off a heating or cooling unit, the THEMAS system shall provide the necessary control signal for the unit."
+R74,This control signal shall also provide an indication of the unit’s status at the requesting thermostat.
+R75,This process shall recognize the values for the requested heating or cooling unit and the ON or OFF status that is being requested.
+R76,"In order to provide an indication of the status of the heating or cooling unit back to the requesting thermostat, this procedure shall output the status information of the heating or cooling unit."
+R77,"In order to provide an operational history and statistical reports, this process shall generate an event each time a change is made to the status of a heating or cooling unit."
+R78,This ev ent shall contain the identification of the heating or cooling unit whose status is being changed.
+R79,"There are two events that shall result in an alarm condition: 1) an invalid temperature value is reported from a thermostat, or 2) the reported temperature has exceeded the defined limits."
+R80,This process shall determine which alarm event is to be generated.
+R81,"When the THEMAS system detects a request for an alarm, this process shall detect which of the two alarms are being requested."
+R82,"If the system detects an invalid temperature, this process shall output a continuous series of alternating 500 Hz and 700 Hz beeps on the supervisor’s computer."
+R83,Each beep shall have a three - quarter second duration.
+R84,This series of beeps shall continue until the supervisor manually resets the alarm through the supervisor’s interface window.
+R85,"If the system detects a temperature limit has been exceeded, this process shall output a continuous series of alternating 1000 Hz and 1500 Hz beeps on the supervisor’s computer."
+R86,Each beep shall have a one-half second duration.
+R87,"Each time an alarm is requested, an alarm event shall be recorded."
+R88,This event shall be used to provide operational and statistical reports about the system.
+R89,"For each event that is generated, the THEMAS system shall identify each event and generate the appropriate event data."
+R90,"When an event occurs, the THEMAS system shall identify the event type and format an appropriate event message."
+R91,The THEMAS system shall record each event by a description and the current system time for that event.
+R92,This information shall be recorded in a Microsoft® Access® database that shall reside on the supervisor’s computer.
+R93,The THEMAS system shall provide the supervisor a mechanism to change the temperature setting of any of the thermostats in the system.
+R94,The supervisor’s interface shall display the available thermostats and their individual current temperature settings.
+R95,The supervisor shall be able to select one of the thermostats and select a value for the current temperature from a list of valid temperatures.
+R96,The THEMAS shall provide the ability for the supervisor to select between two different types of reports: 1) the operational history of the THEMAS system for the past twelve months and 2) a statistical summary for any selected month.
+R97,The supervisor’s interface to the THEMAS system shall provide a mechanism to select between an operational history report or a statistical summary report.
+R98,Either report shall consist of an ASCII file whose location and name shall be selectable by the operator.
+R99,"If the operational history report is selected, the THEMAS system shall select all the events from the event database, sort the events by date and time, and create the ASCII report file."
+R100,"If the statistical report is selected, the THEMAS system shall present the operator with a list of available months from which to make a selection."
+R101,"After selecting one of the months, the system shall generate the ASCII report file."
+R102,The statistical reports shall consist of the following statistics:

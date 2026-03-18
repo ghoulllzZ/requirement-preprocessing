@@ -1,0 +1,75 @@
+﻿item,text
+R1,The general user shall be able to use the D H system capabilities to monitor and control the environment in his/her home.
+R2,"A Master user will be designated, who shall be able to change the configuration of the system."
+R3,"For example, a Master User shall be able to add a user account or change the default parameter settings."
+R4,The “prototype” version of the DigitalHome Sy stem (as specified in this document) must be completed within twelve months of inception.
+R5,"Because of potential market competition for D igitalHome products, the cost of DigitalHome elements (sensors, controllers, server, tools, etc.), for this project should be minimized."
+R6,"Major changes to this document (e.g., changes in requirements) must be approved by the Director of the DigitalHomeOwner Division."
+R7,The home system shall require an Internet Ser vice Provider (ISP).
+R8,A DH System shall have the capability to es tablish an individual home web server hosted on a home computer.
+R9,The DH Gateway device shall provide communi cation with all the DigitalHome devices and shall connect with a broadband Internet connection.
+R10,"The Gateway shall contain an RF Module, whi ch shall send and receive wireless communications between the Gateway and the other DigitalHome devices (sensors and controllers)."
+R11,The Gateway device shall operate up to a 10 00-foot range for indoor transmission.
+R12,"The system shall include digital programmab le thermostats, which shall be used to monitor and regulate the temperature of an enclosed space."
+R13,The thermostat shall provide a reading of the cu rrent temperature in the space where the thermostat is located.
+R14,The controller part of thermostat shall provides a “set point” temperature that is used to control the flow of heat energy (by switching heating or cooling devices on or off as needed) to achieve the set point temperature.
+R15,"The system shall include digital programmab le humidistats, which shall be used to monitor and regulate the humidity of an enclosed space."
+R16,The humidistat shall provide a reading of the cu rrent humidity in the space where the humidistat is located.
+R17,The humidistat shall provide a “set point” humid ity that is used to control humidifiers and dehumidifiers achieve the set point humidity.
+R18,The system shall include magnetic alarm con tact switches which shall be used to monitor entry through a door or window when the switch is active.
+R19,"The system shall include security sound and light alarms, which can be activated when DigitalHome senses a security breach from a magnetic contact."
+R20,"The system shall include digital programmab le power switches which shall be used to monitor the current state of an appliance (e.g., a coffee maker is off or on)."
+R21,"The system shall be able to use a power swi tch to change the state of the appliance (e.g., from “off” to “on”)."
+R22,"The DigitalHome System shall allow a web-read y computer, cell phone or PDA to control a home's temperature, humidity, lights, security, and the state of small appliances."
+R23,"The communication center of the DH system sha ll be a DH home web server, through which a user shall be able to monitor and control home devices and systems."
+R24,"Each DigitalHome shall contain a master contr ol device (the DH Gateway Device) that connects to the home’s broadband Internet connection, and uses wireless communication to send and receive communication between the DigitalHome system and the home devices and systems."
+R25,"The DigitalHome shall be equipped with variou s environmental controllers and sensors (temperature controller-sensors: thermostats, humidity controller-sensors: humidistats, contact sensors, security sound and light alarms, and power switches)."
+R26,The DigitalHome programmable thermostat shall allow a user to
+R27,A DH user shall be able to read the tempera ture at a thermostat position.
+R28,"A DH user shall be able to set the thermost at temperatures to between 60 ° F and 80 ° F, inclusive, at one degree increments."
+R29,Up to eight thermostats shall be placed in ro oms throughout the home.
+R30,"A single thermostat shall be placed in an e nclosed space (e.g., a room in the house) for which the air temperature is to be controlled."
+R31,"temperature setting, the setting shall remain in effect until the end of the planned or default time period, at which time the planned or default setting will be used for the next time period."
+R32,"A thermostat unit shall communicate, through wireless signals, with the master control unit."
+R33,The system shall support Fahrenheit and Celsi us temperature values.
+R34,"The system shall be compatible with a central ized HVAC (Heating, Ventilation and Air Conditioning) systems: gas, oil, electricity, solar, or a combination of two or more."
+R35,"The system shall adhere to the standards, policies and procedures of the American Society of Heating, Refrigerating and Air-Conditioning Engineers [ASHRAE 2010]."
+R36,"The DigitalHome programmable humidistat shall allow a user to monitor and control a home’s humidity from any location, using a web ready computer, cell phone, or PDA."
+R37,A DH user shall be able to read the humidit y at a humidistat position.
+R38,"A DH user shall be able to set the humidity level for a humidistat, from 30% to 60%, inclusive a 1% increments."
+R39,Up to eight humidistats shall be placed in ro oms throughout the home.
+R40,"A single humidistat shall be placed in an e nclosed space (e.g., a room in the house) for which the humidity is to be controlled."
+R41,"temperature setting, the setting shall remain in effect until the"
+R42,"A DigitalHome system shall use wireless signa ls to communicate, through the master control unit, with the humidistats."
+R43,A DigitalHome system shall be able to manag e up to fifty door and window contact sensors.
+R44,"A DigitalHome system shall be able to activ ate both light and sound alarms: one sound alarm and one light alarm subsystem, with multiple lights."
+R45,"When a security breach occurs and a contact s ensor is set OPEN, the alarm system shall be activated."
+R46,"The DigitalHome programmable Appliance Manage r shall provide for management of a home’s small appliances, including lighting units, by allowing a user to turn them on or off as desired."
+R47,The Appliance Manager shall be able to manage up to one hundred
+R48,"The system shall be able to provide informat ion about the state of a power switch (OFF or ON), indicating the whether an appliance connected to the power switch is OFF or ON."
+R49,"The system shall be able to change the state of a power switch (OFF to ON, or ON to OFF), in turn changing the state of an appliance connected to the power switch."
+R50,"If a user changes the state of power switch d evice manually, the device shall remain in that state until the end of the planned or default time period, at which time the planned or default setting will be used for the next time period."
+R51,"DigitalHome Planner shall provide a user with the capability to direct the system to set various preset home parameters (temperature, humidity, security contacts, and on/off appliance/light status) for certain time periods."
+R52,"For a given month and year, a user shall be able to create or"
+R53,"A user shall be able to override planned pa rameter values, through the DH website, or if available, through manual switches on household devices"
+R54,"For a given month and year, in the past two y ears, DigitalHome shall be able to provide a report on the management and control of the home."
+R55,"The month report shall contain daily averag e, maximum (with time) and minimum (with time) values of temperature and humidity for each thermostat and humidistat, respectively."
+R56,"The month report shall provide the day and time for which any security breaches occurred, that is, when the security alarms were activated."
+R57,The month report shall provide a section th at indicates the periods of time when the DH System was not in operation..
+R58,"Displays of environmental conditions (tempera ture, humidity, contact sensors and power switches) shall be updated at least every two seconds."
+R59,"Sensor (temperature, humidity, contact sensor , power state) shall have a minimum data acquisition rate of 10 Hz."
+R60,An environmental sensor or controller device shall have to be within
+R61,"The DigitalHome System must be highly reliabl e with no more than 1 failure per 10,000 hours of operation."
+R62,The Digital Home System shall incorporate bac kup and recovery mechanisms.
+R63,"access, or other software or hardware failure), the system recovery mechanism shall restore system data (configuration, default parameter settings, planning, and usage data) from the most recent backup."
+R64,"All DigitalHome operations shall incorporate exception handling so that the system responds to a user with a clear, descriptive message when an error or an exceptional condition occurs."
+R65,"Upon installation, a DigitalHome user account shall be established."
+R66,"The DigitalHome web system shall provide for authentication and information encryption through a recognized reliable and effective security technology, such as Transport Layer Security."
+R67,Log in to an account shall require entry of a n account name and a password.
+R68,The development of the DH system shall use me thods and techniques such as the following to support system maintenance:
+R69,"“prototype” version, all modules and components of this prototype version shall be designed and implemented in such a manner that it may be incorporated in a fully specified commercial version of the DigitalHome System."
+R70,"Architectural Design Specification, Module Detailed Design, Module Source Code, and all Test Plans) shall be up-to-date, use the Homeowner document format [HO2305] and reside in the HomeOwner Document Archive at completion of the project."
+R71,Exceptions to this rule must be approved by the CIO.
+R72,The DigitalHome System shall provide users wi th online documentation about the DigitalHome system installed in their home.
+R73,The user documentation shall include the following:
+R74,This shall include information on limitations and constraints on parameter settings and sensor reading accuracy.

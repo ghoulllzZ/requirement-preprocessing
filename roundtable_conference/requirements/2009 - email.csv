@@ -1,0 +1,14 @@
+﻿item,text
+R1,The service shall be designed to meet the needs of all executive branch agencies and reduce the current cost of operation and support.
+R2,"By December 31, 2009, the AEIT shall submit the proposed plan to the Governor, the President of the Senate, and the Speaker of the House of Representatives."
+R3,"The plan shall be developed to reduce costs to the state and include, at a minimum:"
+R4,An analysis of the in-house and external sourcing options that should be considered for delivery and support of the service.
+R5,"The analysis shall include an internally hosted system option, an externally sourced system option, and, if necessary, a combined in- house and externally sourced option."
+R6,The analysis must also include a comparison of the total cost of each enterprise e-mail sourcing option and the total cost of existing e-ma il services in order to determine the level of savings that can be expected.
+R7,The plan must identify any existing e-mail infrastructure that should be considered for reuse.
+R8,"The activities required to compile the requirements specification included reviewing the 2006 e-mail survey (and additional historical documentation), creating the 2009 e-mail survey, sending 2009 survey to agency e-mail (business) experts, compiling survey results into the formal requirements specification, and obtaining requirements approval from key stakeholders."
+R9,Manage Time: Specification must be complete within 6 weeks (30 business days).
+R10,Ensure Completeness: Specification must be complete and detailed enough to submit to outside vendors as Request For Information (RFI) or Request For Proposals (RFP) or an Invitation to Negotiate (ITN).
+R11,"Ensure Complete ness : Specification must include an attachment which pro vides a narrative and breakdown of existing agency resources (personnel, equipment – including storage capabilities, software-licenses) and current spend (reuse IV-C data where applicable) on e-mail . (Note: this information will be captured in the inventory survey which is being compiled by the Enterprise E-mail technical team – and is not included in this functional specification.)"
+R12,"Ensure Completeness : Specification must include an attachment which lists each agencies’ risks, issues, or constraints (such as software-application dependencies, contracts, or legal requirements) that may affect t heir ability to transition to an Enterprise E-mail System. (Note: this information will be compiled into a FAQ document which will be posted to the project web site and made available to all stakeholders.)"
+R13,List the basic functional requirements – what capab ilities should the service provide.

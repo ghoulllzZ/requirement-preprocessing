@@ -1,0 +1,6 @@
+﻿item,text
+R1,It provides porting guidelines and identifies the effort required to port the GUI library to Linux platform using GTK windowing toolkit for the X Window System.
+R2,"Namely it must have a C compiler and an X Window System including the following libraries: • pkg-config (only for compilation) • GNU make (only for compilation) • JPEG, PNG and TIFF image libraries • FreeType • fontconfig • GNU libiconv library • GNU gettext • GLib • Pango • ATK • GTK+"
+R3,"Instead of using _wpi_getclientrect() to get client area coordinates of the window, programmers should use gtk_widget_get_request_size()."
+R4,Menu functions GUIAppendMenu() GUIAppendMenuByOffset() GUIInsertMenu() GUIEnableMenuItem() GUICheckMenuItem() GUISetMenuText() GUISetHintText() GUIDeleteMenuItem() GUIResetMenus() GUIEnableMDIMenus() GUICreateFloatingPopup() GUITrackFloatingPopup() GUIGetMenuPopupCount() GUIAppendMenuToPopup() GUIInsertMenuToPopup() Common guidelines WGL windows of the GTK port must have GtkMenuBar widget in them.
+R5,But in GTK windows may not be resized smaller that 1 by 1 pixels.

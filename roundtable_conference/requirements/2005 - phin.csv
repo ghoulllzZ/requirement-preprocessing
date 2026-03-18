@@ -1,0 +1,54 @@
+﻿item,text
+R1,The application should also allow for new objects to be defined and created during the course of an investigation.
+R2,This document provides m inimum operationa l requirem ents necessary to support an outbreak management system and should in no way preclude a system from incorporating additional functionality beyond what has been covered in this document.
+R3,"System Architecture: Broad system-level needs, such as flexible configuration, should be addressed by systems supporting OM."
+R4,"System Functions and Behaviors: Systems supporting OM should support case investigation, maintain detailed and comprehensive linkages, trace contacts, and quarantine and isolation monitoring activities."
+R5,"System Integration and Data Exchange: OM information must be exchangeable, based on established standards, between systems involved in the investigation, identification, confirmation, and reporting of a health event."
+R6,A plan must be established for continuing activities when systems supporting OM are unavailable.
+R7,"Privacy: Patients, organizations, and personnel must be protected from fraudulent and unauthorized use of their information."
+R8,"Systems des igned to support OM must offer c onfiguration flexibility so that new data fields, entities, entity types and re lationship types m ay be added to capture information unique to each particular health event."
+R9,"Systems supporting O M should support m ultiple dep loyment options (e.g., client server, disconnected, and potentially web based)."
+R10,Systems supporting OM should provide the ability for computers in disconnected mode to reconnect to a server to share OM data among other computers that operate in disconnected mode.
+R11,OM data should be synchronized so that all instances of OM applications working from the same server are able to share and use the same data.
+R12,Systems supporting OM should be able to el ectronically record and store data from remote devices that may be uploaded to an aggregating system.
+R13,"Systems supporting OM must have the capability to capture demographic data about persons involved in an OM investigation, including: Subject ID, name, address, date of birth, gender, phone number, race, ethnicity, and country of citizenship."
+R14,"Systems supporting OM must have the capability to capture data about organizations (e.g., a local health department, a university, a professional association) involved in an OM investigation, including: organization name, location, and contact information."
+R15,"Systems supporting OM must have the capability to capture data about any animals involved in an OM investigation, including: type (dog, monkey, etc), age, gender, owner’s name and address, color, weight, and species."
+R16,"Systems supporting OM must have the capability to capture data for any object involved in an OM investigation, such as a letter, invoice, food item, or any object that cannot be classified as a “person, organization, place, or animal.” Collected data may include: name of the object, type, physical descriptors, address, identification number (e.g. serial number, package slip number), and relevant dates and times (e.g., invoice date, shipping date, packaging date)."
+R17,"Systems supporting OM must have the capability to capture data about any conveyance involved in an OM investigation, including: type of conveyance, route taken (e.g., flight number), etc."
+R18,"Systems supporting OM must have the capability to capture data about any public or private gathering of people (e.g., church social, ball game) involved in an OM investigation, including: time, location, nature of the event, etc."
+R19,"Systems supporting OM must have the capability to capture data about any living things other than persons or animals that are involved in an OM investigation, including: type of living thing, and other customizable data collection questions."
+R20,"Systems supporting OM must have the capability to capture an entity’s travel history to support investigations of entities infected, exposed or potentially exposed."
+R21,"When a health event is investigated, it must be assigned an event identifier (i.e., Event ID) that is unique within the jurisdiction."
+R22,"Detailed conveyance data must be collected when relevant to the investigation, including the carrier identifier, the type of conveyance (such as airplane, bus, or train, among countless others), as well as the make, model, year, and identification number (e.g., VIN) of each vehicle with which the entity was in contact (if this information is relevant to the investigation)."
+R23,"Because attributes of both case and exposure data may describe the same entity, systems supporting OM must have the ability to avoid capturing redundant entity demographic information."
+R24,b There must be a means to update the case diagnosis either manually or automatically if the case definition changes during an event.
+R25,"e In the context of a case, all entities exposed to a case must be recorded and linked to the case."
+R26,b Detailed data must be collected about the source of exposure as well as the exposed entity to support contact exposure tracing.
+R27,"Specimens/samples collected for laboratory testing must be assigned an identifier (i.e., Specimen ID) that is unique within the jurisdiction."
+R28,"The subject of a specimen/sample collected for laboratory testing must be linked to the specimen/sample by an identifier (i.e., Subject ID) that is unique within the jurisdiction."
+R29,Systems supporting OM must be able to store data about the specimens/samples that are collected for laboratory testing.
+R30,"Chain of custody information for forensic and select agent samples must be captured, including the person who collected the sample, the location of collection, all people who came into contact with the sample during the preparation for shipment to the laboratory, and the acceptance of the package by the shipper."
+R31,Systems supporting OM must be able to create a laboratory test request for a specimen/sample or group of specimens/samples.
+R32,"Information about batch shipments of specimens/samples that are transferred to test laboratories or other facilities must be collected, including the shipper (e.g., UPS, FedEx), shipment tracking number, and the sending organization’s contact information."
+R33,Systems supporting OM must be able to store laboratory result(s) and link the result(s) to the original laboratory test request.
+R34,Systems supporting OM must store data about laboratory results.
+R35,"a If the specim en/sample collection r ecord ex ists, the laboratory result must be linked to the specimen collection record by the Specimen ID."
+R36,"b If the specimen/sample collection record does not exist, the laboratory result must be linked to the subject by the Subject ID."
+R37,"c All levels of gra nularity of results (e.g., spec imen/sample level, assay level) must be supported."
+R38,"Contraindication information should be collected to indicate why vaccinations, treatments, or antidotes may not have been administered or why the patient may not have complied with prescribed interventions."
+R39,Electronic questionnaires must be developed and validated.
+R40,Systems supporting OM must provide the ability to control the configuration of and revisions to investigation-specific questionnaires.
+R41,Systems supporting OM must provide the ability to publish investigation- specific questionnaires and implementation guides.
+R42,"Entity-to-epi data links must match the entity to their symptoms, survey questions, specimens/samples collected, laboratory results, and prophylaxis and treatment data."
+R43,Each new case must be able to link an assigned Entity ID to an Event ID within the scope of the investigation.
+R44,"Laboratory results must be linked to corresponding specimens/samples including multiple results from one specimen/sample), and subjects when the participating laboratory returns the results."
+R45,These linkages must unambiguously associate multiple laboratory results to case and contact identifiers.
+R46,"Systems supporting OM must support contact exposure tracing by allowing one contact to be linked to multiple cases, and allowing multiple contacts to be linked to a single case."
+R47,"Systems supporting OM must have the abi lity to print ques tionnaires for m ultiple uses, including taking to the field, use during phone interviews, etc."
+R48,This section is limited to describing the ty pes of data exchange that OM must support;
+R49,"Systems supporting OM should be able to exchange messages for laboratory results with system s supporting surveillance, ear ly event detection (EED), and other preparedness areas."
+R50,Countermeasures that have been administered must be linked to the entity that was administered the countermeasures.
+R51,"Systems supporting OM should be able to pr ovide the aggregate data necessary for health event m onitoring to system s that support response tr acking, such as the number of s uspect cases, num ber of pers ons under isolation or quarantine, and the number of patients receiving countermeasures."
+R52,Mapping interfaces and data diction aries must be clearly defined and included in data exchan ges to indicate and d escribe both standard and customized fields because systems supporting OM are configur able to m eet the individual needs of each event and therefore collect data specific to each event.
+R53,"Systems and data supporting OM must be protected from sabotage, corruption and unauthorized access, and must be available subsequent to a catastrophic event."

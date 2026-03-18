@@ -4,20 +4,13 @@
       "name": "deepseek",
       "base_url": "https://api.deepseek.com",
       "api_key_env": "DEEPSEEK_API_KEY",
-      "model": "deepseek-chat"
+      "model": "deepseek-reasoner"
     },
     {
       "name": "qwen",
       "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
       "api_key_env": "DASHSCOPE_API_KEY",
       "model": "qwen-plus"
-    },
-    {
-      "name": "doubao",
-      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
-      "api_key_env": "ARK_API_KEY",
-      "model": "doubao-seed-1-8-251228",
-      "timeout": 300
     },
     {
       "name": "openai_gpt",

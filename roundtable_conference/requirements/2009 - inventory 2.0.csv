@@ -1,0 +1,99 @@
+﻿item,text
+R1,Pre-conditions: Pre-conditions are conditions that must be true prior to beginning the use case and are assumed to be true throughout the use case.
+R2,View Inventory The system should provide a categorized view of the entire inventory to the Construction Junction staff.
+R3,Manage Departments The system should allow inventory administrators to customize the inventory structure by defining the inventory departments (not to be confused actual retail floor departments known later in this document as stocking locations).
+R4,The Department Name must be unique across the inventory
+R5,The Department‟s Unique Tag must be unique across the inventory
+R6,The POS Department Code must be at most 3 characters long
+R7,The Unique Tag must be at most 18 characters long
+R8,There must be at least one slot available in the Department matrix to hold the new Department
+R9,The system must ask for confirmation before deleting a Department
+R10,Manage Categories The system should allow inventory administrators to customize the inventory structure by defining the inventory departments and categories.
+R11,The Category Name must be unique across the inventory
+R12,The Category‟s Unique Tag must be unique across the inventory
+R13,There must be at least one slot available in the Category matrix at the level the new Category will be created to hold the new Category
+R14,The system must ask for confirmation before deleting a Category
+R15,User must select at least one Category to move
+R16,User must select either an existing or new target Department or Category
+R17,User must enter
+R18,"When the option to merge the contents of the selected Categories is selected, the moved items must be updated in QuickBooks POS"
+R19,Manage Attributes and Details The system should allow inventory administrators to customize the attributes and det ails available for each inventory item.
+R20,The Item Attribute Name must be unique across the inventory
+R21,"If the Type is set to „Selection‟, then the selection list must contain at least one item"
+R22,The Item Detail Name must be unique across the inventory
+R23,Manage Inventory Items The system should allow various management actions to be performed on items existing in the inventory.
+R24,The system displays a confirmation screen where a reason for the adjustment must be specified by the user
+R25,"Once set for the first time in the inventory, the item price can only be modified by a Manager, Director or Administrator, must maintain a history and include an explanation for the price change"
+R26,"When an item is updated, the system must automatically detect that the item quantity has been modified and present the adjustment confirmation screen"
+R27,"If the „Other‟ reason is selected, the user must enter an additional comment"
+R28,"If the quantity is increased, the user must enter a comment describing the reason for the change"
+R29,"When building the split item list, at least two items must exist in the list, including the original item"
+R30,"The system should record the following actions and associated parameters for every item in the inventory and display them on the item history screen, along with action date/time:"
+R31,Suggest Item Price The system should assist in the task of pricing a new inventory item by making pricing suggestions to the user when adding to or modifying an item in the inventory.
+R32,Changes to acquisition information in CRM should be immediately visible in the Inventory Management System.
+R33,Changes to acquisition information in the Inventory Management System should be immediately visible in CRM.
+R34,The system should provide a link from the acquisitions view in the Inventory Management System to the acquisition creation screen in CRM for easy access.
+R35,A Receiving Associate is required to review all the acquisition information before those actions can take place.
+R36,The system must record every time a receipt is printed or emailed
+R37,The system should record the total amount of time taken to process each acquisition
+R38,"The original CRM acquisition data must be kept, not overridden by the values entered here"
+R39,The sale of the item is processed by QuickBooks POS and the inventory must be updated accordingly.
+R40,"Certain items sold in QuickBooks POS may not exist in the inventory (under $5 items, for instance)."
+R41,The system must be able to recognize that situation and bypass the inventory update.
+R42,"After a sale in QuickBooks POS, the following item attributes must be updated in the inventory:"
+R43,The sale price must not override the original item price in the inventory
+R44,The item quantity on hand in the inventory must be decremented by the quantity sold
+R45,"The system should be able to generate reports based on the following entities, including reports that correlate them: Inventory items Inventory departments Inventory categories Acquisitions Donors"
+R46,The system should allow the Construction Junction Staff to create new reports whenever required to satisfy their changing operational and business needs.
+R47,"Website Integration – The system should integrate with Construction Junction‟s website and allow, in addition to capacity outlined in later sections, the ability for customers to view and search CJ‟s inventory online."
+R48,The system should also include the implementation of Salesforce.com Ideas on CJ‟s „Recycling & Resources‟ webpage to allow for crowd sourcing the best recycling options for various materials in the Pittsburgh metropolitan area.
+R49,"When an item is flagged for e-Blast, the system should verify that a stocking location has been set for the item."
+R50,The system should allow Construction Junction staff to view a list of all items that are currently flagged as blastworthy that haven‟t yet been included in an e-Blast.
+R51,"The system should also provide an e-Blast preview screen that displays all items selected for that week‟s e-Blast, and also all items that have been flagged but not selected."
+R52,"The system should integrate with Vertical Response (or its future possible replacement, Exact Target) for the e-Blast email notifications."
+R53,"Inventory Management Software Requirements Specification Version 2.00 Confidential and Proprietary Page 32 of 62 November 9th, 2009 The system should also allow Construction Junction staff to view a list of all items that were included in previous week‟s e-Blast and that have been sold."
+R54,"The system should a lso allow the user to select any sold items, adding pictures as needed, to be included in the „Great and Gone‟ section, even if they were not part of previous week‟s e-Blast. „Great and Gone‟ items should have a “Sold” overlay over their associated images."
+R55,The system does not need to support shipping options.
+R56,"Once registered online, the system should allow Construction Junction staff to print out a member card (possibly via QuickBooks POS) containing the member‟s name and unique member ID, in both numeric and bar code format."
+R57,The member‟s email address and associated customer ID/barcode should uniquely identity the member in both QuickBooks POS and in the CRM system.
+R58,The system should allow Construction Junction to reward customers for frequent donating by giving them in-store credit that can be used when purchasing items.
+R59,The system should also provide reports that show all items a particular donor brought in and how much those items were sold for.
+R60,The system should be able to print the donor‟s current credit amount on the donation receipt.
+R61,"That means that in order to take advantage of the wish list functionality, the user must be registered as a Construction Junction website member."
+R62,The system should use that flag to automatically generate discounts for items based on the amount of time they have been in the inventory.
+R63,The system must allow a threshold quantity to be set at any level (department or category) in the inventory.
+R64,"The system should still allow items to be received for a department or category that is overstocked, but Construction Junction staff may decide to turn down those items at the receiving dock."
+R65,The system should also provide a report that shows currently overstock departments and categories.
+R66,"In addition to that, the system should be able to generate and print signage containing the item history, back story information and other item details."
+R67,"In addition, the Inventory Management System needs to store item weight information and generate reports that indicate the total weight received, sold and diverted from landfills."
+R68,"When the actual item weight is not indicated, the system should use a pre-set average weight for the item category."
+R69,"The system should also display the actual weight average for the category on the category configuration screen, and also the number of items used when calculating that average."
+R70,Availability For internal users: Donation/acquisition processing - The system must be available during normal Construction Junction operating hours.
+R71,Sales processing - The system must be available during normal Construction Junction operating hours.
+R72,Inventory management - The system must be available beyond normal operating hours to accommodate inventory management operations.
+R73,"For external users - The system must be available beyond normal operating hours to accommodate website use – Inventory listing, wish list management and online purchases."
+R74,Security Access to the application by the Construction Junction staff must require user login.
+R75,"The system should record changes to application entities in the form of „created user/time‟, „modified user/time‟ fields."
+R76,The system should also record information about various sensitive inventory management operations such as deleting items and changing the price of items.
+R77,"As such, the system should perform with consistently and predictably low response times in order not to impact the performance or the timely execution of the various tasks that need to be conducted by the Construction Junction staff."
+R78,User Interface A web browser-based interface must be provided for all the Inventory Management functionality.
+R79,"During data validation, all validation errors must be reported to the actor and displayed on the screen."
+R80,"In case of a validation error, the actor must not have to re-enter the values that are valid"
+R81,Each cell in the matrix must indicate in some visual form that it contains subcategories
+R82,There must be at least one slot available in the Department matrix to hold the ne w Department
+R83,"User must select either an existing target Department or Category, or new target Category"
+R84,Hardware Interfaces The system should support the following hardware interfaces:
+R85,Constituent data between QuickBooks POS and Salesforce must be synchronized
+R86,Updates to the inventory such as new items and changes to existing items must be synchronized to QuickBooks POS
+R87,Inventory items must be updated as a result of sales in QuickBooks POS
+R88,Customer‟s sales history must be synchronized to QuickBooks POS and roll up in a similar fashion as donation statistics
+R89,Customers with bouncing email addresses must be identified in QuickBooks POS
+R90,Integration between QuickBooks POS and Salesforce must use Middleware
+R91,Vertical Response App must be installed in Salesforce and consider storage consumption
+R92,"The system must be able to provide the contents of the categorized inventory for viewing on the website, allowing users to create wish lists and purchase items online"
+R93,Client Platform The user interface implementation should strive to use cross-browser standards wherever possible and avoid any use of browser-specific features.
+R94,Data Migration Constituent and sales history data from Construction Junction‟s QuickBooks POS system must be migrated to Salesforce.
+R95,Appropriate procedures will need to be developed and documented for the chosen implementation platform.
+R96,"Maintainability The system must be written using industry best practices, and must be built using only Construction Junction approved products and technologies."
+R97,The system must also be written in such a way that it can be supported by planned Construction Junction staffing levels.
+R98,"Legal, Copyright and Other Notices The following copyright notice must be displayed in all user interfaces:"
