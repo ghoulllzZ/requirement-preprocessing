@@ -22,7 +22,7 @@
       "name": "kimi",
       "base_url": "https://api.moonshot.cn/v1",
       "api_key_env": "MOONSHOT_API_KEY",
-      "model": "kimi-k2.5"
+      "model": "kimi-k2-0905-preview"
     },
     {
       "name": "glm5",

@@ -518,8 +518,35 @@ def _append_jsonl(path: str, rec: Dict[str, Any]) -> None:
     with open(path, "a", encoding="utf-8") as f:
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
+def dump_invalid_output(
+    out_dir: Optional[str],
+    stage: str,
+    rater_name: str,
+    item: Optional[str],
+    payload: Any,
+):
+    if not out_dir:
+        return
+    os.makedirs(out_dir, exist_ok=True)
+    ts = int(time.time() * 1000)
+    path = os.path.join(out_dir, f"invalid_output_{stage}_{rater_name}_{item or 'NA'}_{ts}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+
 def is_skippable_rater_error(exc: Exception) -> bool:
     return "(skip)" in str(exc)
+
+def validate_scoring_payload(data: Any, rater_name: str) -> Dict[str, Any]:
+    if not isinstance(data, dict):
+        raise RuntimeError(f"[{rater_name}] INVALID OUTPUT (skip): payload is not a JSON object")
+    if "scores" not in data or "confidences" not in data:
+        raise RuntimeError(f"[{rater_name}] INVALID OUTPUT (skip): missing scores/confidences")
+    if not isinstance(data["scores"], dict) or not isinstance(data["confidences"], dict):
+        raise RuntimeError(f"[{rater_name}] INVALID OUTPUT (skip): scores/confidences must be objects")
+    for sdim in ["U", "A", "C", "V"]:
+        if sdim not in data["scores"] or sdim not in data["confidences"]:
+            raise RuntimeError(f"[{rater_name}] INVALID OUTPUT (skip): missing {sdim}")
+    return data
 
 def call_llm_json(
     rater: Rater,
@@ -688,13 +715,11 @@ def score_requirement(rater: Rater, item: str, text: str, out_dir: Optional[str]
             data["confidences"] = _remap_dims(data["confidences"])
     # --- [MIN PATCH END] ---
 
-    # minimal validation
-    if "scores" not in data or "confidences" not in data:
-        raise ValueError(f"[{rater.name}] invalid output: missing scores/confidences")
-    for sdim in ["U", "A", "C", "V"]:
-        if sdim not in data["scores"] or sdim not in data["confidences"]:
-            raise ValueError(f"[{rater.name}] invalid output: missing {sdim}")
-    return data
+    try:
+        return validate_scoring_payload(data, rater.name)
+    except RuntimeError:
+        dump_invalid_output(out_dir, "score", rater.name, item, data)
+        raise
 
 
 # =========================
@@ -1623,6 +1648,20 @@ def run_roundtable(
                             if k0 in DIM_SHORT:
                                 new_conf[DIM_SHORT[k0]] = v0
                         data["confidences"] = new_conf
+
+                    try:
+                        data = validate_scoring_payload(data, r.name)
+                    except RuntimeError as e:
+                        if is_skippable_rater_error(e):
+                            dump_invalid_output(out_dir, "discuss", r.name, item, data)
+                            print(f"{e} -> keep previous state and skip future discussion rounds for this rater")
+                            blocked_discussion_raters.add(r.name)
+                            keep_r = cur_ratings[(cur_ratings["rater"]==r.name) & (cur_ratings["item"]==item)]
+                            keep_i = cur_issues[(cur_issues["rater"]==r.name) & (cur_issues["item"]==item)]
+                            next_ratings_rows.append(keep_r.copy())
+                            next_issues_rows.append(keep_i.copy())
+                            continue
+                        raise
 
                     # Attach item for flatten
                     data2 = {"scores": data["scores"], "confidences": data["confidences"],
