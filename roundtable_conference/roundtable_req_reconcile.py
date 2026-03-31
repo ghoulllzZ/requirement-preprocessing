@@ -391,15 +391,21 @@ def extract_first_json(text: str) -> Dict[str, Any]:
                     out.append(ch)
         return "".join(out)
 
-    # Try multiple candidate starts to avoid picking '{' from explanation text
+    # Try multiple candidate starts to avoid picking '{' from explanation text.
+    # But never fall back to nested objects inside an earlier outer candidate:
+    # if the outer payload is malformed, we want repair/retry, not "scores" only.
     starts = [m.start() for m in re.finditer(r"[\{\[]", s)]
     if not starts:
         raise ValueError("No JSON start found in model output.")
 
     last_err = None
+    tried_spans: List[Tuple[int, int]] = []
     for idx in starts[:50]:  # cap to avoid pathological long texts
+        if any(lo <= idx < hi for lo, hi in tried_spans):
+            continue
         try:
             span = _extract_balanced_json(s[idx:])
+            tried_spans.append((idx, idx + len(span)))
             span = _normalize_punct_outside_strings(span)
 
             # remove trailing commas before } or ]
